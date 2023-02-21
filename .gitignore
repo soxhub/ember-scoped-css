@@ -25,3 +25,4 @@ node_modules/
 /yarn.lock.ember-try
 
 .DS_Store
+.vscode
