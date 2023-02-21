@@ -6,6 +6,7 @@ const {
   appCssUnplugin,
   appScopedcssWebpack,
 } = require('ember-scoped-css');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -27,6 +28,14 @@ module.exports = function (defaults) {
           appJsUnplugin.webpack({ appDir: __dirname }),
           appCssUnplugin.webpack({ appDir: __dirname }),
           new appScopedcssWebpack(),
+          new CopyWebpackPlugin({
+            patterns: [
+              {
+                from: 'node_modules/test-addon/dist/scoped.css',
+                to: 'assets/test-addon',
+              },
+            ],
+          }),
         ],
         module: {
           rules: [

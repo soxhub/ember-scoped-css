@@ -16,6 +16,7 @@ module.exports = {
     'plugin:ember/recommended',
     'plugin:prettier/recommended',
   ],
+  ignorePatterns: ['**/*.gjs'],
   env: {
     browser: true,
   },
