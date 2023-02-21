@@ -1,19 +1,11 @@
 const { createUnplugin } = require('unplugin');
-const { readFile, stat } = require('fs').promises;
+const { readFile } = require('fs').promises;
 const path = require('path');
 const getClassesTagsFromCss = require('./getClassesTagsFromCss');
 const getPostfix = require('./getPostfix');
 const replaceHbsInJs = require('./replaceHbsInJs');
 const rewriteHbs = require('./rewriteHbs');
-
-async function exists(path) {
-  try {
-    await stat(path);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
+const fsExists = require('./fsExists');
 
 module.exports = createUnplugin((options) => {
   return {
@@ -27,14 +19,14 @@ module.exports = createUnplugin((options) => {
       const cssPath = jsPath.replace(/\.js$/, '.css');
       const cssFileName = path.basename(cssPath);
 
-      const cssExists = await exists(cssPath);
+      const cssExists = await fsExists(cssPath);
       let css;
       if (cssExists) {
         css = await readFile(cssPath, 'utf8');
       } else {
         // it could check if there is emited css file (I don't know how to do it)
         const gjsPath = jsPath.replace(/\.js$/, '.gjs');
-        const gjsExists = await exists(gjsPath);
+        const gjsExists = await fsExists(gjsPath);
         if (!gjsExists) {
           return code;
         }
