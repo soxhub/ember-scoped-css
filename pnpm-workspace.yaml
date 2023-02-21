@@ -1,3 +1,4 @@
 packages:
   - 'test-addon'
   - 'test-app'
+  - 'ember-scoped-css'
