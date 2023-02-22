@@ -15,7 +15,24 @@ module.exports = function (defaults) {
   });
 
   const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
+
+  const htmlEntrypointInfo = {
+    htmlEntryPoint: null,
+  };
+
+  class CssLiveReloadWebpack extends Webpack {
+    examineApp() {
+      const appInfo = super.examineApp();
+
+      htmlEntrypointInfo.htmlEntryPoint = appInfo.entrypoints.find(
+        (ep) => ep.filename === 'index.html'
+      );
+
+      return appInfo;
+    }
+  }
+
+  return require('@embroider/compat').compatBuild(app, CssLiveReloadWebpack, {
     skipBabel: [
       {
         package: 'qunit',
@@ -28,6 +45,7 @@ module.exports = function (defaults) {
           appCssLivereloadLoader.webpack({
             appDir: __dirname,
             loaders: [appCssLoader],
+            htmlEntrypointInfo,
           }),
         ],
         module: {
