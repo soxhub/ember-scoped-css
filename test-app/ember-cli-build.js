@@ -3,16 +3,15 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const {
   appJsUnplugin,
-  appCssUnplugin,
-  appScopedcssWebpack,
+  appCssLoader,
+  appCssLivereloadLoader,
 } = require('ember-scoped-css');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
-    autoImport: {
-      watchDependencies: ['test-addon'],
-    },
+    // autoImport: {
+    //   watchDependencies: ['test-addon'],
+    // },
   });
 
   const { Webpack } = require('@embroider/webpack');
@@ -26,21 +25,25 @@ module.exports = function (defaults) {
       webpackConfig: {
         plugins: [
           appJsUnplugin.webpack({ appDir: __dirname }),
-          appCssUnplugin.webpack({ appDir: __dirname }),
-          new appScopedcssWebpack(),
-          new CopyWebpackPlugin({
-            patterns: [
-              {
-                from: 'node_modules/test-addon/dist/scoped.css',
-                to: 'assets/test-addon',
-              },
-            ],
+          appCssLivereloadLoader.webpack({
+            appDir: __dirname,
+            loaders: [appCssLoader],
           }),
         ],
         module: {
           rules: [
             {
-              test: /(\.js)|(\.hbs)$/,
+              test: /\.css$/,
+              use: [
+                {
+                  loader: require.resolve(
+                    'ember-scoped-css/src/app-css-loader'
+                  ),
+                },
+              ],
+            },
+            {
+              test: /(\.hbs)|(\.js)$/,
               use: [
                 {
                   loader: require.resolve(

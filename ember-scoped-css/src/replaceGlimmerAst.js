@@ -36,18 +36,16 @@ module.exports = async function (script, id, replaceFunction) {
         const newOpcodes = replaceFunction(opcodes, css);
         blockProp.value.value = JSON.stringify(newOpcodes);
 
-        if (process.env.EMBER_ENV === 'production') {
-          const fileName = path.basename(cssPath);
-          // if (!importPath) {
-          //   unplugin.addWatchFile(cssPath);
-          // }
-          const importCss = recast.parse(
-            `import './${fileName}';\n`,
-            parseOptions
-          );
-          const importCssNode = importCss.program.body[0];
-          ast.program.body.unshift(importCssNode);
-        }
+        const fileName = path.basename(cssPath);
+        // if (!importPath) {
+        //   unplugin.addWatchFile(cssPath);
+        // }
+        const importCss = recast.parse(
+          `import './${fileName}';\n`,
+          parseOptions
+        );
+        const importCssNode = importCss.program.body[0];
+        ast.program.body.unshift(importCssNode);
       }
 
       this.traverse(nodePath);

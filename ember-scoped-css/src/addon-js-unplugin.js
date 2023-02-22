@@ -39,10 +39,8 @@ module.exports = createUnplugin((options) => {
         css = styleMatch[1];
       }
 
-      if (process.env.environment !== 'development') {
-        // add css import for js and gjs files
-        code = `import './${cssFileName}';\n\n${code}`;
-      }
+      // add css import for js and gjs files
+      code = `import './${cssFileName}';\n\n${code}`;
 
       // rewrite hbs in js in case it is gjs file (for gjs files hbs is already in js file)
       // for js components "@embroider/addon-dev/template-colocation-plugin", will add hbs to js later. So there is hbs plugin to rewrite hbs

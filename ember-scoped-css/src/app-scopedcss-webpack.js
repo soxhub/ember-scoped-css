@@ -1,21 +1,10 @@
 // const { RawSource } = require('webpack-sources');
 const rewriteCss = require('./rewriteCss');
 const { readFile, writeFile } = require('fs').promises;
-const glob = require('glob');
 const path = require('path');
 const getPostfix = require('./getPostfix');
 const fsExists = require('./fsExists');
-
-function getFiles(globPath) {
-  return new Promise((resolve, reject) => {
-    glob(globPath, (err, files) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(files);
-    });
-  });
-}
+const getFiles = require('./getFiles');
 
 module.exports = class {
   apply(compiler) {
