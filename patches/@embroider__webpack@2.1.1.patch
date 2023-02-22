@@ -1,0 +1,173 @@
+diff --git a/package.json b/package.json
+index ef8c6cbdfed28efa46496c4703d4f8eaa8feb7e2..4462569bf261c3511b0f16f2cbd0ba711b0bac70 100644
+--- a/package.json
++++ b/package.json
+@@ -26,6 +26,7 @@
+     "@types/supports-color": "^8.1.0",
+     "babel-loader": "^8.2.2",
+     "babel-preset-env": "^1.7.0",
++    "blueimp-md5": "^2.19.0",
+     "supports-color": "^8.1.0",
+     "css-loader": "^5.2.6",
+     "csso": "^4.2.0",
+@@ -38,7 +39,8 @@
+     "source-map-url": "^0.4.1",
+     "style-loader": "^2.0.0",
+     "terser": "^5.7.0",
+-    "thread-loader": "^3.0.4"
++    "thread-loader": "^3.0.4",
++    "unplugin": "^1.0.1"
+   },
+   "devDependencies": {
+     "@types/csso": "^3.5.1",
+diff --git a/src/app-css-livereload-loader.js b/src/app-css-livereload-loader.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..8ae4444738d52f3807d14c9cb8e627cf1b0969fb
+--- /dev/null
++++ b/src/app-css-livereload-loader.js
+@@ -0,0 +1,105 @@
++const { createUnplugin } = require("unplugin");
++const path = require("path");
++const { readFile } = require("fs").promises;
++const { Compilation } = require("webpack");
++const md5 = require("blueimp-md5");
++
++module.exports = createUnplugin(({ loaders, appInfo }) => {
++  return {
++    name: "app-css-livereload-loader",
++
++    transformInclude(id) {
++      return id.endsWith(".js") || id.endsWith(".hbs");
++    },
++
++    async transform(code, jsPath) {
++      if (process.env.EMBER_ENV === "production") {
++        return code;
++      }
++
++      const importRegex = /import\s+['"]([^'"]+\.css)['"]\s*;$/gm;
++      let cssPaths = [];
++      let match;
++      while ((match = importRegex.exec(code))) {
++        const importPath = match[1];
++        const directory = path.dirname(jsPath);
++        const cssPath = path.resolve(directory, importPath);
++        cssPaths.push(cssPath);
++
++        // replace import with empty string
++        code = code.replace(match[0], "");
++      }
++
++      if (!cssPaths.length) {
++        return code;
++      }
++
++      const promises = cssPaths.map(async (cssPath) => {
++        let css = await readFile(cssPath, "utf8");
++        for (let i = loaders.length - 1; i >= 0; i--) {
++          const loader = loaders[i];
++          css = await loader.bind({ resourcePath: cssPath })(css);
++        }
++        // random string; lenght is 8
++        const postfix = "e" + md5(path.basename(cssPath)).substring(0, 8);
++
++        this.emitFile({
++          type: "asset",
++          fileName:
++            "assets/includedscripts/" + postfix + "_" + path.basename(cssPath),
++          source: css,
++        });
++      });
++
++      await Promise.all(promises);
++
++      return code;
++    },
++
++    webpack(compiler) {
++      if (process.env.EMBER_ENV === "production") {
++        return;
++      }
++
++      compiler.hooks.thisCompilation.tap("Replace", (compilation) => {
++        compilation.hooks.processAssets.tapAsync(
++          {
++            name: "Replace",
++            stage: Compilation.PROCESS_ASSETS_STAGE_DERIVED,
++          },
++          async (assets, callback) => {
++            try {
++              const cssAssets = Object.keys(assets).filter((asset) =>
++                asset.startsWith("assets/includedscripts/")
++              );
++
++              if (!cssAssets.length) {
++                return;
++              }
++              const document = appInfo.entrypoints.find(
++                (ep) => ep.filename === "index.html"
++              ).dom.window.document;
++
++              for (let asset of cssAssets) {
++                const head = document.getElementsByTagName("head")[0];
++                const linkExists = head.querySelector(
++                  `link[rel="stylesheet"][href="/${asset}"]`
++                );
++
++                if (!linkExists) {
++                  const link = document.createElement("link");
++                  link.rel = "stylesheet";
++                  link.href = "/" + asset;
++                  head.appendChild(link);
++                  linkAdded = true;
++                }
++              }
++            } finally {
++              callback();
++            }
++          }
++        );
++      });
++    },
++  };
++});
+diff --git a/src/ember-webpack.js b/src/ember-webpack.js
+index d1368ccfd60f39a19b3db01991cb6af0d85d94b4..cf2d0d371e0748691d33c8efa2622c5f0aea1158 100644
+--- a/src/ember-webpack.js
++++ b/src/ember-webpack.js
+@@ -50,6 +50,7 @@ const crypto_1 = __importDefault(require("crypto"));
+ const satisfies_1 = __importDefault(require("semver/functions/satisfies"));
+ const supports_color_1 = __importDefault(require("supports-color"));
+ const debug = (0, debug_1.default)('embroider:debug');
++const appCssLivereloadLoader = require("./app-css-livereload-loader");
+ // AppInfos are equal if they result in the same webpack config.
+ function equalAppInfo(left, right) {
+     return ((0, isEqual_1.default)(left.babel, right.babel) &&
+@@ -111,6 +112,7 @@ const Webpack = (_a = class Webpack {
+             this.extraBabelLoaderOptions = options === null || options === void 0 ? void 0 : options.babelLoaderOptions;
+             this.extraCssLoaderOptions = options === null || options === void 0 ? void 0 : options.cssLoaderOptions;
+             this.extraStyleLoaderOptions = options === null || options === void 0 ? void 0 : options.styleLoaderOptions;
++            this.liveReloadCssLoaders = options === null || options === void 0 ? void 0 : options.liveReloadCssLoaders;
+             [this.beginBarrier, this.incrementBarrier] = createBarrier();
+             warmUp(this.extraThreadLoaderOptions);
+         }
+@@ -174,6 +176,10 @@ const Webpack = (_a = class Webpack {
+                             await this.writeFiles(this.bundleSummary, appInfo, variantIndex);
+                         });
+                     },
++                    appCssLivereloadLoader.webpack({
++                      loaders: this.liveReloadCssLoaders || [],
++                      appInfo,
++                    }),
+                 ],
+                 node: false,
+                 module: {
+@@ -245,6 +251,8 @@ const Webpack = (_a = class Webpack {
+             }
+             debug(`configuring webpack`);
+             let config = this.variants.map((variant, variantIndex) => (0, mergeWith_1.default)({}, this.configureWebpack(appInfo, variant, variantIndex), this.extraConfig, appendArrays));
++            const second = config[0].plugins.splice(1,1)[0];
++            config[0].plugins.push(second);
+             this.lastAppInfo = appInfo;
+             return (this.lastWebpack = (0, webpack_1.default)(config));
+         }

@@ -3,6 +3,11 @@ lockfileVersion: 5.4
 overrides:
   '@types/eslint': ^7.0.0
 
+patchedDependencies:
+  '@embroider/webpack@2.1.1':
+    hash: ordouxgte5ba4qs6jgpsqtfq2a
+    path: patches/@embroider__webpack@2.1.1.patch
+
 importers:
 
   .:
@@ -101,7 +106,7 @@ importers:
       '@embroider/compat': ^2.0.2
       '@embroider/core': ^2.0.2
       '@embroider/test-setup': ^1.7.1
-      '@embroider/webpack': ^2.0.2
+      '@embroider/webpack': 2.1.1
       '@glimmer/component': ^1.1.2
       '@glimmer/tracking': ^1.1.2
       babel-eslint: ^10.1.0
@@ -150,7 +155,7 @@ importers:
       '@embroider/compat': 2.1.1_@embroider+core@2.1.1
       '@embroider/core': 2.1.1
       '@embroider/test-setup': 1.8.3
-      '@embroider/webpack': 2.1.1_eyqzvd6leggmxnqpxutivef5lu
+      '@embroider/webpack': 2.1.1_ordouxgte5ba4qs6jgpsqtfq2a_eyqzvd6leggmxnqpxutivef5lu
       '@glimmer/component': 1.1.2
       '@glimmer/tracking': 1.1.2
       babel-eslint: 10.1.0_eslint@7.32.0
@@ -261,7 +266,6 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@babel/eslint-parser/7.19.1_ccoxihxmx25rm5cufeee3dmlne:
     resolution: {integrity: sha512-AqNf2QWt1rtu2/1rLswy6CDP7H9Oh3mMhk177Y67Rg8d7RD9WfOLLv8CGn6tisFvS2htm86yIe1yLF6I1UDaGQ==}
@@ -437,7 +441,6 @@ packages:
       '@babel/types': 7.21.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@babel/helper-optimise-call-expression/7.18.6:
     resolution: {integrity: sha512-HP59oD9/fEHQkdcbgFCnbmgH5vIQTJbxh2yf+CdM89/glUNnuzr87Q8GIjGEnOktTROemO0Pe0iPAYbqZuOUiA==}
@@ -536,7 +539,6 @@ packages:
       '@babel/types': 7.21.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@babel/highlight/7.18.6:
     resolution: {integrity: sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==}
@@ -1466,7 +1468,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@babel/types/7.21.0:
     resolution: {integrity: sha512-uR7NWq2VNFnDi7EYqiRz2Jv/VQIu38tu64Zy8TX2nQFQ6etJ9V/Rr2msW8BS132mum2rL645qpDrLtAJtVpuow==}
@@ -1959,7 +1960,7 @@ packages:
       - supports-color
     dev: true
 
-  /@embroider/webpack/2.1.1_eyqzvd6leggmxnqpxutivef5lu:
+  /@embroider/webpack/2.1.1_ordouxgte5ba4qs6jgpsqtfq2a_eyqzvd6leggmxnqpxutivef5lu:
     resolution: {integrity: sha512-1IzXXexv/QxDyk4N6kamtiTk92HszlaQZXGB+xhnRCMY4F7Hgxad4gSPvnSy/oSkbHTMWSGjCTS5e4tQcUC8Cg==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
@@ -1994,6 +1995,7 @@ packages:
       - canvas
       - utf-8-validate
     dev: true
+    patched: true
 
   /@eslint/eslintrc/0.4.3:
     resolution: {integrity: sha512-J6KFFz5QCYUJq3pf0mjEcCJVERbzv71PUIDczuh9JkwGEzced6CO5ADLHB1rbf/+oPBtoPfMYNOpGDzCANlbXw==}
@@ -3156,7 +3158,7 @@ packages:
       '@babel/core': ^7.0.0
       webpack: '>=2'
     dependencies:
-      '@babel/core': 7.21.0
+      '@babel/core': 7.21.0_supports-color@8.1.1
       find-cache-dir: 3.3.2
       loader-utils: 2.0.4
       make-dir: 3.1.0
@@ -5261,7 +5263,6 @@ packages:
     dependencies:
       ms: 2.1.2
       supports-color: 8.1.1
-    dev: true
 
   /decamelize/4.0.0:
     resolution: {integrity: sha512-9iE1PgSik9HeIIw2JO94IidnE3eBoQrFJ3w7sFuzSX4DpmZ3v5sZpUiV5Swcf6mQEF+Y0ru8Neo+p+nyh2J+hQ==}

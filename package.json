@@ -22,6 +22,9 @@
   "pnpm": {
     "overrides": {
       "@types/eslint": "^7.0.0"
+    },
+    "patchedDependencies": {
+      "@embroider/webpack@2.1.1": "patches/@embroider__webpack@2.1.1.patch"
     }
   }
 }

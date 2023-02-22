@@ -1,11 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const {
-  appJsUnplugin,
-  appCssLoader,
-  appCssLivereloadLoader,
-} = require('ember-scoped-css');
+const { appJsUnplugin, appCssLoader } = require('ember-scoped-css');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -16,40 +12,20 @@ module.exports = function (defaults) {
 
   const { Webpack } = require('@embroider/webpack');
 
-  const htmlEntrypointInfo = {
-    htmlEntryPoint: null,
-  };
-
-  class CssLiveReloadWebpack extends Webpack {
-    examineApp() {
-      const appInfo = super.examineApp();
-
-      htmlEntrypointInfo.htmlEntryPoint = appInfo.entrypoints.find(
-        (ep) => ep.filename === 'index.html'
-      );
-
-      return appInfo;
-    }
-  }
-
-  return require('@embroider/compat').compatBuild(app, CssLiveReloadWebpack, {
+  return require('@embroider/compat').compatBuild(app, Webpack, {
     skipBabel: [
       {
         package: 'qunit',
       },
     ],
     packagerOptions: {
+      // css loaders for live reloading css
+      liveReloadCssLoaders: [appCssLoader],
       webpackConfig: {
-        plugins: [
-          appJsUnplugin.webpack({ appDir: __dirname }),
-          appCssLivereloadLoader.webpack({
-            appDir: __dirname,
-            loaders: [appCssLoader],
-            htmlEntrypointInfo,
-          }),
-        ],
+        plugins: [appJsUnplugin.webpack({ appDir: __dirname })],
         module: {
           rules: [
+            // css loaders for production
             {
               test: /\.css$/,
               use: [
