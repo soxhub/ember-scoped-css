@@ -1,30 +1,11 @@
 const { createUnplugin } = require('unplugin');
 const path = require('path');
 const { readFile, writeFile } = require('fs').promises;
-const { Compilation, sources } = require('webpack');
+const { Compilation } = require('webpack');
 const getPostfix = require('./getPostfix');
-const fsExists = require('./fsExists');
-const getFiles = require('./getFiles');
+const cheerio = require('cheerio');
 
-function getCommonAncestor(path1, path2) {
-  const arr1 = path1.split(path.sep);
-  const arr2 = path2.split(path.sep);
-  const minLength = Math.min(arr1.length, arr2.length);
-
-  let i = 0;
-  while (i < minLength && arr1[i] === arr2[i]) {
-    i++;
-  }
-
-  if (i === 0) {
-    throw new Error('Paths have no common ancestor');
-  }
-
-  const commonAncestor = arr1.slice(0, i).join(path.sep);
-  return commonAncestor;
-}
-
-module.exports = createUnplugin(({ appDir, loaders }) => {
+module.exports = createUnplugin(({ appDir, loaders, htmlEntrypointInfo }) => {
   return {
     name: 'app-css-livereload-loader',
 
@@ -54,11 +35,8 @@ module.exports = createUnplugin(({ appDir, loaders }) => {
         return code;
       }
 
-      // const basePath = getCommonAncestor(appDir, jsPath);
-
       const promises = cssPaths.map(async (cssPath) => {
         let css = await readFile(cssPath, 'utf8');
-        const r = require;
         for (let i = loaders.length - 1; i >= 0; i--) {
           const loader = loaders[i];
           css = await loader.bind({ resourcePath: cssPath })(css);
@@ -91,33 +69,40 @@ module.exports = createUnplugin(({ appDir, loaders }) => {
             stage: Compilation.PROCESS_ASSETS_STAGE_DERIVED,
           },
           async (assets, callback) => {
-            const cssAssets = Object.keys(assets).filter((asset) =>
-              asset.startsWith('assets/includedscripts/')
-            );
+            try {
+              const cssAssets = Object.keys(assets).filter((asset) =>
+                asset.startsWith('assets/includedscripts/')
+              );
 
-            const appCssPath = path.resolve(
-              compiler.context,
-              `assets/${path.basename(compiler.context)}.css`
-            );
-
-            const oldAppCss = await readFile(appCssPath, 'utf8');
-            let appCss = oldAppCss;
-
-            for (let asset of cssAssets) {
-              // remove asset/ from asset name with path
-
-              const newImport = `@import '${asset.replace('assets/', '')}';`;
-              if (appCss.includes(newImport)) {
-                continue;
+              if (!cssAssets.length) {
+                return;
               }
-              appCss = `${newImport}\n\n${appCss}`;
-            }
+              let linkAdded = false;
+              const document =
+                htmlEntrypointInfo.htmlEntryPoint.dom.window.document;
 
-            if (oldAppCss !== appCss) {
-              await writeFile(appCssPath, appCss, 'utf8');
-            }
+              for (let asset of cssAssets) {
+                const head = document.getElementsByTagName('head')[0];
+                const linkExists = head.querySelector(
+                  `link[rel="stylesheet"][href="/${asset}"]`
+                );
 
-            callback();
+                if (!linkExists) {
+                  const link = document.createElement('link');
+                  link.rel = 'stylesheet';
+                  link.href = '/' + asset;
+                  head.appendChild(link);
+                  linkAdded = true;
+                }
+              }
+
+              // if (linkAdded) {
+              //   const indexHtmlWithLinks = dom.serialize();
+              //   await writeFile(indexHtmlPath, indexHtmlWithLinks, 'utf8');
+              // }
+            } finally {
+              callback();
+            }
           }
         );
       });

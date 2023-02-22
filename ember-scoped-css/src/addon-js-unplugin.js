@@ -45,7 +45,7 @@ module.exports = createUnplugin((options) => {
       // rewrite hbs in js in case it is gjs file (for gjs files hbs is already in js file)
       // for js components "@embroider/addon-dev/template-colocation-plugin", will add hbs to js later. So there is hbs plugin to rewrite hbs
 
-      return await replaceHbsInJs(code, (hbs) => {
+      return replaceHbsInJs(code, (hbs) => {
         const { classes, tags } = getClassesTagsFromCss(css);
         const postfix = getPostfix(cssFileName);
         const rewritten = rewriteHbs(hbs, classes, tags, postfix);
