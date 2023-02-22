@@ -36,19 +36,7 @@ module.exports = function ({ addonDir }) {
         );
         scopedCss += rewrittenCss + '\n\n';
         bundle[asset].source = rewrittenCss;
-
-        // if (process.env.environment === 'development') {
-        //   delete bundle[asset];
-        // }
       }
-
-      // if (process.env.environment === 'development') {
-      //   this.emitFile({
-      //     type: 'asset',
-      //     fileName: 'scoped.css',
-      //     source: scopedCss,
-      //   });
-      // }
     },
   };
 };

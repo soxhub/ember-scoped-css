@@ -1,23 +1,24 @@
 const path = require('path');
-const { readFileSync, existsSync } = require('fs');
+const { readFile } = require('fs').promises;
 const getPostfix = require('./getPostfix');
-const rewriteCss = require('./rewriteCss');
 const replaceHbsInJs = require('./replaceHbsInJs');
 const getClassesTagsFromCss = require('./getClassesTagsFromCss');
 const rewriteHbs = require('./rewriteHbs');
+const fsExists = require('./fsExists');
 
 module.exports = function rollupCssColocation(options = {}) {
   return {
     name: 'addon-hbs-rollup',
 
-    transform(code, id) {
+    async transform(code, id) {
       if (id.endsWith('.hbs.js')) {
         const hbsPath = id.replace('.js', '');
         const cssPath = hbsPath.replace('.hbs', '.css');
 
-        if (existsSync(cssPath)) {
+        const cssExists = await fsExists(cssPath);
+        if (cssExists) {
           // read the css file
-          const css = readFileSync(cssPath, 'utf-8');
+          const css = await readFile(cssPath, 'utf-8');
           const { classes, tags } = getClassesTagsFromCss(css);
 
           // generate unique postfix

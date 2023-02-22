@@ -1,28 +1,8 @@
 const { createUnplugin } = require('unplugin');
 const path = require('path');
 const { readFile, writeFile } = require('fs').promises;
-const { Compilation, sources } = require('webpack');
+const { Compilation } = require('webpack');
 const getPostfix = require('./getPostfix');
-const fsExists = require('./fsExists');
-const getFiles = require('./getFiles');
-
-function getCommonAncestor(path1, path2) {
-  const arr1 = path1.split(path.sep);
-  const arr2 = path2.split(path.sep);
-  const minLength = Math.min(arr1.length, arr2.length);
-
-  let i = 0;
-  while (i < minLength && arr1[i] === arr2[i]) {
-    i++;
-  }
-
-  if (i === 0) {
-    throw new Error('Paths have no common ancestor');
-  }
-
-  const commonAncestor = arr1.slice(0, i).join(path.sep);
-  return commonAncestor;
-}
 
 module.exports = createUnplugin(({ appDir, loaders }) => {
   return {
@@ -58,7 +38,6 @@ module.exports = createUnplugin(({ appDir, loaders }) => {
 
       const promises = cssPaths.map(async (cssPath) => {
         let css = await readFile(cssPath, 'utf8');
-        const r = require;
         for (let i = loaders.length - 1; i >= 0; i--) {
           const loader = loaders[i];
           css = await loader.bind({ resourcePath: cssPath })(css);

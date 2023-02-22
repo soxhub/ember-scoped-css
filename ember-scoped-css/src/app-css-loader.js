@@ -16,8 +16,11 @@ module.exports = async function (code) {
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
-  const hbsExists = await fsExists(hbsPath);
-  const gjsExists = await fsExists(gjsPath);
+  const [hbsExists, gjsExists] = await Promise.all([
+    fsExists(hbsPath),
+    fsExists(gjsPath),
+  ]);
+
   if (hbsExists || gjsExists) {
     const rewrittenCss = rewriteCss(code, postfix, cssFileName);
     return rewrittenCss;
