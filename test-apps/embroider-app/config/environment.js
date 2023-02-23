@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'test-app',
+    modulePrefix: 'embroider-app',
     environment,
     rootURL: '/',
     locationType: 'history',

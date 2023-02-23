@@ -1,37 +1,26 @@
-test-addon
-==============================================================================
+# v2-addon
 
 [Short description of the addon.]
 
+## Compatibility
 
-Compatibility
-------------------------------------------------------------------------------
+- Ember.js v3.28 or above
+- Embroider or ember-auto-import v2
 
-* Ember.js v3.28 or above
-* Embroider or ember-auto-import v2
-
-
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
-ember install test-addon
+ember install v2-addon
 ```
 
-
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 [Longer description of how to use the addon in apps.]
 
-
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
-
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).

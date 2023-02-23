@@ -1,18 +1,18 @@
 {
-  "name": "test-addon",
+  "name": "v2-addon",
   "version": "0.0.0",
   "private": true,
   "repository": "",
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "pnpm --filter test-addon build",
+    "build": "pnpm --filter v2-addon build",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "start:addon": "pnpm --filter test-addon start --no-watch.clearScreen",
-    "start:test-app": "pnpm --filter test-app start",
+    "start:addon": "pnpm --filter v2-addon start --no-watch.clearScreen",
+    "start:embroider-app": "pnpm --filter embroider-app start",
     "test": "pnpm --filter '*' test"
   },
   "devDependencies": {

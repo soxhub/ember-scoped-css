@@ -1,8 +1,8 @@
 {
-  "name": "test-app",
+  "name": "embroider-app",
   "version": "0.0.0",
   "private": true,
-  "description": "Test app for test-addon addon",
+  "description": "Test app for v2-addon addon",
   "repository": "",
   "license": "MIT",
   "author": "",
@@ -68,7 +68,7 @@
     "prettier": "^2.8.3",
     "qunit": "^2.19.3",
     "qunit-dom": "^2.0.0",
-    "test-addon": "^0.0.0",
+    "v2-addon": "workspace:*",
     "tracked-built-ins": "^3.1.0",
     "webpack": "^5.75.0"
   },
