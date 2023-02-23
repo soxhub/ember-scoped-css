@@ -53,6 +53,88 @@ importers:
       sinon: 15.0.1
       webpack: 5.75.0
 
+  test-apps/classic-app:
+    specifiers:
+      '@ember/optional-features': ^2.0.0
+      '@ember/string': ^3.0.1
+      '@ember/test-helpers': ^2.9.3
+      '@glimmer/component': ^1.1.2
+      '@glimmer/tracking': ^1.1.2
+      babel-eslint: ^10.1.0
+      broccoli-asset-rev: ^3.0.0
+      concurrently: ^7.6.0
+      ember-auto-import: ^2.5.0
+      ember-cli: ~4.10.0
+      ember-cli-app-version: ^5.0.0
+      ember-cli-babel: ^7.26.11
+      ember-cli-dependency-checker: ^3.3.1
+      ember-cli-htmlbars: ^6.2.0
+      ember-cli-inject-live-reload: ^2.1.0
+      ember-cli-sri: ^2.1.1
+      ember-cli-terser: ^4.0.2
+      ember-data: ~4.9.1
+      ember-fetch: ^8.1.2
+      ember-load-initializers: ^2.1.2
+      ember-page-title: ^7.0.0
+      ember-qunit: ^6.1.1
+      ember-resolver: ^10.0.0
+      ember-source: ~4.10.0
+      ember-template-lint: ^5.3.1
+      ember-welcome-page: ^6.2.0
+      eslint: ^7.32.0
+      eslint-config-prettier: ^8.6.0
+      eslint-plugin-ember: ^11.4.3
+      eslint-plugin-n: ^15.6.1
+      eslint-plugin-prettier: ^4.2.1
+      eslint-plugin-qunit: ^7.3.4
+      loader.js: ^4.7.0
+      prettier: ^2.8.3
+      qunit: ^2.19.3
+      qunit-dom: ^2.0.0
+      tracked-built-ins: ^3.1.0
+      v2-addon: workspace:*
+      webpack: ^5.75.0
+    devDependencies:
+      '@ember/optional-features': 2.0.0
+      '@ember/string': 3.0.1
+      '@ember/test-helpers': 2.9.3_ember-source@4.10.0
+      '@glimmer/component': 1.1.2
+      '@glimmer/tracking': 1.1.2
+      babel-eslint: 10.1.0_eslint@7.32.0
+      broccoli-asset-rev: 3.0.0
+      concurrently: 7.6.0
+      ember-auto-import: 2.6.1_webpack@5.75.0
+      ember-cli: 4.10.0
+      ember-cli-app-version: 5.0.0
+      ember-cli-babel: 7.26.11
+      ember-cli-dependency-checker: 3.3.1_ember-cli@4.10.0
+      ember-cli-htmlbars: 6.2.0
+      ember-cli-inject-live-reload: 2.1.0
+      ember-cli-sri: 2.1.1
+      ember-cli-terser: 4.0.2
+      ember-data: 4.9.1_ofnbhpn7j3ikutrl6unsltmbyi
+      ember-fetch: 8.1.2
+      ember-load-initializers: 2.1.2
+      ember-page-title: 7.0.0
+      ember-qunit: 6.1.1_6j2wkb4dcyok242cgjvcmw6rjq
+      ember-resolver: 10.0.0_xrhxcpguibhitwylcj2rkofaem
+      ember-source: 4.10.0_klhxxmjkcvtuhwro2kkspsfzna
+      ember-template-lint: 5.5.1
+      ember-welcome-page: 6.2.0
+      eslint: 7.32.0
+      eslint-config-prettier: 8.6.0_eslint@7.32.0
+      eslint-plugin-ember: 11.4.6_eslint@7.32.0
+      eslint-plugin-n: 15.6.1_eslint@7.32.0
+      eslint-plugin-prettier: 4.2.1_2fbugv7hbzbahj5qm3ztcno6by
+      eslint-plugin-qunit: 7.3.4_eslint@7.32.0
+      loader.js: 4.7.0
+      prettier: 2.8.4
+      qunit: 2.19.4
+      qunit-dom: 2.0.0
+      tracked-built-ins: 3.1.1
+      v2-addon: link:../v2-addon
+      webpack: 5.75.0
+
   test-apps/embroider-app:
     specifiers:
       '@ember/optional-features': ^2.0.0
@@ -1792,7 +1874,6 @@ packages:
       semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@embroider/babel-loader-8/2.0.0_uvhj6s4a6l6v2wdxiz3n675h2a:
     resolution: {integrity: sha512-a1bLodfox8JEgNHuhiIBIcXJ4b8NNnKWYkMIpJx216pn80Jf1jcFosQpxnqC8hYHrnG0XRKzQ9zJYgJXoa1wfg==}
@@ -6423,6 +6504,15 @@ packages:
       walk-sync: 2.2.0
     transitivePeerDependencies:
       - encoding
+      - supports-color
+    dev: true
+
+  /ember-welcome-page/6.2.0:
+    resolution: {integrity: sha512-bDPgNgW0eRhLCHLaFK87p1mcP8hGwr0pXvPoskDeUGQzsOI3Pc3U/8WLpUSi2mNrmv0eNtfWqE+A1Wbx6F2l0Q==}
+    engines: {node: 12.* || 14.* || >= 16}
+    dependencies:
+      '@embroider/addon-shim': 1.8.4
+    transitivePeerDependencies:
       - supports-color
     dev: true
 
