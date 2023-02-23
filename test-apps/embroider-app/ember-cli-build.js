@@ -6,7 +6,7 @@ const { appJsUnplugin, appCssLoader } = require('ember-scoped-css');
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     // autoImport: {
-    //   watchDependencies: ['test-addon'],
+    //   watchDependencies: ['v2-addon'],
     // },
   });
 
