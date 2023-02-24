@@ -1,0 +1,39 @@
+diff --git a/js/webpack.js b/js/webpack.js
+index 86641517cc55be2349fbed507ec6f93ebd027469..4ba97c8359b0dca68aa3ea20de666be3a91aa4fe 100644
+--- a/js/webpack.js
++++ b/js/webpack.js
+@@ -195,8 +195,7 @@ class WebpackBundler extends broccoli_plugin_1.default {
+                     // not overriding the default loader resolution rules in case the app also
+                     // wants to control those.
+                     'babel-loader-8': require.resolve('babel-loader'),
+-                    'eai-style-loader': require.resolve('style-loader'),
+-                    'eai-css-loader': require.resolve('css-loader'),
++                    'eai-style-loader': require.resolve('ember-style-loader'),
+                 },
+             },
+             resolve: {
+@@ -212,10 +211,8 @@ class WebpackBundler extends broccoli_plugin_1.default {
+                     {
+                         test: /\.css$/i,
+                         use: [
+-                            styleLoader,
+                             {
+-                                loader: 'eai-css-loader',
+-                                options: (_a = [...this.opts.packages].find((pkg) => pkg.cssLoaderOptions)) === null || _a === void 0 ? void 0 : _a.cssLoaderOptions,
++                                loader: 'eai-style-loader',
+                             },
+                         ],
+                     },
+diff --git a/package.json b/package.json
+index aedc7ba95720dee2ee682aaf8ca03add8ba515f7..0d2c4a353b7c5dd7d1ac38ddd9efbc0d320bd507 100644
+--- a/package.json
++++ b/package.json
+@@ -60,7 +60,7 @@
+     "resolve": "^1.20.0",
+     "resolve-package-path": "^4.0.3",
+     "semver": "^7.3.4",
+-    "style-loader": "^2.0.0",
++    "ember-style-loader": "github:mainmatter/ember-style-loader#main",
+     "typescript-memoize": "^1.0.0-alpha.3",
+     "walk-sync": "^3.0.0"
+   },
