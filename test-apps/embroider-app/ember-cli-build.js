@@ -1,7 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const { appJsUnplugin, appCssLoader } = require('ember-scoped-css');
+const { appJsUnplugin,  appCssUnplugin } = require('ember-scoped-css');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -20,9 +20,11 @@ module.exports = function (defaults) {
     ],
     packagerOptions: {
       // css loaders for live reloading css
-      liveReloadCssLoaders: [appCssLoader],
       webpackConfig: {
-        plugins: [appJsUnplugin.webpack({ appDir: __dirname })],
+        plugins: [
+          appJsUnplugin.webpack({ appDir: __dirname }),
+          // appCssUnplugin.webpack(),
+        ],
         module: {
           rules: [
             // css loaders for production

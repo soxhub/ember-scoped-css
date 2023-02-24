@@ -38,7 +38,7 @@
     "concurrently": "^7.2.1",
     "ember-template-lint": "^4.0.0",
     "ember-scoped-css": "workspace:*",
-    "ember-template-imports": "^3.4.1",
+    "ember-template-imports": "github:candunaj/ember-template-imports#support-style-tag",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.8",

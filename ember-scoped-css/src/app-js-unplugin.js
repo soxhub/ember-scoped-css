@@ -3,6 +3,8 @@ const replaceGlimmerAst = require('./replaceGlimmerAst');
 const path = require('path');
 const getPostfix = require('./getPostfix');
 const getClassesTagsFromCss = require('./getClassesTagsFromCss');
+const { readFile } = require('fs').promises;
+const fsExists = require('./fsExists');
 
 function* iterateOpcodes(opcodes) {
   for (let instruction of opcodes) {
@@ -49,7 +51,7 @@ module.exports = createUnplugin(({ appDir }) => {
     async transform(code, id) {
       const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
       const cssFileName = path.basename(cssPath);
-      const postfix = getPostfix(cssFileName);
+      const postfix = getPostfix(cssPath);
 
       return await replaceGlimmerAst(code, id, (opcodes, css) => {
         const { classes, tags } = getClassesTagsFromCss(css);

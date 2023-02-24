@@ -70,6 +70,7 @@
     "qunit-dom": "^2.0.0",
     "v2-addon": "workspace:*",
     "tracked-built-ins": "^3.1.0",
+    "ember-style-loader": "github:mainmatter/ember-style-loader#main",
     "webpack": "^5.75.0"
   },
   "engines": {
