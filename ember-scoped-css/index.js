@@ -7,6 +7,7 @@ const appCssUnplugin = require('./src/app-css-unplugin');
 const appCssLoader = require('./src/app-css-loader');
 const appDependencyLoader = require('./src/app-dependency-loader');
 const appScopedcssWebpack = require('./src/app-scopedcss-webpack');
+const addonRewritecssRollup = require('./src/addon-rewritecss-rollup');
 
 module.exports = {
   rollupEmberTemplateImportsPlugin,
@@ -18,4 +19,5 @@ module.exports = {
   appCssLoader,
   appDependencyLoader,
   appScopedcssWebpack,
+  addonRewritecssRollup,
 };

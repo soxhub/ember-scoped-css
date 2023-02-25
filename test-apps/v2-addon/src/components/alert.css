@@ -1,3 +1,5 @@
+@import './tmp.css';
+
 div {
   width: 400px;
   border: 1px solid black;

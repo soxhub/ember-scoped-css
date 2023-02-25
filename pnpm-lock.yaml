@@ -27,7 +27,7 @@ importers:
       chai: ^4.3.7
       cheerio: 1.0.0-rc.12
       ember-source: ^4.10.0
-      ember-template-imports: github:candunaj/ember-template-imports#support-style-tag
+      ember-template-imports: github:candunaj/ember-template-imports#embed-styles-in-gjs
       ember-template-recast: ^6.1.3
       glob: ^8.1.0
       mocha: ^10.2.0
@@ -42,7 +42,7 @@ importers:
       blueimp-md5: 2.19.0
       cheerio: 1.0.0-rc.12
       ember-source: 4.11.0_webpack@5.75.0
-      ember-template-imports: github.com/candunaj/ember-template-imports/63f55687765c5ecc6e488707edfb46b0a598a941
+      ember-template-imports: github.com/candunaj/ember-template-imports/d0bece5554d9d37665503a488fadee55f94884ee
       ember-template-recast: 6.1.3
       glob: 8.1.0
       postcss: 8.4.21
@@ -123,7 +123,7 @@ importers:
       ember-qunit: 6.1.1_6j2wkb4dcyok242cgjvcmw6rjq
       ember-resolver: 10.0.0_xrhxcpguibhitwylcj2rkofaem
       ember-source: 4.10.0_klhxxmjkcvtuhwro2kkspsfzna
-      ember-style-loader: github.com/mainmatter/ember-style-loader/03a4807a9f99578f3e75a488566b8b4d7e6360f6
+      ember-style-loader: github.com/mainmatter/ember-style-loader/5d262a1671a9354312a376d70df220289b8b3330
       ember-template-lint: 5.6.0
       ember-welcome-page: 6.2.0
       eslint: 7.32.0
@@ -175,7 +175,7 @@ importers:
       ember-source: ~4.10.0
       ember-source-channel-url: ^3.0.0
       ember-style-loader: github:mainmatter/ember-style-loader#main
-      ember-template-imports: github:candunaj/ember-template-imports#support-style-tag
+      ember-template-imports: github:candunaj/ember-template-imports#embed-styles-in-gjs
       ember-template-lint: ^5.3.1
       ember-try: ^2.0.0
       eslint: ^7.32.0
@@ -198,7 +198,7 @@ importers:
       '@embroider/compat': 2.1.1_@embroider+core@2.1.1
       '@embroider/core': 2.1.1
       '@embroider/test-setup': 1.8.3
-      '@embroider/webpack': 2.1.1_gkztskrdp27t6ymqdud5tpcsu4_eyqzvd6leggmxnqpxutivef5lu
+      '@embroider/webpack': 2.1.1_6bzgugmiic7egasvb7cf75ip2m_eyqzvd6leggmxnqpxutivef5lu
       '@glimmer/component': 1.1.2
       '@glimmer/tracking': 1.1.2
       babel-eslint: 10.1.0_eslint@7.32.0
@@ -224,8 +224,8 @@ importers:
       ember-scoped-css: link:../../ember-scoped-css
       ember-source: 4.10.0_klhxxmjkcvtuhwro2kkspsfzna
       ember-source-channel-url: 3.0.0
-      ember-style-loader: github.com/mainmatter/ember-style-loader/03a4807a9f99578f3e75a488566b8b4d7e6360f6
-      ember-template-imports: github.com/candunaj/ember-template-imports/63f55687765c5ecc6e488707edfb46b0a598a941
+      ember-style-loader: github.com/mainmatter/ember-style-loader/5d262a1671a9354312a376d70df220289b8b3330
+      ember-template-imports: github.com/candunaj/ember-template-imports/d0bece5554d9d37665503a488fadee55f94884ee
       ember-template-lint: 5.6.0
       ember-try: 2.0.0
       eslint: 7.32.0
@@ -254,7 +254,7 @@ importers:
       '@rollup/plugin-babel': ^5.3.0
       concurrently: ^7.2.1
       ember-scoped-css: workspace:*
-      ember-template-imports: github:candunaj/ember-template-imports#support-style-tag
+      ember-template-imports: github:candunaj/ember-template-imports#embed-styles-in-gjs
       ember-template-lint: ^4.0.0
       eslint: ^7.32.0
       eslint-config-prettier: ^8.3.0
@@ -276,7 +276,7 @@ importers:
       '@rollup/plugin-babel': 5.3.1_4tnfxcmsyr7y5qv3uwkivwqysm
       concurrently: 7.6.0
       ember-scoped-css: link:../../ember-scoped-css
-      ember-template-imports: github.com/candunaj/ember-template-imports/63f55687765c5ecc6e488707edfb46b0a598a941
+      ember-template-imports: github.com/candunaj/ember-template-imports/d0bece5554d9d37665503a488fadee55f94884ee
       ember-template-lint: 4.18.2
       eslint: 7.32.0
       eslint-config-prettier: 8.6.0_eslint@7.32.0
@@ -2052,7 +2052,7 @@ packages:
       - supports-color
     dev: true
 
-  /@embroider/webpack/2.1.1_gkztskrdp27t6ymqdud5tpcsu4_eyqzvd6leggmxnqpxutivef5lu:
+  /@embroider/webpack/2.1.1_6bzgugmiic7egasvb7cf75ip2m_eyqzvd6leggmxnqpxutivef5lu:
     resolution: {integrity: sha512-1IzXXexv/QxDyk4N6kamtiTk92HszlaQZXGB+xhnRCMY4F7Hgxad4gSPvnSy/oSkbHTMWSGjCTS5e4tQcUC8Cg==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
@@ -4014,12 +4014,6 @@ packages:
       tree-sync: 1.4.0
     transitivePeerDependencies:
       - supports-color
-
-  /broccoli-empty-files/0.0.1:
-    resolution: {integrity: sha512-K4JPK8D+OPRrSUgyt6V1pT5ltA+nqFrhabNtu56gf3CwiiptWGwqLrQngcJMter3J2VK9OHg4O3DjAnGOnQHfw==}
-    dependencies:
-      symlink-or-copy: 1.3.1
-      walk-sync-matcher: 0.2.2
 
   /broccoli-file-creator/2.1.1:
     resolution: {integrity: sha512-YpjOExWr92C5vhnK0kmD81kM7U09kdIRZk9w4ZDCDHuHXW+VE/x6AGEOQQW3loBQQ6Jk+k+TSm8dESy4uZsnjw==}
@@ -9528,12 +9522,6 @@ packages:
       schema-utils: 4.0.0
       webpack: 5.75.0
 
-  /minimatch/2.0.10:
-    resolution: {integrity: sha512-jQo6o1qSVLEWaw3l+bwYA2X0uLuK2KjNh2wjgO7Q/9UJnXr1Q3yQKR8BI0/Bt/rPg75e6SMW4hW/6cBHVTZUjA==}
-    deprecated: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
-    dependencies:
-      brace-expansion: 1.1.11
-
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -12237,11 +12225,6 @@ packages:
       xml-name-validator: 3.0.0
     dev: true
 
-  /walk-sync-matcher/0.2.2:
-    resolution: {integrity: sha512-pikx1Md9bdzHM88HRnmZQTAissCbjaA7FdaT3bcQleHTV8/O4flgzUQJWtQxz4CDcRzEwW2JY3FHeBCfkcA7MA==}
-    dependencies:
-      minimatch: 2.0.10
-
   /walk-sync/0.2.7:
     resolution: {integrity: sha512-OH8GdRMowEFr0XSHQeX5fGweO6zSVHo7bG/0yJQx6LAj9Oukz0C8heI3/FYectT66gY0IPGe89kOvU410/UNpg==}
     dependencies:
@@ -12632,15 +12615,13 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/candunaj/ember-template-imports/63f55687765c5ecc6e488707edfb46b0a598a941:
-    resolution: {tarball: https://codeload.github.com/candunaj/ember-template-imports/tar.gz/63f55687765c5ecc6e488707edfb46b0a598a941}
+  github.com/candunaj/ember-template-imports/d0bece5554d9d37665503a488fadee55f94884ee:
+    resolution: {tarball: https://codeload.github.com/candunaj/ember-template-imports/tar.gz/d0bece5554d9d37665503a488fadee55f94884ee}
     name: ember-template-imports
     version: 3.4.1
     engines: {node: 12.* || >= 14}
     dependencies:
       babel-import-util: 0.2.0
-      broccoli-empty-files: 0.0.1
-      broccoli-merge-trees: 4.2.0
       broccoli-stew: 3.0.0
       ember-cli-babel-plugin-helpers: 1.1.1
       ember-cli-version-checker: 5.1.2
@@ -12652,8 +12633,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  github.com/mainmatter/ember-style-loader/03a4807a9f99578f3e75a488566b8b4d7e6360f6:
-    resolution: {tarball: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/03a4807a9f99578f3e75a488566b8b4d7e6360f6}
+  github.com/mainmatter/ember-style-loader/5d262a1671a9354312a376d70df220289b8b3330:
+    resolution: {tarball: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/5d262a1671a9354312a376d70df220289b8b3330}
     name: ember-style-loader
     version: 1.0.0
     dependencies:

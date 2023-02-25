@@ -1,4 +1,3 @@
-const path = require('path');
 const { readFile } = require('fs').promises;
 const getPostfix = require('./getPostfix');
 const replaceHbsInJs = require('./replaceHbsInJs');
@@ -22,8 +21,7 @@ module.exports = function rollupCssColocation(options = {}) {
           const { classes, tags } = getClassesTagsFromCss(css);
 
           // generate unique postfix
-          const fileName = path.basename(cssPath);
-          const postfix = getPostfix(fileName);
+          const postfix = getPostfix(cssPath);
 
           // rewrite the template
           const rewrittenHbsJs = replaceHbsInJs(code, (hbs) => {

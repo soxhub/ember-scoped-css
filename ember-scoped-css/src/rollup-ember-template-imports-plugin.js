@@ -73,23 +73,23 @@ async function preprocessTemplates(id, addonDir, rollup) {
     includeTemplateTokens: true,
   });
 
-  // Extract styles and emit them as assets
-  const styleRegex = /<style>([\s\S]*?)<\/style>/g;
-  let styleMatch;
-  const styles = [];
-  while ((styleMatch = styleRegex.exec(contents))) {
-    const styleContent = styleMatch[1];
-    styles.push(styleContent);
-  }
-  if (styles.length) {
-    const relativePath = path.relative(path.join(addonDir, 'src'), id);
-    const css = styles.join('\n\n');
-    rollup.emitFile({
-      type: 'asset',
-      fileName: relativePath.replace(FCCT_EXTENSION, '.css'),
-      source: css,
-    });
-  }
+  // // Extract styles and emit them as assets
+  // const styleRegex = /<style>([\s\S]*?)<\/style>/g;
+  // let styleMatch;
+  // const styles = [];
+  // while ((styleMatch = styleRegex.exec(contents))) {
+  //   const styleContent = styleMatch[1];
+  //   styles.push(styleContent);
+  // }
+  // if (styles.length) {
+  //   const relativePath = path.relative(path.join(addonDir, 'src'), id);
+  //   const css = styles.join('\n\n');
+  //   rollup.emitFile({
+  //     type: 'asset',
+  //     fileName: relativePath.replace(FCCT_EXTENSION, '.css'),
+  //     source: css,
+  //   });
+  // }
 
   return result.output;
 }
