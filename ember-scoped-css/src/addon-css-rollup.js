@@ -93,15 +93,7 @@ module.exports = function ({ addonDir }) {
           `import './${path.basename(asset.replace('.js', '.css'))}';\n` +
           bundle[asset].code;
 
-        // const cssFileName = path.basename(asset);
-        // const postfix = getPostfix(cssFileName);
-        // const rewrittenCss = rewriteCss(
-        //   bundle[asset].source,
-        //   postfix,
-        //   cssFileName
-        // );
-        // scopedCss += rewrittenCss + '\n\n';
-        // bundle[asset].source = rewrittenCss;
+        // TODO store css in meta for that module!!!!!!
       }
     },
   };
