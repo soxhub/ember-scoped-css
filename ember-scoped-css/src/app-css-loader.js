@@ -1,5 +1,5 @@
 // const { createUnplugin } = require('unplugin');
-const { basename } = require('path');
+const { basename, join } = require('path');
 const fsExists = require('./fsExists');
 const getPostfix = require('./getPostfix');
 const rewriteCss = require('./rewriteCss');
@@ -8,11 +8,7 @@ const rewriteCss = require('./rewriteCss');
 module.exports = async function (code) {
   const cssPath = this.resourcePath;
   const cssFileName = basename(cssPath);
-  const postfix = getPostfix(cssFileName);
-
-  if (code.includes(postfix)) {
-    return code;
-  }
+  const postfix = getPostfix(cssPath);
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
@@ -21,10 +17,12 @@ module.exports = async function (code) {
     fsExists(gjsPath),
   ]);
 
-  if (hbsExists || gjsExists) {
-    const rewrittenCss = rewriteCss(code, postfix, cssFileName);
-    return rewrittenCss;
+  let rewrittenCss;
+  if (hbsExists || gjsExists && cssPath.startsWith(this.rootContext)) {
+    rewrittenCss = rewriteCss(code, postfix, cssFileName);
   } else {
-    return code;
+    rewrittenCss = code;
   }
+
+  return rewrittenCss;
 };
