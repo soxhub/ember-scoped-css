@@ -18,7 +18,7 @@ index ef8c6cbdfed28efa46496c4703d4f8eaa8feb7e2..e2666894aede577957f2e9619e5abb47
      "thread-loader": "^3.0.4"
    },
 diff --git a/src/ember-webpack.js b/src/ember-webpack.js
-index d1368ccfd60f39a19b3db01991cb6af0d85d94b4..6aec534e0dea7dda82806ca8ce7b01ef5d7ef984 100644
+index d1368ccfd60f39a19b3db01991cb6af0d85d94b4..15d30ac8b141c8a6ff781360104eb0a15c8b2fbe 100644
 --- a/src/ember-webpack.js
 +++ b/src/ember-webpack.js
 @@ -233,7 +233,7 @@ const Webpack = (_a = class Webpack {
@@ -36,7 +36,7 @@ index d1368ccfd60f39a19b3db01991cb6af0d85d94b4..6aec534e0dea7dda82806ca8ce7b01ef
                      loaders: [
 -                        { loader: 'style-loader', options: { injectType: 'styleTag', ...this.extraStyleLoaderOptions } },
 -                        cssLoader,
-+                        { loader: 'ember-style-loader' },
++                        { loader: 'ember-style-loader', options: { assetPath: '/assets'}},
                      ],
                      plugins: [],
                  };
