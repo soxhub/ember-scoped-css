@@ -46,54 +46,46 @@ module.exports = function ({ addonDir }) {
           css = await readFile(id, 'utf-8');
         }
 
-        const regex = /@import\s+["']?([^"')]+)["']?;/g;
-        let match;
-
-        while ((match = regex.exec(css))) {
-          const importPath = match[1];
-          if (!importPath.includes('http') && !importPath.startsWith('url(')) {
-            const resolution = await this.resolve(importPath, id);
-            resolution.meta.internalImport = true;
-            const importedCss = await this.load(resolution);
-            let ic = importedCss.code.substring(9);
-            ic = ic.substring(0, ic.length - 2);
-            css = css.replace(match[0], JSON.parse(ic));
-          }
-        }
-
         return css;
       }
-      return null;
     },
 
     async transform(code, id) {
       if (id.endsWith('.css')) {
-        if (this.getModuleInfo(id).meta.internalImport) {
-          return `var a = '${JSON.stringify(code)}';`;
-        } else {
-          this.emitFile({
-            type: 'asset',
-            fileName: id.replace(path.join(addonDir, 'src/'), ''),
-            source: code,
-          });
-          // return `import '!./${path.basename(id)}';`;
-          return '';
-        }
+        this.emitFile({
+          type: 'asset',
+          fileName: id.replace(path.join(addonDir, 'src/'), ''),
+          source: code,
+        });
+        return '';
       }
     },
 
     generateBundle(a, bundle) {
-      let scopedCss = '';
+      let cssFiles = [];
       for (let asset in bundle) {
-        if (!asset.endsWith('js') || !bundle[asset.replace('js', 'css')]) {
+        const cssAsset = asset.replace('js', 'css');
+        if (!asset.endsWith('js') || !bundle[cssAsset]) {
           continue;
         }
 
-        bundle[asset].code =
-          `import './${path.basename(asset.replace('.js', '.css'))}';\n` +
-          bundle[asset].code;
+        if (process.env.environment === 'development') {
+          cssFiles.push(bundle[cssAsset].source);
+          delete bundle[cssAsset];
+        } else {
+          // add import to js files
+          bundle[asset].code =
+            `import './${path.basename(asset.replace('.js', '.css'))}';\n` +
+            bundle[asset].code;
+        }
+      }
 
-        // TODO store css in meta for that module!!!!!!
+      if (process.env.environment === 'development') {
+        this.emitFile({
+          type: 'asset',
+          fileName: 'scoped.css',
+          source: cssFiles.join('\n'),
+        });
       }
     },
   };
