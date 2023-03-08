@@ -2,6 +2,7 @@
   "name": "ember-scoped-css",
   "version": "1.0.0",
   "description": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
