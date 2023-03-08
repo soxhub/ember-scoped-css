@@ -51,10 +51,10 @@ export default {
     // to leave alone and keep in the published output.
     // addon.keepAssets(['**/*.css']),
     // eslint-disable-next-line no-undef
-    rollupEmberTemplateImportsPlugin({ addonDir: __dirname }),
+    rollupEmberTemplateImportsPlugin(),
     // eslint-disable-next-line no-undef
     addonRewritecssRollup(),
-    addonCssRollup({ addonDir: __dirname }),
+    addonCssRollup(),
     addonJsUnplugin.rollup(),
     addonHbsRollup(),
 

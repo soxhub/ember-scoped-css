@@ -7,7 +7,7 @@ const findCssInJs = require('./findCssInJs');
 const getImportedCssFiles = require('./getImportedCssFiles');
 const recast = require('recast');
 
-module.exports = function ({ addonDir }) {
+module.exports = function () {
   return {
     name: 'addon-css-rollup',
 
@@ -54,7 +54,7 @@ module.exports = function ({ addonDir }) {
       if (id.endsWith('.css')) {
         this.emitFile({
           type: 'asset',
-          fileName: id.replace(path.join(addonDir, 'src/'), ''),
+          fileName: id.replace(path.join(process.cwd(), 'src/'), ''),
           source: code,
         });
         return '';
