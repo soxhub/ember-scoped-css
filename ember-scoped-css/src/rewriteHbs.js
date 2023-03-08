@@ -5,7 +5,7 @@ module.exports = function rewriteHbs(hbs, classes, tags, postfix) {
 
   recast.traverse(ast, {
     AttrNode(node) {
-      if (node.name === 'class') {
+      if (node.name === 'class' && node.value.chars) {
         const newClasses = node.value.chars.split(' ').map((c) => {
           if (c.trim() && classes.has(c.trim())) {
             return c.trim() + '_' + postfix;
