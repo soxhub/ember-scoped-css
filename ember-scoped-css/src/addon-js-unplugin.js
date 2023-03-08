@@ -6,6 +6,8 @@ const getPostfix = require('./getPostfix');
 const replaceHbsInJs = require('./replaceHbsInJs');
 const rewriteHbs = require('./rewriteHbs');
 const fsExists = require('./fsExists');
+const findCssInJs = require('./findCssInJs');
+const recast = require('recast');
 
 module.exports = createUnplugin((options) => {
   return {
@@ -16,7 +18,7 @@ module.exports = createUnplugin((options) => {
     },
 
     async transform(code, jsPath) {
-      const cssPath = jsPath.replace(/\.js$/, '.css');
+      const cssPath = jsPath.replace(/(\.hbs)?\.js$/, '.css');
       const cssFileName = path.basename(cssPath);
 
       const cssExists = await fsExists(cssPath);
@@ -24,19 +26,16 @@ module.exports = createUnplugin((options) => {
       if (cssExists) {
         css = await readFile(cssPath, 'utf8');
       } else {
-        // it could check if there is emited css file (I don't know how to do it)
-        const gjsPath = jsPath.replace(/\.js$/, '.gjs');
-        const gjsExists = await fsExists(gjsPath);
-        if (!gjsExists) {
-          return code;
+        if (code.includes('__GLIMMER_STYLES')) {
+          const result = findCssInJs(code, true);
+          css = result.css;
+          code = recast.print(result.ast).code;
+          this.getModuleInfo(jsPath).meta.gjsCss = result.css;
         }
-        const gjs = await readFile(gjsPath, 'utf8');
-        const styleRegex = /<style>([\s\S]*?)<\/style>/g;
-        const styleMatch = styleRegex.exec(gjs);
-        if (!styleMatch) {
-          return code;
-        }
-        css = styleMatch[1];
+      }
+
+      if (!css) {
+        return code;
       }
 
       // add css import for js and gjs files
@@ -47,7 +46,7 @@ module.exports = createUnplugin((options) => {
 
       return replaceHbsInJs(code, (hbs) => {
         const { classes, tags } = getClassesTagsFromCss(css);
-        const postfix = getPostfix(cssFileName);
+        const postfix = getPostfix(cssPath);
         const rewritten = rewriteHbs(hbs, classes, tags, postfix);
         return rewritten;
       });

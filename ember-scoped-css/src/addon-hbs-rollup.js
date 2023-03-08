@@ -1,4 +1,3 @@
-const path = require('path');
 const { readFile } = require('fs').promises;
 const getPostfix = require('./getPostfix');
 const replaceHbsInJs = require('./replaceHbsInJs');
@@ -18,12 +17,15 @@ module.exports = function rollupCssColocation(options = {}) {
         const cssExists = await fsExists(cssPath);
         if (cssExists) {
           // read the css file
+          // TODO: get css from loader, because there are classes in imported css files; css can be stored in meta!!!!!
+          // const resolution = await this.resolve(importPath, id);
+          //   resolution.meta.internalImport = true;
+          //   const importedCss = await this.load(resolution);
           const css = await readFile(cssPath, 'utf-8');
           const { classes, tags } = getClassesTagsFromCss(css);
 
           // generate unique postfix
-          const fileName = path.basename(cssPath);
-          const postfix = getPostfix(fileName);
+          const postfix = getPostfix(cssPath);
 
           // rewrite the template
           const rewrittenHbsJs = replaceHbsInJs(code, (hbs) => {

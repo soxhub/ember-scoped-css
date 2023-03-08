@@ -4,6 +4,7 @@ import { Addon } from '@embroider/addon-dev/rollup';
 import {
   rollupEmberTemplateImportsPlugin,
   addonCssRollup,
+  addonRewritecssRollup,
   addonJsUnplugin,
   addonHbsRollup,
 } from 'ember-scoped-css';
@@ -48,11 +49,12 @@ export default {
 
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.
-    addon.keepAssets(['**/*.css']),
+    // addon.keepAssets(['**/*.css']),
     // eslint-disable-next-line no-undef
-    rollupEmberTemplateImportsPlugin({ addonDir: __dirname }),
+    rollupEmberTemplateImportsPlugin(),
     // eslint-disable-next-line no-undef
-    addonCssRollup({ addonDir: __dirname }),
+    addonRewritecssRollup(),
+    addonCssRollup(),
     addonJsUnplugin.rollup(),
     addonHbsRollup(),
 

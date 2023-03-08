@@ -8,7 +8,7 @@ const {
   TEMPLATE_TAG_PLACEHOLDER,
 } = require('ember-template-imports/lib/util.js');
 
-module.exports = function firstClassComponentTemplates({ addonDir }) {
+module.exports = function firstClassComponentTemplates() {
   return {
     name: 'preprocess-fccts',
     async resolveId(source, importer, options) {
@@ -38,7 +38,7 @@ module.exports = function firstClassComponentTemplates({ addonDir }) {
       }
 
       if (FCCT_EXTENSION.test(originalId)) {
-        return await preprocessTemplates(originalId, addonDir, this);
+        return await preprocessTemplates(originalId);
       }
     },
   };
@@ -55,7 +55,7 @@ function resolutionFor(originalId) {
   };
 }
 
-async function preprocessTemplates(id, addonDir, rollup) {
+async function preprocessTemplates(id) {
   let ember = (await import('ember-source')).default;
   let contents = await fs.readFile(id, 'utf-8');
 
@@ -72,24 +72,6 @@ async function preprocessTemplates(id, addonDir, rollup) {
     includeSourceMaps: true,
     includeTemplateTokens: true,
   });
-
-  // Extract styles and emit them as assets
-  const styleRegex = /<style>([\s\S]*?)<\/style>/g;
-  let styleMatch;
-  const styles = [];
-  while ((styleMatch = styleRegex.exec(contents))) {
-    const styleContent = styleMatch[1];
-    styles.push(styleContent);
-  }
-  if (styles.length) {
-    const relativePath = path.relative(path.join(addonDir, 'src'), id);
-    const css = styles.join('\n\n');
-    rollup.emitFile({
-      type: 'asset',
-      fileName: relativePath.replace(FCCT_EXTENSION, '.css'),
-      source: css,
-    });
-  }
 
   return result.output;
 }
