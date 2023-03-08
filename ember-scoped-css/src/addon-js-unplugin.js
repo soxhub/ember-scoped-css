@@ -18,7 +18,7 @@ module.exports = createUnplugin((options) => {
     },
 
     async transform(code, jsPath) {
-      const cssPath = jsPath.replace(/\.js$/, '.css');
+      const cssPath = jsPath.replace(/(\.hbs)?\.js$/, '.css');
       const cssFileName = path.basename(cssPath);
 
       const cssExists = await fsExists(cssPath);
