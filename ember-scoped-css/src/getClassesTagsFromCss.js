@@ -1,12 +1,13 @@
 const postcss = require('postcss');
 const parser = require('postcss-selector-parser');
+const isInsideGlobal = require('./isInsideGlobal');
 
 function getClassesAndTags(sel, classes, tags) {
   const transform = (sls) => {
     sls.walk((selector) => {
-      if (selector.type === 'class') {
+      if (selector.type === 'class' && !isInsideGlobal(selector)) {
         classes.add(selector.value);
-      } else if (selector.type === 'tag') {
+      } else if (selector.type === 'tag' && !isInsideGlobal(selector)) {
         tags.add(selector.value);
       }
     });
