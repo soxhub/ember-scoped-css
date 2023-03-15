@@ -8,6 +8,8 @@ import {
   addonJsUnplugin,
   addonHbsRollup,
 } from 'ember-scoped-css';
+import postcss from 'rollup-plugin-postcss';
+import glob from 'glob';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -18,6 +20,8 @@ export default {
   // This provides defaults that work well alongside `publicEntrypoints` below.
   // You can augment this if you need to.
   output: addon.output(),
+  external: /\.css$/,
+  input: glob.sync('src/**/*.css'),
 
   plugins: [
     // These are the modules that users should be able to import from your
@@ -44,6 +48,14 @@ export default {
       babelHelpers: 'bundled',
     }),
 
+    postcss({
+      modules: false,
+      extract: (filename) => {
+        console.log(filename);
+        filename.replace(/\.js$/, '.css');
+      },
+    }),
+
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),
 
@@ -52,11 +64,11 @@ export default {
     // addon.keepAssets(['**/*.css']),
     // eslint-disable-next-line no-undef
     rollupEmberTemplateImportsPlugin(),
-    // eslint-disable-next-line no-undef
-    addonRewritecssRollup(),
-    addonCssRollup(),
-    addonJsUnplugin.rollup(),
-    addonHbsRollup(),
+    // // eslint-disable-next-line no-undef
+    // addonRewritecssRollup(),
+    // addonCssRollup(),
+    // addonJsUnplugin.rollup(),
+    // addonHbsRollup(),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
