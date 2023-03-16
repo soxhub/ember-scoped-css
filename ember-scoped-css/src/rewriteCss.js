@@ -26,10 +26,17 @@ function rewriteSelector(sel, postfix) {
   return transformed;
 }
 
+function isInsideKeyframes(node) {
+  const parent = node.parent;
+  if (!parent) return false;
+  if (parent.type === 'atrule' && parent.name === 'keyframes') return true;
+  return isInsideKeyframes(parent);
+}
+
 module.exports = function rewriteCss(css, postfix, fileName) {
   const ast = postcss.parse(css);
   ast.walk((node) => {
-    if (node.type === 'rule') {
+    if (node.type === 'rule' && !isInsideKeyframes(node)) {
       node.selector = rewriteSelector(node.selector, postfix);
     }
   });

@@ -24,4 +24,22 @@ describe('rewriteCss', function () {
       `/* foo.css */\n@layer components {\n\n.baz_postfix .foo p .bar_postfix { color: red; }\n}\n`
     );
   });
+
+  it.only('sudnt rewrite keyframes', function () {
+    const css = `
+      @keyframes luna-view-navigation {
+        100% {
+          padding-top: 1rem;
+        }
+      }
+    `;
+
+    const postfix = 'postfix';
+    const fileName = 'foo.css';
+    const rewritten = rewriteCss(css, postfix, fileName);
+
+    expect(rewritten).to.equal(
+      `/* foo.css */\n@layer components {\n\n${css}\n}\n`
+    );
+  });
 });
