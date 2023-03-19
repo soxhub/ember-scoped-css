@@ -22,6 +22,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "environment=development rollup --config --watch",
     "test": "echo 'A v2 addon does not have tests, run tests in embroider-app'",
+    "test:fixture": "compare-fixture fixtures/expected-dist dist",
     "prepack": "rollup --config"
   },
   "dependencies": {
@@ -35,10 +36,11 @@
     "@babel/plugin-syntax-decorators": "^7.17.0",
     "@embroider/addon-dev": "^3.0.0",
     "@rollup/plugin-babel": "^5.3.0",
+    "compare-fixture": "^1.0.1",
     "concurrently": "^7.2.1",
-    "ember-template-lint": "^4.0.0",
     "ember-scoped-css": "workspace:*",
     "ember-template-imports": "github:candunaj/ember-template-imports#embed-styles-in-gjs",
+    "ember-template-lint": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.8",

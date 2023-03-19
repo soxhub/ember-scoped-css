@@ -244,6 +244,7 @@ importers:
       '@embroider/addon-dev': ^3.0.0
       '@embroider/addon-shim': ^1.0.0
       '@rollup/plugin-babel': ^5.3.0
+      compare-fixture: ^1.0.1
       concurrently: ^7.2.1
       ember-scoped-css: workspace:*
       ember-template-imports: github:candunaj/ember-template-imports#embed-styles-in-gjs
@@ -266,6 +267,7 @@ importers:
       '@babel/plugin-syntax-decorators': 7.21.0_@babel+core@7.21.0
       '@embroider/addon-dev': 3.0.0_rollup@2.79.1
       '@rollup/plugin-babel': 5.3.1_4tnfxcmsyr7y5qv3uwkivwqysm
+      compare-fixture: 1.0.1
       concurrently: 7.6.0
       ember-scoped-css: link:../../ember-scoped-css
       ember-template-imports: github.com/candunaj/ember-template-imports/d0bece5554d9d37665503a488fadee55f94884ee
@@ -4820,6 +4822,14 @@ packages:
 
   /commondir/1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
+
+  /compare-fixture/1.0.1:
+    resolution: {integrity: sha512-F6kopSJaVNF6ZkfIE4+pVKLgnRSsjcxiC6z0gleE2cjOh9keZXO2XwdaFJUbHGgppOHq2JFqBgE6rnYgwx99bA==}
+    hasBin: true
+    dependencies:
+      mocha-diff: 1.0.2
+      walk-sync: 3.0.0
+    dev: true
 
   /component-emitter/1.3.0:
     resolution: {integrity: sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==}
@@ -9570,6 +9580,13 @@ packages:
     resolution: {integrity: sha512-IXnMcJ6ZyTuhRmJSjzvHSRhlVPiN9Jwc6e59V0bEJ0ba6OBeX2L0E+mRN1QseeOF4mM+F1Rit6Nh7o+rl2Yn/A==}
     engines: {node: '>0.9'}
 
+  /mocha-diff/1.0.2:
+    resolution: {integrity: sha512-LJXN9eSTwVTPzo4Ja6Z8CuxcjK9HYE17J+3+0KxCwHmJeOPBb6v+YtXQRg53NCHO/lrCvRgYhAMw2ubkZTueYA==}
+    dependencies:
+      diff: 5.1.0
+      supports-color: 9.3.1
+    dev: true
+
   /mocha/10.2.0:
     resolution: {integrity: sha512-IDY7fl/BecMwFHzoqF2sg/SHHANeBoMMXFlS9r0OXKDssYE1M5O43wUY/9BVPeIvfH2zmEbBfseqN9gBQZzXkg==}
     engines: {node: '>= 14.0.0'}
@@ -11539,6 +11556,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       has-flag: 4.0.0
+
+  /supports-color/9.3.1:
+    resolution: {integrity: sha512-knBY82pjmnIzK3NifMo3RxEIRD9E0kIzV4BKcyTZ9+9kWgLMxd4PrsTSMoFQUabgRBbF8KOLRDCyKgNV+iK44Q==}
+    engines: {node: '>=12'}
+    dev: true
 
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
