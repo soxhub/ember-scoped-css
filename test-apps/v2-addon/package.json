@@ -22,7 +22,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "environment=development rollup --config --watch",
     "test": "echo 'A v2 addon does not have tests, run tests in embroider-app'",
-    "test:fixture": "compare-fixture fixtures/expected-dist dist",
+    "test:fixture": "pnpm build && compare-fixture fixtures/expected-dist dist",
     "prepack": "rollup --config"
   },
   "dependencies": {

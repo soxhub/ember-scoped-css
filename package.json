@@ -13,7 +13,8 @@
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter v2-addon start --no-watch.clearScreen",
     "start:embroider-app": "pnpm --filter embroider-app start",
-    "test": "pnpm --filter '*' test"
+    "test": "pnpm --filter '*' test",
+    "test:fixture": "pnpm --filter './test-apps/*' test:fixture"
   },
   "devDependencies": {
     "concurrently": "^7.2.1",
