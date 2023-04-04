@@ -7,7 +7,7 @@ module.exports = function (hbs, templatePath, basePath) {
   const cssPath = templatePath
     .replace(basePath, '')
     .replace(/(\.hbs)?(\.js)?/, '.css');
-  const projectCssPath = cssPath.replace(basePath, '');
+  const projectCssPath = cssPath; // cssPath.replace(basePath, '');
 
   recast.traverse(ast, {
     All: {
