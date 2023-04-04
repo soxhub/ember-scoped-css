@@ -4,9 +4,7 @@ const renameClass = require('./renameClass');
 module.exports = function (hbs, templatePath, basePath) {
   let ast = recast.parse(hbs);
   let stack = [];
-  const cssPath = templatePath
-    .replace(basePath, '')
-    .replace(/(\.hbs)?(\.js)?/, '.css');
+  const cssPath = templatePath.replace(/(\.hbs)?\.js$/, '.css');
   const projectCssPath = cssPath; // cssPath.replace(basePath, '');
 
   recast.traverse(ast, {
