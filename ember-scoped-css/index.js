@@ -8,6 +8,7 @@ const appCssLoader = require('./src/app-css-loader');
 const appDependencyLoader = require('./src/app-dependency-loader');
 const appScopedcssWebpack = require('./src/app-scopedcss-webpack');
 const addonRewritecssRollup = require('./src/addon-rewritecss-rollup');
+const babelPluginScopedClass = require('./src/babel-plugin-scoped-class');
 
 module.exports = {
   rollupEmberTemplateImportsPlugin,
@@ -20,4 +21,5 @@ module.exports = {
   appDependencyLoader,
   appScopedcssWebpack,
   addonRewritecssRollup,
+  babelPluginScopedClass,
 };
