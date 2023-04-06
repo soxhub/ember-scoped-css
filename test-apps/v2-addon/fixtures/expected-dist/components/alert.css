@@ -1,21 +1,23 @@
 /* alert.css */
 @layer components {
-  div.ebeca67cc {
-    width: 400px;
-    border: 1px solid black;
-    padding: 0px 15px;
-    margin-top: 15px;
-  }
 
-  .header_ebeca67cc {
-    margin-top: 0;
-    background-color: lightslategray;
-    padding: 15px;
-    margin: 0px -16px;
-  }
+div.e8e958954 {
+  width: 400px;
+  border: 1px solid black;
+  padding: 0px 15px;
+  margin-top: 15px;
+}
 
-  .message_ebeca67cc {
-    font-style: italic;
-    font-size: 1em;
-  }
+.header_e8e958954 {
+  margin-top: 0;
+  background-color: lightslategray;
+  padding: 15px;
+  margin: 0px -15px;
+}
+
+.message_e8e958954 {
+  font-style: italic;
+  font-size: 1em;
+}
+
 }
