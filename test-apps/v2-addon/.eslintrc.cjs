@@ -13,6 +13,7 @@ module.exports = {
       root: __dirname,
     },
   },
+  ignorePatterns: ['fixtures/**/*'],
   plugins: ['ember'],
   extends: [
     'eslint:recommended',
