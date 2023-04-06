@@ -1,9 +1,7 @@
 const md5 = require('blueimp-md5');
+const path = require('path');
 
 module.exports = function (cssFileName) {
-  // if (cssFileName.includes('/')) {
-  //   throw new Error('cssFileName should not contain /');
-  // }
-
-  return 'e' + md5(cssFileName).substring(0, 8);
+  const relativePath = path.relative(process.cwd(), cssFileName);
+  return 'e' + md5(relativePath).substring(0, 8);
 };
