@@ -4,11 +4,11 @@ import { setComponentTemplate } from '@ember/component';
 import { precompileTemplate } from '@ember/template-compilation';
 
 var footer = setComponentTemplate(precompileTemplate(`
-  <div class='alert_e8b2ef263 e8b2ef263' data-test3={{concat "test" "my-class_eb8759922"}} data-test2="my-class_eb8759922" data-test="my-class_eb8759922">
-    <div class="e8b2ef263">
+  <div class='alert_ec12a09e5 ec12a09e5' data-test3={{concat "test" "my-class_ec12a09e5"}} data-test2="my-class_ec12a09e5" data-test="my-class_ec12a09e5">
+    <div class="ec12a09e5">
       {{@title}}
     </div>
-    <p class="e8b2ef263">
+    <p class="ec12a09e5">
       {{@message}}
     </p>
   </div>
