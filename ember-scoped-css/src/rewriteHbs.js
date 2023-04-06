@@ -5,16 +5,31 @@ module.exports = function rewriteHbs(hbs, classes, tags, postfix) {
 
   recast.traverse(ast, {
     AttrNode(node) {
-      if (node.name === 'class' && node.value.chars) {
-        const newClasses = node.value.chars.split(' ').map((c) => {
-          if (c.trim() && classes.has(c.trim())) {
-            return c.trim() + '_' + postfix;
-          } else {
-            return c;
-          }
-        });
+      if (node.name === 'class') {
+        if (node.value.type === 'TextNode' && node.value.chars) {
+          const newClasses = node.value.chars.split(' ').map((c) => {
+            if (c.trim() && classes.has(c.trim())) {
+              return c.trim() + '_' + postfix;
+            } else {
+              return c;
+            }
+          });
 
-        node.value.chars = newClasses.join(' ');
+          node.value.chars = newClasses.join(' ');
+        } else if (node.value.type === 'ConcatStatement') {
+          for (let part of node.value.parts) {
+            if (part.type === 'TextNode' && part.chars) {
+              const newClasses = part.chars.split(' ').map((c) => {
+                if (c.trim() && classes.has(c.trim())) {
+                  return c.trim() + '_' + postfix;
+                } else {
+                  return c;
+                }
+              });
+              part.chars = newClasses.join(' ');
+            }
+          }
+        }
       }
     },
 
