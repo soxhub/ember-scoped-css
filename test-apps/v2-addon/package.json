@@ -62,6 +62,7 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
+      "./components/curly.js": "./dist/_app_/components/curly.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
       "./components/header.js": "./dist/_app_/components/header.js"
     }
