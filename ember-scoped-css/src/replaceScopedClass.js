@@ -1,11 +1,12 @@
 const recast = require('ember-template-recast');
 const renameClass = require('./renameClass');
+const getPostfix = require('./getPostfix');
 
 module.exports = function (hbs, templatePath, basePath) {
   let ast = recast.parse(hbs);
   let stack = [];
   const cssPath = templatePath.replace(/(\.hbs)?\.js$/, '.css');
-  const projectCssPath = cssPath; // cssPath.replace(basePath, '');
+  const postfix = getPostfix(cssPath);
 
   recast.traverse(ast, {
     All: {
@@ -36,9 +37,7 @@ module.exports = function (hbs, templatePath, basePath) {
       }
 
       if (cssClass) {
-        const textNode = recast.builders.text(
-          renameClass(cssClass, projectCssPath)
-        );
+        const textNode = recast.builders.text(renameClass(cssClass, postfix));
         const parent = stack[stack.length - 1];
         if (parent.type === 'AttrNode') {
           parent.quoteType = '"';
@@ -55,7 +54,7 @@ module.exports = function (hbs, templatePath, basePath) {
         const cssClass = node.params[0].value;
         const textNode = recast.builders.literal(
           'StringLiteral',
-          renameClass(cssClass, projectCssPath)
+          renameClass(cssClass, postfix)
         );
         return textNode;
       }
