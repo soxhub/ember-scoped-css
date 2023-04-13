@@ -1,7 +1,14 @@
-const getPostfix = require('./getPostfix');
-
-module.exports = function (className, projectCssPath) {
+module.exports = function (className, postfix, classesInCss) {
   const classes = className.split(/\s+/);
-  const postfix = getPostfix(projectCssPath);
-  return classes.map((c) => c + '_' + postfix).join(' ');
+  const renamedClasses = classes
+    .filter((c) => c)
+    .map((c) => c.trim())
+    .map((c) => (!classesInCss || classesInCss.has(c) ? c + '_' + postfix : c))
+    .join(' ');
+
+  const renamedWithPreservedSpaces = className.replace(
+    className.trimStart().trimEnd(),
+    renamedClasses
+  );
+  return renamedWithPreservedSpaces;
 };
