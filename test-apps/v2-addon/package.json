@@ -63,7 +63,8 @@
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
-      "./components/header.js": "./dist/_app_/components/header.js"
+      "./components/header.js": "./dist/_app_/components/header.js",
+      "./components/test.js": "./dist/_app_/components/test.js"
     }
   },
   "exports": {
