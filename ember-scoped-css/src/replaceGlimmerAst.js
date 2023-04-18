@@ -1,14 +1,14 @@
-const recast = require('recast');
-const babelParser = require('recast/parsers/babel');
-const path = require('path');
-const { readFile } = require('fs').promises;
-const fsExists = require('./fsExists');
+import recast from 'recast';
+import babelParser from '@babel/parser';
+import path from 'path';
+import { readFile } from 'fs/promises';
+import fsExists from './fsExists.js';
 
 const parseOptions = {
   parser: babelParser,
 };
 
-module.exports = async function (script, id, replaceFunction) {
+export default async function (script, id, replaceFunction) {
   const ast = recast.parse(script, parseOptions);
   const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
   let css;
@@ -53,4 +53,4 @@ module.exports = async function (script, id, replaceFunction) {
   });
   const resultScript = recast.print(ast).code;
   return resultScript;
-};
+}

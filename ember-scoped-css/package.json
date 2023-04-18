@@ -1,9 +1,13 @@
 {
   "name": "ember-scoped-css",
-  "version": "0.2.1",
+  "version": "0.2.10",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./babel-plugin-scoped-class": "./src/babel-plugin-scoped-class.js",
+  },
   "scripts": {
     "test": "mocha",
     "lint": ""
@@ -12,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/parser": "^7.21.4",
     "blueimp-md5": "^2.19.0",
     "cheerio": "1.0.0-rc.12",
     "ember-source": "^4.10.0",

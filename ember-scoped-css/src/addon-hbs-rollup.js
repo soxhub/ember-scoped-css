@@ -1,11 +1,11 @@
-const { readFile } = require('fs').promises;
-const getPostfix = require('./getPostfix');
-const replaceHbsInJs = require('./replaceHbsInJs');
-const getClassesTagsFromCss = require('./getClassesTagsFromCss');
-const rewriteHbs = require('./rewriteHbs');
-const fsExists = require('./fsExists');
+import { readFile } from 'fs/promises';
+import getPostfix from './getPostfix.js';
+import replaceHbsInJs from './replaceHbsInJs.js';
+import getClassesTagsFromCss from './getClassesTagsFromCss.js';
+import rewriteHbs from './rewriteHbs.js';
+import fsExists from './fsExists.js';
 
-module.exports = function rollupCssColocation(options = {}) {
+export default function rollupCssColocation(options = {}) {
   return {
     name: 'addon-hbs-rollup',
 
@@ -39,4 +39,4 @@ module.exports = function rollupCssColocation(options = {}) {
       }
     },
   };
-};
+}

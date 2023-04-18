@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const getClassesTagsFromCss = require('../src/getClassesTagsFromCss');
+import { expect } from 'chai';
+import getClassesTagsFromCss from '../src/getClassesTagsFromCss.js';
 
 describe('rewriteCss', function () {
   it('should return classes and tags that are not in :global', function () {

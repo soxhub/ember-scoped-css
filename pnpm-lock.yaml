@@ -15,6 +15,7 @@ importers:
 
   ember-scoped-css:
     specifiers:
+      '@babel/parser': ^7.21.4
       blueimp-md5: ^2.19.0
       chai: ^4.3.7
       cheerio: 1.0.0-rc.12
@@ -31,6 +32,7 @@ importers:
       unplugin: ^1.0.1
       webpack: ^5.75.0
     dependencies:
+      '@babel/parser': 7.21.4
       blueimp-md5: 2.19.0
       cheerio: 1.0.0-rc.12
       ember-source: 4.11.0_webpack@5.75.0
@@ -312,7 +314,7 @@ packages:
       '@babel/helper-compilation-targets': 7.20.7_@babel+core@7.21.0
       '@babel/helper-module-transforms': 7.21.2
       '@babel/helpers': 7.21.0
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/template': 7.20.7
       '@babel/traverse': 7.21.2
       '@babel/types': 7.21.2
@@ -632,6 +634,14 @@ packages:
 
   /@babel/parser/7.21.2:
     resolution: {integrity: sha512-URpaIJQwEkEC2T9Kn+Ai6Xe/02iNaVCuT/PtoRz3GPVJVDpPd7mLo+VddTbhCRU9TXqW5mSrQfXZyi8kDKOVpQ==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.21.2
+    dev: true
+
+  /@babel/parser/7.21.4:
+    resolution: {integrity: sha512-alVJj7k7zIxqBZ7BTRhz0IqJFxW1VJbm6N8JbcYhQ186df9ZBPbZBmWSqAMXwHGsCJdYks7z/voa3ibiS5bCIw==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
@@ -1514,7 +1524,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/types': 7.21.2
 
   /@babel/traverse/7.21.2:
@@ -1527,7 +1537,7 @@ packages:
       '@babel/helper-function-name': 7.21.0
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/types': 7.21.2
       debug: 4.3.4
       globals: 11.12.0
@@ -5976,7 +5986,7 @@ packages:
     resolution: {integrity: sha512-89oVHVJwmLDvGvAUWgS87KpBoRhy3aZ6U0Ql6HOmU4TrPkyaa8pM0W81wj9cIwjYprcQtN9EwzZMHnq46+oUyw==}
     engines: {node: 8.* || 10.* || >= 12}
     dependencies:
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/traverse': 7.21.2
       recast: 0.18.10
     transitivePeerDependencies:

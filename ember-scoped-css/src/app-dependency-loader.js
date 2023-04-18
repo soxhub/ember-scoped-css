@@ -1,6 +1,6 @@
-const fsExists = require('./fsExists');
+import fsExists from './fsExists.js';
 
-module.exports = async function (source) {
+export default async function (source) {
   if (this.resourcePath.endsWith('.js')) {
     const hbsExists = await fsExists(this.resourcePath.replace(/\.js/, '.hbs'));
     if (hbsExists) {
@@ -16,4 +16,4 @@ module.exports = async function (source) {
   }
 
   return source;
-};
+}

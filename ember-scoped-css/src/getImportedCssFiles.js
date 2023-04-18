@@ -1,4 +1,4 @@
-module.exports = function (css) {
+export default function (css) {
   const regex = /@import\s+["']?([^"')]+)["']?;/g;
   const importedCssPaths = [];
   let match;
@@ -15,4 +15,4 @@ module.exports = function (css) {
     css,
     importedCssPaths,
   };
-};
+}

@@ -1,5 +1,4 @@
-const template = require('@babel/template').default;
-const replaceScopedClass = require('./replaceScopedClass');
+import replaceScopedClass from './replaceScopedClass.js';
 
 const scopedClass = () => {
   return {
@@ -27,4 +26,4 @@ const scopedClass = () => {
   };
 };
 
-module.exports = scopedClass;
+export default scopedClass;

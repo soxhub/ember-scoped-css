@@ -1,15 +1,15 @@
-const { createUnplugin } = require('unplugin');
-const { readFile } = require('fs').promises;
-const path = require('path');
-const getClassesTagsFromCss = require('./getClassesTagsFromCss');
-const getPostfix = require('./getPostfix');
-const replaceHbsInJs = require('./replaceHbsInJs');
-const rewriteHbs = require('./rewriteHbs');
-const fsExists = require('./fsExists');
-const findCssInJs = require('./findCssInJs');
-const recast = require('recast');
+import { createUnplugin } from 'unplugin';
+import { readFile } from 'fs/promises';
+import path from 'path';
+import getClassesTagsFromCss from './getClassesTagsFromCss.js';
+import getPostfix from './getPostfix.js';
+import replaceHbsInJs from './replaceHbsInJs.js';
+import rewriteHbs from './rewriteHbs.js';
+import fsExists from './fsExists.js';
+import findCssInJs from './findCssInJs.js';
+import recast from 'recast';
 
-module.exports = createUnplugin((options) => {
+export default createUnplugin((options) => {
   return {
     name: 'addon-js-unplugin',
 

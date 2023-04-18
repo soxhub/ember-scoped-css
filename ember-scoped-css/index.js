@@ -1,16 +1,15 @@
-const rollupEmberTemplateImportsPlugin = require('./src/rollup-ember-template-imports-plugin');
-const addonJsUnplugin = require('./src/addon-js-unplugin');
-const addonCssRollup = require('./src/addon-css-rollup');
-const addonHbsRollup = require('./src/addon-hbs-rollup');
-const appJsUnplugin = require('./src/app-js-unplugin');
-const appCssUnplugin = require('./src/app-css-unplugin');
-const appCssLoader = require('./src/app-css-loader');
-const appDependencyLoader = require('./src/app-dependency-loader');
-const appScopedcssWebpack = require('./src/app-scopedcss-webpack');
-const addonRewritecssRollup = require('./src/addon-rewritecss-rollup');
-const babelPluginScopedClass = require('./src/babel-plugin-scoped-class');
+import rollupEmberTemplateImportsPlugin from './src/rollup-ember-template-imports-plugin.js';
+import addonJsUnplugin from './src/addon-js-unplugin.js';
+import addonCssRollup from './src/addon-css-rollup.js';
+import addonHbsRollup from './src/addon-hbs-rollup.js';
+import appJsUnplugin from './src/app-js-unplugin.js';
+import appCssUnplugin from './src/app-css-unplugin.js';
+import appCssLoader from './src/app-css-loader.js';
+import appDependencyLoader from './src/app-dependency-loader.js';
+import appScopedcssWebpack from './src/app-scopedcss-webpack.js';
+import addonRewritecssRollup from './src/addon-rewritecss-rollup.js';
 
-module.exports = {
+export {
   rollupEmberTemplateImportsPlugin,
   addonJsUnplugin,
   addonCssRollup,
@@ -21,5 +20,4 @@ module.exports = {
   appDependencyLoader,
   appScopedcssWebpack,
   addonRewritecssRollup,
-  babelPluginScopedClass,
 };

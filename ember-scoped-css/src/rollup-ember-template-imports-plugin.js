@@ -1,14 +1,12 @@
-const fs = require('fs/promises');
-const path = require('path');
-const {
-  preprocessEmbeddedTemplates,
-} = require('ember-template-imports/lib/preprocess-embedded-templates.js');
-const {
+import fs from 'fs/promises';
+import path from 'path';
+import { preprocessEmbeddedTemplates } from 'ember-template-imports/lib/preprocess-embedded-templates.js';
+import {
   TEMPLATE_TAG_NAME,
   TEMPLATE_TAG_PLACEHOLDER,
-} = require('ember-template-imports/lib/util.js');
+} from 'ember-template-imports/lib/util.js';
 
-module.exports = function firstClassComponentTemplates() {
+export default function firstClassComponentTemplates() {
   return {
     name: 'preprocess-fccts',
     async resolveId(source, importer, options) {
@@ -42,7 +40,7 @@ module.exports = function firstClassComponentTemplates() {
       }
     },
   };
-};
+}
 
 const FCCT_EXTENSION = /\.g([jt]s)$/;
 

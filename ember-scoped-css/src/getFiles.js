@@ -1,6 +1,6 @@
-const glob = require('glob');
+import glob from 'glob';
 
-module.exports = function (globPath) {
+export default function (globPath) {
   return new Promise((resolve, reject) => {
     glob(globPath, (err, files) => {
       if (err) {
@@ -9,4 +9,4 @@ module.exports = function (globPath) {
       resolve(files);
     });
   });
-};
+}
