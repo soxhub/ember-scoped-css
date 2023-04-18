@@ -1,6 +1,6 @@
 {
   "name": "ember-scoped-css",
-  "version": "0.2.10",
+  "version": "0.2.12",
   "description": "",
   "type": "module",
   "main": "index.js",
