@@ -1,9 +1,9 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const { appJsUnplugin } = require('ember-scoped-css');
 
-module.exports = function (defaults) {
+module.exports = async function (defaults) {
+  const { appJsUnplugin } = await import('ember-scoped-css');
   const app = new EmberApp(defaults, {
     // autoImport: {
     //   watchDependencies: ['v2-addon'],
