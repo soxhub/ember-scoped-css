@@ -29,9 +29,7 @@ module.exports = function (defaults) {
               test: /\.css$/,
               use: [
                 {
-                  loader: require.resolve(
-                    'ember-scoped-css/src/app-css-loader'
-                  ),
+                  loader: require.resolve('ember-scoped-css/app-css-loader'),
                 },
               ],
             },
@@ -40,7 +38,7 @@ module.exports = function (defaults) {
               use: [
                 {
                   loader: require.resolve(
-                    'ember-scoped-css/src/app-dependency-loader'
+                    'ember-scoped-css/app-dependency-loader'
                   ),
                 },
               ],

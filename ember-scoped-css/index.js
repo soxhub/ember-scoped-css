@@ -4,8 +4,6 @@ import addonCssRollup from './src/addon-css-rollup.js';
 import addonHbsRollup from './src/addon-hbs-rollup.js';
 import appJsUnplugin from './src/app-js-unplugin.js';
 import appCssUnplugin from './src/app-css-unplugin.js';
-import appCssLoader from './src/app-css-loader.js';
-import appDependencyLoader from './src/app-dependency-loader.js';
 import appScopedcssWebpack from './src/app-scopedcss-webpack.js';
 import addonRewritecssRollup from './src/addon-rewritecss-rollup.js';
 
@@ -16,8 +14,6 @@ export {
   addonHbsRollup,
   appJsUnplugin,
   appCssUnplugin,
-  appCssLoader,
-  appDependencyLoader,
   appScopedcssWebpack,
   addonRewritecssRollup,
 };
