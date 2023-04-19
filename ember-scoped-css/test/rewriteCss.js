@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import { stub } from 'sinon';
 import rewriteCss from '../src/rewriteCss.js';
 
 describe('rewriteCss', function () {

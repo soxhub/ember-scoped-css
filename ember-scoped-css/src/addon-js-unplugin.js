@@ -9,7 +9,7 @@ import fsExists from './fsExists.js';
 import findCssInJs from './findCssInJs.js';
 import recast from 'recast';
 
-export default createUnplugin((options) => {
+export default createUnplugin(() => {
   return {
     name: 'addon-js-unplugin',
 

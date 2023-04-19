@@ -2,7 +2,7 @@ import recast from 'ember-template-recast';
 import renameClass from './renameClass.js';
 import getPostfix from './getPostfix.js';
 
-export default function (hbs, templatePath, basePath) {
+export default function (hbs, templatePath) {
   let ast = recast.parse(hbs);
   let stack = [];
   const cssPath = templatePath.replace(/(\.hbs)?\.js$/, '.css');
@@ -13,7 +13,7 @@ export default function (hbs, templatePath, basePath) {
       enter(node) {
         stack.push(node);
       },
-      exit(node) {
+      exit() {
         stack.pop();
       },
     },

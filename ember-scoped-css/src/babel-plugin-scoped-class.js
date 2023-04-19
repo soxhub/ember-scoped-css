@@ -5,9 +5,7 @@ const scopedClass = () => {
     visitor: {
       CallExpression(path, state) {
         if (path.node?.callee?.name === 'precompileTemplate') {
-          let source = '';
           if (path.node.arguments[0].type === 'StringLiteral') {
-            source = path.node.arguments[0].value;
             path.node.arguments[0].value = replaceScopedClass(
               path.node.arguments[0].value,
               state.filename,

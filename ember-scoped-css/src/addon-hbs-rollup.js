@@ -5,7 +5,7 @@ import getClassesTagsFromCss from './getClassesTagsFromCss.js';
 import rewriteHbs from './rewriteHbs.js';
 import fsExists from './fsExists.js';
 
-export default function rollupCssColocation(options = {}) {
+export default function rollupCssColocation() {
   return {
     name: 'addon-hbs-rollup',
 

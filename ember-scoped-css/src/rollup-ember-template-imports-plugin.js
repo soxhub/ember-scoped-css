@@ -54,6 +54,7 @@ function resolutionFor(originalId) {
 }
 
 async function preprocessTemplates(id) {
+  // eslint-disable-next-line node/no-unsupported-features/es-syntax
   let ember = (await import('ember-source')).default;
   let contents = await fs.readFile(id, 'utf-8');
 
