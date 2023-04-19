@@ -1,11 +1,10 @@
 import { createUnplugin } from 'unplugin';
 import path from 'path';
-import { readFile, writeFile } from 'fs/promises';
+import { readFile } from 'fs/promises';
 import { Compilation } from 'webpack';
 import getPostfix from './getPostfix.js';
-import cheerio from 'cheerio';
 
-export default createUnplugin(({ appDir, loaders, htmlEntrypointInfo }) => {
+export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
   return {
     name: 'app-css-livereload-loader',
 
@@ -77,7 +76,7 @@ export default createUnplugin(({ appDir, loaders, htmlEntrypointInfo }) => {
               if (!cssAssets.length) {
                 return;
               }
-              let linkAdded = false;
+              // let linkAdded = false;
               const document =
                 htmlEntrypointInfo.htmlEntryPoint.dom.window.document;
 
@@ -92,7 +91,7 @@ export default createUnplugin(({ appDir, loaders, htmlEntrypointInfo }) => {
                   link.rel = 'stylesheet';
                   link.href = '/' + asset;
                   head.appendChild(link);
-                  linkAdded = true;
+                  // linkAdded = true;
                 }
               }
 

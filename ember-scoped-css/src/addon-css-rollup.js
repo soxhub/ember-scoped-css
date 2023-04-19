@@ -1,11 +1,5 @@
 import path from 'path';
-import getPostfix from './getPostfix.js';
-import rewriteCss from './rewriteCss.js';
 import { readFile } from 'fs/promises';
-import fsExists from './fsExists.js';
-import findCssInJs from './findCssInJs.js';
-import getImportedCssFiles from './getImportedCssFiles.js';
-import recast from 'recast';
 
 export default function () {
   return {

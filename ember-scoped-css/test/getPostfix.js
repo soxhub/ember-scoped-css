@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import { stub } from 'sinon';
 import getPostfix from '../src/getPostfix.js';
 
 describe('getPostfix', function () {

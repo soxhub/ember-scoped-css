@@ -1,5 +1,5 @@
 // import { createUnplugin }  from 'unplugin';
-import { basename, join } from 'path';
+import { basename } from 'path';
 import fsExists from './fsExists.js';
 import getPostfix from './getPostfix.js';
 import rewriteCss from './rewriteCss.js';

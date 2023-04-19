@@ -3,8 +3,6 @@ import replaceGlimmerAst from './replaceGlimmerAst.js';
 import path from 'path';
 import getPostfix from './getPostfix.js';
 import getClassesTagsFromCss from './getClassesTagsFromCss.js';
-import { readFile } from 'fs/promises';
-import fsExists from './fsExists.js';
 
 function* iterateOpcodes(opcodes) {
   for (let instruction of opcodes) {
@@ -50,14 +48,11 @@ export default createUnplugin(({ appDir }) => {
 
     async transform(code, id) {
       const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
-      const cssFileName = path.basename(cssPath);
       const postfix = getPostfix(cssPath);
 
       return await replaceGlimmerAst(code, id, (opcodes, css) => {
         const { classes, tags } = getClassesTagsFromCss(css);
-        const a = code;
         // this.addWatchFile(cssPath);
-        const tmp = this;
         const insertions = [];
 
         for (let instruction of iterateOpcodes(opcodes[0])) {
