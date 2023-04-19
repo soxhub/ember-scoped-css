@@ -1,17 +1,33 @@
 {
   "name": "ember-scoped-css",
-  "version": "0.2.1",
+  "version": "0.2.12",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./babel-plugin-scoped-class": "./src/babel-plugin-scoped-class.js",
+    "./test-helper": "./src/scopedClass.js",
+    "./app-css-loader": {
+      "import": "./src/app-css-loader.js",
+      "require": "./dist/app-css-loader.cjs"
+    },
+    "./app-dependency-loader": {
+      "import": "./src/app-dependency-loader.js",
+      "require": "./dist/app-dependency-loader.cjs"
+    }
+  },
   "scripts": {
+    "prepare": "npm run esbuild",
     "test": "mocha",
-    "lint": ""
+    "lint": "",
+    "esbuild": "esbuild src/app-css-loader.js src/app-dependency-loader.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/parser": "^7.21.4",
     "blueimp-md5": "^2.19.0",
     "cheerio": "1.0.0-rc.12",
     "ember-source": "^4.10.0",
@@ -26,6 +42,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "esbuild": "^0.17.17",
     "mocha": "^10.2.0",
     "sinon": "^15.0.1",
     "webpack": "^5.75.0"

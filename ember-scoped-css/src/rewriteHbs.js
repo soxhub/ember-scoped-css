@@ -1,7 +1,7 @@
-const recast = require('ember-template-recast');
-const renameClass = require('./renameClass');
+import recast from 'ember-template-recast';
+import renameClass from './renameClass.js';
 
-module.exports = function rewriteHbs(hbs, classes, tags, postfix) {
+export default function rewriteHbs(hbs, classes, tags, postfix) {
   let ast = recast.parse(hbs);
 
   recast.traverse(ast, {
@@ -39,4 +39,4 @@ module.exports = function rewriteHbs(hbs, classes, tags, postfix) {
 
   let result = recast.print(ast);
   return result;
-};
+}

@@ -1,6 +1,6 @@
-const postcss = require('postcss');
-const parser = require('postcss-selector-parser');
-const isInsideGlobal = require('./isInsideGlobal');
+import postcss from 'postcss';
+import parser from 'postcss-selector-parser';
+import isInsideGlobal from './isInsideGlobal.js';
 
 function getClassesAndTags(sel, classes, tags) {
   const transform = (sls) => {
@@ -16,7 +16,7 @@ function getClassesAndTags(sel, classes, tags) {
   parser(transform).processSync(sel);
 }
 
-module.exports = function getClassesTagsFromCss(css) {
+export default function getClassesTagsFromCss(css) {
   const classes = new Set();
   const tags = new Set();
 
@@ -28,4 +28,4 @@ module.exports = function getClassesTagsFromCss(css) {
   });
 
   return { classes, tags };
-};
+}

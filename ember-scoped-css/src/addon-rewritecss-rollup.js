@@ -1,9 +1,9 @@
-const path = require('path');
-const getPostfix = require('./getPostfix');
-const rewriteCss = require('./rewriteCss');
-const fsExists = require('./fsExists');
+import path from 'path';
+import getPostfix from './getPostfix.js';
+import rewriteCss from './rewriteCss.js';
+import fsExists from './fsExists.js';
 
-module.exports = function () {
+export default function () {
   return {
     name: 'addon-rewritecss-rollup',
 
@@ -26,4 +26,4 @@ module.exports = function () {
       }
     },
   };
-};
+}

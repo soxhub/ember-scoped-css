@@ -1,6 +1,6 @@
-const parser = require('postcss-selector-parser');
-const postcss = require('postcss');
-const isInsideGlobal = require('./isInsideGlobal');
+import parser from 'postcss-selector-parser';
+import postcss from 'postcss';
+import isInsideGlobal from './isInsideGlobal.js';
 
 function rewriteSelector(sel, postfix) {
   const transform = (selectors) => {
@@ -33,7 +33,7 @@ function isInsideKeyframes(node) {
   return isInsideKeyframes(parent);
 }
 
-module.exports = function rewriteCss(css, postfix, fileName) {
+export default function rewriteCss(css, postfix, fileName) {
   const ast = postcss.parse(css);
   ast.walk((node) => {
     if (node.type === 'rule' && !isInsideKeyframes(node)) {
@@ -44,4 +44,4 @@ module.exports = function rewriteCss(css, postfix, fileName) {
   const rewrittenCss = ast.toString();
   return `/* ${fileName} */\n@layer components {\n\n` + rewrittenCss + '\n}\n';
   // return `/* ${fileName} */\n ${rewrittenCss}`;
-};
+}

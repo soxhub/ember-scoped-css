@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const { stub } = require('sinon');
-const getPostfix = require('../src/getPostfix');
+import { expect } from 'chai';
+import { stub } from 'sinon';
+import getPostfix from '../src/getPostfix.js';
 
 describe('getPostfix', function () {
   it('should return a string', function () {

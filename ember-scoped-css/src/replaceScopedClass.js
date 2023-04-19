@@ -1,8 +1,8 @@
-const recast = require('ember-template-recast');
-const renameClass = require('./renameClass');
-const getPostfix = require('./getPostfix');
+import recast from 'ember-template-recast';
+import renameClass from './renameClass.js';
+import getPostfix from './getPostfix.js';
 
-module.exports = function (hbs, templatePath, basePath) {
+export default function (hbs, templatePath, basePath) {
   let ast = recast.parse(hbs);
   let stack = [];
   const cssPath = templatePath.replace(/(\.hbs)?\.js$/, '.css');
@@ -63,4 +63,4 @@ module.exports = function (hbs, templatePath, basePath) {
 
   let result = recast.print(ast);
   return result;
-};
+}

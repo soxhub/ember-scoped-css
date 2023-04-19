@@ -4,6 +4,6 @@
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "@babel/plugin-proposal-class-properties",
     "ember-template-imports/src/babel-plugin",
-    "ember-scoped-css/src/babel-plugin-scoped-class"
+    "ember-scoped-css/babel-plugin-scoped-class"
   ]
 }

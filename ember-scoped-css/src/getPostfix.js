@@ -1,7 +1,7 @@
-const md5 = require('blueimp-md5');
-const path = require('path');
+import generateHash from './generateHash.js';
+import path from 'path';
 
-module.exports = function (cssFileName) {
+export default function (cssFileName) {
   const relativePath = path.relative(process.cwd(), cssFileName);
-  return 'e' + md5(relativePath).substring(0, 8);
-};
+  return generateHash(relativePath);
+}

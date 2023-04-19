@@ -1,11 +1,11 @@
-const recast = require('recast');
-const babelParser = require('recast/parsers/babel');
+import recast from 'recast';
+import babelParser from '@babel/parser';
 
 const parseOptions = {
   parser: babelParser,
 };
 
-module.exports = function (script, replaceFunction) {
+export default function (script, replaceFunction) {
   const ast = recast.parse(script, parseOptions);
   recast.visit(ast, {
     visitCallExpression(path) {
@@ -29,4 +29,4 @@ module.exports = function (script, replaceFunction) {
     },
   });
   return recast.print(ast).code;
-};
+}

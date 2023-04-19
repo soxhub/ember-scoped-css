@@ -1,6 +1,6 @@
-const recast = require('recast');
+import recast from 'recast';
 
-module.exports = function (script, removeCallExpression = false) {
+export default function (script, removeCallExpression = false) {
   const ast = typeof script === 'string' ? recast.parse(script) : script;
   let css = '';
 
@@ -24,4 +24,4 @@ module.exports = function (script, removeCallExpression = false) {
   });
 
   return { css, ast };
-};
+}

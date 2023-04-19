@@ -1,4 +1,4 @@
-module.exports = function (className, postfix, classesInCss) {
+export default function (className, postfix, classesInCss) {
   const classes = className.split(/\s+/);
   const renamedClasses = classes
     .filter((c) => c)
@@ -11,4 +11,4 @@ module.exports = function (className, postfix, classesInCss) {
     renamedClasses
   );
   return renamedWithPreservedSpaces;
-};
+}

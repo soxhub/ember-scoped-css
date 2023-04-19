@@ -1,11 +1,11 @@
-const { createUnplugin } = require('unplugin');
-const path = require('path');
-const { readFile, writeFile } = require('fs').promises;
-const { Compilation } = require('webpack');
-const getPostfix = require('./getPostfix');
-const cheerio = require('cheerio');
+import { createUnplugin } from 'unplugin';
+import path from 'path';
+import { readFile, writeFile } from 'fs/promises';
+import { Compilation } from 'webpack';
+import getPostfix from './getPostfix.js';
+import cheerio from 'cheerio';
 
-module.exports = createUnplugin(({ appDir, loaders, htmlEntrypointInfo }) => {
+export default createUnplugin(({ appDir, loaders, htmlEntrypointInfo }) => {
   return {
     name: 'app-css-livereload-loader',
 

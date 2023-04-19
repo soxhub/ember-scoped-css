@@ -1,10 +1,10 @@
-const { createUnplugin } = require('unplugin');
-const replaceGlimmerAst = require('./replaceGlimmerAst');
-const path = require('path');
-const getPostfix = require('./getPostfix');
-const getClassesTagsFromCss = require('./getClassesTagsFromCss');
-const { readFile } = require('fs').promises;
-const fsExists = require('./fsExists');
+import { createUnplugin } from 'unplugin';
+import replaceGlimmerAst from './replaceGlimmerAst.js';
+import path from 'path';
+import getPostfix from './getPostfix.js';
+import getClassesTagsFromCss from './getClassesTagsFromCss.js';
+import { readFile } from 'fs/promises';
+import fsExists from './fsExists.js';
 
 function* iterateOpcodes(opcodes) {
   for (let instruction of opcodes) {
@@ -37,7 +37,7 @@ function inflateTagName(tag) {
   throw new Error('Unknown tag');
 }
 
-module.exports = createUnplugin(({ appDir }) => {
+export default createUnplugin(({ appDir }) => {
   return {
     name: 'app-js-unplugin',
 

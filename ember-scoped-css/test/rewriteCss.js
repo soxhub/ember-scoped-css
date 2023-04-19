@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const { stub } = require('sinon');
-const rewriteCss = require('../src/rewriteCss');
+import { expect } from 'chai';
+import { stub } from 'sinon';
+import rewriteCss from '../src/rewriteCss.js';
 
 describe('rewriteCss', function () {
   it('should rewrite css', function () {

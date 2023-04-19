@@ -1,10 +1,10 @@
-const { stat } = require('fs').promises;
+import { stat } from 'fs/promises';
 
-module.exports = async function (path) {
+export default async function (path) {
   try {
     await stat(path);
     return true;
   } catch (e) {
     return false;
   }
-};
+}
