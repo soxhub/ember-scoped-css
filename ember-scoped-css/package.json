@@ -20,7 +20,7 @@
   "scripts": {
     "prepare": "npm run esbuild",
     "test": "mocha",
-    "lint": "",
+    "lint": "eslint .",
     "esbuild": "esbuild src/app-css-loader.js src/app-dependency-loader.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs"
   },
   "keywords": [],
@@ -43,6 +43,7 @@
   "devDependencies": {
     "chai": "^4.3.7",
     "esbuild": "^0.17.17",
+    "eslint": "^8.38.0",
     "mocha": "^10.2.0",
     "sinon": "^15.0.1",
     "webpack": "^5.75.0"
