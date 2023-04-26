@@ -39,7 +39,7 @@
     "compare-fixture": "^1.0.1",
     "concurrently": "^7.2.1",
     "ember-scoped-css": "workspace:*",
-    "ember-template-imports": "github:candunaj/ember-template-imports#embed-styles-in-gjs",
+    "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
