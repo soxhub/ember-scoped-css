@@ -31,7 +31,6 @@
     "blueimp-md5": "^2.19.0",
     "cheerio": "1.0.0-rc.12",
     "ember-source": "^4.10.0",
-    "ember-template-imports": "github:candunaj/ember-template-imports#embed-styles-in-gjs",
     "ember-template-recast": "^6.1.3",
     "glob": "^8.1.0",
     "postcss": "^8.4.21",

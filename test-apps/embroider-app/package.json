@@ -54,7 +54,7 @@
     "ember-scoped-css": "workspace:*",
     "ember-source": "~4.10.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-template-imports": "github:candunaj/ember-template-imports#embed-styles-in-gjs",
+    "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^5.3.1",
     "ember-try": "^2.0.0",
     "eslint": "^7.32.0",

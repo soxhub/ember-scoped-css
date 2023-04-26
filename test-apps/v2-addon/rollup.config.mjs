@@ -1,8 +1,8 @@
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
 import {
-  rollupEmberTemplateImportsPlugin,
   addonCssRollup,
   addonRewritecssRollup,
   addonJsUnplugin,
@@ -33,6 +33,7 @@ export default {
     // `dependencies` and `peerDependencies` as well as standard Ember-provided
     // package names.
     addon.dependencies(),
+    glimmerTemplateTag(),
 
     // This babel config should *not* apply presets or compile away ES modules.
     // It exists only to provide development niceties for you, like automatic
@@ -51,7 +52,6 @@ export default {
     // to leave alone and keep in the published output.
     // addon.keepAssets(['**/*.css']),
     // eslint-disable-next-line no-undef
-    rollupEmberTemplateImportsPlugin(),
     // eslint-disable-next-line no-undef
     addonRewritecssRollup(),
     addonCssRollup(),
