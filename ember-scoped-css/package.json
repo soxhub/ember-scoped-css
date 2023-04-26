@@ -2,8 +2,10 @@
   "name": "ember-scoped-css",
   "version": "0.2.12",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "type": "module",
-  "main": "index.js",
   "exports": {
     ".": "./index.js",
     "./babel-plugin-scoped-class": "./src/babel-plugin-scoped-class.js",
@@ -17,15 +19,14 @@
       "require": "./dist/app-dependency-loader.cjs"
     }
   },
+  "main": "index.js",
   "scripts": {
-    "prepare": "npm run esbuild",
-    "test": "mocha",
+    "esbuild": "esbuild src/app-css-loader.js src/app-dependency-loader.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs",
     "lint": "eslint .",
-    "esbuild": "esbuild src/app-css-loader.js src/app-dependency-loader.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs"
+    "prepare": "npm run esbuild",
+    "release": "npx release-it",
+    "test": "mocha"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@babel/parser": "^7.21.4",
     "blueimp-md5": "^2.19.0",
@@ -39,15 +40,35 @@
     "rollup": "^2.67.0",
     "unplugin": "^1.0.1"
   },
-  "peerDependencies": {
-    "webpack": "^5.0.0"
-  },
   "devDependencies": {
     "chai": "^4.3.7",
     "esbuild": "^0.17.17",
     "eslint": "^8.38.0",
     "mocha": "^10.2.0",
+    "release-it": "^15.10.1",
+    "release-it-lerna-changelog": "^5.0.0",
     "sinon": "^15.0.1",
     "webpack": "^5.75.0"
+  },
+  "peerDependencies": {
+    "webpack": "^5.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "../CHANGELOG.md",
+        "launchEditor": true
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
   }
 }
