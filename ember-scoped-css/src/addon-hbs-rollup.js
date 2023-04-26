@@ -34,7 +34,11 @@ export default function rollupCssColocation() {
             return rewriteHbs(hbs, classes, tags, postfix);
           });
 
-          return rewrittenHbsJs;
+          return {
+            code: rewrittenHbsJs,
+            // this rollup plugin changes only the template string, so the code structure is the same
+            map: null,
+          };
         }
       }
     },
