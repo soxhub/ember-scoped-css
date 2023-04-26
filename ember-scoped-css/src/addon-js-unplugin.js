@@ -31,11 +31,16 @@ export default createUnplugin(() => {
           css = result.css;
           code = recast.print(result.ast).code;
           this.getModuleInfo(jsPath).meta.gjsCss = result.css;
+
+          // TODO: generate changed source map. Implementation depends on implemented rollup plugin for style tag
         }
       }
 
       if (!css) {
-        return code;
+        return {
+          code,
+          map: null,
+        };
       }
 
       // add css import for js and gjs files
@@ -44,12 +49,17 @@ export default createUnplugin(() => {
       // rewrite hbs in js in case it is gjs file (for gjs files hbs is already in js file)
       // for js components "@embroider/addon-dev/template-colocation-plugin", will add hbs to js later. So there is hbs plugin to rewrite hbs
 
-      return replaceHbsInJs(code, (hbs) => {
+      const rewrittenCode = replaceHbsInJs(code, (hbs) => {
         const { classes, tags } = getClassesTagsFromCss(css);
         const postfix = getPostfix(cssPath);
         const rewritten = rewriteHbs(hbs, classes, tags, postfix);
         return rewritten;
       });
+
+      return {
+        code: rewrittenCode,
+        map: null,
+      };
     },
   };
 });
