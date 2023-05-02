@@ -1,4 +1,14 @@
 
+
+## v0.4.0 (2023-05-02)
+
+#### :rocket: Enhancement
+* [#26](https://github.com/soxhub/ember-scoped-css/pull/26) Add a lint rule for the correct usage of scoped-class helper ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 1
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
+
 ## v0.3.0 (2023-04-26)
 
 #### :boom: Breaking Change
