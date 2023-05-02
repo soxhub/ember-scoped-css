@@ -27,7 +27,7 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 ## Setup ember-template-lint
 
-`ember-scoped-css` exports one ember-template-lint plugin `scoped-clas-helper-plugin` with one rule `scoped-class-helper`.
+`ember-scoped-css` exports one ember-template-lint plugin `scoped-class-helper-plugin` with one rule `scoped-class-helper`.
 
 ### Steps for adding the rule to the project
 
