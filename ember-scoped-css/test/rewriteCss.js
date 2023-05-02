@@ -24,7 +24,7 @@ describe('rewriteCss', function () {
     );
   });
 
-  it.only('sudnt rewrite keyframes', function () {
+  it('sudnt rewrite keyframes', function () {
     const css = `
       @keyframes luna-view-navigation {
         100% {
