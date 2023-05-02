@@ -53,7 +53,7 @@ module.exports = {
     'ember-scoped-css/src/template-lint/scoped-class-helper-plugin'
   ],
   rules: {
-+    'scoped-class-helper': 'error,
++    'scoped-class-helper': 'error',
   }
 
 ```
