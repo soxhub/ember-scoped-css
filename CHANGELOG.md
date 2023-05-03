@@ -1,5 +1,15 @@
 
 
+
+## v0.4.1 (2023-05-03)
+
+#### :rocket: Enhancement
+* [#27](https://github.com/soxhub/ember-scoped-css/pull/27) Added documentation for ember-scoped-helper rule ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 1
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
+
 ## v0.4.0 (2023-05-02)
 
 #### :rocket: Enhancement
