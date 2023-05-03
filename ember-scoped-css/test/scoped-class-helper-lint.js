@@ -19,7 +19,7 @@ generateRuleTests({
         assert.equal(results.length, 1);
         assert.equal(
           results[0].message,
-          'At least one class is required to be passed to scoped-class helper. {{scoped-class "some-class"}}'
+          'One positional param is required to be passed to scoped-class helper. {{scoped-class "some-class"}}. More info: https://github.com/soxhub/ember-scoped-css/blob/main/docs/lint-rules.md'
         );
       },
     },
@@ -30,7 +30,7 @@ generateRuleTests({
         assert.equal(results.length, 1);
         assert.equal(
           results[0].message,
-          'You cannot pass dynamic values to scoped-class helper. {{scoped-class "some-class"}}'
+          'You cannot pass dynamic values to scoped-class helper. {{scoped-class "some-class"}}. More info: https://github.com/soxhub/ember-scoped-css/blob/main/docs/lint-rules.md'
         );
       },
     },

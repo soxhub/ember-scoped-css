@@ -11,14 +11,14 @@ class ScopedClassHelperRule extends Rule {
         if (node.params[0].type !== 'StringLiteral') {
           this.log({
             message:
-              'You cannot pass dynamic values to scoped-class helper. {{scoped-class "some-class"}}',
+              'You cannot pass dynamic values to scoped-class helper. {{scoped-class "some-class"}}. More info: https://github.com/soxhub/ember-scoped-css/blob/main/docs/lint-rules.md',
             node,
           });
         }
       } else {
         this.log({
           message:
-            'At least one class is required to be passed to scoped-class helper. {{scoped-class "some-class"}}',
+            'One positional param is required to be passed to scoped-class helper. {{scoped-class "some-class"}}. More info: https://github.com/soxhub/ember-scoped-css/blob/main/docs/lint-rules.md',
           node,
         });
       }
