@@ -13,14 +13,16 @@ export default function () {
       }
       const postfix = getPostfix(id);
       const jsPath = id.replace(/\.css$/, '.gjs');
+      const gtsPath = id.replace(/\.css$/, '.gts');
       const hbsPath = id.replace(/\.css$/, '.hbs');
 
-      const [jsExists, hbsExists] = await Promise.all([
+      const [jsExists, gtsExists, hbsExists] = await Promise.all([
         fsExists(jsPath),
+        fsExists(gtsPath),
         fsExists(hbsPath),
       ]);
 
-      if (jsExists || hbsExists) {
+      if (jsExists || hbsExists || gtsExists) {
         const rewritten = rewriteCss(code, postfix, path.basename(id));
         return rewritten;
       }
