@@ -1,6 +1,16 @@
 
 
 
+
+## v0.5.0 (2023-05-12)
+
+#### :rocket: Enhancement
+* [#28](https://github.com/soxhub/ember-scoped-css/pull/28) Added support for co-located css for gts files ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 1
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
+
 ## v0.4.1 (2023-05-03)
 
 #### :rocket: Enhancement
