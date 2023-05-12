@@ -14,11 +14,11 @@ export default createUnplugin(() => {
     name: 'addon-js-unplugin',
 
     transformInclude(id) {
-      return id.endsWith('.js');
+      return id.endsWith('.js') || id.endsWith('.ts');
     },
 
     async transform(code, jsPath) {
-      const cssPath = jsPath.replace(/(\.hbs)?\.js$/, '.css');
+      const cssPath = jsPath.replace(/(\.hbs)?\.((js)|(ts))$/, '.css');
       const cssFileName = path.basename(cssPath);
 
       const cssExists = await fsExists(cssPath);
