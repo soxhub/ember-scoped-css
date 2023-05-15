@@ -34,6 +34,7 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.17.0",
     "@babel/plugin-syntax-decorators": "^7.17.0",
+    "@babel/preset-typescript": "^7.21.5",
     "@embroider/addon-dev": "^3.0.0",
     "@rollup/plugin-babel": "^5.3.0",
     "compare-fixture": "^1.0.1",
@@ -49,7 +50,7 @@
     "prettier": "^2.5.1",
     "rollup": "^2.67.0",
     "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-glimmer-template-tag": "^0.4.0"
+    "rollup-plugin-glimmer-template-tag": "^0.4.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -64,7 +65,8 @@
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
-      "./components/header.js": "./dist/_app_/components/header.js"
+      "./components/header.js": "./dist/_app_/components/header.js",
+      "./components/time.js": "./dist/_app_/components/time.js"
     }
   },
   "exports": {
