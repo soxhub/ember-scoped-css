@@ -2,7 +2,7 @@ import { createUnplugin } from 'unplugin';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import replaceHbsInJs from './lib/replaceHbsInJs.js';
 import rewriteHbs from './lib/rewriteHbs.js';
 import fsExists from './lib/fsExists.js';
@@ -51,7 +51,7 @@ export default createUnplugin(() => {
 
       const rewrittenCode = replaceHbsInJs(code, (hbs) => {
         const { classes, tags } = getClassesTagsFromCss(css);
-        const postfix = getPostfix(cssPath);
+        const postfix = generateHash(cssPath);
         const rewritten = rewriteHbs(hbs, classes, tags, postfix);
         return rewritten;
       });

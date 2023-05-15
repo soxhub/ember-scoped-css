@@ -1,14 +1,14 @@
 // import { createUnplugin }  from 'unplugin';
 import { basename } from 'path';
 import fsExists from './lib/fsExists.js';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import rewriteCss from './lib/rewriteCss.js';
 // import path  from 'path';
 
 export default async function (code) {
   const cssPath = this.resourcePath;
   const cssFileName = basename(cssPath);
-  const postfix = getPostfix(cssPath);
+  const postfix = generateHash(cssPath);
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');

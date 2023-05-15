@@ -2,7 +2,7 @@
 import rewriteCss from './lib/rewriteCss.js';
 import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import fsExists from './lib/fsExists.js';
 import getFiles from './lib/getFiles.js';
 
@@ -44,7 +44,7 @@ export default class {
               continue;
             }
             const fileName = path.basename(file);
-            const postfix = getPostfix(fileName);
+            const postfix = generateHash(fileName);
             const css = await readFile(file, 'utf-8');
             const rewrittenCss = rewriteCss(css, postfix, fileName);
 

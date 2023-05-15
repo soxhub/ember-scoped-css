@@ -1,5 +1,5 @@
 import path from 'path';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import rewriteCss from './lib/rewriteCss.js';
 import fsExists from './lib/fsExists.js';
 
@@ -11,7 +11,7 @@ export default function () {
       if (!id.endsWith('.css')) {
         return;
       }
-      const postfix = getPostfix(id);
+      const postfix = generateHash(id);
       const jsPath = id.replace(/\.css$/, '.gjs');
       const gtsPath = id.replace(/\.css$/, '.gts');
       const hbsPath = id.replace(/\.css$/, '.hbs');

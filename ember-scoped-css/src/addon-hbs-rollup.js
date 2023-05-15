@@ -1,5 +1,5 @@
 import { readFile } from 'fs/promises';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import replaceHbsInJs from './lib/replaceHbsInJs.js';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 import rewriteHbs from './lib/rewriteHbs.js';
@@ -25,7 +25,7 @@ export default function rollupCssColocation() {
           const { classes, tags } = getClassesTagsFromCss(css);
 
           // generate unique postfix
-          const postfix = getPostfix(cssPath);
+          const postfix = generateHash(cssPath);
 
           // rewrite the template
           const rewrittenHbsJs = replaceHbsInJs(code, (hbs) => {
