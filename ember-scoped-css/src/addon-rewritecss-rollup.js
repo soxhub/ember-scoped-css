@@ -1,7 +1,7 @@
 import path from 'path';
-import getPostfix from './getPostfix.js';
-import rewriteCss from './rewriteCss.js';
-import fsExists from './fsExists.js';
+import getPostfix from './lib/getPostfix.js';
+import rewriteCss from './lib/rewriteCss.js';
+import fsExists from './lib/fsExists.js';
 
 export default function () {
   return {

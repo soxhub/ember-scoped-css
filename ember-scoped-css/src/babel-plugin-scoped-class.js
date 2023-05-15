@@ -1,4 +1,4 @@
-import replaceScopedClass from './replaceScopedClass.js';
+import replaceScopedClass from './lib/replaceScopedClass.js';
 
 const scopedClass = () => {
   return {

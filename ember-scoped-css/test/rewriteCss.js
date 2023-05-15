@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import rewriteCss from '../src/rewriteCss.js';
+import rewriteCss from '../src/lib/rewriteCss.js';
 
 describe('rewriteCss', function () {
   it('should rewrite css', function () {

@@ -2,7 +2,7 @@ import { createUnplugin } from 'unplugin';
 import path from 'path';
 import { readFile } from 'fs/promises';
 import { Compilation } from 'webpack';
-import getPostfix from './getPostfix.js';
+import getPostfix from './lib/getPostfix.js';
 
 export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
   return {

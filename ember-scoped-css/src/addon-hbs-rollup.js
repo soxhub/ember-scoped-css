@@ -1,9 +1,9 @@
 import { readFile } from 'fs/promises';
-import getPostfix from './getPostfix.js';
-import replaceHbsInJs from './replaceHbsInJs.js';
-import getClassesTagsFromCss from './getClassesTagsFromCss.js';
-import rewriteHbs from './rewriteHbs.js';
-import fsExists from './fsExists.js';
+import getPostfix from './lib/getPostfix.js';
+import replaceHbsInJs from './lib/replaceHbsInJs.js';
+import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
+import rewriteHbs from './lib/rewriteHbs.js';
+import fsExists from './lib/fsExists.js';
 
 export default function rollupCssColocation() {
   return {
