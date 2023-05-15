@@ -1,8 +1,8 @@
 // import { createUnplugin }  from 'unplugin';
 import { basename } from 'path';
-import fsExists from './fsExists.js';
-import getPostfix from './getPostfix.js';
-import rewriteCss from './rewriteCss.js';
+import fsExists from './lib/fsExists.js';
+import getPostfix from './lib/getPostfix.js';
+import rewriteCss from './lib/rewriteCss.js';
 // import path  from 'path';
 
 export default async function (code) {

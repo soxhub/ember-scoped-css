@@ -1,12 +1,12 @@
 import { createUnplugin } from 'unplugin';
 import { readFile } from 'fs/promises';
 import path from 'path';
-import getClassesTagsFromCss from './getClassesTagsFromCss.js';
-import getPostfix from './getPostfix.js';
-import replaceHbsInJs from './replaceHbsInJs.js';
-import rewriteHbs from './rewriteHbs.js';
-import fsExists from './fsExists.js';
-import findCssInJs from './findCssInJs.js';
+import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
+import getPostfix from './lib/getPostfix.js';
+import replaceHbsInJs from './lib/replaceHbsInJs.js';
+import rewriteHbs from './lib/rewriteHbs.js';
+import fsExists from './lib/fsExists.js';
+import findCssInJs from './lib/findCssInJs.js';
 import recast from 'recast';
 
 export default createUnplugin(() => {

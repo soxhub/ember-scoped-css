@@ -1,8 +1,8 @@
 import { createUnplugin } from 'unplugin';
-import replaceGlimmerAst from './replaceGlimmerAst.js';
+import replaceGlimmerAst from './lib/replaceGlimmerAst.js';
 import path from 'path';
-import getPostfix from './getPostfix.js';
-import getClassesTagsFromCss from './getClassesTagsFromCss.js';
+import getPostfix from './lib/getPostfix.js';
+import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 
 function* iterateOpcodes(opcodes) {
   for (let instruction of opcodes) {

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import getPostfix from '../src/getPostfix.js';
+import getPostfix from '../src/lib/getPostfix.js';
 
 describe('getPostfix', function () {
   it('should return a string', function () {

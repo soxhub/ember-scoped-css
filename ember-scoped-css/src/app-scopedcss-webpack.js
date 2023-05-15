@@ -1,10 +1,10 @@
 // import { RawSource }  from 'webpack-sources';
-import rewriteCss from './rewriteCss.js';
+import rewriteCss from './lib/rewriteCss.js';
 import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
-import getPostfix from './getPostfix.js';
-import fsExists from './fsExists.js';
-import getFiles from './getFiles.js';
+import getPostfix from './lib/getPostfix.js';
+import fsExists from './lib/fsExists.js';
+import getFiles from './lib/getFiles.js';
 
 export default class {
   apply(compiler) {
