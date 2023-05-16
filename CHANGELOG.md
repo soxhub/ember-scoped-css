@@ -3,6 +3,19 @@
 
 
 
+
+## v0.7.0 (2023-05-16)
+
+#### :boom: Breaking Change
+* [#32](https://github.com/soxhub/ember-scoped-css/pull/32) simplify path to template-lint plugin ([@mansona](https://github.com/mansona))
+
+#### :memo: Documentation
+* [#22](https://github.com/soxhub/ember-scoped-css/pull/22) Added documentation ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 2
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
 ## v0.6.0 (2023-05-16)
 
 #### :boom: Breaking Change
