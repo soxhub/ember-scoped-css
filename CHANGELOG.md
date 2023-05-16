@@ -2,6 +2,19 @@
 
 
 
+
+## v0.6.0 (2023-05-16)
+
+#### :boom: Breaking Change
+* [#31](https://github.com/soxhub/ember-scoped-css/pull/31) Fix naming of rollup plugins and helper functions in ember-scoped-css ([@candunaj](https://github.com/candunaj))
+
+#### :rocket: Enhancement
+* [#31](https://github.com/soxhub/ember-scoped-css/pull/31) Fix naming of rollup plugins and helper functions in ember-scoped-css ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 1
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
+
 ## v0.5.0 (2023-05-12)
 
 #### :rocket: Enhancement
