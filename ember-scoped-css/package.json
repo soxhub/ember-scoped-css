@@ -55,6 +55,11 @@
     "ember-template-lint": "^5.7.2",
     "webpack": "^5.0.0"
   },
+  "peerDependenciesMeta": {
+    "ember-teplate-lint": {
+      "optional": true
+    }
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
