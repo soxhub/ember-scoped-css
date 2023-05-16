@@ -1,5 +1,5 @@
 import { generateRuleTests } from 'ember-template-lint';
-import scopedClassHelperPlugin from '../src/template-lint/scoped-class-helper-plugin.js';
+import scopedClassHelperPlugin from '../src/template-lint/plugin.js';
 import assert from 'assert';
 
 generateRuleTests({

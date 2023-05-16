@@ -31,7 +31,7 @@ class ScopedClassHelperRule extends Rule {
 }
 
 export default {
-  name: 'scoped-class-helper-plugin',
+  name: 'scoped-css-plugin',
   rules: {
     'scoped-class-helper': ScopedClassHelperRule,
   },
