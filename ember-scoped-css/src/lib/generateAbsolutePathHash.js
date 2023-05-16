@@ -1,4 +1,4 @@
-import generateHash from './generateHash.js';
+import generateHash from './generateRelativePathHash.js';
 import path from 'path';
 
 export default function (cssFileName) {

@@ -2,12 +2,7 @@ import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
 import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
-import {
-  addonCssRollup,
-  addonRewritecssRollup,
-  addonJsUnplugin,
-  addonHbsRollup,
-} from 'ember-scoped-css';
+import { scopedCssUnplugin } from 'ember-scoped-css';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -54,10 +49,7 @@ export default {
     // addon.keepAssets(['**/*.css']),
     // eslint-disable-next-line no-undef
     // eslint-disable-next-line no-undef
-    addonRewritecssRollup(),
-    addonCssRollup(),
-    addonJsUnplugin.rollup(),
-    addonHbsRollup(),
+    scopedCssUnplugin.rollup(),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),

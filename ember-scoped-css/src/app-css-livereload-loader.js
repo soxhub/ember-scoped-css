@@ -2,7 +2,7 @@ import { createUnplugin } from 'unplugin';
 import path from 'path';
 import { readFile } from 'fs/promises';
 import { Compilation } from 'webpack';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 
 export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
   return {
@@ -41,7 +41,7 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
           css = await loader.bind({ resourcePath: cssPath })(css);
         }
         // random string; lenght is 8
-        const postfix = getPostfix(path.basename(cssPath));
+        const postfix = generateHash(path.basename(cssPath));
 
         this.emitFile({
           type: 'asset',

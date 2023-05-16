@@ -1,12 +1,12 @@
 import recast from 'ember-template-recast';
 import renameClass from './renameClass.js';
-import getPostfix from './getPostfix.js';
+import generateHash from './generateAbsolutePathHash.js';
 
 export default function (hbs, templatePath) {
   let ast = recast.parse(hbs);
   let stack = [];
   const cssPath = templatePath.replace(/(\.hbs)?\.js$/, '.css');
-  const postfix = getPostfix(cssPath);
+  const postfix = generateHash(cssPath);
 
   recast.traverse(ast, {
     All: {

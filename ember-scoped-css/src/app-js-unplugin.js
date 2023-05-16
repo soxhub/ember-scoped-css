@@ -1,7 +1,7 @@
 import { createUnplugin } from 'unplugin';
 import replaceGlimmerAst from './lib/replaceGlimmerAst.js';
 import path from 'path';
-import getPostfix from './lib/getPostfix.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 
 function* iterateOpcodes(opcodes) {
@@ -48,7 +48,7 @@ export default createUnplugin(({ appDir }) => {
 
     async transform(code, id) {
       const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
-      const postfix = getPostfix(cssPath);
+      const postfix = generateHash(cssPath);
 
       return await replaceGlimmerAst(code, id, (opcodes, css) => {
         const { classes, tags } = getClassesTagsFromCss(css);
