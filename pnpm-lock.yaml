@@ -173,6 +173,9 @@ importers:
       ember-style-loader:
         specifier: github:mainmatter/ember-style-loader#main
         version: github.com/mainmatter/ember-style-loader/5d262a1671a9354312a376d70df220289b8b3330
+      ember-template-imports:
+        specifier: ^3.4.2
+        version: 3.4.2
       ember-template-lint:
         specifier: ^5.3.1
         version: 5.6.0
