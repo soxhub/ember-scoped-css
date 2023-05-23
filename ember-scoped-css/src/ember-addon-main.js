@@ -12,6 +12,23 @@ module.exports = {
     });
   },
 
+  included() {
+    this._super.included.apply(this, arguments);
+    let plugins = this.app.options.babel.plugins;
+
+    if (plugins) {
+      let htmlbarsPlugin = plugins.find(
+        (p) => p._parallelBabel?.params?.templateCompilerPath
+      );
+      if (htmlbarsPlugin) {
+        let htmlbarsPluginIndex = plugins.indexOf(htmlbarsPlugin);
+
+        let customPlugin = [require.resolve('../dist/scoped-babel-plugin.cjs')];
+
+        plugins.splice(htmlbarsPluginIndex, 0, customPlugin);
+      }
+    }
+  },
 
   setupPreprocessorRegistry(type, registry) {
     // Skip if we're setting up this addon's own registry
