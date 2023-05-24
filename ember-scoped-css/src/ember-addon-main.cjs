@@ -1,6 +1,8 @@
 'use strict';
 
-import ScopedCssPreprocessor from './lib/scoped-css-preprocessor.js';
+const {
+  default: ScopedCssPreprocessor,
+} = require('../dist/lib/scoped-css-preprocessor.cjs');
 
 module.exports = {
   name: 'ember-scoped-css',
@@ -42,6 +44,5 @@ module.exports = {
     preprocessors.forEach((p) => registry.remove('css', p));
     this.outputStylePreprocessor.preprocessors = preprocessors;
     registry.add('css', this.outputStylePreprocessor);
-    //preprocessor.forEach((p) => registry.add('css', p));
   },
 };
