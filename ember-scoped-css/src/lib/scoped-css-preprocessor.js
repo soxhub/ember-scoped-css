@@ -58,6 +58,7 @@ class ScopedFilter extends Filter {
 export default class ScopedCssPreprocessor {
   constructor(options) {
     this.owner = options.owner;
+    this.appName = options.owner.parent.pkg.name;
   }
 
   toTree(inputNode, inputPath, outputDirectory, options) {
@@ -66,9 +67,9 @@ export default class ScopedCssPreprocessor {
 
     let componentsNode = new Funnel(inputNode, {
       include: [
-        'classic-app/components/**/*.css',
+        this.appName + '/components/**/*.css',
         ...COMPONENT_EXTENSIONS.map(
-          (ext) => `classic-app/components/**/*.${ext}`
+          (ext) => this.appName + `/components/**/*.${ext}`
         ),
       ],
     });
@@ -78,11 +79,11 @@ export default class ScopedCssPreprocessor {
     });
 
     const componentStyles = new Funnel(componentsNode, {
-      include: ['classic-app/components/**/*.css'],
+      include: [this.appName + '/components/**/*.css'],
     });
 
     const appCss = new Funnel(inputNode, {
-      include: ['classic-app/styles/app.css'],
+      include: [this.appName + '/styles/app.css'],
     });
 
     let mergedStyles = new MergeTrees([
