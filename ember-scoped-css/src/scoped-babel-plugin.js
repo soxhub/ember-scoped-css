@@ -1,11 +1,10 @@
-// const generator = require('@babel/generator').default;
 import rewriteHbs from './lib/rewriteHbs.js';
 import generateHash from './lib/generateRelativePathHash.js';
 import { readFileSync, existsSync } from 'fs';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 import nodePath from 'path';
 
-export default (babel) => {
+export default () => {
   return {
     visitor: {
       CallExpression(path, state) {
@@ -59,18 +58,6 @@ export default (babel) => {
             }
           }
         }
-      },
-      Program: {
-        enter(path, state) {
-          // console.log('Filename:', state.file.opts.filename);
-          // const generated = generator(path.node).code;
-          // console.log('File content:', generated);
-        },
-        exit(path, state) {
-          // console.log('Filename:', state.file.opts.filename);
-          // const generated = generator(path.node).code;
-          // console.log('File content:', generated);
-        },
       },
     },
   };
