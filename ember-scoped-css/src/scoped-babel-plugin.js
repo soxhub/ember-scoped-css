@@ -19,10 +19,14 @@ export default (babel) => {
           node.callee.name === 'hbs'
         ) {
           // check if css exists
-          const appName = nodePath.basename(state.file.opts.root);
-          const fileName = state.file.opts.filename.replace(
-            `${appName}/${appName}/`,
-            `${appName}/app/`
+          const relativeFileName =
+            'app' +
+            state.file.opts.sourceFileName.substring(
+              state.file.opts.sourceFileName.indexOf('/')
+            );
+          const fileName = nodePath.join(
+            state.file.opts.root,
+            relativeFileName
           );
 
           const cssPath = fileName.replace(/(\.js)|(\.ts)/, '.css');
