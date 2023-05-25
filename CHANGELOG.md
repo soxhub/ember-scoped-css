@@ -4,6 +4,16 @@
 
 
 
+
+## v0.8.0 (2023-05-25)
+
+#### :rocket: Enhancement
+* [#33](https://github.com/soxhub/ember-scoped-css/pull/33) Support for classic apps ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 1
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
+
 ## v0.7.0 (2023-05-16)
 
 #### :boom: Breaking Change
