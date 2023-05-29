@@ -14,6 +14,12 @@ As selectors are scoped/renamed during the build process. So there is no perform
 
 We only support using `ember-scoped-css` as a rollup plugin with a V2 addon right now but we are actively working to support embroider apps and classic ember apps.
 
+## Installation for an ember app
+
+```
+npm install --save-dev ember-scoped-css
+```
+
 ## Installation for a V2 Addon
 
 ```
@@ -35,19 +41,6 @@ npm install --save-dev ember-scoped-css
 
 // add the following to the rollup config
 + scopedCssUnplugin.rollup(),
-```
-
-3. Add `babel-plugin-scoped-class` as the last plugin to your `babel.config`:
-
-```diff
-{
-  "plugins": [
-    [
-      ...existing plugins,
-+     'ember-scoped-css/babel-plugin-scoped-class',
-    ]
-  ]
-}
 ```
 
 ## Usage
@@ -112,6 +105,7 @@ test('MyComponent has hello-class', async function (assert) {
   assert.dom('[data-test-my-component]').hasClass(rewrittenClass);
 });
 ```
+
 ## Linting
 
 `ember-scoped-css` exports a ember-template-lint plugin with one rule `scoped-class-helper`. This lint rule is intended to help you prevent improper use of the `scoped-class` helper which might not be immediately obvious during regular development. You can read more information in the [lint rules documentation](docs/lint-rules.md)
