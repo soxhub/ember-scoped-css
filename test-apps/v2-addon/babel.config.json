@@ -5,7 +5,6 @@
     "ember-template-imports/src/babel-plugin",
     "@embroider/addon-dev/template-colocation-plugin",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    "@babel/plugin-proposal-class-properties",
-    "ember-scoped-css/babel-plugin-scoped-class"
+    "@babel/plugin-proposal-class-properties"
   ]
 }
