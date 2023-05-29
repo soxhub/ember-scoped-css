@@ -5,6 +5,19 @@
 
 
 
+
+## v0.9.0 (2023-05-29)
+
+#### :boom: Breaking Change
+* [#37](https://github.com/soxhub/ember-scoped-css/pull/37) Implemented scoped-class helper for classic app ([@candunaj](https://github.com/candunaj))
+
+#### :rocket: Enhancement
+* [#37](https://github.com/soxhub/ember-scoped-css/pull/37) Implemented scoped-class helper for classic app ([@candunaj](https://github.com/candunaj))
+
+#### Committers: 1
+- Stanislav Dunajcan (Stan) ([@candunaj](https://github.com/candunaj))
+
+
 ## v0.8.0 (2023-05-25)
 
 #### :rocket: Enhancement
