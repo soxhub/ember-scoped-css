@@ -3,6 +3,7 @@ import renameClass from './renameClass.js';
 
 export default function rewriteHbs(hbs, classes, tags, postfix) {
   let ast = recast.parse(hbs);
+  let stack = [];
 
   recast.traverse(ast, {
     AttrNode(node) {
@@ -33,6 +34,59 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
             recast.builders.attr('class', recast.builders.text(postfix))
           );
         }
+      }
+    },
+
+    All: {
+      enter(node) {
+        stack.push(node);
+      },
+      exit() {
+        stack.pop();
+      },
+    },
+
+    MustacheStatement(node) {
+      let cssClass;
+
+      if (
+        node.path?.original === 'scoped-class' &&
+        node.params?.length === 1 &&
+        node.params[0].type === 'StringLiteral'
+      ) {
+        cssClass = node.params[0].value;
+      }
+
+      if (
+        node.path?.path?.original === 'scoped-class' &&
+        node.path?.params?.length === 1 &&
+        node.path?.params[0].type === 'StringLiteral'
+      ) {
+        cssClass = node.path.params[0].value;
+      }
+
+      if (cssClass) {
+        const textNode = recast.builders.text(renameClass(cssClass, postfix));
+        const parent = stack[stack.length - 1];
+        if (parent.type === 'AttrNode') {
+          parent.quoteType = '"';
+        }
+        return textNode;
+      }
+    },
+
+    SubExpression(node) {
+      if (
+        node.path?.original === 'scoped-class' &&
+        node.params?.length === 1 &&
+        node.params[0].type === 'StringLiteral'
+      ) {
+        const cssClass = node.params[0].value;
+        const textNode = recast.builders.literal(
+          'StringLiteral',
+          renameClass(cssClass, postfix)
+        );
+        return textNode;
       }
     },
   });
