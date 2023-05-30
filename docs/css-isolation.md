@@ -213,7 +213,9 @@ Result
 As you can see a developer could use the header class in `some-component` thinking that it is scoped and styles don't leak in or out
 but in svelte and vue `other-component` will leak styles to `some-compoent` unitentionally. Also global styles leak to some component unintentionally. This is not the case in `ember-scoped-css`
 
-## The philosophy is to stick with the CSS and HTML as much as possible and not introduce new syntax or concepts.
+## Philosophy
+
+The philosophy is to stick with the CSS and HTML as much as possible and not introduce new syntax or concepts.
 
 The key ideas of `ember-scoped-css` are:
 
@@ -223,7 +225,9 @@ The key ideas of `ember-scoped-css` are:
 - `{{scoped-class "some-class other_class"}}` helper can be used to pass renamed classes to another components
 - Ability to use selectors in unit tests
 
-Sometimes you need to test if a selector was applied to specific parts of a component, `ember-scoped-css` provides a test-helper function `scopedClass(class: string, pathToCssFile: string) : string` to allow you to tap into the same system for renaming classes.
+### Testing
+
+Sometimes you need to test if a class was applied to specific parts of a component, `ember-scoped-css` provides a test-helper function `scopedClass(class: string, pathToCssFile: string) : string` to allow you to tap into the same system for renaming classes.
 
 Input
 
