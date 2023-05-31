@@ -1,17 +1,12 @@
 # CSS Isolation
 
-The isolation method used for `ember-scoped-css` was originally inspired by svelt but actually works slightly differenty.
-
-<!-- TODO add details of how we add our suffix and compare all methods -->
-<!-- also make sure that we show examples -->
-
-We were considering multiple approaches for scoping css. It was Svelte, Vue and renaming classes.
+The main function of the `ember-scoped-css` addon is to provide scoped CSS that only applies to a particular component. When designing the addon we considered multiple different approaches and compared the approaches used in Svelt, Vue, and existing Ember addons like ember-css-modules. This document will give an overview of the different approaches and some justification why we ended up using the approach we settled on.
 
 ## Svelte approach
 
-Svelte is adding generated class to every class and tag used in css file.
+Svelte adds an extra generated class to every class and tag used in css file. It's important to note that it doesn't touch the original class and just adds a new one that CSS can target.
 
-Input
+Here is an example starting with the input files:
 
 ```html
 <!-- components/first.hbs -->
@@ -24,12 +19,13 @@ Input
 .my-class {
   ...;
 }
+
 div {
   ...;
 }
 ```
 
-Output
+Output:
 
 ```html
 <!-- components/first.hbs -->
@@ -49,9 +45,9 @@ div.generated-first {
 
 ## Vue approach
 
-Vue is adding generated attributes to every class and tag used in css file.
+Vue adds an extra generated data-attribute to every class and tag used in the css file.
 
-Input
+Input:
 
 ```html
 <!-- components/first.hbs -->
@@ -69,7 +65,7 @@ div {
 }
 ```
 
-Output
+Output:
 
 ```html
 <!-- components/first.hbs -->
@@ -89,9 +85,9 @@ div[data-generated-first] {
 
 ## ember-scoped-css approach
 
-ember-scoped-css is renaming classes and adding generating classes to tags used in css file.
+ember-scoped-css replaces classes with a new class that has a generated suffix that is specific to that file.
 
-Input
+Input: 
 
 ```html
 <!-- components/first.hbs -->
@@ -127,6 +123,94 @@ div.generated-first {
 }
 ```
 
+## Why ember-scoped-css chose renaming classes
+
+By renaming classes we ensure a better issolation of CSS between components and from global styles that could be included by thrid parties.
+
+If class names aren't renamed it is possible to have a global class (that is outside the scope of our CSS processor) with the same name as that used in a scoped component. In this case, the global style could unintentionally alter the component, especially if you're in an environment where you have little control over the order that CSS is included in the bundle - thus affecting specificity. 
+
+In both a Svelte and Vue app, everyone needs to be aware of class names used in global styles and across all other components and it is a good practice to avoid known global class names when writing your scoped component. However, achieving this could prove to be extremely challenging in larger projects. 
+
+For example, If someone chose the same class name in multiple components and also used that class name in global styles then in a Svelte or Vue app styles would leak both from the global styles into the component styles but also from one component to other components that use the same name in their local CSS file
+
+---
+The following example shows a simplified case where global styles are potentially leaking into component styles. It's a bit harder to show an example of cross-component leaking but this simple example is illustrative that you can't depend on extra classes or data-attributes for true issolation
+
+```css
+/* app.css */
+
+.header {
+  ...;
+}
+```
+
+```css
+/* some-component.css */
+
+.header {
+  /* The developer intends for this style to be scoped to only the `some-component.hbs` file */
+  ...;
+} 
+```
+
+```html
+<!-- some-component.hbs -->
+<header class="header">
+  A Lovely header
+</header>
+```
+
+```css
+/* other-component.css */
+:global(.header) {
+  ...;
+}
+```
+
+---
+
+Resulting output
+
+```css
+/* app.css */
+.header {
+  ...;
+}
+```
+
+```css
+/* some-component.css */
+
+/* svelte */
+.header.generated {
+  /* svelte selector can be overwriten in any other component and from global styles */
+  ...;
+} 
+
+/* vue */
+.header[data-generated] {
+  /* vue selector can be overwriten in any other component and from global styles */
+  ...;
+} 
+
+/* ember-scoped-css */
+.header_data-generated {
+  /* ember-scoped-css selector can't be unintentionally overwritten in other components and in global styles */
+  ...;
+} 
+```
+
+```css
+/* other-component.css */
+.header {
+  ...;
+}
+```
+
+As you can see a developer could use the header class in `some-component` thinking that it is scoped and styles don't leak in or out but in svelte and vue `other-component` will leak styles to `some-compoent` unintentionally. Also global styles leak to some components unintentionally. This is not the case in `ember-scoped-css`
+
+## Global Styles
+
 All three approaches can use `:global()` pseudo-class. Selector inside it will not be scoped.
 
 In Svelte the following
@@ -136,7 +220,8 @@ In Svelte the following
   ...;
 }
 :global(.other-class) {
-  //class inside :global will not be scoped
+  /* class inside :global will not be scoped */
+  ...;
 }
 ```
 
@@ -147,100 +232,6 @@ will become
   ...;
 }
 .other-class {
-}
-```
-
-## Why ember-scoped-css chose renaming classes
-
-If class names aren't renamed, it could potentially create an issue when a developer establishes a global class with the same name as that used in a scoped component. In this case, the global style could unintentionally alter the component. Both Svelte and Vue, therefore, necessitate that everyone is aware of class names used in global styles and across all other components. This makes it crucial for developers to select unique class names. However, achieving this could prove to be extremely challenging in larger projects. Let me illustrate this with an example.
-
-If someone would choose the same class name in multiple components and in global styles in svelte and vue styles will leak as in the following example.
-
-```css
-/*app.css*/
-.header {
   ...;
 }
-```
-
-```css
-/*some-component.css*/
-.header {
-  ...;
-} /*The developer wanted to scope the style*/
-```
-
-```css
-/*other-component.css*/
-:global(.header) {
-  ...;
-}
-```
-
-Result
-
-```css
-/*app.css*/
-.header {
-  ...;
-}
-```
-
-```css
-/*some-component.css*/
-
-/*svelte*/
-.header.generated {
-  ...;
-} /*svelte selector can be overwriten in any other component and from global styles*/
-/*vue*/
-.header[data-generated] {
-  ...;
-} /*vue selector can be overwriten in any other component and from global styles*/
-/*ember-scoped-css*/
-.header_data-generated {
-  ...;
-} /*ember-scoped-css selector can't be unintentionally overwritten in other components and in global styles*/
-```
-
-```css
-/*other-component.css*/
-.header {
-  ...;
-}
-```
-
-As you can see a developer could use the header class in `some-component` thinking that it is scoped and styles don't leak in or out
-but in svelte and vue `other-component` will leak styles to `some-compoent` unitentionally. Also global styles leak to some component unintentionally. This is not the case in `ember-scoped-css`
-
-## Philosophy
-
-The philosophy is to stick with the CSS and HTML as much as possible and not introduce new syntax or concepts.
-
-The key ideas of `ember-scoped-css` are:
-
-- CSS files will be co-located with components so the addon will know which CSS file belongs to which component.
-- all CSS selectors will be renamed at build time to prevent styles from leaking
-- `:global(.text-center)` can be used to target global classes or classes from any third party CSS
-- `{{scoped-class "some-class other_class"}}` helper can be used to pass renamed classes to another components
-- Ability to use selectors in unit tests
-
-### Testing
-
-Sometimes you need to test if a class was applied to specific parts of a component, `ember-scoped-css` provides a test-helper function `scopedClass(class: string, pathToCssFile: string) : string` to allow you to tap into the same system for renaming classes.
-
-Input
-
-```js
-import { scopedClass } from 'ember-scoped-css/test-helper';
-
-const aSelector = scopedClass('.alert', 'components/foo.css');
-```
-
-Output
-
-```js
-import { generated } from 'ember-scoped-css';
-
-const aSelector = '.alert_generated-foo';
 ```
