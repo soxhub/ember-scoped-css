@@ -8,6 +8,8 @@ If you want to read more specifics on how this addon achieves isolation with CSS
 
 As selectors are scoped/renamed during the build process. So there is no performance hit when running the app.
 
+The philosophy of `ember-scoped-css` is to stick as close to CSS and HTML as possible and not introduce new syntax or concepts unless it is absolutely necessary. 
+
 ## Compatibility
 
 - V2 addons
