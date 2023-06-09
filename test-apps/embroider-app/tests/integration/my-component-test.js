@@ -1,19 +1,19 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { setupRenderingTest } from 'embroider-app/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { scopedClass } from 'ember-scoped-css/test-helper';
+import { scopedClass } from 'ember-scoped-css/test-support';
 
 module('Integration | Component | my-component', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
-    await render(hbs`<Header />`);
-
-    const elem = this.element.querySelector('h1');
+    await render(hbs`<MyComponent />`);
+    await this.pauseTest();
+    const elem = this.element.querySelector('h3');
     assert
-      .dom(elem)
-      .hasClass(scopedClass('header', 'app/components/my-component'));
+      .dom('h3')
+      .hasClass(scopedClass('header', 'app/components/my-component.css'));
 
     const style = window.getComputedStyle(elem);
     assert.strictEqual(style.color, 'rgb(255, 0, 0)');

@@ -47,6 +47,7 @@
     "ember-qunit": "^6.1.1",
     "ember-resolver": "^10.0.0",
     "ember-scoped-css": "workspace:*",
+    "ember-scoped-css-compat": "workspace:*",
     "ember-source": "~4.10.0",
     "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^5.3.1",

@@ -52,6 +52,7 @@
     "ember-qunit": "^6.1.1",
     "ember-resolver": "^10.0.0",
     "ember-scoped-css": "workspace:*",
+    "ember-scoped-css-compat": "workspace:*",
     "ember-source": "~4.10.0",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-imports": "^3.4.2",
@@ -71,6 +72,11 @@
     "tracked-built-ins": "^3.1.0",
     "ember-style-loader": "github:mainmatter/ember-style-loader#main",
     "webpack": "^5.75.0"
+  },
+  "dependenciesMeta": {
+    "ember-scoped-css-compat": {
+      "injected": true
+    }
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
