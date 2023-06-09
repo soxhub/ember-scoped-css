@@ -31,7 +31,6 @@ function appPath(sourcePath) {
   return `${name}${packageRelative}`;
 }
 
-
 const CACHE = new Set();
 
 /**

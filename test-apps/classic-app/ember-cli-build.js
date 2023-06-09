@@ -24,5 +24,6 @@ module.exports = function (defaults) {
   // along with the exports of each module as its value.
 
   app.import('node_modules/v2-addon/dist/scoped.css');
+
   return app.toTree();
 };
