@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const { configs } = require("@nullvoxpopuli/eslint-configs");
+const { configs } = require('@nullvoxpopuli/eslint-configs');
 
 const nodeESM = configs.node();
 
@@ -10,12 +10,12 @@ module.exports = {
     ...nodeESM.overrides,
 
     {
-      files: ["./test/**/*.js"],
+      files: ['./test/**/*.js'],
       env: {
         mocha: true,
       },
       rules: {
-        "node/no-unpublished-import": 0,
+        'node/no-unpublished-import': 0,
       },
     },
   ],

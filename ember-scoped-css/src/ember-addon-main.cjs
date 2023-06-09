@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 const {
   default: ScopedCssPreprocessor,
-} = require("../dist/lib/scoped-css-preprocessor.cjs");
+} = require('../dist/lib/scoped-css-preprocessor.cjs');
 
 module.exports = {
-  name: "ember-scoped-css",
+  name: 'ember-scoped-css',
 
   init() {
     this._super.init && this._super.init.apply(this, arguments);
@@ -27,7 +27,7 @@ module.exports = {
       if (htmlbarsPlugin) {
         let htmlbarsPluginIndex = plugins.indexOf(htmlbarsPlugin);
 
-        let customPlugin = [require.resolve("../dist/scoped-babel-plugin.cjs")];
+        let customPlugin = [require.resolve('../dist/scoped-babel-plugin.cjs')];
 
         plugins.splice(htmlbarsPluginIndex, 0, customPlugin);
       }
@@ -36,16 +36,16 @@ module.exports = {
 
   setupPreprocessorRegistry(type, registry) {
     // Skip if we're setting up this addon's own registry
-    if (type !== "parent") {
+    if (type !== 'parent') {
       return;
     }
 
     // we need to run our css preprocessor first, so we removed all other from the registry and run them as part of our preprocessor
     // we did not find other way how to do it more elegantly
-    let preprocessors = registry.load("css");
+    let preprocessors = registry.load('css');
 
-    preprocessors.forEach((p) => registry.remove("css", p));
+    preprocessors.forEach((p) => registry.remove('css', p));
     this.outputStylePreprocessor.preprocessors = preprocessors;
-    registry.add("css", this.outputStylePreprocessor);
+    registry.add('css', this.outputStylePreprocessor);
   },
 };
