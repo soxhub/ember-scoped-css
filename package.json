@@ -24,6 +24,15 @@
   "pnpm": {
     "overrides": {
       "@types/eslint": "^7.0.0"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "webpack"
+      ]
     }
+  },
+  "volta": {
+    "node": "18.16.0",
+    "pnpm": "8.6.1"
   }
 }
