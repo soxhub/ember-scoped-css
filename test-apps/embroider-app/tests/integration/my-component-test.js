@@ -9,11 +9,12 @@ module('Integration | Component | my-component', function (hooks) {
 
   test('it has scoped class', async function (assert) {
     await render(hbs`<MyComponent />`);
-    await this.pauseTest();
     const elem = this.element.querySelector('h3');
     assert
       .dom('h3')
-      .hasClass(scopedClass('header', 'app/components/my-component.css'));
+      .hasClass(
+        scopedClass('header', 'embroider-app/components/my-component.css')
+      );
 
     const style = window.getComputedStyle(elem);
     assert.strictEqual(style.color, 'rgb(255, 0, 0)');

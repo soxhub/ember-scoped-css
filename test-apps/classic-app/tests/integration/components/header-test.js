@@ -14,7 +14,9 @@ module('Integration | Component | header', function (hooks) {
     assert.ok(elem.classList.contains('test-header_ee0100766'));
     assert
       .dom('h1')
-      .hasClass(scopedClass('test-header', 'app/components/header'));
+      .hasClass(
+        scopedClass('test-header', 'classic-app/components/header.css')
+      );
 
     const style = window.getComputedStyle(elem);
     assert.strictEqual(style.color, 'rgb(255, 0, 0)');
