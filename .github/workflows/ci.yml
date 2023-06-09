@@ -29,6 +29,8 @@ jobs:
 
     steps:
       - uses: wyvox/action@v1
+        with:
+          no-lockfile: true
       - name: Run Tests
         run: pnpm test
 
