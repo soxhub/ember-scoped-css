@@ -2,6 +2,7 @@ import './footer.css';
 import templateOnly from '@ember/component/template-only';
 import { setComponentTemplate } from '@ember/component';
 import { precompileTemplate } from '@ember/template-compilation';
+import { concat } from '@ember/helper';
 
 var footer = setComponentTemplate(precompileTemplate(`
   <div class='alert_ec12a09e5 ec12a09e5' data-test3={{concat "test" "   my-class_ec12a09e5 my-other-class_ec12a09e5  "}} data-test2="  my-class_ec12a09e5 " data-test="my-class_ec12a09e5">
