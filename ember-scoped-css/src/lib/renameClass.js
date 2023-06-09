@@ -1,4 +1,4 @@
-export default function (className, postfix, classesInCss) {
+export default function renameClass(className, postfix, classesInCss) {
   const classes = className.split(/\s+/);
   const renamedClasses = classes
     .filter((c) => c)

@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'fs';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 import nodePath from 'path';
 
-export default () => {
+export default function scopedClass() {
   return {
     visitor: {
       CallExpression(path, state) {
@@ -32,6 +32,9 @@ export default () => {
           if (existsSync(cssPath)) {
             const css = readFileSync(cssPath, 'utf8');
             const { classes, tags } = getClassesTagsFromCss(css);
+
+            console.log('generateHash',
+              state.file.opts.sourceFileName.replace(/(\.js)|(\.ts)/, '.css'));
 
             const postfix = generateHash(
               state.file.opts.sourceFileName.replace(/(\.js)|(\.ts)/, '.css')
@@ -61,4 +64,4 @@ export default () => {
       },
     },
   };
-};
+}

@@ -10,8 +10,12 @@
   "type": "module",
   "exports": {
     ".": "./index.js",
-    "./babel-plugin-scoped-class": "./src/babel-plugin-scoped-class.js",
-    "./test-helper": "./src/scopedClass.js",
+    "./addon-main.cjs": "./addon-main.cjs",
+    "./babel-plugin": {
+      "import": "./src/scoped-babel-plugin.js",
+      "require": "./dist/scoped-babel-plugin.cjs"
+    },
+    "./test-support": "./src/test-support/index.js",
     "./app-css-loader": {
       "import": "./src/app-css-loader.js",
       "require": "./dist/app-css-loader.cjs"
@@ -19,9 +23,11 @@
     "./app-dependency-loader": {
       "import": "./src/app-dependency-loader.js",
       "require": "./dist/app-dependency-loader.cjs"
+    },
+    "./ember-classic": {
+      "require": "./dist/lib/scoped-css-preprocessor.cjs"
     }
   },
-  "main": "index.js",
   "scripts": {
     "esbuild": "esbuild src/scoped-babel-plugin.js src/app-css-loader.js src/app-dependency-loader.js src/lib/scoped-css-preprocessor.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs",
     "lint": "eslint .",
@@ -31,6 +37,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.21.4",
+    "@embroider/addon-shim": "^1.0.0",
     "blueimp-md5": "^2.19.0",
     "broccoli-concat": "^4.2.5",
     "broccoli-funnel": "^3.0.8",
@@ -50,9 +57,9 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "ember-template-lint": "^5.7.2",
     "esbuild": "^0.17.17",
     "eslint": "^8.38.0",
-    "ember-template-lint": "^5.7.2",
     "mocha": "^10.2.0",
     "release-it": "^15.10.1",
     "release-it-lerna-changelog": "^5.0.0",
@@ -60,11 +67,9 @@
     "webpack": "^5.75.0"
   },
   "ember-addon": {
-    "main": "src/ember-addon-main.cjs",
-    "after": [
-      "ember-cli-htmlbars",
-      "ember-template-imports"
-    ]
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2
   },
   "peerDependencies": {
     "ember-template-lint": "^5.7.2",
