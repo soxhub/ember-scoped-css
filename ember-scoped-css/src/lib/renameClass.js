@@ -10,5 +10,6 @@ export default function (className, postfix, classesInCss) {
     className.trimStart().trimEnd(),
     renamedClasses
   );
+
   return renamedWithPreservedSpaces;
 }

@@ -1,10 +1,11 @@
 // import { RawSource }  from 'webpack-sources';
-import rewriteCss from './lib/rewriteCss.js';
 import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
-import generateHash from './lib/generateAbsolutePathHash.js';
+
 import fsExists from './lib/fsExists.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
 import getFiles from './lib/getFiles.js';
+import rewriteCss from './lib/rewriteCss.js';
 
 export default class {
   apply(compiler) {
@@ -22,11 +23,13 @@ export default class {
 
           // Rewrite the CSS files
           const rewrittenFiles = [];
+
           // const rewritenFiles = cssFiles.map((file) => {
           for (let file of cssFiles) {
             if (file.endsWith(`/${path.basename(compiler.context)}.css`)) {
               // import scoped.css into app.css
               let appCss = await readFile(file, 'utf-8');
+
               await writeFile(file, `@import "scoped.css";\n${appCss}`);
             }
 
@@ -43,6 +46,7 @@ export default class {
             ) {
               continue;
             }
+
             const fileName = path.basename(file);
             const postfix = generateHash(fileName);
             const css = await readFile(file, 'utf-8');

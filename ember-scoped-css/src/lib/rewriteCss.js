@@ -1,5 +1,6 @@
-import parser from 'postcss-selector-parser';
 import postcss from 'postcss';
+import parser from 'postcss-selector-parser';
+
 import isInsideGlobal from './isInsideGlobal.js';
 
 function rewriteSelector(sel, postfix) {
@@ -23,18 +24,22 @@ function rewriteSelector(sel, postfix) {
     });
   };
   const transformed = parser(transform).processSync(sel);
+
   return transformed;
 }
 
 function isInsideKeyframes(node) {
   const parent = node.parent;
+
   if (!parent) return false;
   if (parent.type === 'atrule' && parent.name === 'keyframes') return true;
+
   return isInsideKeyframes(parent);
 }
 
 export default function rewriteCss(css, postfix, fileName) {
   const ast = postcss.parse(css);
+
   ast.walk((node) => {
     if (node.type === 'rule' && !isInsideKeyframes(node)) {
       node.selector = rewriteSelector(node.selector, postfix);
@@ -42,6 +47,7 @@ export default function rewriteCss(css, postfix, fileName) {
   });
 
   const rewrittenCss = ast.toString();
+
   return `/* ${fileName} */\n@layer components {\n\n` + rewrittenCss + '\n}\n';
   // return `/* ${fileName} */\n ${rewrittenCss}`;
 }

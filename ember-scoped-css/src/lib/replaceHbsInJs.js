@@ -1,5 +1,5 @@
-import recast from 'recast';
 import babelParser from '@babel/parser';
+import recast from 'recast';
 
 const parseOptions = {
   parser: babelParser,
@@ -7,9 +7,11 @@ const parseOptions = {
 
 export default function (script, replaceFunction) {
   const ast = recast.parse(script, parseOptions);
+
   recast.visit(ast, {
     visitCallExpression(path) {
       const node = path.node;
+
       if (
         node.callee.name === '__GLIMMER_TEMPLATE' ||
         node.callee.name === 'precompileTemplate'
@@ -25,8 +27,10 @@ export default function (script, replaceFunction) {
           node.arguments[0].value = replaceFunction(node.arguments[0].value);
         }
       }
+
       this.traverse(path);
     },
   });
+
   return recast.print(ast).code;
 }

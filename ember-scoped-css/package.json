@@ -21,6 +21,10 @@
       "require": "./dist/app-dependency-loader.cjs"
     }
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "main": "index.js",
   "scripts": {
     "esbuild": "esbuild src/scoped-babel-plugin.js src/app-css-loader.js src/app-dependency-loader.js src/lib/scoped-css-preprocessor.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs",

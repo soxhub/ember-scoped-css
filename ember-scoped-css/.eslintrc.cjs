@@ -2,9 +2,21 @@
 
 const { configs } = require("@nullvoxpopuli/eslint-configs");
 
-const ember = configs.ember();
+const nodeESM = configs.node();
 
 // accommodates: JS, TS, App, Addon, and V2 Addon
 module.exports = {
-  overrides: [...ember.overrides],
+  overrides: [
+    ...nodeESM.overrides,
+
+    {
+      files: ["./test/**/*.js"],
+      env: {
+        mocha: true,
+      },
+      rules: {
+        "node/no-unpublished-import": 0,
+      },
+    },
+  ],
 };

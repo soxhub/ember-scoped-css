@@ -13,8 +13,10 @@ export default function (script, removeCallExpression = false) {
         node.arguments.length === 1
       ) {
         css = node.arguments[0].quasis[0].value.raw;
+
         if (removeCallExpression) {
           nodePath.prune();
+
           return false;
         }
       }

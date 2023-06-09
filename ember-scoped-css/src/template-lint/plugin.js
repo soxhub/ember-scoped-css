@@ -23,6 +23,7 @@ class ScopedClassHelperRule extends Rule {
         });
       }
     };
+
     return {
       MustacheStatement: checkScopedClass,
       SubExpression: checkScopedClass,

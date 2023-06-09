@@ -5,6 +5,7 @@ export default function (css) {
 
   while ((match = regex.exec(css))) {
     const importPath = match[1];
+
     if (!importPath.includes('http') && !importPath.startsWith('url(')) {
       css = css.replace(match[0], '');
       importedCssPaths.unshift(importPath);

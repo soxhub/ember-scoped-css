@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import generateHash from '../src/lib/generateAbsolutePathHash.js';
 
 describe('generateHash', function () {
