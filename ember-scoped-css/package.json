@@ -25,6 +25,7 @@
   "scripts": {
     "esbuild": "esbuild src/scoped-babel-plugin.js src/app-css-loader.js src/app-dependency-loader.js src/lib/scoped-css-preprocessor.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix",
     "lint:prettier:fix": "prettier . -w",
