@@ -1,37 +1,10 @@
-'use strict';
+"use strict";
 
+const { configs } = require("@nullvoxpopuli/eslint-configs");
+
+const ember = configs.ember();
+
+// accommodates: JS, TS, App, Addon, and V2 Addon
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      modules: true,
-    },
-  },
-  plugins: ['node'],
-  extends: [
-    'eslint:recommended',
-    'plugin:node/recommended-module'
-  ],
-  env: {
-    browser: false,
-    node: true,
-  },
-  rules: {
-  },
-  overrides: [
-    {
-      files: [
-        './test/**/*.js',
-      ],
-      env: {
-        mocha: true,
-      },
-      rules: {
-        'node/no-unpublished-import': 0,
-      }
-    },
-  ],
+  overrides: [...ember.overrides],
 };
