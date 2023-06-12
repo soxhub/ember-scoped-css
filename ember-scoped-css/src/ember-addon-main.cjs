@@ -16,12 +16,14 @@ module.exports = {
 
   included() {
     this._super.included.apply(this, arguments);
+
     let plugins = this.app.options.babel.plugins;
 
     if (plugins) {
       let htmlbarsPlugin = plugins.find(
         (p) => p._parallelBabel?.params?.templateCompilerPath
       );
+
       if (htmlbarsPlugin) {
         let htmlbarsPluginIndex = plugins.indexOf(htmlbarsPlugin);
 
@@ -41,6 +43,7 @@ module.exports = {
     // we need to run our css preprocessor first, so we removed all other from the registry and run them as part of our preprocessor
     // we did not find other way how to do it more elegantly
     let preprocessors = registry.load('css');
+
     preprocessors.forEach((p) => registry.remove('css', p));
     this.outputStylePreprocessor.preprocessors = preprocessors;
     registry.add('css', this.outputStylePreprocessor);

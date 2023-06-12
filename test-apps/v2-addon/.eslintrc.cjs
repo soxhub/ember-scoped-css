@@ -1,47 +1,10 @@
 'use strict';
 
+const { configs } = require('@nullvoxpopuli/eslint-configs');
+
+const ember = configs.ember();
+
+// accommodates: JS, TS, App, Addon, and V2 Addon
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    ecmaFeatures: {
-      legacyDecorators: true,
-    },
-    babelOptions: {
-      root: __dirname,
-    },
-  },
-  ignorePatterns: ['fixtures/**/*'],
-  plugins: ['ember'],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended',
-    'plugin:prettier/recommended',
-  ],
-  env: {
-    browser: true,
-  },
-  rules: {},
-  overrides: [
-    // node files
-    {
-      files: [
-        './.eslintrc.cjs',
-        './.prettierrc.js',
-        './.template-lintrc.cjs',
-        './addon-main.cjs',
-      ],
-      parserOptions: {
-        sourceType: 'script',
-      },
-      env: {
-        browser: false,
-        node: true,
-      },
-      plugins: ['node'],
-      extends: ['plugin:node/recommended'],
-    },
-  ],
+  overrides: [...ember.overrides],
 };

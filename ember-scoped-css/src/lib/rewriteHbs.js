@@ -1,4 +1,5 @@
 import recast from 'ember-template-recast';
+
 import renameClass from './renameClass.js';
 
 export default function rewriteHbs(hbs, classes, tags, postfix) {
@@ -10,11 +11,13 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
       if (node.name === 'class') {
         if (node.value.type === 'TextNode' && node.value.chars) {
           const renamedClass = renameClass(node.value.chars, postfix, classes);
+
           node.value.chars = renamedClass;
         } else if (node.value.type === 'ConcatStatement') {
           for (let part of node.value.parts) {
             if (part.type === 'TextNode' && part.chars) {
               const renamedClass = renameClass(part.chars, postfix, classes);
+
               part.chars = renamedClass;
             }
           }
@@ -26,6 +29,7 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
       if (tags.has(node.tag)) {
         // check if class attribute already exists
         const classAttr = node.attributes.find((attr) => attr.name === 'class');
+
         if (classAttr) {
           classAttr.value.chars += ' ' + postfix;
         } else {
@@ -68,9 +72,11 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
       if (cssClass) {
         const textNode = recast.builders.text(renameClass(cssClass, postfix));
         const parent = stack[stack.length - 1];
+
         if (parent.type === 'AttrNode') {
           parent.quoteType = '"';
         }
+
         return textNode;
       }
     },
@@ -86,11 +92,13 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
           'StringLiteral',
           renameClass(cssClass, postfix)
         );
+
         return textNode;
       }
     },
   });
 
   let result = recast.print(ast);
+
   return result;
 }

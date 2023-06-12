@@ -1,5 +1,6 @@
 // import { createUnplugin }  from 'unplugin';
 import { basename } from 'path';
+
 import fsExists from './lib/fsExists.js';
 import generateHash from './lib/generateAbsolutePathHash.js';
 import rewriteCss from './lib/rewriteCss.js';
@@ -18,6 +19,7 @@ export default async function (code) {
   ]);
 
   let rewrittenCss;
+
   if (hbsExists || (gjsExists && cssPath.startsWith(this.rootContext))) {
     rewrittenCss = rewriteCss(code, postfix, cssFileName);
   } else {

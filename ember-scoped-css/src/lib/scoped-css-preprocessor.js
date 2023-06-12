@@ -1,13 +1,14 @@
 'use strict';
 
 import Concat from 'broccoli-concat';
+import { Funnel } from 'broccoli-funnel';
 import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
-import { Funnel } from 'broccoli-funnel';
 import path from 'path';
+
 import fsExists from './fsExists.js';
-import rewriteCss from './rewriteCss.js';
 import generateHash from './generateRelativePathHash.js';
+import rewriteCss from './rewriteCss.js';
 
 const COMPONENT_EXTENSIONS = ['js', 'ts', 'gjs', 'gts'];
 
@@ -33,10 +34,12 @@ class ScopedFilter extends Filter {
 
     // check if corresponding js file exists
     const existPromises = [];
+
     for (let inputPath of this.inputPaths) {
       for (let ext of COMPONENT_EXTENSIONS) {
         const relativeComponentPath = relativePath.replace(/\.css$/, '.' + ext);
         const componentPath = path.join(inputPath, relativeComponentPath);
+
         existPromises.push(fsExists(componentPath));
       }
     }
@@ -47,7 +50,9 @@ class ScopedFilter extends Filter {
     // rewrite css file
     if (componentExists) {
       const hash = generateHash(relativePath);
+
       content = rewriteCss(content, hash, relativePath);
+
       return content;
     } else {
       return '';

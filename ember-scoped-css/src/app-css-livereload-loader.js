@@ -1,7 +1,8 @@
-import { createUnplugin } from 'unplugin';
-import path from 'path';
 import { readFile } from 'fs/promises';
+import path from 'path';
+import { createUnplugin } from 'unplugin';
 import { Compilation } from 'webpack';
+
 import generateHash from './lib/generateAbsolutePathHash.js';
 
 export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
@@ -20,10 +21,12 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
       const importRegex = /import\s+['"]([^'"]+\.css)['"]\s*;$/gm;
       let cssPaths = [];
       let match;
+
       while ((match = importRegex.exec(code))) {
         const importPath = match[1];
         const directory = path.dirname(jsPath);
         const cssPath = path.resolve(directory, importPath);
+
         cssPaths.push(cssPath);
 
         // replace import with empty string
@@ -36,10 +39,13 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
 
       const promises = cssPaths.map(async (cssPath) => {
         let css = await readFile(cssPath, 'utf8');
+
         for (let i = loaders.length - 1; i >= 0; i--) {
           const loader = loaders[i];
+
           css = await loader.bind({ resourcePath: cssPath })(css);
         }
+
         // random string; lenght is 8
         const postfix = generateHash(path.basename(cssPath));
 
@@ -76,6 +82,7 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
               if (!cssAssets.length) {
                 return;
               }
+
               // let linkAdded = false;
               const document =
                 htmlEntrypointInfo.htmlEntryPoint.dom.window.document;
@@ -88,6 +95,7 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
 
                 if (!linkExists) {
                   const link = document.createElement('link');
+
                   link.rel = 'stylesheet';
                   link.href = '/' + asset;
                   head.appendChild(link);

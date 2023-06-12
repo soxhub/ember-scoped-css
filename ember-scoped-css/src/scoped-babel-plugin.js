@@ -1,8 +1,9 @@
-import rewriteHbs from './lib/rewriteHbs.js';
-import generateHash from './lib/generateRelativePathHash.js';
-import { readFileSync, existsSync } from 'fs';
-import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
+import { existsSync, readFileSync } from 'fs';
 import nodePath from 'path';
+
+import generateHash from './lib/generateRelativePathHash.js';
+import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
+import rewriteHbs from './lib/rewriteHbs.js';
 
 export default () => {
   return {
@@ -13,6 +14,7 @@ export default () => {
         }
 
         const node = path.node;
+
         if (
           node.callee.name === 'precompileTemplate' ||
           node.callee.name === 'hbs'
@@ -29,6 +31,7 @@ export default () => {
           );
 
           const cssPath = fileName.replace(/(\.js)|(\.ts)/, '.css');
+
           if (existsSync(cssPath)) {
             const css = readFileSync(cssPath, 'utf8');
             const { classes, tags } = getClassesTagsFromCss(css);
@@ -36,6 +39,7 @@ export default () => {
             const postfix = generateHash(
               state.file.opts.sourceFileName.replace(/(\.js)|(\.ts)/, '.css')
             );
+
             if (node.arguments[0].type === 'TemplateLiteral') {
               node.arguments[0].quasis[0].value.raw = rewriteHbs(
                 node.arguments[0].quasis[0].value.raw,

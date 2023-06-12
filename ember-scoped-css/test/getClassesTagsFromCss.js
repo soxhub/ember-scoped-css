@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import getClassesTagsFromCss from '../src/lib/getClassesTagsFromCss.js';
 
 describe('rewriteCss', function () {

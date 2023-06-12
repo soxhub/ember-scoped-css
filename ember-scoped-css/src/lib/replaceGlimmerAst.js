@@ -1,7 +1,8 @@
-import recast from 'recast';
 import babelParser from '@babel/parser';
-import path from 'path';
 import { readFile } from 'fs/promises';
+import path from 'path';
+import recast from 'recast';
+
 import fsExists from './fsExists.js';
 
 const parseOptions = {
@@ -14,6 +15,7 @@ export default async function (script, id, replaceFunction) {
   let css;
 
   const cssExists = await fsExists(cssPath);
+
   if (cssExists) {
     css = await readFile(cssPath, 'utf-8');
   }
@@ -25,6 +27,7 @@ export default async function (script, id, replaceFunction) {
   recast.visit(ast, {
     visitCallExpression(nodePath) {
       const node = nodePath.node;
+
       if (
         node.callee.name === 'createTemplateFactory' &&
         node.arguments.length === 1
@@ -34,6 +37,7 @@ export default async function (script, id, replaceFunction) {
         );
         const opcodes = JSON.parse(blockProp.value.value);
         const newOpcodes = replaceFunction(opcodes, css);
+
         blockProp.value.value = JSON.stringify(newOpcodes);
 
         const fileName = path.basename(cssPath);
@@ -45,12 +49,15 @@ export default async function (script, id, replaceFunction) {
           parseOptions
         );
         const importCssNode = importCss.program.body[0];
+
         ast.program.body.unshift(importCssNode);
       }
 
       this.traverse(nodePath);
     },
   });
+
   const resultScript = recast.print(ast).code;
+
   return resultScript;
 }

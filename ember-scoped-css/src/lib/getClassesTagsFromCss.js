@@ -1,5 +1,6 @@
 import postcss from 'postcss';
 import parser from 'postcss-selector-parser';
+
 import isInsideGlobal from './isInsideGlobal.js';
 
 function getClassesAndTags(sel, classes, tags) {
@@ -21,6 +22,7 @@ export default function getClassesTagsFromCss(css) {
   const tags = new Set();
 
   const ast = postcss.parse(css);
+
   ast.walk((node) => {
     if (node.type === 'rule') {
       getClassesAndTags(node.selector, classes, tags);

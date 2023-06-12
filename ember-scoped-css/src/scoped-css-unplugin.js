@@ -1,12 +1,13 @@
-import { createUnplugin } from 'unplugin';
 import { readFile } from 'fs/promises';
 import path from 'path';
-import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
-import generateHash from './lib/generateAbsolutePathHash.js';
-import replaceHbsInJs from './lib/replaceHbsInJs.js';
-import rewriteHbs from './lib/rewriteHbs.js';
+import { createUnplugin } from 'unplugin';
+
 import fsExists from './lib/fsExists.js';
+import generateHash from './lib/generateAbsolutePathHash.js';
+import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
+import replaceHbsInJs from './lib/replaceHbsInJs.js';
 import rewriteCss from './lib/rewriteCss.js';
+import rewriteHbs from './lib/rewriteHbs.js';
 
 function isJsFile(id) {
   return id.endsWith('.js') || id.endsWith('.ts');
@@ -22,6 +23,7 @@ async function transformJsFile(code, jsPath) {
 
   const cssExists = await fsExists(cssPath);
   let css;
+
   if (cssExists) {
     css = await readFile(cssPath, 'utf8');
   } else {
@@ -40,6 +42,7 @@ async function transformJsFile(code, jsPath) {
     const { classes, tags } = getClassesTagsFromCss(css);
     const postfix = generateHash(cssPath);
     const rewritten = rewriteHbs(hbs, classes, tags, postfix);
+
     return rewritten;
   });
 
@@ -62,6 +65,7 @@ async function transformCssFile(code, id, emitFile) {
 
   if (jsExists || hbsExists || gtsExists) {
     const postfix = generateHash(id);
+
     code = rewriteCss(code, postfix, path.basename(id));
   }
 
@@ -70,6 +74,7 @@ async function transformCssFile(code, id, emitFile) {
     fileName: id.replace(path.join(process.cwd(), 'src/'), ''),
     source: code,
   });
+
   return '';
 }
 
@@ -79,8 +84,10 @@ export default createUnplugin(() => {
 
     generateBundle(a, bundle) {
       let cssFiles = [];
+
       for (let asset in bundle) {
         const cssAsset = asset.replace('js', 'css');
+
         if (!asset.endsWith('js') || !bundle[cssAsset]) {
           continue;
         }

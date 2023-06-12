@@ -6,6 +6,7 @@ export default function (globPath) {
       if (err) {
         reject(err);
       }
+
       resolve(files);
     });
   });

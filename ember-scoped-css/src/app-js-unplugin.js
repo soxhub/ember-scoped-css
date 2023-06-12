@@ -1,8 +1,9 @@
-import { createUnplugin } from 'unplugin';
-import replaceGlimmerAst from './lib/replaceGlimmerAst.js';
 import path from 'path';
+import { createUnplugin } from 'unplugin';
+
 import generateHash from './lib/generateAbsolutePathHash.js';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
+import replaceGlimmerAst from './lib/replaceGlimmerAst.js';
 
 function* iterateOpcodes(opcodes) {
   for (let instruction of opcodes) {
@@ -32,6 +33,7 @@ function inflateTagName(tag) {
       return 'a';
     }
   }
+
   throw new Error('Unknown tag');
 }
 
@@ -83,6 +85,7 @@ export default createUnplugin(({ appDir }) => {
           ) {
             // 10 - open element
             let existingClassInstruction;
+
             for (
               let i = opcodes[0].indexOf(instruction);
               i <= opcodes[0].length;
@@ -91,8 +94,10 @@ export default createUnplugin(({ appDir }) => {
               if (opcodes[0][i][0] === 14 && opcodes[0][i][1] === 0) {
                 // 14 - css attribute, 0 - class
                 existingClassInstruction = opcodes[0][i];
+
                 break;
               }
+
               if (opcodes[0][i][0] === 12) {
                 // 12 - flush element
                 break;
@@ -103,6 +108,7 @@ export default createUnplugin(({ appDir }) => {
               existingClassInstruction[2] += ' ' + postfix;
             } else {
               const classInstruction = [14, 0, postfix, undefined];
+
               insertions.push([instruction, classInstruction]);
             }
           }
@@ -111,6 +117,7 @@ export default createUnplugin(({ appDir }) => {
         // insert new instructions
         for (let [instruction, classInstruction] of insertions) {
           const index = opcodes[0].indexOf(instruction);
+
           opcodes[0].splice(index + 1, 0, classInstruction);
         }
 
