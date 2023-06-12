@@ -13,6 +13,7 @@ div {
   border-top-right-radius: 4px;
   padding: 15px;
   margin: 0px -15px;
+  color: rgb(255, 0, 0);
 }
 
 .message {
