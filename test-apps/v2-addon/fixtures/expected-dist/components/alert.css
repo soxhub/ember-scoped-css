@@ -1,21 +1,21 @@
 /* alert.css */
 @layer components {
 
-div.e8e958954 {
+div.e0286f62f {
   width: 400px;
   border: 1px solid black;
   padding: 0px 15px;
   margin-top: 15px;
 }
 
-.header_e8e958954 {
+.header_e0286f62f {
   margin-top: 0;
   background-color: lightslategray;
   padding: 15px;
   margin: 0px -15px;
 }
 
-.message_e8e958954 {
+.message_e0286f62f {
   font-style: italic;
   font-size: 1em;
 }
