@@ -33,7 +33,7 @@ npm install --save-dev ember-scoped-css
 2. Add the following to your `rollup.config.mjs`:
 
 ```diff
-+ import { scoped-css-unplugin } from 'ember-scoped-css';
++ import { scopedCssUnplugin } from 'ember-scoped-css/build';
 
 // if you want to have some global styles in your addon then
 // put them in the styles folder and change the path to the styles folder
