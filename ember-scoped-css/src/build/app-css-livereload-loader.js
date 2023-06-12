@@ -3,7 +3,7 @@ import path from 'path';
 import { createUnplugin } from 'unplugin';
 import { Compilation } from 'webpack';
 
-import generateHash from './lib/generateAbsolutePathHash.js';
+import generateHash from '../lib/generateAbsolutePathHash.js';
 
 export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
   return {

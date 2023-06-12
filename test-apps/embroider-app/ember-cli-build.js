@@ -3,7 +3,8 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = async function (defaults) {
-  const { appJsUnplugin } = await import('ember-scoped-css');
+  const { appJsUnplugin } = await import('ember-scoped-css/build');
+
   const app = new EmberApp(defaults, {
     // autoImport: {
     //   watchDependencies: ['v2-addon'],
@@ -29,7 +30,9 @@ module.exports = async function (defaults) {
               test: /\.css$/,
               use: [
                 {
-                  loader: require.resolve('ember-scoped-css/app-css-loader'),
+                  loader: require.resolve(
+                    'ember-scoped-css/build/app-css-loader'
+                  ),
                 },
               ],
             },
@@ -38,7 +41,7 @@ module.exports = async function (defaults) {
               use: [
                 {
                   loader: require.resolve(
-                    'ember-scoped-css/app-dependency-loader'
+                    'ember-scoped-css/build/app-dependency-loader'
                   ),
                 },
               ],

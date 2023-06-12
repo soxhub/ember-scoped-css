@@ -2,12 +2,12 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { createUnplugin } from 'unplugin';
 
-import fsExists from './lib/fsExists.js';
-import generateHash from './lib/generateAbsolutePathHash.js';
-import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
-import replaceHbsInJs from './lib/replaceHbsInJs.js';
-import rewriteCss from './lib/rewriteCss.js';
-import rewriteHbs from './lib/rewriteHbs.js';
+import fsExists from '../lib/fsExists.js';
+import generateHash from '../lib/generateAbsolutePathHash.js';
+import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import replaceHbsInJs from '../lib/replaceHbsInJs.js';
+import rewriteCss from '../lib/rewriteCss.js';
+import rewriteHbs from '../lib/rewriteHbs.js';
 
 function isJsFile(id) {
   return id.endsWith('.js') || id.endsWith('.ts');
