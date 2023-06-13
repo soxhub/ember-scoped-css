@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
 import nodePath from 'path';
 
+import { packageScopedPathToModulePath } from './lib/generateAbsolutePathHash.js';
 import generateHash from './lib/generateRelativePathHash.js';
 import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 import rewriteHbs from './lib/rewriteHbs.js';
@@ -36,9 +37,10 @@ export default () => {
             const css = readFileSync(cssPath, 'utf8');
             const { classes, tags } = getClassesTagsFromCss(css);
 
-            const postfix = generateHash(
-              state.file.opts.sourceFileName.replace(/(\.js)|(\.ts)/, '.css')
+            let localPackagerStylePath = packageScopedPathToModulePath(
+              state.file.opts.sourceFileName
             );
+            const postfix = generateHash(localPackagerStylePath);
 
             if (node.arguments[0].type === 'TemplateLiteral') {
               node.arguments[0].quasis[0].value.raw = rewriteHbs(

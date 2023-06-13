@@ -7,6 +7,7 @@ import Filter from 'broccoli-persistent-filter';
 import path from 'path';
 
 import fsExists from './fsExists.js';
+import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';
 import generateHash from './generateRelativePathHash.js';
 import rewriteCss from './rewriteCss.js';
 
@@ -49,7 +50,11 @@ class ScopedFilter extends Filter {
 
     // rewrite css file
     if (componentExists) {
-      const hash = generateHash(relativePath);
+      let localPackagerStylePath = packageScopedPathToModulePath(relativePath);
+
+      const hash = generateHash(localPackagerStylePath);
+
+      console.log({ localPackagerStylePath, hash });
 
       content = rewriteCss(content, hash, relativePath);
 

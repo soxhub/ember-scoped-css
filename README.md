@@ -101,7 +101,7 @@ test('MyComponent has hello-class', async function (assert) {
 
   const rewrittenClass = scopedClass(
     'hello-class',
-    'src/components/my-component.css'
+    '<module-name>/components/my-component'
   );
 
   assert.dom('[data-test-my-component]').hasClass(rewrittenClass);

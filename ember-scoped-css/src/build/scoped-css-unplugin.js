@@ -69,9 +69,11 @@ async function transformCssFile(code, id, emitFile) {
     code = rewriteCss(code, postfix, path.basename(id));
   }
 
+  const emittedFileName = id.replace(path.join(process.cwd(), 'src/'), '');
+
   emitFile({
     type: 'asset',
-    fileName: id.replace(path.join(process.cwd(), 'src/'), ''),
+    fileName: emittedFileName,
     source: code,
   });
 

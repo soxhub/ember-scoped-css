@@ -10,12 +10,7 @@ module('Integration | Component | show-time', function (hooks) {
   test('it has scoped class', async function (assert) {
     await render(hbs`<ShowTime />`);
 
-    const elem = this.element.querySelector('h2');
-
-    assert.ok(elem.classList.contains('ed98ac90a'));
-
-    const style = window.getComputedStyle(elem);
-
-    assert.strictEqual(style.color, 'rgb(0, 0, 255)');
+    assert.dom('h2').hasClass('e6e05c2f6');
+    assert.dom('h2').hasStyle({ color: 'rgb(0, 0, 255)' });
   });
 });

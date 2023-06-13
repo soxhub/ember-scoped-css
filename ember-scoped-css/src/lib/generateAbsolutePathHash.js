@@ -1,14 +1,51 @@
 import fsSync from 'node:fs';
+import path from 'node:path';
 
 import { findUpSync } from 'find-up';
-import path from 'path';
 
 import generateHash from './generateRelativePathHash.js';
 
 export default function generateHashFromAbsolutePath(absolutePath) {
+  /**
+   * The whole of `appPath` ultimately transforms the `absolutePath`
+   * into the exact string that folks will pass to `relativePath`
+   * at runtime.
+   */
   const modulePath = appPath(absolutePath);
 
   return generateHash(modulePath);
+}
+
+export function packageScopedPathToModulePath(packageScopedPath) {
+  /**
+   * *By convention*, `src` is omitted from component paths.
+   * We can reflect the same behavior by replacing src/
+   * with an empty string.
+   *
+   * CSS isn't emitted as a co-located module, but
+   * to keep conventions consistent across languages,
+   * we can pretend it is.
+   *
+   * Any customization beyond removing `src` and `app` is potentially confusing.
+   * If we need further customizations, we'll want to match on `exports` in the
+   * corresponding package.json
+   */
+  let packageRelative = packageScopedPath.replace(/^\/src\//, '/');
+
+  /**
+   * If an extension is passed, remove it.
+   * When using packagers, folks are used to not having to specify extensions for files.
+   * Since we don't even emit css files co-located to each module,
+   * this helps us not convey a lie that a file may exist in at runtime.
+   *
+   * For example `<module-name>/components/button`.
+   * It doesn't matter what the extension is, because you can only have one css file
+   * for the button module anyway.
+   */
+  let parsed = path.parse(packageRelative);
+  let localPackagerStylePath = path.join(parsed.dir, parsed.name);
+
+  return localPackagerStylePath;
 }
 
 /**
@@ -29,7 +66,9 @@ function appPath(sourcePath) {
    */
   let packageRelative = sourcePath.replace(workspacePath, '');
 
-  return `${name}${packageRelative}`;
+  let localPackagerStylePath = packageScopedPathToModulePath(packageRelative);
+
+  return `${name}${localPackagerStylePath}`;
 }
 
 const CACHE = new Set();

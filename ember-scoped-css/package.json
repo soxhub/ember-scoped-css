@@ -34,7 +34,7 @@
     }
   },
   "scripts": {
-    "build": "esbuild src/scoped-babel-plugin.js src/build/app-css-loader.js src/build/app-dependency-loader.js src/lib/scoped-css-preprocessor.js src/runtime/test-support.js --bundle --outdir=dist --platform=node --out-extension:.js=.cjs",
+    "build": "./build.sh",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint .",

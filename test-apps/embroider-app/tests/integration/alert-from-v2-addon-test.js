@@ -6,16 +6,16 @@ import { setupRenderingTest } from 'embroider-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | my-component', function (hooks) {
+module('Integration | Component | Alert from v2-addon', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
-    await render(hbs`<MyComponent />`);
+    await render(hbs`<Alert />`);
 
-    assert.dom('h3').hasClass('header_e2b2be1e7');
-    assert.dom('h3').hasStyle({ color: 'rgb(255, 0, 0)' });
+    assert.dom('p').hasClass('message_e4b9579df');
+    assert.dom('p').hasStyle({ fontStyle: 'italic' });
     assert
-      .dom('h3')
-      .hasClass(scopedClass('header', 'embroider-app/components/my-component'));
+      .dom('p')
+      .hasClass(scopedClass('message', 'v2-addon/components/alert'));
   });
 });

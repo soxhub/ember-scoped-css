@@ -4,7 +4,7 @@ import { setComponentTemplate } from '@ember/component';
 import { precompileTemplate } from '@ember/template-compilation';
 
 var time = setComponentTemplate(precompileTemplate(`
-  <h1 class="e7ca44ec1">Time</h1>
+  <h1 class="e3dfc1780">Time</h1>
 `, {
   strictMode: true
 }), templateOnly("time", "_time"));

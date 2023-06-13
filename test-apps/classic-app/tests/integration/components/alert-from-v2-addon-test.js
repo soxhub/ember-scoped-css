@@ -6,16 +6,16 @@ import { setupRenderingTest } from 'classic-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | header', function (hooks) {
+module('Integration | Component | Alert from v2-addon', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
-    await render(hbs`<Header />`);
+    await render(hbs`<Alert />`);
 
-    assert.dom('h1').hasClass('test-header_e64a12152');
-    assert.dom('h1').hasStyle({ color: 'rgb(255, 0, 0)' });
+    assert.dom('p').hasClass('message_e4b9579df');
+    assert.dom('p').hasStyle({ fontStyle: 'italic' });
     assert
-      .dom('h1')
-      .hasClass(scopedClass('test-header', 'classic-app/components/header'));
+      .dom('p')
+      .hasClass(scopedClass('message', 'v2-addon/components/alert'));
   });
 });
