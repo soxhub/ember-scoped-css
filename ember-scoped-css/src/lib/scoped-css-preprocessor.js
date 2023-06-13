@@ -54,8 +54,6 @@ class ScopedFilter extends Filter {
 
       const hash = generateHash(localPackagerStylePath);
 
-      console.log({ localPackagerStylePath, hash });
-
       content = rewriteCss(content, hash, relativePath);
 
       return content;
