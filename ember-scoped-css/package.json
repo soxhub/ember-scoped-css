@@ -10,6 +10,7 @@
   "type": "module",
   "files": [
     "src",
+    "dist",
     "addon-main.cjs"
   ],
   "exports": {
