@@ -1,4 +1,4 @@
-import fsExists from './lib/fsExists.js';
+import fsExists from '../lib/fsExists.js';
 
 export default async function (source) {
   if (this.resourcePath.endsWith('.js')) {

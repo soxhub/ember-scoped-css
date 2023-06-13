@@ -2,10 +2,10 @@
 
 const {
   default: ScopedCssPreprocessor,
-} = require('../dist/lib/scoped-css-preprocessor.cjs');
+} = require('ember-scoped-css/build/ember-classic-support');
 
 module.exports = {
-  name: 'ember-scoped-css',
+  name: require('./package').name,
 
   init() {
     this._super.init && this._super.init.apply(this, arguments);
@@ -27,7 +27,7 @@ module.exports = {
       if (htmlbarsPlugin) {
         let htmlbarsPluginIndex = plugins.indexOf(htmlbarsPlugin);
 
-        let customPlugin = [require.resolve('../dist/scoped-babel-plugin.cjs')];
+        let customPlugin = [require.resolve('ember-scoped-css/babel-plugin')];
 
         plugins.splice(htmlbarsPluginIndex, 0, customPlugin);
       }

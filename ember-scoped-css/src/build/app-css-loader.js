@@ -1,9 +1,9 @@
 // import { createUnplugin }  from 'unplugin';
 import path from 'node:path';
 
-import fsExists from './lib/fsExists.js';
-import generateHash from './lib/generateAbsolutePathHash.js';
-import rewriteCss from './lib/rewriteCss.js';
+import fsExists from '../lib/fsExists.js';
+import generateHash from '../lib/generateAbsolutePathHash.js';
+import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
   const cssPath = this.resourcePath;

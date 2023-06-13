@@ -2,10 +2,10 @@
 import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
 
-import fsExists from './lib/fsExists.js';
-import generateHash from './lib/generateAbsolutePathHash.js';
-import getFiles from './lib/getFiles.js';
-import rewriteCss from './lib/rewriteCss.js';
+import fsExists from '../lib/fsExists.js';
+import generateHash from '../lib/generateAbsolutePathHash.js';
+import getFiles from '../lib/getFiles.js';
+import rewriteCss from '../lib/rewriteCss.js';
 
 export default class {
   apply(compiler) {

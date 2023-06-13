@@ -1,9 +1,9 @@
 import path from 'path';
 import { createUnplugin } from 'unplugin';
 
-import generateHash from './lib/generateAbsolutePathHash.js';
-import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
-import replaceGlimmerAst from './lib/replaceGlimmerAst.js';
+import generateHash from '../lib/generateAbsolutePathHash.js';
+import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import replaceGlimmerAst from '../lib/replaceGlimmerAst.js';
 
 function* iterateOpcodes(opcodes) {
   for (let instruction of opcodes) {
