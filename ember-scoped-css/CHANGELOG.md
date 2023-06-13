@@ -1,5 +1,20 @@
 # ember-scoped-css
 
+## 0.11.0
+
+### Minor Changes
+
+- [`55d09ea`](https://github.com/soxhub/ember-scoped-css/commit/55d09ea84b6ce4fc0feb7231eb25dfde6ed8471a) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Normalize on module paths for `scopedClass` as well as hash generation.
+
+  To migrate:
+
+  ```diff
+      assert
+        .dom('h1')
+  -     .hasClass(scopedClass('test-header', 'classic-app/components/header.css'));
+  +     .hasClass(scopedClass('test-header', 'classic-app/components/header'));
+  ```
+
 ## 0.10.1
 
 ### Patch Changes
