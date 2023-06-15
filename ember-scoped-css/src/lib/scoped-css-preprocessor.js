@@ -11,7 +11,7 @@ import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';
 import generateHash from './generateRelativePathHash.js';
 import rewriteCss from './rewriteCss.js';
 
-const COMPONENT_EXTENSIONS = ['js', 'ts', 'gjs', 'gts'];
+const COMPONENT_EXTENSIONS = ['hbs', 'js', 'ts', 'gjs', 'gts'];
 
 class ScopedFilter extends Filter {
   constructor(componentsNode, options = {}) {
