@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -269,8 +269,8 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
       ember-auto-import:
-        specifier: 2.6.1
-        version: 2.6.1(webpack@5.75.0)
+        specifier: 2.6.3
+        version: 2.6.3(webpack@5.75.0)
       ember-cli:
         specifier: ~4.12.0
         version: 4.12.1
@@ -14051,7 +14051,7 @@ packages:
     resolution: {integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==}
     engines: {node: '>= 8.9.0'}
     dependencies:
-      '@types/json-schema': 7.0.11
+      '@types/json-schema': 7.0.12
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
 
