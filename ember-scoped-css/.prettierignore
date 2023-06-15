@@ -6,3 +6,4 @@ dist/
 
 # misc
 coverage/
+*.md

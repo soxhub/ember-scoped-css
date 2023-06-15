@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cp ../README.md ./README.md
+cp ../LICENSE.md ./LICENSE.md
+
 pnpm esbuild \
   src/scoped-babel-plugin.js \
   src/build/app-css-loader.js \
