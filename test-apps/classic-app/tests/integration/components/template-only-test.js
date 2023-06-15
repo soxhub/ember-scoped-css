@@ -1,9 +1,10 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-import { scopedClass } from 'ember-scoped-css/test-support';
 
 import { setupRenderingTest } from 'classic-app/tests/helpers';
+
+import { scopedClass } from 'ember-scoped-css/test-support';
 
 module('Integration | Component | template-only', function (hooks) {
   setupRenderingTest(hooks);
