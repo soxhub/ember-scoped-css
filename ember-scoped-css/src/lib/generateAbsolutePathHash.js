@@ -15,8 +15,6 @@ export default function generateHashFromAbsolutePath(absolutePath) {
 
   const hash = generateHash(modulePath);
 
-  console.log({ absolutePath, modulePath, hash });
-
   return hash;
 }
 
