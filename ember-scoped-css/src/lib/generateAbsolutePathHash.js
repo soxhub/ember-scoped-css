@@ -13,7 +13,9 @@ export default function generateHashFromAbsolutePath(absolutePath) {
    */
   const modulePath = appPath(absolutePath);
 
-  return generateHash(modulePath);
+  const hash = generateHash(modulePath);
+
+  return hash;
 }
 
 export function packageScopedPathToModulePath(packageScopedPath) {
