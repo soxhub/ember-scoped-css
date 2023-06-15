@@ -10,12 +10,13 @@ module('Integration | Component | second', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
-    await render(hbs`<MyComponent />`);
+    await render(hbs`<Second />`);
 
-    assert.dom('h3').hasClass('header_e2b2be1e7');
+    assert.dom('h3').hasClass('header_e7d184117');
+    assert.dom('h3').hasClass('pb-4');
     assert
       .dom('h3')
-      .hasClass('pb-4', 'classes not from the stylesheet are untouched');
+      .hasClass(/pb-4/, 'classes not from the stylesheet are untouched');
     assert.dom('h3').hasStyle({ margin: '0px -15px' });
     assert
       .dom('h3')
