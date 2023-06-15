@@ -275,8 +275,8 @@ importers:
         specifier: ~4.12.0
         version: 4.12.1
       ember-cli-app-version:
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: ^6.0.0
+        version: 6.0.0(ember-source@4.10.0)
       ember-cli-babel:
         specifier: ^7.26.11
         version: 7.26.11
@@ -416,8 +416,8 @@ importers:
         specifier: ~4.12.0
         version: 4.12.1
       ember-cli-app-version:
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: ^6.0.0
+        version: 6.0.0(ember-source@4.10.0)
       ember-cli-babel:
         specifier: ^7.26.11
         version: 7.26.11
@@ -7942,11 +7942,14 @@ packages:
       - webpack
     dev: true
 
-  /ember-cli-app-version@5.0.0:
-    resolution: {integrity: sha512-afhx/CXDOMNXzoe4NDPy5WUfxWmYYHUzMCiTyvPBxCDBXYcMrtxNWxvgaSaeqcoHVEmqzeyBj8V82tzmT1dcyw==}
-    engines: {node: 10.* || >= 12}
+  /ember-cli-app-version@6.0.0(ember-source@4.10.0):
+    resolution: {integrity: sha512-XhzETSTy+RMTIyxM/FaZ/8aJvAwT/iIp8HC9zukpOaSPEm5i6Vm4tskeXY4OBnY3VwFWNXWssDt1hgIkUP76WQ==}
+    engines: {node: 14.* || 16.* || >= 18}
+    peerDependencies:
+      ember-source: ^3.28.0 || ^4.0.0
     dependencies:
       ember-cli-babel: 7.26.11
+      ember-source: 4.10.0(@babel/core@7.22.5)(@glimmer/component@1.1.2)(webpack@5.75.0)
       git-repo-info: 2.1.1
     transitivePeerDependencies:
       - supports-color
