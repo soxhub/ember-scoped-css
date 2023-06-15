@@ -1,5 +1,13 @@
 # ember-scoped-css
 
+## 0.11.1
+
+### Patch Changes
+
+- [#60](https://github.com/soxhub/ember-scoped-css/pull/60) [`95dbe7a`](https://github.com/soxhub/ember-scoped-css/commit/95dbe7a5d65122b593fca767afd4d34cf00e9f0b) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Add README to the published package
+
+- [#64](https://github.com/soxhub/ember-scoped-css/pull/64) [`cb8b46c`](https://github.com/soxhub/ember-scoped-css/commit/cb8b46ceb424dc098e033f32bfb8ac6cbcf02677) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Add support for \*.hbs files in non-embroider apps. Embroider already supported hbs / template-only components
+
 ## 0.11.0
 
 ### Minor Changes
