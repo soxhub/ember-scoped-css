@@ -13,8 +13,8 @@ The philosophy of `ember-scoped-css` is to stick as close to CSS and HTML as pos
 ## Compatibility
 
 - V2 addons
-
-We only support using `ember-scoped-css` as a rollup plugin with a V2 addon right now but we are actively working to support embroider apps and classic ember apps.
+- non-embroider apps 
+- embroider apps
 
 ## Installation for an ember app
 
