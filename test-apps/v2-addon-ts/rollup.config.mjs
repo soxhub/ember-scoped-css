@@ -33,6 +33,8 @@ export default {
     // package names.
     addon.dependencies(),
 
+    scopedCssUnplugin.rollup(),
+
     // compile TypeScript to latest JavaScript, including Babel transpilation
     typescript({
       transpiler: 'babel',
@@ -45,7 +47,6 @@ export default {
     glimmerTemplateTag(),
 
     // addon.keepAssets(['**/*.css']),
-    scopedCssUnplugin.rollup(),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),

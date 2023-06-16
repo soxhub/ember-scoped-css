@@ -40,11 +40,16 @@ module.exports = {
       return;
     }
 
+    let scopedCssOptions = this.app.options['ember-scoped-css'] || {};
+
     // we need to run our css preprocessor first, so we removed all other from the registry and run them as part of our preprocessor
     // we did not find other way how to do it more elegantly
     let preprocessors = registry.load('css');
 
     preprocessors.forEach((p) => registry.remove('css', p));
+
+    this.outputStylePreprocessor.configureOptions(scopedCssOptions);
+
     this.outputStylePreprocessor.preprocessors = preprocessors;
     registry.add('css', this.outputStylePreprocessor);
   },

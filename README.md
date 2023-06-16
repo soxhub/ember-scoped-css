@@ -10,16 +10,90 @@ As selectors are scoped/renamed during the build process. So there is no perform
 
 The philosophy of `ember-scoped-css` is to stick as close to CSS and HTML as possible and not introduce new syntax or concepts unless it is absolutely necessary. 
 
+You may also find the docs on [CSS `@layer`](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) interesting.
+This build tool emits CSS in a `@layer`.
+
 ## Compatibility
 
 - V2 addons
 - non-embroider apps 
 - embroider apps
 
-## Installation for an ember app
 
+## Installation for a non-embroider ember app
+
+```bash
+npm install --save-dev ember-scoped-css ember-scoped-css-compat
 ```
+
+### Configuration
+
+In your `ember-cli-build.js`, you can configure the behavior of scoped-css transformations within the app via 
+```js 
+
+const app = new EmberApp(defaults, { 
+  /* ... */ 
+  'ember-scoped-css': {
+    layerName: 'app-styles', // default: 'components', set to false to disable the layer
+  }
+});
+```
+
+## Installation for an embroider app
+
+```bash 
 npm install --save-dev ember-scoped-css
+```
+
+Setup webpack:
+```js 
+// ember-cli-build.js
+module.exports = async function (defaults) {
+  const { appJsUnplugin } = await import('ember-scoped-css/build');
+  
+  const app = new EmberApp(defaults, { /* ... */ });
+
+  const { Webpack } = require('@embroider/webpack');
+
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    /* ... */
+    packagerOptions: {
+      // css loaders for live reloading css
+      webpackConfig: {
+        plugins: [appJsUnplugin.webpack({ appDir: __dirname })],
+        module: {
+          rules: [
+            // css loaders for production
+            {
+              test: /\.css$/,
+              use: [
+                {
+                  loader: require.resolve(
+                    'ember-scoped-css/build/app-css-loader'
+                  ),
+                  options: {
+                    layerName: 'the-layer-name', // optional
+                  }
+                },
+              ],
+            },
+            {
+              test: /(\.hbs)|(\.js)$/,
+              use: [
+                {
+                  loader: require.resolve(
+                    'ember-scoped-css/build/app-dependency-loader'
+                  ),
+                },
+              ],
+              exclude: [/node_modules/, /dist/, /assets/],
+            },
+          ],
+        },
+      },
+    },
+  });
+}
 ```
 
 ## Installation for a V2 Addon
@@ -43,6 +117,18 @@ npm install --save-dev ember-scoped-css
 
 // add the following to the rollup config
 + scopedCssUnplugin.rollup(),
+```
+
+Note that if you're using [`rollup-plugin-ts`](https://github.com/wessberg/rollup-plugin-ts), `scopedCssUnpulugin.rollup()` must come before `typescript(/*...*/)` 
+
+### Configuration
+
+In the rollup config, you may pass options:
+
+```js 
+scopedCssUnplugin.rollup({ 
+  layerName: 'utilities', // default: 'components', set to false to disable the layer
+});
 ```
 
 ## Usage
@@ -69,6 +155,8 @@ b {
   color: blue;
 }
 ```
+
+
 
 ### Passing classes as arguments to a component
 

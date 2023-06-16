@@ -8,6 +8,9 @@ module.exports = function (defaults) {
     cssModules: {
       extension: 'module.css',
     },
+    'ember-scoped-css': {
+      layerName: 'classic-app-layer',
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

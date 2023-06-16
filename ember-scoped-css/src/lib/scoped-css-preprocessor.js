@@ -17,6 +17,7 @@ class ScopedFilter extends Filter {
   constructor(componentsNode, options = {}) {
     super(componentsNode, options);
     this.warningStream = process.stderr;
+    this.options = options;
   }
 
   get extensions() {
@@ -54,7 +55,12 @@ class ScopedFilter extends Filter {
 
       const hash = generateHash(localPackagerStylePath);
 
-      content = rewriteCss(content, hash, relativePath);
+      content = rewriteCss(
+        content,
+        hash,
+        relativePath,
+        this.options.getUserOptions?.()?.layerName
+      );
 
       return content;
     } else {
@@ -67,6 +73,14 @@ export default class ScopedCssPreprocessor {
   constructor(options) {
     this.owner = options.owner;
     this.appName = options.owner.parent.pkg.name;
+  }
+
+  /**
+   * Sets the options from `setupPreprocessorRegistry`, the v1-Addon Hook
+   * @param {{ layerName?: string }} options
+   */
+  configureOptions(options) {
+    this.userOptions = options || { ['not configured']: true };
   }
 
   toTree(inputNode, inputPath, outputDirectory, options) {
@@ -84,6 +98,7 @@ export default class ScopedCssPreprocessor {
 
     componentsNode = new ScopedFilter(componentsNode, {
       inputPath,
+      getUserOptions: () => this.userOptions,
     });
 
     const componentStyles = new Funnel(componentsNode, {

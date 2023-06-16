@@ -37,12 +37,8 @@ function isInsideKeyframes(node) {
   return isInsideKeyframes(parent);
 }
 
-export default function rewriteCss(
-  css,
-  postfix,
-  fileName,
-  layerName = 'components'
-) {
+export default function rewriteCss(css, postfix, fileName, layerName) {
+  const layerNameWithDefault = layerName ?? 'components';
   const ast = postcss.parse(css);
 
   ast.walk((node) => {
@@ -53,8 +49,13 @@ export default function rewriteCss(
 
   const rewrittenCss = ast.toString();
 
+  if (!layerNameWithDefault) {
+    return `/* ${fileName} */\n${rewrittenCss}\n`;
+  }
+
   return (
-    `/* ${fileName} */\n@layer ${layerName} {\n\n` + rewrittenCss + '\n}\n'
+    `/* ${fileName} */\n@layer ${layerNameWithDefault} {\n\n` +
+    rewrittenCss +
+    '\n}\n'
   );
-  // return `/* ${fileName} */\n ${rewrittenCss}`;
 }
