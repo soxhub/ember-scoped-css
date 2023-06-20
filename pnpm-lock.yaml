@@ -332,8 +332,8 @@ importers:
         specifier: ^5.10.1
         version: 5.10.1
       ember-welcome-page:
-        specifier: ^6.2.0
-        version: 6.2.0
+        specifier: ^7.0.0
+        version: 7.0.0(@babel/core@7.22.5)
       eslint:
         specifier: ^8.42.0
         version: 8.42.0
@@ -8996,7 +8996,7 @@ packages:
       '@babel/plugin-proposal-decorators': 7.21.0(@babel/core@7.22.5)
       '@babel/preset-env': 7.20.2(@babel/core@7.22.5)
       '@embroider/macros': 1.10.0
-      '@embroider/shared-internals': 2.0.0
+      '@embroider/shared-internals': 2.1.0
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.75.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.0.3
@@ -9036,7 +9036,7 @@ packages:
       '@babel/plugin-proposal-decorators': 7.21.0(@babel/core@7.22.5)
       '@babel/preset-env': 7.20.2(@babel/core@7.22.5)
       '@embroider/macros': 1.10.0
-      '@embroider/shared-internals': 2.0.0
+      '@embroider/shared-internals': 2.1.0
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.75.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.0.3
@@ -9076,7 +9076,7 @@ packages:
       '@babel/plugin-proposal-decorators': 7.21.0(@babel/core@7.22.5)
       '@babel/preset-env': 7.20.2(@babel/core@7.22.5)
       '@embroider/macros': 1.10.0
-      '@embroider/shared-internals': 2.0.0
+      '@embroider/shared-internals': 2.1.0
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.78.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.0.3
@@ -10083,12 +10083,14 @@ packages:
       - supports-color
     dev: true
 
-  /ember-welcome-page@6.2.0:
-    resolution: {integrity: sha512-bDPgNgW0eRhLCHLaFK87p1mcP8hGwr0pXvPoskDeUGQzsOI3Pc3U/8WLpUSi2mNrmv0eNtfWqE+A1Wbx6F2l0Q==}
-    engines: {node: 12.* || 14.* || >= 16}
+  /ember-welcome-page@7.0.0(@babel/core@7.22.5):
+    resolution: {integrity: sha512-Jh4hd7oDv1xUVfgTlOkX7Wd/ksWyDuBVhcsk0g3Y3ZM2b2C+/SCda+uYaSqt9/r0mL/ASUKP/1UBWYGhc8zn3g==}
+    engines: {node: 14.* || 16.* || >= 18}
     dependencies:
       '@embroider/addon-shim': 1.8.4
+      '@glimmer/component': 1.1.2(@babel/core@7.22.5)
     transitivePeerDependencies:
+      - '@babel/core'
       - supports-color
     dev: true
 
