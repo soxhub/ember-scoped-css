@@ -45,7 +45,7 @@
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^2.1.2",
     "ember-page-title": "^7.0.0",
-    "ember-qunit": "^6.1.1",
+    "ember-qunit": "^7.0.0",
     "ember-resolver": "^10.0.0",
     "ember-scoped-css": "workspace:*",
     "ember-scoped-css-compat": "workspace:*",
