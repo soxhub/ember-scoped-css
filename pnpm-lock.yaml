@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -212,8 +212,8 @@ importers:
         specifier: ^11.5.0
         version: 11.8.0(eslint@8.42.0)
       eslint-plugin-n:
-        specifier: ^15.7.0
-        version: 15.7.0(eslint@8.42.0)
+        specifier: ^16.0.0
+        version: 16.0.0(eslint@8.42.0)
       eslint-plugin-qunit:
         specifier: ^7.3.4
         version: 7.3.4(eslint@8.42.0)
@@ -233,8 +233,8 @@ importers:
         specifier: ^15.4.0
         version: 15.4.0
       stylelint-config-standard:
-        specifier: ^32.0.0
-        version: 32.0.0(stylelint@15.4.0)
+        specifier: ^33.0.0
+        version: 33.0.0(stylelint@15.4.0)
       stylelint-prettier:
         specifier: ^3.0.0
         version: 3.0.0(prettier@2.8.8)(stylelint@15.4.0)
@@ -9032,7 +9032,7 @@ packages:
       parse5: 6.0.1
       resolve: 1.22.2
       resolve-package-path: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.2
       style-loader: 2.0.0(webpack@5.78.0)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
@@ -9072,7 +9072,7 @@ packages:
       parse5: 6.0.1
       resolve: 1.22.2
       resolve-package-path: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.2
       style-loader: 2.0.0(webpack@5.75.0)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
@@ -9112,7 +9112,7 @@ packages:
       parse5: 6.0.1
       resolve: 1.22.2
       resolve-package-path: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.2
       style-loader: 2.0.0(webpack@5.78.0)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
@@ -10651,7 +10651,7 @@ packages:
       is-core-module: 2.12.1
       minimatch: 3.1.2
       resolve: 1.22.2
-      semver: 7.5.1
+      semver: 7.5.2
     dev: true
 
   /eslint-plugin-n@16.0.0(eslint@8.42.0):
@@ -10668,7 +10668,7 @@ packages:
       is-core-module: 2.12.1
       minimatch: 3.1.2
       resolve: 1.22.2
-      semver: 7.5.1
+      semver: 7.5.2
     dev: true
 
   /eslint-plugin-node@11.1.0(eslint@8.42.0):
@@ -16064,21 +16064,21 @@ packages:
     resolution: {integrity: sha512-DU2KZiB6VbPkO2tGSqQ9n96ZstUPjW7X4sGO6V2m1myIQluX0p1Ol8BrA/l6/EesqhMqXOIXs3cJNOy1UuU2BA==}
     dev: true
 
-  /stylelint-config-recommended@11.0.0(stylelint@15.4.0):
-    resolution: {integrity: sha512-SoGIHNI748OCZn6BxFYT83ytWoYETCINVHV3LKScVAWQQauWdvmdDqJC5YXWjpBbxg2E761Tg5aUGKLFOVhEkA==}
+  /stylelint-config-recommended@12.0.0(stylelint@15.4.0):
+    resolution: {integrity: sha512-x6x8QNARrGO2sG6iURkzqL+Dp+4bJorPMMRNPScdvaUK8PsynriOcMW7AFDKqkWAS5wbue/u8fUT/4ynzcmqdQ==}
     peerDependencies:
-      stylelint: ^15.3.0
+      stylelint: ^15.5.0
     dependencies:
       stylelint: 15.4.0
     dev: true
 
-  /stylelint-config-standard@32.0.0(stylelint@15.4.0):
-    resolution: {integrity: sha512-UnGJxYDyYFrIE9CjDMZRkrNh2o4lOtO+MVZ9qG5b8yARfsWho0GMx4YvhHfsv8zKKgHeWX2wfeyxmuoqcaYZ4w==}
+  /stylelint-config-standard@33.0.0(stylelint@15.4.0):
+    resolution: {integrity: sha512-eyxnLWoXImUn77+ODIuW9qXBDNM+ALN68L3wT1lN2oNspZ7D9NVGlNHb2QCUn4xDug6VZLsh0tF8NyoYzkgTzg==}
     peerDependencies:
-      stylelint: ^15.4.0
+      stylelint: ^15.5.0
     dependencies:
       stylelint: 15.4.0
-      stylelint-config-recommended: 11.0.0(stylelint@15.4.0)
+      stylelint-config-recommended: 12.0.0(stylelint@15.4.0)
     dev: true
 
   /stylelint-prettier@3.0.0(prettier@2.8.8)(stylelint@15.4.0):
