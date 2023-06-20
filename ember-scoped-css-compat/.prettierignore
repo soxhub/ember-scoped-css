@@ -23,3 +23,7 @@
 /package.json.ember-try
 /package-lock.json.ember-try
 /yarn.lock.ember-try
+
+# We don't want the changelog or lockfile changing in renovate updates to
+# cause CI to fail
+*.md
