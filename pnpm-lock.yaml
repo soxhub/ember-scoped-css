@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -331,9 +331,6 @@ importers:
       ember-template-lint:
         specifier: ^5.10.1
         version: 5.10.1
-      ember-welcome-page:
-        specifier: ^6.2.0
-        version: 6.2.0
       eslint:
         specifier: ^8.42.0
         version: 8.42.0
@@ -3993,6 +3990,7 @@ packages:
       semver: 7.5.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@embroider/babel-loader-8@3.0.0(@embroider/core@3.0.0)(supports-color@8.1.1)(webpack@5.75.0):
     resolution: {integrity: sha512-NIaHmX/FmxKdyB82J0jHTZWk9OyBEfFm0981pTWgnKCnREhaLSvlEtIlf5iEEU4RPCBIunZZqiy2W/QI3fLaxg==}
@@ -10080,15 +10078,6 @@ packages:
       walk-sync: 2.2.0
     transitivePeerDependencies:
       - encoding
-      - supports-color
-    dev: true
-
-  /ember-welcome-page@6.2.0:
-    resolution: {integrity: sha512-bDPgNgW0eRhLCHLaFK87p1mcP8hGwr0pXvPoskDeUGQzsOI3Pc3U/8WLpUSi2mNrmv0eNtfWqE+A1Wbx6F2l0Q==}
-    engines: {node: 12.* || 14.* || >= 16}
-    dependencies:
-      '@embroider/addon-shim': 1.8.4
-    transitivePeerDependencies:
       - supports-color
     dev: true
 
