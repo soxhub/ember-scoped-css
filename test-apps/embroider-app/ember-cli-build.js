@@ -33,6 +33,9 @@ module.exports = async function (defaults) {
                   loader: require.resolve(
                     'ember-scoped-css/build/app-css-loader'
                   ),
+                  options: {
+                    layerName: 'embroider-app',
+                  },
                 },
               ],
             },

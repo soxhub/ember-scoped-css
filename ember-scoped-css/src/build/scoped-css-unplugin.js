@@ -52,7 +52,7 @@ async function transformJsFile(code, jsPath) {
   };
 }
 
-async function transformCssFile(code, id, emitFile) {
+async function transformCssFile(code, id, layerName, emitFile) {
   const jsPath = id.replace(/\.css$/, '.gjs');
   const gtsPath = id.replace(/\.css$/, '.gts');
   const hbsPath = id.replace(/\.css$/, '.hbs');
@@ -66,7 +66,7 @@ async function transformCssFile(code, id, emitFile) {
   if (jsExists || hbsExists || gtsExists) {
     const postfix = generateHash(id);
 
-    code = rewriteCss(code, postfix, path.basename(id));
+    code = rewriteCss(code, postfix, path.basename(id), layerName);
   }
 
   const emittedFileName = id.replace(path.join(process.cwd(), 'src/'), '');
@@ -80,46 +80,59 @@ async function transformCssFile(code, id, emitFile) {
   return '';
 }
 
-export default createUnplugin(() => {
-  return {
-    name: 'ember-scoped-css-unplugin',
+export default createUnplugin(
+  /**
+   * @typedef {object} Options
+   * @property {string} [layerName] the name of the layer to place the generated css. Defaults to "components"
+   *
+   * @param {Options} [options]
+   */
+  (options) => {
+    return {
+      name: 'ember-scoped-css-unplugin',
 
-    generateBundle(a, bundle) {
-      let cssFiles = [];
+      generateBundle(a, bundle) {
+        let cssFiles = [];
 
-      for (let asset in bundle) {
-        const cssAsset = asset.replace('js', 'css');
+        for (let asset in bundle) {
+          const cssAsset = asset.replace('js', 'css');
 
-        if (!asset.endsWith('js') || !bundle[cssAsset]) {
-          continue;
+          if (!asset.endsWith('js') || !bundle[cssAsset]) {
+            continue;
+          }
+
+          if (process.env.environment === 'development') {
+            cssFiles.push(bundle[cssAsset].source);
+            delete bundle[cssAsset];
+          } else {
+            // add import to js files
+            bundle[asset].code =
+              `import './${path.basename(asset.replace('.js', '.css'))}';\n` +
+              bundle[asset].code;
+          }
         }
 
         if (process.env.environment === 'development') {
-          cssFiles.push(bundle[cssAsset].source);
-          delete bundle[cssAsset];
-        } else {
-          // add import to js files
-          bundle[asset].code =
-            `import './${path.basename(asset.replace('.js', '.css'))}';\n` +
-            bundle[asset].code;
+          this.emitFile({
+            type: 'asset',
+            fileName: 'scoped.css',
+            source: cssFiles.join('\n'),
+          });
         }
-      }
+      },
 
-      if (process.env.environment === 'development') {
-        this.emitFile({
-          type: 'asset',
-          fileName: 'scoped.css',
-          source: cssFiles.join('\n'),
-        });
-      }
-    },
-
-    transform(code, jsPath) {
-      if (isJsFile(jsPath)) {
-        return transformJsFile(code, jsPath);
-      } else if (isCssFile(jsPath)) {
-        return transformCssFile(code, jsPath, this.emitFile);
-      }
-    },
-  };
-});
+      transform(code, jsPath) {
+        if (isJsFile(jsPath)) {
+          return transformJsFile(code, jsPath);
+        } else if (isCssFile(jsPath)) {
+          return transformCssFile(
+            code,
+            jsPath,
+            options?.layerName,
+            this.emitFile
+          );
+        }
+      },
+    };
+  }
+);

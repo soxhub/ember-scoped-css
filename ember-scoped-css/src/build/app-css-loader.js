@@ -6,6 +6,7 @@ import generateHash from '../lib/generateAbsolutePathHash.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
+  const options = this.getOptions();
   const cssPath = this.resourcePath;
   const cssFileName = path.basename(cssPath);
 
@@ -21,7 +22,7 @@ export default async function (code) {
   let rewrittenCss;
 
   if (hbsExists || (gjsExists && cssPath.startsWith(this.rootContext))) {
-    rewrittenCss = rewriteCss(code, postfix, cssFileName);
+    rewrittenCss = rewriteCss(code, postfix, cssFileName, options.layerName);
   } else {
     rewrittenCss = code;
   }
