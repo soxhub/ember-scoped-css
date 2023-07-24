@@ -1,11 +1,9 @@
-import { render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
+import { render, settled } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from 'classic-app/tests/helpers';
-
-import { scopedClass } from 'ember-scoped-css/test-support';
 
 module('Integration | Component | DynamicAttribute', function (hooks) {
   setupRenderingTest(hooks);
@@ -14,7 +12,9 @@ module('Integration | Component | DynamicAttribute', function (hooks) {
     class State {
       @tracked ya = true;
     }
+
     let state = new State();
+
     this.setProperties({ state });
     await render(hbs`<DynamicAttribute @foo={{this.state.ya}}/>`);
 
