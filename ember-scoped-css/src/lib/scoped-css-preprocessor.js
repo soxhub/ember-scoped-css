@@ -4,6 +4,7 @@ import Concat from 'broccoli-concat';
 import { Funnel } from 'broccoli-funnel';
 import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
+import { parseTemplates } from 'ember-template-tag';
 import path from 'path';
 
 import fsExists from './fsExists.js';
@@ -72,48 +73,84 @@ class ScopedFilter extends Filter {
     }
   }
   async postProcess(results, relativePath) {
-    if (relativePath.endsWith('.module.css')) {
+    if (process.env.CI || relativePath.endsWith('.module.css')) {
       return results;
     }
 
-    // need to add gjs/gts support
-    // check existence of gjs and gts files
-    // extract template tag
-
-    const templatePath = relativePath.replace(/\.css/, '.hbs');
-
     for (let inputPath of this.inputPaths) {
-      const templateFilePath = path.join(inputPath, templatePath);
-      const fileExists = await fsExists(templateFilePath);
+      const templateFile = {};
 
-      if (fileExists) {
+      for (let ext of TEMPLATE_EXTENSIONS) {
+        const templatePath = relativePath.replace(/\.css/, '.' + ext);
+        const templateFilePath = path.join(inputPath, templatePath);
+        const exists = await fsExists(templateFilePath);
+
+        if (exists) {
+          templateFile.path = templateFilePath;
+          templateFile.ext = ext;
+          continue;
+        }
+      }
+
+      if (templateFile.path) {
         const cssFilePath = path.join(inputPath, relativePath);
         const cssContents = await readFile(cssFilePath,  'utf-8');
         const { classes, tags } = getClassesTagsFromCss(cssContents);
-
         const previousClasses = this.options.previousClasses.get(relativePath);
 
         // if we have previous classes, and they are different, build templates to compare
-        if (previousClasses && classes.toString() !== previousClasses.toString()) {
+        if (previousClasses && classes !== previousClasses) {
           const localPackagerStylePath = packageScopedPathToModulePath(relativePath);
           const postfix = generateHash(localPackagerStylePath);
-          const templateContents = await readFile(templateFilePath,  'utf-8');
-          const templateOriginal = rewriteHbs(templateContents, previousClasses, tags, postfix);
-          const templateRewrite = rewriteHbs(templateContents, classes, tags, postfix);
+          const templateRaw = await readFile(templateFile.path,  'utf-8');
+          const templateComparison = [];
+          let templateContents = templateRaw;
+
+          if (templateFile.ext === 'hbs') {
+            templateComparison.push(didTemplateChange(templateContents, previousClasses, classes, tags, postfix));
+          } else {
+            // find all template tags, and extract the content to compare
+            const templates = parseTemplates(templateRaw, '');
+            for (let template of templates) {
+              templateComparison.push(didTemplateChange(template.contents, previousClasses, classes, tags, postfix));
+            }
+          }
+
+          const templateChanged = templateComparison.some((v) => v);
+
           // if the rewrite doesn't match the original output, we want to rebuild the template
-          if (templateOriginal !== templateRewrite) {
+          if (templateChanged) {
             // this is an awful hack because we don't know how to invalidate broccoli-persistent-filter cache
             // ideally we'd invalidate the broccoli-peristent-filter cache here
-            await writeFile(templateFilePath, templateContents + ' ');
+            await writeFile(templateFile.path, templateContents + ' ');
           }
         }
         // assign for next run comparison
         this.options.previousClasses.set(relativePath, classes);
+
       }
     }
 
     return results;
   }
+}
+
+/**
+ * Compares a template with the context of different sets of extraced css classes
+ *
+ * @param {string} contents
+ * @param {Set} previousClasses
+ * @param {Set} currentClasses
+ * @param {Set} tags
+ * @param {string} postfix
+ * @returns {Boolean}
+ */
+function didTemplateChange(contents, previousClasses, currentClasses, tags, postfix) {
+  console.log('comparing ', contents)
+  const original = rewriteHbs(contents, previousClasses, tags, postfix);
+  const current = rewriteHbs(contents, currentClasses, tags, postfix);
+
+  return original !== current;
 }
 
 export default class ScopedCssPreprocessor {
