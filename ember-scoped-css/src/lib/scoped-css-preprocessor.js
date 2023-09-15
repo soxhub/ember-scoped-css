@@ -5,13 +5,13 @@ import { Funnel } from 'broccoli-funnel';
 import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
 import { parseTemplates } from 'ember-template-tag';
+import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
 
 import fsExists from './fsExists.js';
-import { readFile, writeFile } from 'fs/promises';
 import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';
-import getClassesTagsFromCss from './getClassesTagsFromCss.js';
 import generateHash from './generateRelativePathHash.js';
+import getClassesTagsFromCss from './getClassesTagsFromCss.js';
 import rewriteCss from './rewriteCss.js';
 import rewriteHbs from './rewriteHbs.js';
 
@@ -94,25 +94,43 @@ class ScopedFilter extends Filter {
 
       if (templateFile.path) {
         const cssFilePath = path.join(inputPath, relativePath);
-        const cssContents = await readFile(cssFilePath,  'utf-8');
+        const cssContents = await readFile(cssFilePath, 'utf-8');
         const { classes, tags } = getClassesTagsFromCss(cssContents);
         const previousClasses = this.options.previousClasses.get(relativePath);
 
         // if we have previous classes, and they are different, build templates to compare
         if (previousClasses && classes !== previousClasses) {
-          const localPackagerStylePath = packageScopedPathToModulePath(relativePath);
+          const localPackagerStylePath =
+            packageScopedPathToModulePath(relativePath);
           const postfix = generateHash(localPackagerStylePath);
-          const templateRaw = await readFile(templateFile.path,  'utf-8');
+          const templateRaw = await readFile(templateFile.path, 'utf-8');
           const templateComparison = [];
           let templateContents = templateRaw;
 
           if (templateFile.ext === 'hbs') {
-            templateComparison.push(didTemplateChange(templateContents, previousClasses, classes, tags, postfix));
+            templateComparison.push(
+              didTemplateChange(
+                templateContents,
+                previousClasses,
+                classes,
+                tags,
+                postfix
+              )
+            );
           } else {
             // find all template tags, and extract the content to compare
             const templates = parseTemplates(templateRaw, '');
+
             for (let template of templates) {
-              templateComparison.push(didTemplateChange(template.contents, previousClasses, classes, tags, postfix));
+              templateComparison.push(
+                didTemplateChange(
+                  template.contents,
+                  previousClasses,
+                  classes,
+                  tags,
+                  postfix
+                )
+              );
             }
           }
 
@@ -126,8 +144,8 @@ class ScopedFilter extends Filter {
           }
         }
         // assign for next run comparison
-        this.options.previousClasses.set(relativePath, classes);
 
+        this.options.previousClasses.set(relativePath, classes);
       }
     }
 
@@ -145,8 +163,13 @@ class ScopedFilter extends Filter {
  * @param {string} postfix
  * @returns {Boolean}
  */
-function didTemplateChange(contents, previousClasses, currentClasses, tags, postfix) {
-  console.log('comparing ', contents)
+function didTemplateChange(
+  contents,
+  previousClasses,
+  currentClasses,
+  tags,
+  postfix
+) {
   const original = rewriteHbs(contents, previousClasses, tags, postfix);
   const current = rewriteHbs(contents, currentClasses, tags, postfix);
 
@@ -184,7 +207,7 @@ export default class ScopedCssPreprocessor {
 
     componentsNode = new ScopedFilter(componentsNode, {
       inputPath,
-      getUserOptions: () =>  this.userOptions,
+      getUserOptions: () => this.userOptions,
       owner: this.owner,
       previousClasses: this.previousClasses,
     });
