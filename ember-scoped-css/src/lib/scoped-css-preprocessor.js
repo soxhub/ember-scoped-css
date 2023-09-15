@@ -7,11 +7,15 @@ import Filter from 'broccoli-persistent-filter';
 import path from 'path';
 
 import fsExists from './fsExists.js';
+import { readFile, writeFile } from 'fs/promises';
 import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';
+import getClassesTagsFromCss from './getClassesTagsFromCss.js';
 import generateHash from './generateRelativePathHash.js';
 import rewriteCss from './rewriteCss.js';
+import rewriteHbs from './rewriteHbs.js';
 
 const COMPONENT_EXTENSIONS = ['hbs', 'js', 'ts', 'gjs', 'gts'];
+const TEMPLATE_EXTENSIONS = ['hbs', 'gjs', 'gts'];
 
 class ScopedFilter extends Filter {
   constructor(componentsNode, options = {}) {
@@ -67,12 +71,57 @@ class ScopedFilter extends Filter {
       return '';
     }
   }
+  async postProcess(results, relativePath) {
+    if (relativePath.endsWith('.module.css')) {
+      return results;
+    }
+
+    // need to add gjs/gts support
+    // check existence of gjs and gts files
+    // extract template tag
+
+    const templatePath = relativePath.replace(/\.css/, '.hbs');
+
+    for (let inputPath of this.inputPaths) {
+      const templateFilePath = path.join(inputPath, templatePath);
+      const fileExists = await fsExists(templateFilePath);
+
+      if (fileExists) {
+        const cssFilePath = path.join(inputPath, relativePath);
+        const cssContents = await readFile(cssFilePath,  'utf-8');
+        const { classes, tags } = getClassesTagsFromCss(cssContents);
+
+        const previousClasses = this.options.previousClasses.get(relativePath);
+
+        // if we have previous classes, and they are different, build templates to compare
+        if (previousClasses && classes.toString() !== previousClasses.toString()) {
+          const localPackagerStylePath = packageScopedPathToModulePath(relativePath);
+          const postfix = generateHash(localPackagerStylePath);
+          const templateContents = await readFile(templateFilePath,  'utf-8');
+          const templateOriginal = rewriteHbs(templateContents, previousClasses, tags, postfix);
+          const templateRewrite = rewriteHbs(templateContents, classes, tags, postfix);
+          // if the rewrite doesn't match the original output, we want to rebuild the template
+          if (templateOriginal !== templateRewrite) {
+            // this is an awful hack because we don't know how to invalidate broccoli-persistent-filter cache
+            // ideally we'd invalidate the broccoli-peristent-filter cache here
+            await writeFile(templateFilePath, templateContents + ' ');
+          }
+        }
+        // assign for next run comparison
+        this.options.previousClasses.set(relativePath, classes);
+      }
+    }
+
+    return results;
+  }
 }
 
 export default class ScopedCssPreprocessor {
   constructor(options) {
     this.owner = options.owner;
     this.appName = options.owner.parent.pkg.name;
+    this.name = 'scoped-css-preprocessor';
+    this.previousClasses = new Map();
   }
 
   /**
@@ -98,7 +147,9 @@ export default class ScopedCssPreprocessor {
 
     componentsNode = new ScopedFilter(componentsNode, {
       inputPath,
-      getUserOptions: () => this.userOptions,
+      getUserOptions: () =>  this.userOptions,
+      owner: this.owner,
+      previousClasses: this.previousClasses,
     });
 
     const componentStyles = new Funnel(componentsNode, {
