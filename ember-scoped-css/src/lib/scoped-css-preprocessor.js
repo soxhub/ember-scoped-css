@@ -72,6 +72,7 @@ class ScopedFilter extends Filter {
       return '';
     }
   }
+
   async postProcess(results, relativePath) {
     if (process.env.CI || relativePath.endsWith('.module.css')) {
       return results;
@@ -92,6 +93,7 @@ class ScopedFilter extends Filter {
         }
       }
 
+      // if the template exists we check the css for changes
       if (templateFile.path) {
         const cssFilePath = path.join(inputPath, relativePath);
         const cssContents = await readFile(cssFilePath, 'utf-8');
@@ -118,7 +120,7 @@ class ScopedFilter extends Filter {
               )
             );
           } else {
-            // find all template tags, and extract the content to compare
+            // find all template tags, and extract the contents to compare
             const templates = parseTemplates(templateRaw, '');
 
             for (let template of templates) {
