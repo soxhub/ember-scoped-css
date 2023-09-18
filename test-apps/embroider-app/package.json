@@ -58,7 +58,7 @@
     "ember-style-loader": "github:mainmatter/ember-style-loader#main",
     "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^5.10.1",
-    "ember-try": "^2.0.0",
+    "ember-try": "^3.0.0",
     "eslint": "^8.42.0",
     "eslint-plugin-ember": "^11.8.0",
     "eslint-plugin-n": "^16.0.0",
