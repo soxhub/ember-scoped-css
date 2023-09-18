@@ -1,5 +1,11 @@
 # ember-scoped-css
 
+## 0.12.0
+
+### Minor Changes
+
+- [#95](https://github.com/soxhub/ember-scoped-css/pull/95) [`845ecb8`](https://github.com/soxhub/ember-scoped-css/commit/845ecb88f70a3412445773167aebbc1dd8ebcf86) Thanks [@jakebixby](https://github.com/jakebixby)! - added postProcess hook to scoped-css-preprocessor to break cache for associated template file
+
 ## 0.11.2
 
 ### Patch Changes
