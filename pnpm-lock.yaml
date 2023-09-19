@@ -185,8 +185,8 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2(@babel/core@7.22.5)
       ember-page-title:
-        specifier: ^7.0.0
-        version: 7.0.0
+        specifier: ^8.0.0
+        version: 8.0.0
       ember-qunit:
         specifier: ^6.2.0
         version: 6.2.0(@ember/test-helpers@2.9.3)(ember-source@4.12.0)(qunit@2.19.4)(webpack@5.78.0)
@@ -308,8 +308,8 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2(@babel/core@7.22.5)
       ember-page-title:
-        specifier: ^7.0.0
-        version: 7.0.0
+        specifier: ^8.0.0
+        version: 8.0.0
       ember-qunit:
         specifier: ^6.1.1
         version: 6.2.0(@ember/test-helpers@2.9.3)(ember-source@4.10.0)(qunit@2.19.4)(webpack@5.75.0)
@@ -446,8 +446,8 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2(@babel/core@7.22.5)
       ember-page-title:
-        specifier: ^7.0.0
-        version: 7.0.0
+        specifier: ^8.0.0
+        version: 8.0.0
       ember-qunit:
         specifier: ^6.1.1
         version: 6.2.0(@ember/test-helpers@2.9.3)(ember-source@4.10.0)(qunit@2.19.4)(webpack@5.75.0)
@@ -1254,8 +1254,8 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/helper-create-class-features-plugin': 7.22.5(@babel/core@7.21.0)
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-create-class-features-plugin': 7.21.0(@babel/core@7.21.0)
+      '@babel/helper-plugin-utils': 7.21.5
     transitivePeerDependencies:
       - supports-color
 
@@ -3646,7 +3646,6 @@ packages:
       semver: 7.5.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@embroider/babel-loader-8@3.0.0(@embroider/core@3.0.0)(supports-color@8.1.1)(webpack@5.75.0):
     resolution: {integrity: sha512-NIaHmX/FmxKdyB82J0jHTZWk9OyBEfFm0981pTWgnKCnREhaLSvlEtIlf5iEEU4RPCBIunZZqiy2W/QI3fLaxg==}
@@ -8666,7 +8665,7 @@ packages:
       '@babel/plugin-proposal-decorators': 7.21.0(@babel/core@7.22.5)
       '@babel/preset-env': 7.20.2(@babel/core@7.22.5)
       '@embroider/macros': 1.10.0
-      '@embroider/shared-internals': 2.0.0
+      '@embroider/shared-internals': 2.1.0
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.75.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.0.3
@@ -8688,7 +8687,7 @@ packages:
       parse5: 6.0.1
       resolve: 1.22.3
       resolve-package-path: 4.0.3
-      semver: 7.5.2
+      semver: 7.5.4
       style-loader: 2.0.0(webpack@5.78.0)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
@@ -8706,7 +8705,7 @@ packages:
       '@babel/plugin-proposal-decorators': 7.21.0(@babel/core@7.22.5)
       '@babel/preset-env': 7.20.2(@babel/core@7.22.5)
       '@embroider/macros': 1.10.0
-      '@embroider/shared-internals': 2.0.0
+      '@embroider/shared-internals': 2.1.0
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.75.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.0.3
@@ -8728,7 +8727,7 @@ packages:
       parse5: 6.0.1
       resolve: 1.22.3
       resolve-package-path: 4.0.3
-      semver: 7.5.2
+      semver: 7.5.4
       style-loader: 2.0.0(webpack@5.75.0)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
@@ -8746,7 +8745,7 @@ packages:
       '@babel/plugin-proposal-decorators': 7.21.0(@babel/core@7.22.5)
       '@babel/preset-env': 7.20.2(@babel/core@7.22.5)
       '@embroider/macros': 1.10.0
-      '@embroider/shared-internals': 2.0.0
+      '@embroider/shared-internals': 2.1.0
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.78.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.0.3
@@ -8768,7 +8767,7 @@ packages:
       parse5: 6.0.1
       resolve: 1.22.3
       resolve-package-path: 4.0.3
-      semver: 7.5.2
+      semver: 7.5.4
       style-loader: 2.0.0(webpack@5.78.0)
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
@@ -9353,11 +9352,11 @@ packages:
       - supports-color
     dev: true
 
-  /ember-page-title@7.0.0:
-    resolution: {integrity: sha512-oq6+HYbeVD/BnxIO5AkP4gWlsatdgW2HFO10F8+XQiJZrwa7cC7Wm54JNGqQkavkDQTgNSiy1Fe2NILJ14MmAg==}
-    engines: {node: 12.* || 14.* || >= 16}
+  /ember-page-title@8.0.0:
+    resolution: {integrity: sha512-4bu8CpoPObJZNUogwIjpntxS3jMDlZ1eoJsZUuktcCgOI7LfZocuYbu9LnLM215QjEOV0TxGDWwJck1l8cWKeg==}
+    engines: {node: 16.* || >= 18}
     dependencies:
-      ember-cli-babel: 7.26.11
+      '@embroider/addon-shim': 1.8.4
     transitivePeerDependencies:
       - supports-color
     dev: true
