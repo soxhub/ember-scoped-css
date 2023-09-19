@@ -115,8 +115,8 @@ importers:
         specifier: ^2.8.8
         version: 2.8.8
       sinon:
-        specifier: ^15.0.1
-        version: 15.0.1
+        specifier: ^16.0.0
+        version: 16.0.0
       webpack:
         specifier: ^5.75.0
         version: 5.75.0(esbuild@0.19.3)
@@ -4809,14 +4809,20 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@sinonjs/fake-timers@10.0.2:
-    resolution: {integrity: sha512-SwUDyjWnah1AaNl7kxsa7cfLhlTYoiyhDAIgyh+El30YvXs/o7OLXpYH88Zdhyx9JExKrmHDJ+10bwIcY80Jmw==}
+  /@sinonjs/commons@3.0.0:
+    resolution: {integrity: sha512-jXBtWAF4vmdNmZgD5FoKsVLv3rPgDnLgPbU84LIJ3otV44vJlDRokVng5v8NFJdCf/da9legHcKaRuZs4L7faA==}
     dependencies:
-      '@sinonjs/commons': 2.0.0
+      type-detect: 4.0.8
     dev: true
 
-  /@sinonjs/samsam@7.0.1:
-    resolution: {integrity: sha512-zsAk2Jkiq89mhZovB2LLOdTCxJF4hqqTToGP0ASWlhp4I1hqOjcfmZGafXntCN7MDC6yySH0mFHrYtHceOeLmw==}
+  /@sinonjs/fake-timers@10.3.0:
+    resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
+    dependencies:
+      '@sinonjs/commons': 3.0.0
+    dev: true
+
+  /@sinonjs/samsam@8.0.0:
+    resolution: {integrity: sha512-Bp8KUVlLp8ibJZrnvq2foVhP0IVX2CIprMJPK0vqGqgrDa0OHVKeZyBykqskkrdxV6yKBPmGasO8LVjAKR3Gew==}
     dependencies:
       '@sinonjs/commons': 2.0.0
       lodash.get: 4.4.2
@@ -13553,7 +13559,7 @@ packages:
     resolution: {integrity: sha512-8+Ib8rRJ4L0o3kfmyVCL7gzrohyDe0cMFTBa2d364yIrEGMEoetznKJx899YxjybU6bL9SQkYPSBBs1gyYs8Xg==}
     dependencies:
       '@sinonjs/commons': 2.0.0
-      '@sinonjs/fake-timers': 10.0.2
+      '@sinonjs/fake-timers': 10.3.0
       '@sinonjs/text-encoding': 0.7.2
       just-extend: 4.2.1
       path-to-regexp: 1.8.0
@@ -15322,12 +15328,12 @@ packages:
   /simple-html-tokenizer@0.5.11:
     resolution: {integrity: sha512-C2WEK/Z3HoSFbYq8tI7ni3eOo/NneSPRoPpcM7WdLjFOArFuyXEjAoCdOC3DgMfRyziZQ1hCNR4mrNdWEvD0og==}
 
-  /sinon@15.0.1:
-    resolution: {integrity: sha512-PZXKc08f/wcA/BMRGBze2Wmw50CWPiAH3E21EOi4B49vJ616vW4DQh4fQrqsYox2aNR/N3kCqLuB0PwwOucQrg==}
+  /sinon@16.0.0:
+    resolution: {integrity: sha512-B8AaZZm9CT5pqe4l4uWJztfD/mOTa7dL8Qo0W4+s+t74xECOgSZDDQCBjNgIK3+n4kyxQrSTv2V5ul8K25qkiQ==}
     dependencies:
-      '@sinonjs/commons': 2.0.0
-      '@sinonjs/fake-timers': 10.0.2
-      '@sinonjs/samsam': 7.0.1
+      '@sinonjs/commons': 3.0.0
+      '@sinonjs/fake-timers': 10.3.0
+      '@sinonjs/samsam': 8.0.0
       diff: 5.1.0
       nise: 5.1.4
       supports-color: 7.2.0
