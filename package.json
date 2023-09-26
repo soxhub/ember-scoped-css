@@ -25,7 +25,10 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/eslint": "^7.0.0"
+      "@types/eslint": "^7.0.0",
+      "@glimmer/manager": "^0.84.3",
+      "@glimmer/reference": "^0.84.3",
+      "@glimmer/validator": "^0.84.3"
     },
     "peerDependencyRules": {
       "ignoreMissing": [
