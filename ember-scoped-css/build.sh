@@ -9,5 +9,5 @@ pnpm esbuild \
   src/build/app-dependency-loader.js \
   src/lib/scoped-css-preprocessor.js \
   src/runtime/test-support.js \
-  --bundle --outdir=dist --platform=node \
+  --bundle --outdir=dist --platform=node --sourcemap \
   --out-extension:.js=.cjs
