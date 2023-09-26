@@ -32,13 +32,13 @@
     "@embroider/addon-shim": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/eslint-parser": "^7.18.2",
-    "@babel/plugin-proposal-class-properties": "^7.16.7",
-    "@babel/plugin-proposal-decorators": "^7.17.0",
-    "@babel/plugin-syntax-decorators": "^7.17.0",
-    "@babel/preset-typescript": "^7.21.5",
-    "@embroider/addon-dev": "^3.0.0",
+    "@babel/core": "^7.23.0",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.23.0",
+    "@babel/plugin-syntax-decorators": "^7.22.10",
+    "@babel/preset-typescript": "^7.23.0",
+    "@embroider/addon-dev": "^4.1.0",
     "@nullvoxpopuli/eslint-configs": "^3.1.3",
     "@rollup/plugin-babel": "^6.0.0",
     "compare-fixture": "^1.0.1",
@@ -50,8 +50,8 @@
     "eslint-plugin-ember": "^11.8.0",
     "eslint-plugin-node": "^11.1.0",
     "prettier": "^2.8.8",
-    "rollup": "^3.0.0",
-    "rollup-plugin-copy": "^3.4.0",
+    "rollup": "^3.29.3",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-glimmer-template-tag": "^0.4.1"
   },
   "publishConfig": {

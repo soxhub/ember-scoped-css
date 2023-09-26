@@ -1,7 +1,6 @@
-import typescript from 'rollup-plugin-ts';
+import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
-import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
 import { scopedCssUnplugin } from 'ember-scoped-css/build';
 
 const addon = new Addon({
@@ -17,11 +16,7 @@ export default {
   plugins: [
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
-    addon.publicEntrypoints([
-      'components/**/*.js',
-      'index.js',
-      'template-registry.js',
-    ]),
+    addon.publicEntrypoints(['components/**/*.js', 'index.js', 'template-registry.js']),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
@@ -33,20 +28,28 @@ export default {
     // package names.
     addon.dependencies(),
 
-    scopedCssUnplugin.rollup(),
-
-    // compile TypeScript to latest JavaScript, including Babel transpilation
-    typescript({
-      transpiler: 'babel',
-      browserslist: false,
-      transpileOnly: true,
+    // This babel config should *not* apply presets or compile away ES modules.
+    // It exists only to provide development niceties for you, like automatic
+    // template colocation.
+    //
+    // By default, this will load the actual babel config from the file
+    // babel.config.json.
+    babel({
+      extensions: ['.js', '.gjs', '.ts', '.gts'],
+      babelHelpers: 'bundled',
     }),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),
-    glimmerTemplateTag(),
 
-    // addon.keepAssets(['**/*.css']),
+    // Ensure that .gjs files are properly integrated as Javascript
+    addon.gjs(),
+
+    scopedCssUnplugin.rollup(),
+
+    // addons are allowed to contain imports of .css files, which we want rollup
+    // to leave alone and keep in the published output.
+    addon.keepAssets(['**/*.css']),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
