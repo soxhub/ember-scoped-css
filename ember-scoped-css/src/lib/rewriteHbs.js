@@ -35,7 +35,7 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
         } else {
           // push class attribute
           node.attributes.push(
-            recast.builders.attr('class', recast.builders.text(postfix))
+            recast.builders.attr('class', recast.builders.text(postfix)),
           );
         }
       }
@@ -90,7 +90,7 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
         const cssClass = node.params[0].value;
         const textNode = recast.builders.literal(
           'StringLiteral',
-          renameClass(cssClass, postfix)
+          renameClass(cssClass, postfix),
         );
 
         return textNode;

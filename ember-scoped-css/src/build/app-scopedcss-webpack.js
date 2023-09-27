@@ -18,7 +18,7 @@ export default class {
       async (compilation, callback) => {
         try {
           const cssFiles = await getFiles(
-            path.resolve(compiler.context, '**/*.css')
+            path.resolve(compiler.context, '**/*.css'),
           );
 
           // Rewrite the CSS files
@@ -66,7 +66,7 @@ export default class {
         } finally {
           callback();
         }
-      }
+      },
     );
   }
 }

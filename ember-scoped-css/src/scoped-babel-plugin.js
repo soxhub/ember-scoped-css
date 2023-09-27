@@ -24,11 +24,11 @@ export default () => {
           const relativeFileName =
             'app' +
             state.file.opts.sourceFileName.substring(
-              state.file.opts.sourceFileName.indexOf('/')
+              state.file.opts.sourceFileName.indexOf('/'),
             );
           const fileName = nodePath.join(
             state.file.opts.root,
-            relativeFileName
+            relativeFileName,
           );
 
           const cssPath = fileName.replace(/(\.js)|(\.ts)/, '.css');
@@ -38,7 +38,7 @@ export default () => {
             const { classes, tags } = getClassesTagsFromCss(css);
 
             let localPackagerStylePath = packageScopedPathToModulePath(
-              state.file.opts.sourceFileName
+              state.file.opts.sourceFileName,
             );
             const postfix = generateHash(localPackagerStylePath);
 
@@ -47,7 +47,7 @@ export default () => {
                 node.arguments[0].quasis[0].value.raw,
                 classes,
                 tags,
-                postfix
+                postfix,
               );
               node.arguments[0].quasis[0].value.cooked =
                 node.arguments[0].quasis[0].value.raw;
@@ -59,7 +59,7 @@ export default () => {
                 node.arguments[0].value,
                 classes,
                 tags,
-                postfix
+                postfix,
               );
             }
           }

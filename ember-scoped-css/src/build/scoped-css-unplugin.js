@@ -129,10 +129,10 @@ export default createUnplugin(
             code,
             jsPath,
             options?.layerName,
-            this.emitFile
+            this.emitFile,
           );
         }
       },
     };
-  }
+  },
 );

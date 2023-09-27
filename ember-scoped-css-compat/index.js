@@ -21,7 +21,7 @@ module.exports = {
 
     if (plugins) {
       let htmlbarsPlugin = plugins.find(
-        (p) => p._parallelBabel?.params?.templateCompilerPath
+        (p) => p._parallelBabel?.params?.templateCompilerPath,
       );
 
       if (htmlbarsPlugin) {
