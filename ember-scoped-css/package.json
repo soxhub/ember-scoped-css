@@ -75,7 +75,7 @@
     "eslint": "^8.38.0",
     "mocha": "^10.2.0",
     "prettier": "^2.8.8",
-    "sinon": "^15.0.1",
+    "sinon": "^16.0.0",
     "webpack": "^5.75.0"
   },
   "ember-addon": {
