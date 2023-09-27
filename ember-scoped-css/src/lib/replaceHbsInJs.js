@@ -18,7 +18,7 @@ export default function (script, replaceFunction) {
       ) {
         if (node.arguments[0].type === 'TemplateLiteral') {
           node.arguments[0].quasis[0].value.raw = replaceFunction(
-            node.arguments[0].quasis[0].value.raw
+            node.arguments[0].quasis[0].value.raw,
           );
         } else if (
           node.arguments[0].type === 'StringLiteral' ||

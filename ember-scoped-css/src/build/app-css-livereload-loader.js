@@ -76,7 +76,7 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
           async (assets, callback) => {
             try {
               const cssAssets = Object.keys(assets).filter((asset) =>
-                asset.startsWith('assets/includedscripts/')
+                asset.startsWith('assets/includedscripts/'),
               );
 
               if (!cssAssets.length) {
@@ -90,7 +90,7 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
               for (let asset of cssAssets) {
                 const head = document.getElementsByTagName('head')[0];
                 const linkExists = head.querySelector(
-                  `link[rel="stylesheet"][href="/${asset}"]`
+                  `link[rel="stylesheet"][href="/${asset}"]`,
                 );
 
                 if (!linkExists) {
@@ -110,7 +110,7 @@ export default createUnplugin(({ loaders, htmlEntrypointInfo }) => {
             } finally {
               callback();
             }
-          }
+          },
         );
       });
     },

@@ -8,7 +8,7 @@ export default function renameClass(className, postfix, classesInCss) {
 
   const renamedWithPreservedSpaces = className.replace(
     className.trimStart().trimEnd(),
-    renamedClasses
+    renamedClasses,
   );
 
   return renamedWithPreservedSpaces;

@@ -15,7 +15,7 @@ module('Integration | Component | template-only', function (hooks) {
     assert
       .dom('div')
       .hasClass(
-        scopedClass('some-class', 'classic-app/components/template-only')
+        scopedClass('some-class', 'classic-app/components/template-only'),
       );
     assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
   });

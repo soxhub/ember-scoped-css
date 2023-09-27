@@ -33,7 +33,7 @@ export default async function (script, id, replaceFunction) {
         node.arguments.length === 1
       ) {
         const blockProp = node.arguments[0].properties.find(
-          (prop) => prop.key.value === 'block'
+          (prop) => prop.key.value === 'block',
         );
         const opcodes = JSON.parse(blockProp.value.value);
         const newOpcodes = replaceFunction(opcodes, css);
@@ -46,7 +46,7 @@ export default async function (script, id, replaceFunction) {
         // }
         const importCss = recast.parse(
           `import './${fileName}';\n`,
-          parseOptions
+          parseOptions,
         );
         const importCssNode = importCss.program.body[0];
 

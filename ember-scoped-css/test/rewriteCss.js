@@ -19,7 +19,7 @@ describe('rewriteCss', function () {
     const rewritten = rewriteCss(css, postfix, fileName, 'utils');
 
     expect(rewritten).to.equal(
-      `/* foo.css */\n@layer utils {\n\n.foo_postfix { color: red; }\n}\n`
+      `/* foo.css */\n@layer utils {\n\n.foo_postfix { color: red; }\n}\n`,
     );
   });
 
@@ -30,7 +30,7 @@ describe('rewriteCss', function () {
     const rewritten = rewriteCss(css, postfix, fileName);
 
     expect(rewritten).to.equal(
-      `/* foo.css */\n@layer components {\n\n.baz_postfix .foo p .bar_postfix { color: red; }\n}\n`
+      `/* foo.css */\n@layer components {\n\n.baz_postfix .foo p .bar_postfix { color: red; }\n}\n`,
     );
   });
 
@@ -48,7 +48,7 @@ describe('rewriteCss', function () {
     const rewritten = rewriteCss(css, postfix, fileName);
 
     expect(rewritten).to.equal(
-      `/* foo.css */\n@layer components {\n\n${css}\n}\n`
+      `/* foo.css */\n@layer components {\n\n${css}\n}\n`,
     );
   });
 });

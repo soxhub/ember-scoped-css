@@ -64,7 +64,7 @@ class ScopedFilter extends Filter {
         content,
         hash,
         relativePath,
-        this.options.getUserOptions?.()?.layerName
+        this.options.getUserOptions?.()?.layerName,
       );
 
       return content;
@@ -116,8 +116,8 @@ class ScopedFilter extends Filter {
                 previousClasses,
                 classes,
                 tags,
-                postfix
-              )
+                postfix,
+              ),
             );
           } else {
             // find all template tags, and extract the contents to compare
@@ -130,8 +130,8 @@ class ScopedFilter extends Filter {
                   previousClasses,
                   classes,
                   tags,
-                  postfix
-                )
+                  postfix,
+                ),
               );
             }
           }
@@ -170,7 +170,7 @@ function didTemplateChange(
   previousClasses,
   currentClasses,
   tags,
-  postfix
+  postfix,
 ) {
   const original = rewriteHbs(contents, previousClasses, tags, postfix);
   const current = rewriteHbs(contents, currentClasses, tags, postfix);
@@ -202,7 +202,7 @@ export default class ScopedCssPreprocessor {
       include: [
         this.appName + '/components/**/*.css',
         ...COMPONENT_EXTENSIONS.map(
-          (ext) => this.appName + `/components/**/*.${ext}`
+          (ext) => this.appName + `/components/**/*.${ext}`,
         ),
       ],
     });

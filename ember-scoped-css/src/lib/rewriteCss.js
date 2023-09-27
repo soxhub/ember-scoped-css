@@ -11,7 +11,7 @@ function rewriteSelector(sel, postfix) {
       } else if (selector.type === 'tag' && !isInsideGlobal(selector)) {
         selector.replaceWith(
           parser.tag({ value: selector.value }),
-          parser.className({ value: postfix })
+          parser.className({ value: postfix }),
         );
       }
     });
