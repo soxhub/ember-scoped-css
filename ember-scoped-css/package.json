@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.23.0",
-    "@embroider/addon-shim": "^1.0.0",
+    "@embroider/addon-shim": "^1.8.6",
     "blueimp-md5": "^2.19.0",
     "broccoli-concat": "^4.2.5",
     "broccoli-funnel": "^3.0.8",
