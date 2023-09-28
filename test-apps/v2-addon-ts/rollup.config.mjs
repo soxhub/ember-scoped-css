@@ -38,7 +38,7 @@ export default {
     // compile TypeScript to latest JavaScript, including Babel transpilation
     typescript({
       transpiler: 'babel',
-      browserslist: false,
+      browserslist: ['last 1 firefox versions'],
       transpileOnly: true,
     }),
 
