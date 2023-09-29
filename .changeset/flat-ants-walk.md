@@ -18,3 +18,5 @@ When the sibling CSS file only declares `a-local-class`, we would expect that
 
 - `global-probably` remains unchanged
 - `a-local-class` gets hashed
+
+Note that this bug is not fixed for embroider consumers.
