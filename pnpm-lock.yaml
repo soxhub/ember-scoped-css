@@ -373,10 +373,6 @@ importers:
         version: 5.78.0
 
   test-apps/embroider-app:
-    dependencies:
-      ember-resources:
-        specifier: ^6.4.0
-        version: 6.4.0(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.0)(ember-source@4.10.0)
     devDependencies:
       '@ember/optional-features':
         specifier: ^2.0.0
@@ -389,7 +385,7 @@ importers:
         version: 3.2.0(@glint/template@1.2.0)(ember-source@4.10.0)(webpack@5.78.0)
       '@embroider/compat':
         specifier: ^3.2.1
-        version: 3.2.1(@embroider/core@3.2.1)(@glint/template@1.2.0)
+        version: 3.2.1(@embroider/core@3.2.1)
       '@embroider/core':
         specifier: ^3.2.1
         version: 3.2.1(@glint/template@1.2.0)
@@ -2330,7 +2326,7 @@ packages:
       - webpack
     dev: true
 
-  /@embroider/compat@3.2.1(@embroider/core@3.2.1)(@glint/template@1.2.0):
+  /@embroider/compat@3.2.1(@embroider/core@3.2.1):
     resolution: {integrity: sha512-nni6oQTPkSuZZKjXTFTZchO7chFBGKEN0O/xMGn9SxifM7EDl7+y6JlPQFchQcmLGi2DxglsystV0E/jTyc11Q==}
     engines: {node: 12.* || 14.* || >= 16}
     hasBin: true
@@ -2489,7 +2485,7 @@ packages:
       '@embroider/webpack':
         optional: true
     dependencies:
-      '@embroider/compat': 3.2.1(@embroider/core@3.2.1)(@glint/template@1.2.0)
+      '@embroider/compat': 3.2.1(@embroider/core@3.2.1)
       '@embroider/core': 3.2.1(@glint/template@1.2.0)
       '@embroider/webpack': 3.1.5(@embroider/core@3.2.1)(webpack@5.78.0)
       lodash: 4.17.21
