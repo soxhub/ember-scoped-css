@@ -22,10 +22,14 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
             } else if (part.type === 'MustacheStatement') {
               recast.traverse(part, {
                 StringLiteral(node) {
-                  const renamedClass = renameClass(node.value, postfix, classes);
+                  const renamedClass = renameClass(
+                    node.value,
+                    postfix,
+                    classes,
+                  );
 
                   node.value = renamedClass;
-                }
+                },
               });
             }
           }

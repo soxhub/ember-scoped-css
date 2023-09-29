@@ -5,7 +5,6 @@ export default function renameClass(className, postfix, classesInCss) {
     .map((c) => c.trim())
     .map((c) => {
       if (!classesInCss || classesInCss.has(c)) {
-
         if (c.endsWith(postfix)) return c;
 
         return c + '_' + postfix;

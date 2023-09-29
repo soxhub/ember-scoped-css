@@ -1,13 +1,11 @@
 import { render, settled } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-import { cell } from 'ember-resources';
-
-import { setupRenderingTest } from 'classic-app/tests/helpers';
-
-import { scopedClass } from 'ember-scoped-css/test-support';
 
 import SubExpression from 'classic-app/components/subexpression';
+import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { cell } from 'ember-resources';
+
+import { scopedClass } from 'ember-scoped-css/test-support';
 
 module('Integration | Component | subexpression', function (hooks) {
   setupRenderingTest(hooks);
