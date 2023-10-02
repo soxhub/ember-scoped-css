@@ -19,6 +19,18 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
               const renamedClass = renameClass(part.chars, postfix, classes);
 
               part.chars = renamedClass;
+            } else if (part.type === 'MustacheStatement') {
+              recast.traverse(part, {
+                StringLiteral(node) {
+                  const renamedClass = renameClass(
+                    node.value,
+                    postfix,
+                    classes,
+                  );
+
+                  node.value = renamedClass;
+                },
+              });
             }
           }
         }

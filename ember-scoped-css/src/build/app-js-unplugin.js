@@ -48,6 +48,19 @@ export default createUnplugin(({ appDir }) => {
       );
     },
 
+    /**
+     * This whole thing is error prone, and we should switch the embroider
+     * technique to using a babel plugin.
+     *
+     * Using a webpack plugin is too late in the process.
+     * We don't want to be dealing with wire-format, because
+     * - it's not public API
+     * - it can change as ember-source is upgraded
+     * - the numbers are not "stable", in that they are bitwise anded and ored
+     *   together so that storage is efficient -- which means we'd need to know
+     *   all the opcodes and appropriately | / & to deconstruct appropriately.
+     * @returns
+     */
     async transform(code, id) {
       const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
       const postfix = generateHash(cssPath);
@@ -77,6 +90,14 @@ export default createUnplugin(({ appDir }) => {
               })
               .join(' ');
           }
+
+          // replace strings in if conditions
+          // this is brittle, because subexpressions can be deeply nested
+          //
+          // this particular one is <div class="global-probably {{if @condition "a-local-class"}}">"
+          // if (instruction[0] === 15 && Array.isArray(instruction[1]) && instruction[1][0] === 29) {
+
+          // }
 
           // add postfix to tags
           if (
