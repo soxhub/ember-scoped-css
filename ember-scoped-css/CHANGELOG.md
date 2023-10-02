@@ -1,5 +1,28 @@
 # ember-scoped-css
 
+## 0.12.1
+
+### Patch Changes
+
+- [#102](https://github.com/soxhub/ember-scoped-css/pull/102) [`3ca5674`](https://github.com/soxhub/ember-scoped-css/commit/3ca5674215487b43d9f62f18ae2310bbe0315467) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fix an issue with strings in `class` attributes declared via sub-expressions (such as within if statements), were not properly getting scoped.
+
+  For example:
+
+  ```js
+  <template>
+    <div class="global-probably {{if @condition "a-local-class"}}">
+      Hello there!
+    </div>
+  </template>
+  ```
+
+  When the sibling CSS file only declares `a-local-class`, we would expect that
+
+  - `global-probably` remains unchanged
+  - `a-local-class` gets hashed
+
+  Note that this bug is not fixed for embroider consumers.
+
 ## 0.12.0
 
 ### Minor Changes
@@ -52,7 +75,7 @@
               use: [
                 {
                   loader: require.resolve(
-                    'ember-scoped-css/build/app-css-loader'
+                    'ember-scoped-css/build/app-css-loader',
                   ),
                   options: {
                     layerName: 'embroider-app',
