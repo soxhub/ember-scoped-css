@@ -56,5 +56,6 @@ await esbuild.build({
   sourcemap: true,
   format: 'esm',
   bundle: true,
+  external,
   outdir: 'dist/runtime',
 });
