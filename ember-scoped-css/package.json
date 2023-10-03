@@ -14,23 +14,29 @@
     "addon-main.cjs"
   ],
   "exports": {
-    "./test-support": "./src/runtime/test-support.js",
-    "./build": "./src/build/index.js",
+    "./test-support": {
+      "types": "./declarations/runtime/test-support.d.ts",
+      "default": "./dist/runtime/test-support.js"
+    },
+    "./build": {
+      "import": "./dist/esm/build/index.mjs",
+      "require": "./dist/cjs/build/index.cjs"
+    },
     "./build/app-css-loader": {
-      "import": "./src/build/app-css-loader.js",
-      "require": "./dist/build/app-css-loader.cjs"
+      "import": "./dist/esm/build/app-css-loader.mjs",
+      "require": "./dist/cjs/build/app-css-loader.cjs"
     },
     "./build/app-dependency-loader": {
-      "import": "./src/build/app-dependency-loader.js",
-      "require": "./dist/build/app-dependency-loader.cjs"
+      "import": "./dist/esm/build/app-dependency-loader.mjs",
+      "require": "./dist/cjs/build/app-dependency-loader.cjs"
     },
     "./build/ember-classic-support": {
-      "require": "./dist/lib/scoped-css-preprocessor.cjs"
+      "require": "./dist/cjs/lib/scoped-css-preprocessor.cjs"
     },
     "./addon-main.cjs": "./addon-main.cjs",
     "./babel-plugin": {
-      "import": "./src/scoped-babel-plugin.js",
-      "require": "./dist/scoped-babel-plugin.cjs"
+      "import": "./src/esm/scoped-babel-plugin.mjs",
+      "require": "./dist/cjs/scoped-babel-plugin.cjs"
     }
   },
   "scripts": {
@@ -57,7 +63,7 @@
     "ember-source": "^4.10.0",
     "ember-template-recast": "^6.1.3",
     "ember-template-tag": "^2.3.14",
-    "find-up": "^6.3.0",
+    "find-up": "^5.0.0",
     "glob": "^8.1.0",
     "postcss": "^8.4.21",
     "postcss-selector-parser": "^6.0.11",
@@ -68,6 +74,9 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
     "@nullvoxpopuli/eslint-configs": "^3.2.2",
+    "@tsconfig/ember": "^3.0.1",
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/blueimp-md5": "^2.18.0",
     "chai": "^4.3.7",
     "concurrently": "^8.2.1",
     "ember-template-lint": "^5.11.2",
@@ -76,6 +85,7 @@
     "mocha": "^10.2.0",
     "prettier": "^3.0.3",
     "sinon": "^16.0.0",
+    "typescript": "^5.2.2",
     "webpack": "^5.75.0"
   },
   "ember-addon": {

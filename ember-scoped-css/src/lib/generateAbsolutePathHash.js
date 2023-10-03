@@ -1,7 +1,7 @@
 import fsSync from 'node:fs';
 import path from 'node:path';
 
-import { findUpSync } from 'find-up';
+import findUp from 'find-up';
 
 import generateHash from './generateRelativePathHash.js';
 
@@ -102,7 +102,7 @@ function findWorkspacePath(sourcePath) {
     return seen;
   }
 
-  const packageJsonPath = findUpSync('package.json', {
+  const packageJsonPath = findUp.sync('package.json', {
     cwd: path.dirname(sourcePath),
   });
 
