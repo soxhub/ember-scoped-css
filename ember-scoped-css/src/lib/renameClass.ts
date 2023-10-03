@@ -1,4 +1,8 @@
-export default function renameClass(className: string, postfix: string, classesInCss?: Set<string>) {
+export default function renameClass(
+  className: string,
+  postfix: string,
+  classesInCss?: Set<string>,
+) {
   const classes = className.split(/\s+/);
   const renamedClasses = classes
     .filter((c) => c)

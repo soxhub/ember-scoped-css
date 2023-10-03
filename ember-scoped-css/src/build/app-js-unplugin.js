@@ -1,4 +1,5 @@
 import path from 'node:path';
+
 import { createUnplugin } from 'unplugin';
 
 import generateHash from '../lib/generateAbsolutePathHash.js';
