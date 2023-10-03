@@ -47,7 +47,7 @@
     "lint:js:fix": "eslint . --fix",
     "lint:prettier:fix": "prettier . -w",
     "lint:prettier": "prettier . -c",
-    "test": "mocha"
+    "test": "vitest"
   },
   "dependencies": {
     "@babel/parser": "^7.23.0",
@@ -77,15 +77,14 @@
     "@tsconfig/ember": "^3.0.1",
     "@tsconfig/strictest": "^2.0.2",
     "@types/blueimp-md5": "^2.18.0",
-    "chai": "^4.3.7",
     "concurrently": "^8.2.1",
     "ember-template-lint": "^5.11.2",
     "esbuild": "^0.19.0",
+    "esbuild-plugin-vitest-cleaner": "^0.5.1",
     "eslint": "^8.50.0",
-    "mocha": "^10.2.0",
     "prettier": "^3.0.3",
-    "sinon": "^16.0.0",
     "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
     "webpack": "^5.75.0"
   },
   "ember-addon": {

@@ -1,4 +1,5 @@
 import * as esbuild from 'esbuild';
+import { vitestCleaner } from 'esbuild-plugin-vitest-cleaner';
 import { createRequire as topLevelCreateRequire } from 'module';
 
 const require = topLevelCreateRequire(import.meta.url);
@@ -23,6 +24,7 @@ await esbuild.build({
   sourcemap: true,
   outExtension: { '.js': '.cjs' },
   external,
+  plugins: [vitestCleaner()],
 });
 
 // Node, ESM
@@ -35,6 +37,7 @@ await esbuild.build({
   platform: 'node',
   sourcemap: true,
   external,
+  plugins: [vitestCleaner()],
   outExtension: { '.js': '.mjs' },
   /**
    * Ooof, this makes it feel like ESBuild doesn't have sufficient funding...
@@ -57,5 +60,6 @@ await esbuild.build({
   format: 'esm',
   bundle: true,
   external,
+  plugins: [vitestCleaner()],
   outdir: 'dist/runtime',
 });
