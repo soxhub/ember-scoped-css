@@ -1,5 +1,13 @@
 # ember-scoped-css
 
+## 0.13.0
+
+### Minor Changes
+
+- [#113](https://github.com/soxhub/ember-scoped-css/pull/113) [`fc99101`](https://github.com/soxhub/ember-scoped-css/commit/fc99101560a313f52c426dc95032f40a94d1e754) Thanks [@jakebixby](https://github.com/jakebixby)! - Bumped ember-template-tag@2.3.15 for type fix
+
+- [#111](https://github.com/soxhub/ember-scoped-css/pull/111) [`3ac8b63`](https://github.com/soxhub/ember-scoped-css/commit/3ac8b63e3ba22ff60a073e4188b1873e112d9dd3) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Utilize `external` dependencies for a more optimized runtime and install time / size
+
 ## 0.12.1
 
 ### Patch Changes

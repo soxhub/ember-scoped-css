@@ -1,5 +1,12 @@
 # ember-scoped-css-compat
 
+## 4.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`fc99101`](https://github.com/soxhub/ember-scoped-css/commit/fc99101560a313f52c426dc95032f40a94d1e754), [`3ac8b63`](https://github.com/soxhub/ember-scoped-css/commit/3ac8b63e3ba22ff60a073e4188b1873e112d9dd3)]:
+  - ember-scoped-css@0.13.0
+
 ## 3.0.0
 
 ### Patch Changes
@@ -53,7 +60,7 @@
               use: [
                 {
                   loader: require.resolve(
-                    'ember-scoped-css/build/app-css-loader'
+                    'ember-scoped-css/build/app-css-loader',
                   ),
                   options: {
                     layerName: 'embroider-app',
