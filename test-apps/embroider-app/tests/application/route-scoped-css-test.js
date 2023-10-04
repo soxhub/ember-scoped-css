@@ -1,5 +1,4 @@
-import { render, visit } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
 import { setupApplicationTest } from 'embroider-app/tests/helpers';

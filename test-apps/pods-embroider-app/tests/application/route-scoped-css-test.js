@@ -1,5 +1,4 @@
-import { render, visit } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
 import { setupApplicationTest } from 'pods-embroider-app/tests/helpers';
@@ -14,9 +13,7 @@ module('Application | visit `/`', function (hooks) {
 
     assert
       .dom('h3')
-      .hasClass(
-        scopedClass('', 'pods-embroider-app/routes/application'),
-      );
+      .hasClass(scopedClass('pods-embroider-app/routes/application'));
     assert.dom('h3').hasStyle({ color: 'rgb(0, 255, 0)' });
   });
 });
