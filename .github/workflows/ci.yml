@@ -18,6 +18,8 @@ jobs:
 
     steps:
       - uses: wyvox/action@v1
+        with:
+          node-version: 18.17
       - run: pnpm build
       - name: Lint
         run: pnpm lint
@@ -31,6 +33,7 @@ jobs:
     steps:
       - uses: wyvox/action@v1
         with:
+          node-version: 18.17
           no-lockfile: true
       - run: pnpm build
       - name: Run Tests
@@ -53,6 +56,8 @@ jobs:
 
     steps:
       - uses: wyvox/action@v1
+        with:
+          node-version: 18.17
       - run: pnpm build
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
@@ -72,6 +77,8 @@ jobs:
 
     steps:
       - uses: wyvox/action@v1
+        with:
+          node-version: 18.17
       - run: pnpm build
       - name: Create Release Pull Request or Publish to npm
         id: changesets
