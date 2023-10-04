@@ -1,12 +1,13 @@
 'use strict';
 
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+
 import Concat from 'broccoli-concat';
 import { Funnel } from 'broccoli-funnel';
 import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
 import { parseTemplates } from 'ember-template-tag';
-import { readFile, writeFile } from 'fs/promises';
-import path from 'path';
 
 import fsExists from './fsExists.js';
 import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';

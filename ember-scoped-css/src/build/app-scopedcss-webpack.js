@@ -1,6 +1,6 @@
 // import { RawSource }  from 'webpack-sources';
-import { readFile, writeFile } from 'fs/promises';
-import path from 'path';
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 
 import fsExists from '../lib/fsExists.js';
 import generateHash from '../lib/generateAbsolutePathHash.js';

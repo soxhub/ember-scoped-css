@@ -18,6 +18,7 @@ jobs:
 
     steps:
       - uses: wyvox/action@v1
+      - run: pnpm build
       - name: Lint
         run: pnpm lint
       - name: Run Tests
@@ -31,6 +32,7 @@ jobs:
       - uses: wyvox/action@v1
         with:
           no-lockfile: true
+      - run: pnpm build
       - name: Run Tests
         run: pnpm test
 
@@ -45,11 +47,13 @@ jobs:
         try-scenario:
           - ember-lts-3.28
           - ember-lts-4.4
+          - ember-lts-4.12
           - ember-release
           - ember-beta
 
     steps:
       - uses: wyvox/action@v1
+      - run: pnpm build
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
         working-directory: test-apps/embroider-app

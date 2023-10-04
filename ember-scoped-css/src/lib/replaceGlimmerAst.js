@@ -1,6 +1,7 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+
 import babelParser from '@babel/parser';
-import { readFile } from 'fs/promises';
-import path from 'path';
 import recast from 'recast';
 
 import fsExists from './fsExists.js';

@@ -1,5 +1,6 @@
-import { readFile } from 'fs/promises';
-import path from 'path';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+
 import { createUnplugin } from 'unplugin';
 import { Compilation } from 'webpack';
 

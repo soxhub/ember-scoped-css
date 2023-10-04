@@ -1,0 +1,14 @@
+{
+  "extends": ["@tsconfig/ember", "@tsconfig/strictest"],
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    // why do eslint's types always get involved?
+    "skipLibCheck": true,
+    // let JS be loose
+    "checkJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "declarationDir": "declarations"
+  }
+}

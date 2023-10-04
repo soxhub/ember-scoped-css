@@ -1,9 +1,9 @@
 import fsSync from 'node:fs';
 import path from 'node:path';
 
-import { findUpSync } from 'find-up';
+import findUp from 'find-up';
 
-import generateHash from './generateRelativePathHash.js';
+import generateHash from './generateRelativePathHash.ts';
 
 export default function generateHashFromAbsolutePath(absolutePath) {
   /**
@@ -102,7 +102,7 @@ function findWorkspacePath(sourcePath) {
     return seen;
   }
 
-  const packageJsonPath = findUpSync('package.json', {
+  const packageJsonPath = findUp.sync('package.json', {
     cwd: path.dirname(sourcePath),
   });
 
@@ -134,4 +134,26 @@ function workspacePackageName(sourcePath) {
   MANIFEST_CACHE.set(workspace, json);
 
   return json.name;
+}
+
+if (import.meta.vitest) {
+  const { it, expect } = import.meta.vitest;
+
+  it('should return a string', function () {
+    const postfix = generateHash('foo.css');
+
+    expect(postfix).to.be.a('string');
+  });
+
+  it('should return a string starting with "e"', function () {
+    const postfix = generateHash('foo.css');
+
+    expect(postfix).to.match(/^e/);
+  });
+
+  it('should return a string of length 9', function () {
+    const postfix = generateHash('foo.css');
+
+    expect(postfix).to.have.lengthOf(9);
+  });
 }
