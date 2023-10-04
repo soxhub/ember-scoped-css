@@ -156,6 +156,8 @@ b {
 }
 ```
 
+NOTE: that if you're using pods, css co-located with templates/routes/etc will need to be named `styles.css`
+
 
 
 ### Passing classes as arguments to a component
