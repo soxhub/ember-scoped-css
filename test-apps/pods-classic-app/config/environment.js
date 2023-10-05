@@ -3,6 +3,7 @@
 module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'pods-classic-app',
+    podModulePrefix: 'pods-classic-app/routes',
     environment,
     rootURL: '/',
     locationType: 'history',
