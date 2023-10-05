@@ -9,6 +9,8 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "noEmit": false,
+    "inlineSourceMap": true,
+    "declarationMap": true,
     "declarationDir": "declarations"
   }
 }

@@ -11,7 +11,6 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
@@ -21,7 +20,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
-    "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
+    "test": "pnpm test:ember",
     "test:ember": "ember test"
   },
   "devDependencies": {
@@ -52,6 +51,8 @@
     "ember-page-title": "^8.0.0",
     "ember-qunit": "^8.0.1",
     "ember-resolver": "^11.0.1",
+    "ember-scoped-css": "workspace:^",
+    "ember-scoped-css-compat": "workspace:^",
     "ember-source": "~5.3.0",
     "ember-template-lint": "^5.11.2",
     "ember-welcome-page": "^7.0.2",
