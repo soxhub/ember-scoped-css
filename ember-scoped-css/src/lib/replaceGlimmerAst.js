@@ -10,7 +10,7 @@ const parseOptions = {
   parser: babelParser,
 };
 
-export default async function (script, id, replaceFunction) {
+export default async function replaceGlimmerAst(script, id, replaceFunction) {
   const ast = recast.parse(script, parseOptions);
   const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
   let css;

@@ -93,7 +93,7 @@ class ScopedFilter extends Filter {
     for (let inputPath of this.inputPaths) {
       const templateFile = {};
 
-      for (let ext of TEMPLATE_EXTENSIONS) {
+      eachExtension: for (let ext of TEMPLATE_EXTENSIONS) {
         const templatePath = relativePath.replace(/\.css/, '.' + ext);
         let templateFilePath = path.join(inputPath, templatePath);
         let exists = await fsExists(templateFilePath);
@@ -111,7 +111,8 @@ class ScopedFilter extends Filter {
         if (exists) {
           templateFile.path = templateFilePath;
           templateFile.ext = ext;
-          continue;
+
+          break eachExtension;
         }
       }
 

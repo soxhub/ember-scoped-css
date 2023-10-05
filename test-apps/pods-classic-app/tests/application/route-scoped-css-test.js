@@ -13,7 +13,7 @@ module('Application | visit `/`', function (hooks) {
 
     assert
       .dom('h3')
-      .hasClass(scopedClass('pods-embroider-app/routes/application'));
+      .hasClass(scopedClass('pods-classic-app/routes/application'));
     assert.dom('h3').hasStyle({ color: 'rgb(0, 255, 0)' });
   });
 });
