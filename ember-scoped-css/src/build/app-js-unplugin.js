@@ -64,7 +64,14 @@ export default createUnplugin(({ appDir }) => {
      */
     async transform(code, id) {
       const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
-      const postfix = generateHash(cssPath);
+      let moduleGroupPath = cssPath;
+
+      // Pods support
+      if (id.endsWith('template.hbs')) {
+        moduleGroupPath = path.dirname(cssPath);
+      }
+
+      const postfix = generateHash(moduleGroupPath);
 
       return await replaceGlimmerAst(code, id, (opcodes, css) => {
         const { classes, tags } = getClassesTagsFromCss(css);
