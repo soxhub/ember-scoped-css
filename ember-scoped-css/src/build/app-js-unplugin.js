@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { createUnplugin } from 'unplugin';
@@ -63,11 +64,18 @@ export default createUnplugin(({ appDir }) => {
      * @returns
      */
     async transform(code, id) {
-      const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
+      let cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
       let moduleGroupPath = cssPath;
 
-      // Pods support
-      if (id.endsWith('template.hbs')) {
+      /**
+       * Pods support
+       *
+       * Note that Pod-components will never be supported.
+      */
+      let isPod = !id.includes('/components/') && id.endsWith('/template.hbs');
+
+      if (isPod) {
+        cssPath = path.join(path.dirname(id), 'styles.css');
         moduleGroupPath = path.dirname(cssPath);
       }
 
