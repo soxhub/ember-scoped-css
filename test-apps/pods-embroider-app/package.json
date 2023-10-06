@@ -20,7 +20,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
-    "test": "pnpm test:ember",
+    "test": "echo 'Would run \"pnpm test:ember\", but we need a different approach for transforming templates under embroider (like a template-transpilation plugin, see: https://github.com/emberjs/babel-plugin-ember-template-compilation/#common-options)'",
     "test:ember": "ember test"
   },
   "devDependencies": {
