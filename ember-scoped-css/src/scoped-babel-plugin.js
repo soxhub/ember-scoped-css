@@ -17,7 +17,7 @@ export default () => {
         let roots = ['/components/', ...state.opts.additionalRoots];
         let filename = state.file.opts.filename;
 
-        if (!roots.some(root => filename.includes(root))) {
+        if (!roots.some((root) => filename.includes(root))) {
           return;
         }
 
@@ -45,7 +45,9 @@ export default () => {
            *
            * components + pods will never be supported.
            */
-          let isPod = !fileName.includes('/components/') && fileName.endsWith('template.js');
+          let isPod =
+            !fileName.includes('/components/') &&
+            fileName.endsWith('template.js');
 
           if (isPod) {
             cssPath = fileName.replace(/template\.js$/, 'styles.css');

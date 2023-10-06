@@ -13,9 +13,7 @@ module('Application | visit `/`', function (hooks) {
 
     assert
       .dom('h3')
-      .hasClass(
-        scopedClass('embroider-app/templates/application'),
-      );
+      .hasClass(scopedClass('embroider-app/templates/application'));
     assert.dom('h3').hasStyle({ color: 'rgb(0, 255, 0)' });
   });
 });

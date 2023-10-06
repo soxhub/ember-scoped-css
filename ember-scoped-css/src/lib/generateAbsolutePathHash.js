@@ -36,14 +36,17 @@ export function packageScopedPathToModulePath(packageScopedPath) {
 
   let parsed = path.parse(packageRelative);
 
-
   /**
    * Pods support.
    * For pods, we chop off the whole file, and use the dir name as the "modulePath"
    *
    * Note that pods for components will never be supported.
    */
-  let isPod = !packageRelative.includes('/components/') && (packageRelative.endsWith('styles.css') || packageRelative.endsWith('template.hbs') || packageRelative.endsWith('template.js'));
+  let isPod =
+    !packageRelative.includes('/components/') &&
+    (packageRelative.endsWith('styles.css') ||
+      packageRelative.endsWith('template.hbs') ||
+      packageRelative.endsWith('template.js'));
 
   if (isPod) {
     return parsed.dir;

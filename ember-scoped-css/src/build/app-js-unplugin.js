@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { createUnplugin } from 'unplugin';
@@ -71,7 +70,7 @@ export default createUnplugin(({ appDir }) => {
        * Pods support
        *
        * Note that Pod-components will never be supported.
-      */
+       */
       let isPod = !id.includes('/components/') && id.endsWith('/template.hbs');
 
       if (isPod) {

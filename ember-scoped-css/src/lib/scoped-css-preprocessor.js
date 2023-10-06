@@ -49,7 +49,6 @@ class ScopedFilter extends Filter {
         const componentPath = path.join(inputPath, relativeComponentPath);
 
         existPromises.push(fsExists(componentPath));
-
       }
 
       /**
@@ -218,19 +217,26 @@ export default class ScopedCssPreprocessor {
   }
 
   toTree(inputNode, inputPath, outputDirectory, options) {
-    const otherPreprocessors = this.preprocessors.filter(p => p !== this);
+    const otherPreprocessors = this.preprocessors.filter((p) => p !== this);
     const otherTrees = otherPreprocessors.map((p) => p.toTree(...arguments));
     let mergedOtherTrees = new MergeTrees(otherTrees);
 
-    let roots = [this.appName + '/components/', ...(this.userOptions.additionalRoots || []).map(root => `${this.appName}/${root}`)];
-    let include = roots.map(root => {
-      let withSlash = root.endsWith('/') ? root : `${root}/`;
+    let roots = [
+      this.appName + '/components/',
+      ...(this.userOptions.additionalRoots || []).map(
+        (root) => `${this.appName}/${root}`,
+      ),
+    ];
+    let include = roots
+      .map((root) => {
+        let withSlash = root.endsWith('/') ? root : `${root}/`;
 
-      return [
-        `${withSlash}**/*.css`,
-        ...COMPONENT_EXTENSIONS.map(ext => `${withSlash}**/*.${ext}`),
-      ]
-    }).flat();
+        return [
+          `${withSlash}**/*.css`,
+          ...COMPONENT_EXTENSIONS.map((ext) => `${withSlash}**/*.${ext}`),
+        ];
+      })
+      .flat();
 
     let componentsNode = new Funnel(inputNode, { include });
 
@@ -242,7 +248,7 @@ export default class ScopedCssPreprocessor {
     });
 
     const componentStyles = new Funnel(componentsNode, {
-      include: roots.map(root => {
+      include: roots.map((root) => {
         let withSlash = root.endsWith('/') ? root : `${root}/`;
 
         return `${withSlash}**/*.css`;
