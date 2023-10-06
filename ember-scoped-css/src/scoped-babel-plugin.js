@@ -14,7 +14,7 @@ export default () => {
          * Mostly pods support.
          * folks need to opt in to pods, because every pods app can be configured differently
          */
-        let roots = ['/components/', ...state.opts.additionalRoots];
+        let roots = ['/components/', ...(state.opts?.additionalRoots || [])];
         let filename = state.file.opts.filename;
 
         if (!roots.some((root) => filename.includes(root))) {
