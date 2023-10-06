@@ -20,7 +20,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
-    "test": "pnpm test:ember --port 0",
+    "test": "pnpm test:ember --test-port 0",
     "test:ember": "ember test"
   },
   "devDependencies": {
