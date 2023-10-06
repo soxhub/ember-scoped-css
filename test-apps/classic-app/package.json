@@ -20,7 +20,7 @@
     "lint:prettier:fix": "prettier . -w",
     "lint:prettier": "prettier . -c",
     "start": "ember serve",
-    "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
+    "test": "pnpm test:ember --port 0",
     "test:ember": "ember test"
   },
   "devDependencies": {
