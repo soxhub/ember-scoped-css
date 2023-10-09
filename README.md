@@ -35,9 +35,12 @@ const app = new EmberApp(defaults, {
   /* ... */ 
   'ember-scoped-css': {
     layerName: 'app-styles', // default: 'components', set to false to disable the layer
+    additionalRoots: ['routes/'], // default: [], set this to use scoped-css in pods-using apps
   }
 });
 ```
+
+Note that supporting `pods` is _opt in_, because all apps can have their pods root directory configured differently.
 
 ## Installation for an embroider app
 
@@ -155,6 +158,8 @@ b {
   color: blue;
 }
 ```
+
+NOTE: that if you're using pods, css co-located with templates/routes/etc will need to be named `styles.css`
 
 
 

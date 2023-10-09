@@ -35,6 +35,7 @@ module.exports = async function (defaults) {
                   ),
                   options: {
                     layerName: 'embroider-app',
+                    additionalRoots: ['routes/'],
                   },
                 },
               ],

@@ -10,7 +10,14 @@ export default () => {
   return {
     visitor: {
       CallExpression(path, state) {
-        if (!state.file.opts.filename.includes('/components/')) {
+        /**
+         * Mostly pods support.
+         * folks need to opt in to pods, because every pods app can be configured differently
+         */
+        let roots = ['/components/', ...(state.opts?.additionalRoots || [])];
+        let filename = state.file.opts.filename;
+
+        if (!roots.some((root) => filename.includes(root))) {
           return;
         }
 
@@ -31,7 +38,20 @@ export default () => {
             relativeFileName,
           );
 
-          const cssPath = fileName.replace(/(\.js)|(\.ts)/, '.css');
+          let cssPath = fileName.replace(/(\.js)|(\.ts)/, '.css');
+
+          /**
+           * Pods support
+           *
+           * components + pods will never be supported.
+           */
+          let isPod =
+            !fileName.includes('/components/') &&
+            fileName.endsWith('template.js');
+
+          if (isPod) {
+            cssPath = fileName.replace(/template\.js$/, 'styles.css');
+          }
 
           if (existsSync(cssPath)) {
             const css = readFileSync(cssPath, 'utf8');

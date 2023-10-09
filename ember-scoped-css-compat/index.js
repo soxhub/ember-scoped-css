@@ -26,8 +26,14 @@ module.exports = {
 
       if (htmlbarsPlugin) {
         let htmlbarsPluginIndex = plugins.indexOf(htmlbarsPlugin);
+        let scopedCssOptions = this.app.options['ember-scoped-css'] || {};
 
-        let customPlugin = [require.resolve('ember-scoped-css/babel-plugin')];
+        let customPlugin = [
+          require.resolve('ember-scoped-css/babel-plugin'),
+          {
+            ...scopedCssOptions,
+          },
+        ];
 
         plugins.splice(htmlbarsPluginIndex, 0, customPlugin);
       }

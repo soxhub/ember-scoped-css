@@ -34,6 +34,24 @@ export function packageScopedPathToModulePath(packageScopedPath) {
    */
   let packageRelative = packageScopedPath.replace(/^\/src\//, '/');
 
+  let parsed = path.parse(packageRelative);
+
+  /**
+   * Pods support.
+   * For pods, we chop off the whole file, and use the dir name as the "modulePath"
+   *
+   * Note that pods for components will never be supported.
+   */
+  let isPod =
+    !packageRelative.includes('/components/') &&
+    (packageRelative.endsWith('styles.css') ||
+      packageRelative.endsWith('template.hbs') ||
+      packageRelative.endsWith('template.js'));
+
+  if (isPod) {
+    return parsed.dir;
+  }
+
   /**
    * If an extension is passed, remove it.
    * When using packagers, folks are used to not having to specify extensions for files.
@@ -44,7 +62,6 @@ export function packageScopedPathToModulePath(packageScopedPath) {
    * It doesn't matter what the extension is, because you can only have one css file
    * for the button module anyway.
    */
-  let parsed = path.parse(packageRelative);
   let localPackagerStylePath = path.join(parsed.dir, parsed.name);
 
   return localPackagerStylePath;

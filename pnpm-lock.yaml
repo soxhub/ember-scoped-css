@@ -606,6 +606,12 @@ importers:
       ember-resolver:
         specifier: ^11.0.1
         version: 11.0.1(ember-source@5.3.0)
+      ember-scoped-css:
+        specifier: workspace:^
+        version: link:../../ember-scoped-css
+      ember-scoped-css-compat:
+        specifier: workspace:^
+        version: link:../../ember-scoped-css-compat
       ember-source:
         specifier: ~5.3.0
         version: 5.3.0(@babel/core@7.23.0)(@glimmer/component@1.1.2)(rsvp@4.8.5)(webpack@5.88.2)
@@ -680,7 +686,7 @@ importers:
         version: 3.1.1
       '@ember/test-helpers':
         specifier: ^3.2.0
-        version: 3.2.0(ember-source@5.3.0)(webpack@5.88.2)
+        version: 3.2.0(@glint/template@1.2.0)(ember-source@4.10.0)(webpack@5.88.2)
       '@embroider/compat':
         specifier: ^3.2.1
         version: 3.2.1(@embroider/core@3.2.1)
@@ -710,7 +716,7 @@ importers:
         version: 5.3.0
       ember-cli-app-version:
         specifier: ^6.0.1
-        version: 6.0.1(ember-source@5.3.0)
+        version: 6.0.1(ember-source@4.10.0)
       ember-cli-babel:
         specifier: ^8.0.0
         version: 8.1.0(@babel/core@7.23.0)
@@ -726,39 +732,30 @@ importers:
       ember-cli-inject-live-reload:
         specifier: ^2.1.0
         version: 2.1.0
-      ember-data:
-        specifier: ~5.3.0
-        version: 5.3.0(@babel/core@7.23.0)(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(ember-source@5.3.0)
-      ember-fetch:
-        specifier: ^8.1.2
-        version: 8.1.2
       ember-load-initializers:
         specifier: ^2.1.2
         version: 2.1.2(@babel/core@7.23.0)
       ember-modifier:
         specifier: ^4.1.0
-        version: 4.1.0(ember-source@5.3.0)
+        version: 4.1.0(ember-source@4.10.0)
       ember-page-title:
         specifier: ^8.0.0
         version: 8.0.0
       ember-qunit:
         specifier: ^8.0.1
-        version: 8.0.1(@ember/test-helpers@3.2.0)(ember-source@5.3.0)(qunit@2.20.0)
+        version: 8.0.1(@ember/test-helpers@3.2.0)(@glint/template@1.2.0)(ember-source@4.10.0)(qunit@2.20.0)
       ember-resolver:
         specifier: ^11.0.1
-        version: 11.0.1(ember-source@5.3.0)
+        version: 11.0.1(ember-source@4.10.0)
       ember-scoped-css:
         specifier: workspace:^
         version: link:../../ember-scoped-css
       ember-source:
-        specifier: ~5.3.0
-        version: 5.3.0(@babel/core@7.23.0)(@glimmer/component@1.1.2)(rsvp@4.8.5)(webpack@5.88.2)
+        specifier: ~4.10.0
+        version: 4.10.0(@babel/core@7.23.0)(@glimmer/component@1.1.2)(@glint/template@1.2.0)(webpack@5.88.2)
       ember-template-lint:
         specifier: ^5.11.2
         version: 5.11.2
-      ember-welcome-page:
-        specifier: ^7.0.2
-        version: 7.0.2
       eslint:
         specifier: ^8.49.0
         version: 8.50.0
@@ -8868,6 +8865,22 @@ packages:
       ember-cli-typescript: 2.0.2(@babel/core@7.23.0)
     transitivePeerDependencies:
       - '@babel/core'
+      - supports-color
+    dev: true
+
+  /ember-modifier@4.1.0(ember-source@4.10.0):
+    resolution: {integrity: sha512-YFCNpEYj6jdyy3EjslRb2ehNiDvaOrXTilR9+ngq+iUqSHYto2zKV0rleiA1XJQ27ELM1q8RihT29U6Lq5EyqQ==}
+    peerDependencies:
+      ember-source: '*'
+    peerDependenciesMeta:
+      ember-source:
+        optional: true
+    dependencies:
+      '@embroider/addon-shim': 1.8.6
+      ember-cli-normalize-entity-name: 1.0.0
+      ember-cli-string-utils: 1.1.0
+      ember-source: 4.10.0(@babel/core@7.23.0)(@glimmer/component@1.1.2)(@glint/template@1.2.0)(webpack@5.88.2)
+    transitivePeerDependencies:
       - supports-color
     dev: true
 
