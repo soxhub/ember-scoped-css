@@ -1,5 +1,11 @@
 # ember-scoped-css
 
+## 0.14.0
+
+### Minor Changes
+
+- [#116](https://github.com/soxhub/ember-scoped-css/pull/116) [`bd1ead6`](https://github.com/soxhub/ember-scoped-css/commit/bd1ead6f5af96ea0eb09b60bcd907c7e36c0ba43) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Adds pods support for classic ember builds.
+
 ## 0.13.0
 
 ### Minor Changes
