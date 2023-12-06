@@ -14,7 +14,7 @@ concurrency:
 jobs:
   test:
     name: 'Tests'
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, small-runnerset-group]
 
     steps:
       - uses: wyvox/action@v1
