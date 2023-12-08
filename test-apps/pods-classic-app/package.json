@@ -65,7 +65,7 @@
     "loader.js": "^4.7.0",
     "prettier": "^3.0.3",
     "qunit": "^2.19.4",
-    "qunit-dom": "^2.0.0",
+    "qunit-dom": "^3.0.0",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.2",
