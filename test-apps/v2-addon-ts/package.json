@@ -43,6 +43,8 @@
     "@glint/environment-ember-loose": "^1.2.0",
     "@glint/template": "^1.2.0",
     "@nullvoxpopuli/eslint-configs": "^3.2.2",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@tsconfig/ember": "^3.0.1",
     "@types/rsvp": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
@@ -75,7 +77,8 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "app-js": {
-      "./components/classic-template-only/index.js": "./dist/_app_/components/classic-template-only/index.js"
+      "./components/classic-template-only/index.js": "./dist/_app_/components/classic-template-only/index.js",
+      "./components/with-a-class.js": "./dist/_app_/components/with-a-class.js"
     }
   },
   "exports": {
