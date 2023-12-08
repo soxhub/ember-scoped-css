@@ -13,7 +13,7 @@ module('Integration | Component | WithAClass from v2-addon-ts', function (hooks)
     await render(hbs`<WithAClass />`);
 
     assert.dom('div').hasClass('greeting_efc49be66');
-    assert.dom('div').hasStyle({ fontStyle: 'italic' });
+    assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
     assert
       .dom('div')
       .hasClass(scopedClass('greeting', 'v2-addon-ts/components/with-a-class'));
