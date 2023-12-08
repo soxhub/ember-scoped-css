@@ -6,16 +6,21 @@ import { setupRenderingTest } from 'classic-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | WithAClass from v2-addon-ts', function (hooks) {
-  setupRenderingTest(hooks);
+module(
+  'Integration | Component | WithAClass from v2-addon-ts',
+  function (hooks) {
+    setupRenderingTest(hooks);
 
-  test('it has scoped class', async function (assert) {
-    await render(hbs`<WithAClass />`);
+    test('it has scoped class', async function (assert) {
+      await render(hbs`<WithAClass />`);
 
-    assert.dom('div').hasClass('greeting_efc49be66');
-    assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
-    assert
-      .dom('div')
-      .hasClass(scopedClass('greeting', 'v2-addon-ts/components/with-a-class'));
-  });
-});
+      assert.dom('div').hasClass('greeting_efc49be66');
+      assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
+      assert
+        .dom('div')
+        .hasClass(
+          scopedClass('greeting', 'v2-addon-ts/components/with-a-class'),
+        );
+    });
+  },
+);
