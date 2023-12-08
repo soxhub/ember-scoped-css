@@ -18,7 +18,7 @@
     "test:fixture": "pnpm --filter './test-apps/*' test:fixture"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.26.2",
     "concurrently": "^8.2.1",
     "prettier": "^3.0.3"
