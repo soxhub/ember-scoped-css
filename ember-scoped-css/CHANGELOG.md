@@ -1,5 +1,18 @@
 # ember-scoped-css
 
+## 0.15.0
+
+### Minor Changes
+
+- [#129](https://github.com/soxhub/ember-scoped-css/pull/129) [`e0ae8e3`](https://github.com/soxhub/ember-scoped-css/commit/e0ae8e33af7072f54586c00aede887034e911503) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fix issue where sufficiently modern JS would not be parseable by scoped-css' build processes.
+
+  Folks would run in to this if they ship code with untranspiled
+
+  - static initializer blocks
+  - private fields
+
+  Both these ecma features are supported everywhere, so it's reasonable that folks would expect their tooling to support parsing those features.
+
 ## 0.14.0
 
 ### Minor Changes
