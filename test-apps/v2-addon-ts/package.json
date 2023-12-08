@@ -37,6 +37,8 @@
     "@babel/preset-typescript": "^7.23.0",
     "@babel/runtime": "^7.17.0",
     "@embroider/addon-dev": "^3.2.0",
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
     "@glint/core": "^1.2.0",
     "@glint/environment-ember-loose": "^1.2.0",
     "@glint/template": "^1.2.0",
@@ -90,5 +92,9 @@
         "dist/*"
       ]
     }
+  },
+  "peerDependencies": {
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2"
   }
 }
