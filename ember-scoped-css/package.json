@@ -50,8 +50,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@babel/parser": "^7.23.0",
+    "@babel/parser": "^7.23.5",
     "@embroider/addon-shim": "^1.8.6",
+    "acorn": "^8.11.2",
     "blueimp-md5": "^2.19.0",
     "broccoli-concat": "^4.2.5",
     "broccoli-funnel": "^3.0.8",
@@ -59,7 +60,7 @@
     "broccoli-persistent-filter": "^3.1.3",
     "broccoli-stew": "^3.0.0",
     "cheerio": "1.0.0-rc.12",
-    "ember-cli-babel": "^8.1.0",
+    "ember-cli-babel": "^8.2.0",
     "ember-source": "^4.10.0",
     "ember-template-recast": "^6.1.3",
     "ember-template-tag": "^2.3.15",
@@ -67,12 +68,12 @@
     "glob": "^8.1.0",
     "postcss": "^8.4.21",
     "postcss-selector-parser": "^6.0.11",
-    "recast": "^0.22.0",
+    "recast": "^0.23.4",
     "rollup": "^2.67.0",
     "unplugin": "^1.3.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.15",
+    "@babel/eslint-parser": "^7.23.3",
     "@nullvoxpopuli/eslint-configs": "^3.2.2",
     "@tsconfig/ember": "^3.0.1",
     "@tsconfig/strictest": "^2.0.2",

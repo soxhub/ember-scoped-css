@@ -2,7 +2,15 @@ import babelParser from '@babel/parser';
 import recast from 'recast';
 
 const parseOptions = {
-  parser: babelParser,
+  parser: {
+    parse(source) {
+      return babelParser.parse(source, {
+        sourceType: 'module',
+        allowImportExportEverywhere: true,
+        tokens: true,
+      });
+    },
+  },
 };
 
 export default function (script, replaceFunction) {

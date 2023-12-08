@@ -1,8 +1,9 @@
-import typescript from 'rollup-plugin-ts';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
 import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
+import { babel } from '@rollup/plugin-babel';
 import { scopedCssUnplugin } from 'ember-scoped-css/build';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -33,18 +34,15 @@ export default {
     // package names.
     addon.dependencies(),
 
-    scopedCssUnplugin.rollup(),
-
-    // compile TypeScript to latest JavaScript, including Babel transpilation
-    typescript({
-      transpiler: 'babel',
-      browserslist: ['last 1 firefox versions'],
-      transpileOnly: true,
-    }),
-
+		babel({
+      babelHelpers: 'bundled',
+			extensions: ['.js', '.ts', '.gjs', '.gts'],
+		}),
+		nodeResolve({ extensions: ['.js', '.ts', '.gjs', '.gts'] }),
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),
     glimmerTemplateTag(),
+    scopedCssUnplugin.rollup(),
 
     // addon.keepAssets(['**/*.css']),
 
