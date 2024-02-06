@@ -9,6 +9,9 @@ import rewriteHbs from './lib/rewriteHbs.js';
 export default () => {
   return {
     visitor: {
+      Program(path, state) {
+        console.log(path);
+      },
       CallExpression(path, state) {
         /**
          * Mostly pods support.

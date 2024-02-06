@@ -8,9 +8,33 @@ module.exports = function (defaults) {
     cssModules: {
       extension: 'module.css',
     },
-    'ember-scoped-css': {
-      layerName: 'classic-app-layer',
+    babel: {
+      plugins: [
+        'module:ember-scoped-css/babel-plugin',
+      ]
     },
+    autoImport: {
+      allowAppImports: ['*.css'],
+      webpack: {
+        module: {
+          rules: [
+            {
+              test: /\.css$/,
+              use: [
+                {
+                  loader: require.resolve(
+                    'ember-scoped-css/build/app-css-loader'
+                  ),
+                  options: {
+                    layerName: 'classic-app-layer', // optional
+                  }
+                },
+              ],
+            },
+          ]
+        }
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -26,7 +50,7 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import('node_modules/v2-addon/dist/scoped.css');
+  // app.import('node_modules/v2-addon/dist/scoped.css');
 
   return app.toTree();
 };

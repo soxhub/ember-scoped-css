@@ -35,7 +35,7 @@ async function transformJsFile(code, jsPath) {
   }
 
   // add css import for js and gjs files
-  code = `import './${cssFileName}';\n\n${code}`;
+  code = `import './${cssFileName}?time=${new Date().getTime()}';\n\n${code}`;
 
   // rewrite hbs in js in case it is gjs file (for gjs files hbs is already in js file)
 
@@ -91,6 +91,15 @@ export default createUnplugin(
   (options) => {
     return {
       name: 'ember-scoped-css-unplugin',
+
+
+      async resolveId(source, importer, options) {
+        if (source.includes('.css?time=')) {
+          let fixed = source.replace(/\.css?.+$/, '.css');
+
+          return await this.resolve(fixed, importer, options);
+        }
+      },
 
       generateBundle(a, bundle) {
         let cssFiles = [];
