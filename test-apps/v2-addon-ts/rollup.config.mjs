@@ -64,13 +64,6 @@ export default {
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
 
-    // {
-    //   name: 'hi',
-    //   transform(code, id) {
-    //     return code;
-    //   }
-    // },
-
     {
       name: 'generate types',
       closeBundle: async () => {
