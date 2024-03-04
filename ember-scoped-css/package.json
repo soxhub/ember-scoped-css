@@ -11,9 +11,14 @@
   "files": [
     "src",
     "dist",
-    "addon-main.cjs"
+    "addon-main.cjs",
+    "template-registry.d.ts"
   ],
   "exports": {
+    "./template-registry": {
+      "types": "./template-registry.d.ts",
+      "default": "./src/noop.js"
+    },
     "./test-support": {
       "types": "./declarations/runtime/test-support.d.ts",
       "default": "./dist/runtime/test-support.js"

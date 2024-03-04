@@ -7,7 +7,7 @@ import { setupRenderingTest } from 'classic-app/tests/helpers';
 import { scopedClass } from 'ember-scoped-css/test-support';
 
 module(
-  'Integration | Component | WithAClass from v2-addon-ts',
+  '[v2 Addon TS] Integration | Component | WithAClass from v2-addon-ts',
   function (hooks) {
     setupRenderingTest(hooks);
 

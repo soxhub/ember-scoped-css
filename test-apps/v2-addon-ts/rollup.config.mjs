@@ -1,9 +1,9 @@
-import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
-import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
 import { babel } from '@rollup/plugin-babel';
+import { execaCommand } from 'execa';
+
+import { fixBadDeclarationOutput } from 'fix-bad-declaration-output';
 import { scopedCssUnplugin } from 'ember-scoped-css/build';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -18,43 +18,77 @@ export default {
   plugins: [
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
-    addon.publicEntrypoints([
-      'components/**/*.js',
-      'index.js',
-      'template-registry.js',
-    ]),
+    // By default all your JavaScript modules (**/*.js) will be importable.
+    // But you are encouraged to tweak this to only cover the modules that make
+    // up your addon's public API. Also make sure your package.json#exports
+    // is aligned to the config here.
+    // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
+    addon.publicEntrypoints(['**/*.js', 'index.js', 'template-registry.js']),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
     // not everything in publicEntrypoints necessarily needs to go here.
-    addon.appReexports(['components/**/*.js']),
+    addon.appReexports([
+      'components/**/*.js',
+      'helpers/**/*.js',
+      'modifiers/**/*.js',
+      'services/**/*.js',
+      'templates/**/*.js',
+      'instance-initializers/**/*.js',
+    ]),
 
     // Follow the V2 Addon rules about dependencies. Your code can import from
     // `dependencies` and `peerDependencies` as well as standard Ember-provided
     // package names.
     addon.dependencies(),
 
-		babel({
+    // This babel config should *not* apply presets or compile away ES modules.
+    // It exists only to provide development niceties for you, like automatic
+    // template colocation.
+    //
+    // By default, this will load the actual babel config from the file
+    // babel.config.json.
+    babel({
+      extensions: ['.js', '.gjs', '.ts', '.gts'],
       babelHelpers: 'bundled',
-			extensions: ['.js', '.ts', '.gjs', '.gts'],
-		}),
-		nodeResolve({ extensions: ['.js', '.ts', '.gjs', '.gts'] }),
+    }),
+
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),
-    glimmerTemplateTag(),
+
+    // Ensure that .gjs files are properly integrated as Javascript
+    addon.gjs(),
     scopedCssUnplugin.rollup(),
 
-    // addon.keepAssets(['**/*.css']),
+    // addons are allowed to contain imports of .css files, which we want rollup
+    // to leave alone and keep in the published output.
+    addon.keepAssets(['**/*.css']),
+    scopedCssUnplugin.rollup({ layerName: 'luna' }),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
 
-    // Copy Readme and License into published package
-    copy({
-      targets: [
-        { src: '../README.md', dest: '.' },
-        { src: '../LICENSE.md', dest: '.' },
-      ],
-    }),
+    {
+      name: 'generate types',
+      closeBundle: async () => {
+        // eslint-disable-next-line no-console
+        console.info(`Generating type declarations...`);
+        await execaCommand('pnpm glint --declaration', {
+          stdio: 'inherit',
+          preferLocal: true,
+        });
+        /**
+         * https://github.com/microsoft/TypeScript/issues/56571#
+         * README: https://github.com/NullVoxPopuli/fix-bad-declaration-output
+         */
+        await fixBadDeclarationOutput('declarations/**/*.d.ts', [
+          'TypeScript#56571',
+          'Glint#628',
+          'Glint#697',
+        ]);
+        // eslint-disable-next-line no-console
+        console.info('Types generated');
+      },
+    },
   ],
 };
