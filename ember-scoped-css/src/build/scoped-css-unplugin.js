@@ -14,12 +14,18 @@ function isJsFile(id) {
   return id.endsWith('.js') || id.endsWith('.ts');
 }
 
+function isHbsFile(id) {
+  return id.endsWith('.hbs');
+}
+
 function isCssFile(id) {
   return id.endsWith('.css');
 }
 
-async function transformJsFile(code, jsPath) {
-  const cssPath = jsPath.replace(/(\.hbs)?\.((js)|(ts))$/, '.css');
+async function transformJsFile(code, id) {
+  const cssPath = id.endsWith('.hbs')
+    ? id.replace(/\.hbs$/, '.css')
+    : id.replace(/(\.hbs)?\.((js)|(ts))$/, '.css');
   const cssFileName = path.basename(cssPath);
 
   const cssExists = await fsExists(cssPath);
@@ -106,10 +112,13 @@ export default createUnplugin(
             cssFiles.push(bundle[cssAsset].source);
             delete bundle[cssAsset];
           } else {
+            const cssImport = path.basename(asset.replace('.js', '.css'));
+            const importLine = `import './${cssImport}';`;
+
             // add import to js files
-            bundle[asset].code =
-              `import './${path.basename(asset.replace('.js', '.css'))}';\n` +
-              bundle[asset].code;
+            if (bundle[asset].code.indexOf(importLine) < 0) {
+              bundle[asset].code = `${importLine}\n` + bundle[asset].code;
+            }
           }
         }
 
@@ -122,8 +131,16 @@ export default createUnplugin(
         }
       },
 
+      // loadInclude(id) {
+      //   return isJsFile(id) || isCssFile(id) || isHbsFile(id);
+      // },
       transform(code, jsPath) {
-        if (isJsFile(jsPath)) {
+        /**
+         * HBS files are actually JS files with a call to precompileTemplate
+         */
+        if (isHbsFile(jsPath)) {
+          return transformJsFile(code, jsPath);
+        } else if (isJsFile(jsPath)) {
           return transformJsFile(code, jsPath);
         } else if (isCssFile(jsPath)) {
           return transformCssFile(

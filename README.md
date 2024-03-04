@@ -105,7 +105,15 @@ module.exports = async function (defaults) {
 npm install --save-dev ember-scoped-css
 ```
 
-1. If you want to use `.gjs/gts` components, then follow the instructions from [rollup-plugin-glimmer-template-tag](https://github.com/NullVoxPopuli/rollup-plugin-glimmer-template-tag) addon.
+1. If you want to use `.gjs/gts` components, [`@embroider/addon-dev`](https://github.com/embroider-build/embroider/tree/main/packages/addon-dev) provides a plugin for you, `addon.gjs()`.
+
+<details><summary>An older approach</summary>
+
+There is a deprecated plugin (superseded by `@embroider/addon-dev`) that uses ember-template-imports -- to use this follow the instructions from [rollup-plugin-glimmer-template-tag](https://github.com/NullVoxPopuli/rollup-plugin-glimmer-template-tag) addon.
+
+This plugin is not recommended, and is archived.
+
+</details>
 
 2. Add the following to your `rollup.config.mjs`:
 
