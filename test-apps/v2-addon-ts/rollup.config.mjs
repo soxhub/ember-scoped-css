@@ -58,15 +58,18 @@ export default {
 
     // Ensure that .gjs files are properly integrated as Javascript
     addon.gjs(),
-    scopedCssUnplugin.rollup(),
 
-    // addons are allowed to contain imports of .css files, which we want rollup
-    // to leave alone and keep in the published output.
-    addon.keepAssets(['**/*.css']),
-    scopedCssUnplugin.rollup({ layerName: 'luna' }),
+    scopedCssUnplugin.rollup(),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
+
+    // {
+    //   name: 'hi',
+    //   transform(code, id) {
+    //     return code;
+    //   }
+    // },
 
     {
       name: 'generate types',
