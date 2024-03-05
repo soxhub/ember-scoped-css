@@ -51,7 +51,7 @@
     "ember-scoped-css-compat": "workspace:*",
     "ember-source": "~4.10.0",
     "ember-style-loader": "github:mainmatter/ember-style-loader#main",
-    "ember-template-imports": "^3.4.2",
+    "ember-template-imports": "^4.0.0",
     "ember-template-lint": "^5.11.2",
     "eslint": "^8.50.0",
     "eslint-plugin-ember": "^11.11.1",

@@ -44,7 +44,7 @@
     "compare-fixture": "^1.0.1",
     "concurrently": "^8.2.1",
     "ember-scoped-css": "workspace:*",
-    "ember-template-imports": "^3.4.2",
+    "ember-template-imports": "^4.0.0",
     "ember-template-lint": "^5.11.2",
     "eslint": "^8.50.0",
     "eslint-plugin-ember": "^11.11.1",
