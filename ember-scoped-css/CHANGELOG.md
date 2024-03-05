@@ -1,5 +1,31 @@
 # ember-scoped-css
 
+## 0.16.0
+
+### Minor Changes
+
+- [#140](https://github.com/soxhub/ember-scoped-css/pull/140) [`b86dfe5`](https://github.com/soxhub/ember-scoped-css/commit/b86dfe5702a2e63b301b790b9e8adc7e87916841) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fix TypeScript / Glint support.
+  There is now a template-registry that folks can import for loose-mode components:
+
+  ```ts
+  import 'ember-source/types';
+  import 'ember-source/types/preview';
+
+  import type ScopedCss from 'ember-scoped-css/template-registry';
+
+  declare module '@glint/environment-ember-loose/registry' {
+    export default interface Registry extends ScopedCss {
+      // ...
+    }
+  }
+  ```
+
+  Note that the `scoped-class` helper is removed at build time, so you should never see it at runtime. The types here are to satisfy correctness/type checking/lints.
+
+### Patch Changes
+
+- [#140](https://github.com/soxhub/ember-scoped-css/pull/140) [`3a66d3a`](https://github.com/soxhub/ember-scoped-css/commit/3a66d3ae44a17ed25bdd8f2e8fae308d8317be35) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fixes #108. ember-scoped-css is now compatible with `@embroider/addon-dev@v4`, which means that `rollup-plugin-glimmer-template-tag` is no longer needed, and also no longer recommended in the README. For GJS/GTS/`<template>`, please use `@embroider/addon-dev`'s `addon.gjs()` plugin.
+
 ## 0.15.0
 
 ### Minor Changes
