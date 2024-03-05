@@ -21,7 +21,7 @@ module('[v2 Addon TS] Integration | Component | @class', function (hooks) {
     assert
       .dom('p')
       .hasClass(
-        scopedClass('text-color', 'v2-addon/components/at-class/component-at-class')
+        scopedClass('text-color', 'v2-addon-ts/components/at-class-ts/component-at-class')
       );
     assert.dom('p').hasStyle({ color: 'rgb(0, 0, 255)' });
   });
@@ -34,7 +34,7 @@ module('[v2 Addon TS] Integration | Component | @class', function (hooks) {
     assert
       .dom('p')
       .hasClass(
-        scopedClass('text-color', 'v2-addon/components/at-class/component-at-class')
+        scopedClass('text-color', 'v2-addon-ts/components/at-class-ts/component-at-class')
       );
     assert.dom('p').hasStyle({ color: 'rgb(0, 0, 255)' });
   });
