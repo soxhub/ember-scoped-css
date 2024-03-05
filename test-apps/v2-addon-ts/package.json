@@ -80,6 +80,9 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "app-js": {
+      "./components/at-class-ts/at-class-more-complex.js": "./dist/_app_/components/at-class-ts/at-class-more-complex.js",
+      "./components/at-class-ts/component-at-class.js": "./dist/_app_/components/at-class-ts/component-at-class.js",
+      "./components/at-class-ts/has-at-class.js": "./dist/_app_/components/at-class-ts/has-at-class.js",
       "./components/classic-template-only/index.js": "./dist/_app_/components/classic-template-only/index.js",
       "./components/with-a-class.js": "./dist/_app_/components/with-a-class.js"
     }

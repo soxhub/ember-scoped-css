@@ -66,6 +66,8 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
+      "./components/at-class/component-at-class.js": "./dist/_app_/components/at-class/component-at-class.js",
+      "./components/at-class/has-at-class.js": "./dist/_app_/components/at-class/has-at-class.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
       "./components/header.js": "./dist/_app_/components/header.js",
       "./components/time.js": "./dist/_app_/components/time.js"

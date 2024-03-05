@@ -4,6 +4,7 @@ import 'ember-source/types';
 import 'ember-source/types/preview';
 import '@glint/environment-ember-loose';
 
+import type HasAtClass from '../src/components/at-class-ts/has-at-class.ts';
 import type ScopedCss from 'ember-scoped-css/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
@@ -12,5 +13,6 @@ declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry extends ScopedCss {
     // Add any registry entries from other addons here that your addon itself uses (in non-strict mode templates)
     // See https://typed-ember.gitbook.io/glint/using-glint/ember/using-addons
+    'AtClass::HasAtClass': typeof HasAtClass;
   }
 }
