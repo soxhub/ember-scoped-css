@@ -7,7 +7,7 @@ import Concat from 'broccoli-concat';
 import { Funnel } from 'broccoli-funnel';
 import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
-import { parseTemplates } from 'ember-template-tag';
+import { Preprocessor } from 'content-tag';
 
 import fsExists from './fsExists.js';
 import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';
@@ -16,6 +16,7 @@ import getClassesTagsFromCss from './getClassesTagsFromCss.js';
 import rewriteCss from './rewriteCss.js';
 import rewriteHbs from './rewriteHbs.js';
 
+const p = new Preprocessor();
 const COMPONENT_EXTENSIONS = ['hbs', 'js', 'ts', 'gjs', 'gts'];
 const TEMPLATE_EXTENSIONS = ['hbs', 'gjs', 'gts'];
 
@@ -143,7 +144,8 @@ class ScopedFilter extends Filter {
             );
           } else {
             // find all template tags, and extract the contents to compare
-            const templates = parseTemplates(templateRaw, '');
+            const results = p.parse(templateRaw, '');
+            const templates = results.map((x) => x.contents);
 
             for (let template of templates) {
               templateComparison.push(
