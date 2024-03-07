@@ -1,5 +1,4 @@
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from 'classic-app/tests/helpers';
@@ -12,7 +11,7 @@ module('[v2 Addon TS] Integration | Component | Strict import', function (hooks)
 
   test('strict mode', async function (assert) {
     await render(<template>
-      <ComponentAtClass />
+      <Strict />
     </template>
     );
 

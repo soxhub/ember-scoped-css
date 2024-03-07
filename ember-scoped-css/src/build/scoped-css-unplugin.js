@@ -11,7 +11,12 @@ import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
 
 function isJsFile(id) {
-  return id.endsWith('.js') || id.endsWith('.ts') || id.endsWith('.gjs') || id.endsWith('.gts');
+  return (
+    id.endsWith('.js') ||
+    id.endsWith('.ts') ||
+    id.endsWith('.gjs') ||
+    id.endsWith('.gts')
+  );
 }
 
 function isHbsFile(id) {

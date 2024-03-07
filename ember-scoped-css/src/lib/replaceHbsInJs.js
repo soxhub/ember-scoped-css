@@ -20,7 +20,9 @@ export default function (script, replaceFunction) {
   recast.visit(ast, {
     visitImportDeclaration(path) {
       if (path.node.source.value === 'ember-scoped-css') {
-        let specifier = path.node.specifiers.find(x => x.imported.name === 'scopedClass');
+        let specifier = path.node.specifiers.find(
+          (x) => x.imported.name === 'scopedClass',
+        );
 
         if (specifier) {
           importedScopedClass = specifier.local.name;
@@ -65,13 +67,17 @@ export default function (script, replaceFunction) {
       ) {
         if (node.arguments[0].type === 'TemplateLiteral') {
           node.arguments[0].quasis[0].value.raw = replaceFunction(
-            node.arguments[0].quasis[0].value.raw, scopedClass
+            node.arguments[0].quasis[0].value.raw,
+            scopedClass,
           );
         } else if (
           node.arguments[0].type === 'StringLiteral' ||
           node.arguments[0].type === 'Literal'
         ) {
-          node.arguments[0].value = replaceFunction(node.arguments[0].value, scopedClass);
+          node.arguments[0].value = replaceFunction(
+            node.arguments[0].value,
+            scopedClass,
+          );
         }
       }
 

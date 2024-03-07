@@ -2,7 +2,13 @@ import recast from 'ember-template-recast';
 
 import renameClass from './renameClass.js';
 
-export default function rewriteHbs(hbs, classes, tags, postfix, scopedClass = 'scoped-class') {
+export default function rewriteHbs(
+  hbs,
+  classes,
+  tags,
+  postfix,
+  scopedClass = 'scoped-class',
+) {
   let ast = recast.parse(hbs);
   let stack = [];
 
