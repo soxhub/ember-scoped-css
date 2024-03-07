@@ -944,6 +944,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.7.3
         version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
+      compare-fixture:
+        specifier: ^1.0.1
+        version: 1.0.1
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1

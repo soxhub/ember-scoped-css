@@ -184,6 +184,19 @@ There is a `scoped-class` helper that you can use to pass a class name as an arg
 />
 ```
 
+In gjs/gts/`<template>`, the above would look like:
+```gjs
+import { scopedClass } from 'ember-scoped-css';
+
+<template>
+  <OtherComponent @internalClass={{scopedClass 'hello-class'}} />
+  <OtherComponent @internalClass={{(scopedClass 'hello-class')}} />
+  <OtherComponent
+    @internalClass={{concat (scopedClass 'hello-class') ' other-class'}}
+  />
+</template>
+```
+
 ## Testing
 
 As classes are renamed during the build process you can't directly verify if classes are present in your tests. To solve this problem you can use the `scopedClass` function from the `ember-scoped-css/test-support` module. The function takes the class names and path to the CSS file where are the classes defined and returns the scoped class names.
