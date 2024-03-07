@@ -2,7 +2,7 @@ import recast from 'ember-template-recast';
 
 import renameClass from './renameClass.js';
 
-export default function rewriteHbs(hbs, classes, tags, postfix) {
+export default function rewriteHbs(hbs, classes, tags, postfix, scopedClass = 'scoped-class') {
   let ast = recast.parse(hbs);
   let stack = [];
 
@@ -66,7 +66,7 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
       let cssClass;
 
       if (
-        node.path?.original === 'scoped-class' &&
+        node.path?.original === scopedClass &&
         node.params?.length === 1 &&
         node.params[0].type === 'StringLiteral'
       ) {
@@ -74,7 +74,7 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
       }
 
       if (
-        node.path?.path?.original === 'scoped-class' &&
+        node.path?.path?.original === scopedClass &&
         node.path?.params?.length === 1 &&
         node.path?.params[0].type === 'StringLiteral'
       ) {
@@ -95,7 +95,7 @@ export default function rewriteHbs(hbs, classes, tags, postfix) {
 
     SubExpression(node) {
       if (
-        node.path?.original === 'scoped-class' &&
+        node.path?.original === scopedClass &&
         node.params?.length === 1 &&
         node.params[0].type === 'StringLiteral'
       ) {
