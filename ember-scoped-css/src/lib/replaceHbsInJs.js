@@ -13,6 +13,25 @@ const parseOptions = {
   },
 };
 
+function removeScopeBagReference(ast, scopedClass) {
+  if (!scopedClass) return;
+
+  recast.visit(ast, {
+    visitObjectProperty(path) {
+      if (
+        path.node.value.type === 'Identifier' &&
+        path.node.value.name === scopedClass
+      ) {
+        path.prune();
+
+        return false;
+      }
+
+      this.traverse(path);
+    },
+  });
+}
+
 export default function (script, replaceFunction) {
   const ast = recast.parse(script, parseOptions);
   let importedScopedClass;
@@ -78,6 +97,10 @@ export default function (script, replaceFunction) {
             node.arguments[0].value,
             scopedClass,
           );
+        }
+
+        if (importedScopedClass) {
+          removeScopeBagReference(path, scopedClass);
         }
       }
 
