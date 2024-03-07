@@ -1,5 +1,12 @@
 # ember-scoped-css-compat
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`880a0b9`](https://github.com/soxhub/ember-scoped-css/commit/880a0b94c0ebbd2d06e28b0fa35ef2f848817156), [`ed8730f`](https://github.com/soxhub/ember-scoped-css/commit/ed8730f2e4a83fe59b0ba4dd916aee4c12459454)]:
+  - ember-scoped-css@0.17.0
+
 ## 7.0.0
 
 ### Patch Changes
