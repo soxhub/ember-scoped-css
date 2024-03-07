@@ -13,12 +13,51 @@ const parseOptions = {
   },
 };
 
-export default function (script, replaceFunction) {
-  const ast = recast.parse(script, parseOptions);
+function removeScopeBagReference(ast, scopedClass) {
+  if (!scopedClass) return;
 
   recast.visit(ast, {
+    visitObjectProperty(path) {
+      if (
+        path.node.value.type === 'Identifier' &&
+        path.node.value.name === scopedClass
+      ) {
+        path.prune();
+
+        return false;
+      }
+
+      this.traverse(path);
+    },
+  });
+}
+
+export default function (script, replaceFunction) {
+  const ast = recast.parse(script, parseOptions);
+  let importedScopedClass;
+
+  recast.visit(ast, {
+    visitImportDeclaration(path) {
+      if (path.node.source.value === 'ember-scoped-css') {
+        let specifier = path.node.specifiers.find(
+          (x) => x.imported.name === 'scopedClass',
+        );
+
+        if (specifier) {
+          importedScopedClass = specifier.local.name;
+        }
+
+        path.prune();
+
+        return false;
+      }
+
+      this.traverse(path);
+    },
     visitCallExpression(path) {
       const node = path.node;
+
+      const scopedClass = importedScopedClass ?? 'scoped-class';
 
       /**
        * __GLIMMER_TEMPLATE is for use with
@@ -48,12 +87,20 @@ export default function (script, replaceFunction) {
         if (node.arguments[0].type === 'TemplateLiteral') {
           node.arguments[0].quasis[0].value.raw = replaceFunction(
             node.arguments[0].quasis[0].value.raw,
+            scopedClass,
           );
         } else if (
           node.arguments[0].type === 'StringLiteral' ||
           node.arguments[0].type === 'Literal'
         ) {
-          node.arguments[0].value = replaceFunction(node.arguments[0].value);
+          node.arguments[0].value = replaceFunction(
+            node.arguments[0].value,
+            scopedClass,
+          );
+        }
+
+        if (importedScopedClass) {
+          removeScopeBagReference(path, scopedClass);
         }
       }
 

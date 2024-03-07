@@ -11,7 +11,12 @@ import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
 
 function isJsFile(id) {
-  return id.endsWith('.js') || id.endsWith('.ts');
+  return (
+    id.endsWith('.js') ||
+    id.endsWith('.ts') ||
+    id.endsWith('.gjs') ||
+    id.endsWith('.gts')
+  );
 }
 
 function isHbsFile(id) {
@@ -25,7 +30,7 @@ function isCssFile(id) {
 async function transformJsFile(code, id) {
   const cssPath = id.endsWith('.hbs')
     ? id.replace(/\.hbs$/, '.css')
-    : id.replace(/(\.hbs)?\.((js)|(ts))$/, '.css');
+    : id.replace(/(\.hbs)?\.(js|ts|gjs|gts)$/, '.css');
   const cssFileName = path.basename(cssPath);
 
   const cssExists = await fsExists(cssPath);
@@ -45,10 +50,10 @@ async function transformJsFile(code, id) {
 
   // rewrite hbs in js in case it is gjs file (for gjs files hbs is already in js file)
 
-  const rewrittenCode = replaceHbsInJs(code, (hbs) => {
+  const rewrittenCode = replaceHbsInJs(code, (hbs, scopedClass) => {
     const { classes, tags } = getClassesTagsFromCss(css);
     const postfix = generateHash(cssPath);
-    const rewritten = rewriteHbs(hbs, classes, tags, postfix);
+    const rewritten = rewriteHbs(hbs, classes, tags, postfix, scopedClass);
 
     return rewritten;
   });
@@ -131,9 +136,6 @@ export default createUnplugin(
         }
       },
 
-      // loadInclude(id) {
-      //   return isJsFile(id) || isCssFile(id) || isHbsFile(id);
-      // },
       transform(code, jsPath) {
         /**
          * HBS files are actually JS files with a call to precompileTemplate

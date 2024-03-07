@@ -74,7 +74,7 @@ export function packageScopedPathToModulePath(packageScopedPath) {
  *
  * which is `<package.json#name>/path-to-file`
  */
-function appPath(sourcePath) {
+export function appPath(sourcePath) {
   let workspacePath = findWorkspacePath(sourcePath);
   let name = workspacePackageName(sourcePath);
 
