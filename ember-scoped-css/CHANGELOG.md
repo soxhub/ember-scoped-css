@@ -1,5 +1,23 @@
 # ember-scoped-css
 
+## 0.17.0
+
+### Minor Changes
+
+- [#144](https://github.com/soxhub/ember-scoped-css/pull/144) [`880a0b9`](https://github.com/soxhub/ember-scoped-css/commit/880a0b94c0ebbd2d06e28b0fa35ef2f848817156) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Moves to content-tag, the same template tag parser used for all of ember's tooling
+
+- [#147](https://github.com/soxhub/ember-scoped-css/pull/147) [`ed8730f`](https://github.com/soxhub/ember-scoped-css/commit/ed8730f2e4a83fe59b0ba4dd916aee4c12459454) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Support `gjs` and `gts` (`<template>`) by allowing an import for `scopedClass`.
+
+  Example usage:
+
+  ```gjs
+  import { scopedClass } from 'ember-scoped-css';
+
+  <template>
+    <p class={{scopedClass "hi"}}>text color</p>
+  </template>
+  ```
+
 ## 0.16.0
 
 ### Minor Changes
