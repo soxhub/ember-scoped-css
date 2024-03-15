@@ -150,7 +150,7 @@ class ScopedFilter extends Filter {
             for (let template of templates) {
               templateComparison.push(
                 didTemplateChange(
-                  template.contents,
+                  template,
                   previousClasses,
                   classes,
                   tags,
