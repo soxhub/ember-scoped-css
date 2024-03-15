@@ -1,5 +1,11 @@
 # ember-scoped-css
 
+## 0.17.1
+
+### Patch Changes
+
+- [#151](https://github.com/soxhub/ember-scoped-css/pull/151) [`cb54e6d`](https://github.com/soxhub/ember-scoped-css/commit/cb54e6d8e045cb7b8049a47e1bff04e2264c1ced) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fix the live reload behavior of classic ember apps when editing the CSS for a corresponding gjs and gts file
+
 ## 0.17.0
 
 ### Minor Changes
