@@ -1,5 +1,11 @@
 # ember-scoped-css
 
+## 0.17.2
+
+### Patch Changes
+
+- [#154](https://github.com/soxhub/ember-scoped-css/pull/154) [`5c9fd13`](https://github.com/soxhub/ember-scoped-css/commit/5c9fd1394503d0dbf01bc8456267de26b384e711) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Add prepack script to attempt to get the declarations built along with publish
+
 ## 0.17.1
 
 ### Patch Changes
