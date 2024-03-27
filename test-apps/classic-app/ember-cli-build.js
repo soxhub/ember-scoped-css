@@ -8,6 +8,9 @@ module.exports = function (defaults) {
     cssModules: {
       extension: 'module.css',
     },
+    'ember-cli-babel': {
+      enableTypeScriptTransform: true,
+    },
     'ember-scoped-css': {
       layerName: 'classic-app-layer',
     },
