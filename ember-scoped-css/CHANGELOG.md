@@ -1,5 +1,13 @@
 # ember-scoped-css
 
+## 0.17.3
+
+### Patch Changes
+
+- [#158](https://github.com/soxhub/ember-scoped-css/pull/158) [`841f131`](https://github.com/soxhub/ember-scoped-css/commit/841f131185682ec2af198e4b9c95d3969cc1e8bc) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Add declarations to the files list in package.json
+
+- [#156](https://github.com/soxhub/ember-scoped-css/pull/156) [`f1bf095`](https://github.com/soxhub/ember-scoped-css/commit/f1bf095e115fd52ad9aaccd5bf90d2c45fa0a30e) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Attempt 2 and fixing declaration emit
+
 ## 0.17.2
 
 ### Patch Changes
