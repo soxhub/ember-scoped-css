@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 rm -rf dist/ declarations/
 
 cp ../README.md ./README.md
