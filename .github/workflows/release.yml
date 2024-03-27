@@ -17,10 +17,6 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    needs:
-      - test
-      - floating
-      - try-scenarios
 
     steps:
       - uses: wyvox/action@v1
