@@ -10,4 +10,4 @@ cp ../LICENSE.md ./LICENSE.md
 node ./build.mjs
 
 # Types
-pnpm tsc
+pnpm tsc --emitDeclarationOnly

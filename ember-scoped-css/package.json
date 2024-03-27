@@ -11,6 +11,7 @@
   "files": [
     "src",
     "dist",
+    "declarations",
     "addon-main.cjs",
     "template-registry.d.ts"
   ],
