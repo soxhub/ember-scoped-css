@@ -7,18 +7,18 @@ import getClassesTagsFromCss from './lib/getClassesTagsFromCss.js';
 import rewriteHbs from './lib/rewriteHbs.js';
 
 function isRelevantFile(state) {
-   /**
-         * Mostly pods support.
-         * folks need to opt in to pods, because every pods app can be configured differently
-         */
-   let roots = ['/components/', ...(state.opts?.additionalRoots || [])];
-   let filename = state.file.opts.filename;
+  /**
+   * Mostly pods support.
+   * folks need to opt in to pods, because every pods app can be configured differently
+   */
+  let roots = ['/components/', ...(state.opts?.additionalRoots || [])];
+  let filename = state.file.opts.filename;
 
-   if (!roots.some((root) => filename.includes(root))) {
-     return;
-   }
+  if (!roots.some((root) => filename.includes(root))) {
+    return;
+  }
 
-   return true;
+  return true;
 }
 
 export default () => {
@@ -70,7 +70,6 @@ export default () => {
         ) {
           path.remove();
         }
-
       },
       CallExpression(path, state) {
         if (!isRelevantFile(state)) {
