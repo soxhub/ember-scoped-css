@@ -1,5 +1,11 @@
 # ember-scoped-css
 
+## 0.17.4
+
+### Patch Changes
+
+- [#159](https://github.com/soxhub/ember-scoped-css/pull/159) [`64ac1a2`](https://github.com/soxhub/ember-scoped-css/commit/64ac1a2d94a48befbb039a8261ffa24995ea2f25) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fix issue where importing scopedClass was not supported in classic apps as the feature was only implemented for v2 addons
+
 ## 0.17.3
 
 ### Patch Changes
