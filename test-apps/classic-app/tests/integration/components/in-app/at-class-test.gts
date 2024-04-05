@@ -14,6 +14,6 @@ module('[In App] at-class-ts', function(hooks) {
       </template>
     );
 
-    assert.dom('p').hasStyle({ color: '337' });
+    assert.dom('p').hasStyle({ color: 'rgb(51, 51, 119)' });
   });
 });

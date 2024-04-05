@@ -55,7 +55,7 @@ await esbuild.build({
 
 // Runtime
 await esbuild.build({
-  entryPoints: ['src/runtime/test-support.ts'],
+  entryPoints: ['src/runtime/test-support.ts', 'src/runtime/index.ts'],
   sourcemap: true,
   format: 'esm',
   bundle: true,

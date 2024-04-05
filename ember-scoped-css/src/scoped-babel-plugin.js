@@ -21,9 +21,6 @@ function isRelevantFile(state) {
    return true;
 }
 
-/**
- * This babel plugin runs on AMD code
- */
 export default () => {
   /**
    * - This can receive the intermediate output of the old REGEX-based <template> transform:
@@ -59,8 +56,21 @@ export default () => {
           }
 
           path.remove();
-          // path.stop();
         }
+      },
+      /**
+       * Only in strict mode, do we care about remoning the scope bag reference
+       */
+      ObjectProperty(path, state) {
+        if (!state.file.opts?.importedScopedClass) return;
+
+        if (
+          path.node.value.type === 'Identifier' &&
+          path.node.value.name === state.file.opts?.importedScopedClass
+        ) {
+          path.remove();
+        }
+
       },
       CallExpression(path, state) {
         if (!isRelevantFile(state)) {
