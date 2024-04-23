@@ -55,7 +55,6 @@
     "concurrently": "^8.2.1",
     "ember-scoped-css": "workspace:*",
     "ember-source": "^5.0.0",
-    "ember-template-imports": "^4.1.0",
     "ember-template-lint": "^5.11.2",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",

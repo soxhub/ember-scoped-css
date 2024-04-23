@@ -80,8 +80,7 @@
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "after": [
-      "ember-cli-htmlbars",
-      "ember-template-imports"
+      "ember-cli-htmlbars"
     ]
   }
 }
