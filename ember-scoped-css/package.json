@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.23.5",
-    "@embroider/addon-shim": "^1.8.6",
+    "@embroider/addon-shim": "^1.8.7",
     "acorn": "^8.11.2",
     "blueimp-md5": "^2.19.0",
     "broccoli-concat": "^4.2.5",
