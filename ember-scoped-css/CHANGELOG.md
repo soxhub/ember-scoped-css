@@ -1,5 +1,11 @@
 # ember-scoped-css
 
+## 0.18.0
+
+### Minor Changes
+
+- [#167](https://github.com/soxhub/ember-scoped-css/pull/167) [`c96c89b`](https://github.com/soxhub/ember-scoped-css/commit/c96c89b85e1d943481cd5b4d92cd55f24fa8ca68) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Remove unused code and don't let ESBuild output ESM -- this restores the ability to debug ESM environments against source
+
 ## 0.17.4
 
 ### Patch Changes
