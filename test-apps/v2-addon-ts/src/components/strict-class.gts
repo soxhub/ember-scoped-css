@@ -17,7 +17,7 @@ const B: TOC<{ Element: HTMLDivElement}> = <template><div ...attributes>B</div><
 export class StrictClass extends Component<Signature> {
 	@service declare router: RouterService;
 
-get dynamicComponent() {
+  get dynamicComponent() {
     return Math.random() < 0.5 ? A : B;
   }
 
