@@ -9,12 +9,12 @@ import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
 import { Preprocessor } from 'content-tag';
 
-import fsExists from './fsExists.js';
-import { packageScopedPathToModulePath } from './generateAbsolutePathHash.js';
-import generateHash from './generateRelativePathHash.js';
-import getClassesTagsFromCss from './getClassesTagsFromCss.js';
-import rewriteCss from './rewriteCss.js';
-import rewriteHbs from './rewriteHbs.js';
+import fsExists from '../lib/fsExists.js';
+import { packageScopedPathToModulePath } from '../lib/generateAbsolutePathHash.js';
+import {generateRelativePathHash as generateHash} from '../lib/generateRelativePathHash.js';
+import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import rewriteCss from '../lib/rewriteCss.js';
+import rewriteHbs from '../lib/rewriteHbs.js';
 
 const p = new Preprocessor();
 const COMPONENT_EXTENSIONS = ['hbs', 'js', 'ts', 'gjs', 'gts'];

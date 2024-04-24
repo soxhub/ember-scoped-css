@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import findUp from 'find-up';
 
-import generateHash from './generateRelativePathHash.ts';
+import {generateRelativePathHash as generateHash } from './generateRelativePathHash.js';
 
 export default function generateHashFromAbsolutePath(absolutePath) {
   /**

@@ -29,23 +29,23 @@
       "default": "./dist/runtime/test-support.js"
     },
     "./build": {
-      "import": "./dist/esm/build/index.mjs",
+      "import": "./src/build/index.js",
       "require": "./dist/cjs/build/index.cjs"
     },
     "./build/app-css-loader": {
-      "import": "./dist/esm/build/app-css-loader.mjs",
+      "import": "./src/build/app-css-loader.js",
       "require": "./dist/cjs/build/app-css-loader.cjs"
     },
     "./build/app-dependency-loader": {
-      "import": "./dist/esm/build/app-dependency-loader.mjs",
+      "import": "./src/build/app-dependency-loader.js",
       "require": "./dist/cjs/build/app-dependency-loader.cjs"
     },
     "./build/ember-classic-support": {
-      "require": "./dist/cjs/lib/scoped-css-preprocessor.cjs"
+      "require": "./dist/cjs/build/ember-classic-support.cjs"
     },
     "./addon-main.cjs": "./addon-main.cjs",
     "./babel-plugin": {
-      "import": "./src/esm/scoped-babel-plugin.mjs",
+      "import": "./src/build/babel-plugin.js",
       "require": "./dist/cjs/scoped-babel-plugin.cjs"
     }
   },
