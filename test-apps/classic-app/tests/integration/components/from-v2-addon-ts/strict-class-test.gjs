@@ -11,7 +11,7 @@ module('[v2 Addon TS] Integration | Component | Strict class import', function (
 
   test('strict mode', async function (assert) {
     await render(<template>
-      <Strict />
+      <StrictClass />
     </template>
     );
 
