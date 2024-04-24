@@ -1,6 +1,6 @@
 import recast from 'ember-template-recast';
 
-import {renameClass} from './renameClass.js';
+import { renameClass } from './renameClass.js';
 
 function templatePlugin({ classes, tags, postfix, scopedClass }) {
   let stack = [];
@@ -107,8 +107,7 @@ function templatePlugin({ classes, tags, postfix, scopedClass }) {
         return textNode;
       }
     },
-
-  }
+  };
 }
 
 export default function rewriteHbs(

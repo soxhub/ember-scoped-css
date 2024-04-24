@@ -5,11 +5,7 @@
  * @param {Set<string>} [classesInCss]
  * @returns
  */
-export function renameClass(
-  className,
-  postfix,
-  classesInCss,
-) {
+export function renameClass(className, postfix, classesInCss) {
   const classes = className.split(/\s+/);
   const renamedClasses = classes
     .filter((c) => c)

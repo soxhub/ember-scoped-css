@@ -1,5 +1,5 @@
-import {generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
-import {renameClass} from '../lib/renameClass.js';
+import { generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
+import { renameClass } from '../lib/renameClass.js';
 
 /**
  * On element selectors where there are no classes,

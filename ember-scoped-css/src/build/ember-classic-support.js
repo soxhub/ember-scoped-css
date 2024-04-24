@@ -11,7 +11,7 @@ import { Preprocessor } from 'content-tag';
 
 import fsExists from '../lib/fsExists.js';
 import { packageScopedPathToModulePath } from '../lib/generateAbsolutePathHash.js';
-import {generateRelativePathHash as generateHash} from '../lib/generateRelativePathHash.js';
+import { generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
