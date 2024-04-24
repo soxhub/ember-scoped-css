@@ -7,7 +7,6 @@ import { setupRenderingTest } from 'classic-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-
 module('Integration | Component | @class', function (hooks) {
   setupRenderingTest(hooks);
 

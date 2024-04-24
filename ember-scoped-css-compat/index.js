@@ -1,7 +1,7 @@
 'use strict';
 
 const {
-  default: ScopedCssPreprocessor,
+  default: ScopedCssPreprocessor
 } = require('ember-scoped-css/build/ember-classic-support');
 
 module.exports = {
@@ -28,6 +28,7 @@ module.exports = {
         let htmlbarsPluginIndex = plugins.indexOf(htmlbarsPlugin);
         let scopedCssOptions = this.app.options['ember-scoped-css'] || {};
 
+        // this only works for older embroider@v3, and babel-plugin-ember-template-compilation 2.2.1 and earlier
         let customPlugin = [
           require.resolve('ember-scoped-css/babel-plugin'),
           {
