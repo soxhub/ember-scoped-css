@@ -12,6 +12,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint:
+    name: 'Lints'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: wyvox/action@v1
+        with:
+          node-version: 18.17
+      - run: pnpm build
+      - run: pnpm lint
+
   test:
     name: 'Tests'
     runs-on: ubuntu-latest
@@ -21,10 +32,7 @@ jobs:
         with:
           node-version: 18.17
       - run: pnpm build
-      - name: Lint
-        run: pnpm lint
-      - name: Run Tests
-        run: pnpm test
+      - run: pnpm test
 
   floating:
     name: 'Floating Dependencies'

@@ -2,6 +2,7 @@
   "extends": ["@tsconfig/ember", "@tsconfig/strictest"],
   "include": ["src/**/*.ts"],
   "compilerOptions": {
+    "allowJs": true,
     // why do eslint's types always get involved?
     "skipLibCheck": true,
     // let JS be loose

@@ -8,7 +8,7 @@ const buildFiles = [
   'src/build/index.js',
   'src/build/app-css-loader.js',
   'src/build/app-dependency-loader.js',
-  'src/lib/scoped-css-preprocessor.js',
+  'src/build/ember-classic-support.js',
   'src/scoped-babel-plugin.js',
 ];
 
@@ -25,32 +25,6 @@ await esbuild.build({
   outExtension: { '.js': '.cjs' },
   external,
   plugins: [vitestCleaner()],
-});
-
-// Node, ESM
-await esbuild.build({
-  entryPoints: buildFiles,
-  bundle: true,
-  outdir: 'dist/esm',
-  format: 'esm',
-  target: 'esnext',
-  platform: 'node',
-  sourcemap: 'inline',
-  external,
-  plugins: [vitestCleaner()],
-  outExtension: { '.js': '.mjs' },
-  /**
-   * Ooof, this makes it feel like ESBuild doesn't have sufficient funding...
-   */
-  banner: {
-    js: `
-        import * as __url__ from 'url';
-        import { createRequire as topLevelCreateRequire } from 'module';
-        const require = topLevelCreateRequire(import.meta.url);
-        const __filename = __url__.fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        `,
-  },
 });
 
 // Runtime

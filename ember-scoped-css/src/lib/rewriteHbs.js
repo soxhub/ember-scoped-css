@@ -1,18 +1,11 @@
 import recast from 'ember-template-recast';
 
-import renameClass from './renameClass.js';
+import { renameClass } from './renameClass.js';
 
-export default function rewriteHbs(
-  hbs,
-  classes,
-  tags,
-  postfix,
-  scopedClass = 'scoped-class',
-) {
-  let ast = recast.parse(hbs);
+function templatePlugin({ classes, tags, postfix, scopedClass }) {
   let stack = [];
 
-  recast.traverse(ast, {
+  return {
     AttrNode(node) {
       if (node.name === 'class') {
         if (node.value.type === 'TextNode' && node.value.chars) {
@@ -114,7 +107,19 @@ export default function rewriteHbs(
         return textNode;
       }
     },
-  });
+  };
+}
+
+export default function rewriteHbs(
+  hbs,
+  classes,
+  tags,
+  postfix,
+  scopedClass = 'scoped-class',
+) {
+  let ast = recast.parse(hbs);
+
+  recast.traverse(ast, templatePlugin({ classes, tags, postfix, scopedClass }));
 
   let result = recast.print(ast);
 
