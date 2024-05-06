@@ -25,7 +25,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/eslint": "^7.0.0",
+      "@types/eslint": "^8.0.0",
       "@glimmer/validator": "0.84.3"
     },
     "peerDependencyRules": {
