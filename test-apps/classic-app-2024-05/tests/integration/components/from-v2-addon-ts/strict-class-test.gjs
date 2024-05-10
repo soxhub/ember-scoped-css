@@ -1,7 +1,7 @@
 import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
-import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { setupRenderingTest } from 'classic-app-2024-05/tests/helpers';
 import { StrictClass } from 'v2-addon-ts/components/strict-class';
 
 import { scopedClass } from 'ember-scoped-css/test-support';

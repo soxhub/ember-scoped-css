@@ -4,7 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
-    name: 'classic-app',
+    // name: 'classic-app-2024-05',
     cssModules: {
       extension: 'module.css',
     },
@@ -12,7 +12,7 @@ module.exports = function (defaults) {
       enableTypeScriptTransform: true,
     },
     'ember-scoped-css': {
-      layerName: 'classic-app-layer',
+      layerName: 'classic-app-2024-05-layer',
     },
   });
 

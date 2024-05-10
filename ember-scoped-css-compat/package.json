@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "ember-cli-babel": "^8.2.0",
-    "ember-cli-htmlbars": "^6.3.0"
+    "ember-cli-htmlbars": "^6.3.0",
+    "hash-obj": "^3.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.24.5",

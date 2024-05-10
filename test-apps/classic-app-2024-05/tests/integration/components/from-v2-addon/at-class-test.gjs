@@ -3,7 +3,7 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
-import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { setupRenderingTest } from 'classic-app-2024-05/tests/helpers';
 import ComponentAtClass from 'v2-addon/components/at-class/component-at-class';
 
 import { scopedClass } from 'ember-scoped-css/test-support';

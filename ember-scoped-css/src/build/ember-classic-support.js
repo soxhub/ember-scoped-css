@@ -235,6 +235,8 @@ export default class ScopedCssPreprocessor {
       ...(this.userOptions.additionalRoots || []).map(
         (root) => `${this.appName}/${root}`,
       ),
+      'app/components/',
+      ...(this.userOptions.additionalRoots || []).map((root) => `app/${root}`),
     ];
     let include = roots
       .map((root) => {

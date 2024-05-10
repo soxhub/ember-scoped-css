@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'classic-app',
+    modulePrefix: 'classic-app-2024-05',
     environment,
     rootURL: '/',
     locationType: 'history',
