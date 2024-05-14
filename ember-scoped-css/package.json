@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
-    "@nullvoxpopuli/eslint-configs": "^3.2.2",
+    "@nullvoxpopuli/eslint-configs": "^4.0.0",
     "@tsconfig/ember": "^3.0.1",
     "@tsconfig/strictest": "^2.0.2",
     "@types/blueimp-md5": "^2.18.0",
