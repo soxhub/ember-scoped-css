@@ -1,6 +1,7 @@
 'use strict';
 
 const hashObj = require('hash-obj');
+const fs = require('fs');
 
 const {
   default: ScopedCssPreprocessor,
@@ -57,6 +58,7 @@ module.exports = {
 
     this._setupCSSPlugins(registry, options);
     this._setupHBSPlugins(registry, options);
+    this._setupJSPlugins(registry, options);
   },
 
   _setupCSSPlugins(registry, options) {
@@ -70,6 +72,10 @@ module.exports = {
 
     this.outputStylePreprocessor.preprocessors = preprocessors;
     registry.add('css', this.outputStylePreprocessor);
+  },
+
+  _setupJSPlugins(registry, options) {
+    registry.add('js', new JSPreprocessor(options));
   },
 
   _setupHBSPlugins(registry, options) {
@@ -111,4 +117,48 @@ function cacheKeyForConfig(config) {
   // TODO: we need the random because we expect hbs and js files to change when css changes.
   //       and those css files are not imported into js... so... no cache for us
   return `ember-scoped-css-${configHash}-${Math.random()}`;
+}
+
+const stew = require('broccoli-stew');
+const babel = require('@babel/core');
+
+class JSPreprocessor {
+  constructor(options) {
+    this.options = options;
+  }
+
+  toTree(tree) {
+    let updated = stew.map(tree, '**/*.{js}', (string, relativePath) => {
+      console.log({ string, relativePath });
+
+      let cssPath = relativePath.replace(/\.js$/, '.css');
+
+      if (fs.existsSync(cssPath)) {
+        /**
+         * This is slow to cause a whole parse again,
+         * so we only want to do it when we know we have a CSS file.
+         *
+         * The whole babel situation with embroider (pre v4) and classic ember,
+         * is... just a mess. So we're skirting around it and inserting our code
+         * as early as possible.
+         */
+        let result = babel.transformSync('code', {
+          plugins: [
+            [
+              require.resolve('ember-scoped-css/babel-plugin'),
+              {
+                ...this.options,
+              },
+            ],
+          ],
+        });
+
+        return result.code;
+      }
+
+      return string;
+    });
+
+    return updated;
+  }
 }

@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  babel-plugin-ember-template-compilation: 2.2.1
+  babel-plugin-ember-template-compilation: ^2.2.5
   '@glimmer/validator': 0.84.3
   '@types/eslint': ^8.0.0
 
@@ -177,6 +177,9 @@ importers:
       broccoli-asset-rev:
         specifier: ^3.0.0
         version: 3.0.0
+      broccoli-stew:
+        specifier: ^3.0.0
+        version: 3.0.0
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -341,8 +344,8 @@ importers:
         specifier: github:mainmatter/ember-style-loader#main
         version: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/5d262a1671a9354312a376d70df220289b8b3330
       ember-template-imports:
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^4.1.1
+        version: 4.1.1
       ember-template-lint:
         specifier: ^6.0.0
         version: 6.0.0
@@ -369,136 +372,6 @@ importers:
         version: 2.20.1
       qunit-dom:
         specifier: ^3.0.0
-        version: 3.1.2
-      tracked-built-ins:
-        specifier: ^3.1.0
-        version: 3.3.0
-      v2-addon:
-        specifier: workspace:*
-        version: link:../v2-addon
-      v2-addon-ts:
-        specifier: workspace:*
-        version: link:../v2-addon-ts
-      webpack:
-        specifier: ^5.91.0
-        version: 5.91.0
-
-  test-apps/classic-app-2024-05:
-    dependencies:
-      ember-resources:
-        specifier: ^6.4.0
-        version: 6.5.1(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
-    devDependencies:
-      '@ember/optional-features':
-        specifier: ^2.0.0
-        version: 2.1.0
-      '@ember/string':
-        specifier: ^3.0.1
-        version: 3.1.1
-      '@ember/test-helpers':
-        specifier: ^3.2.0
-        version: 3.3.0(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))(webpack@5.91.0)
-      '@glimmer/component':
-        specifier: ^1.1.2
-        version: 1.1.2(@babel/core@7.24.5)
-      '@glimmer/tracking':
-        specifier: ^1.1.2
-        version: 1.1.2
-      '@nullvoxpopuli/eslint-configs':
-        specifier: ^4.0.0
-        version: 4.0.0(@babel/core@7.24.5)(@babel/eslint-parser@7.24.5(@babel/core@7.24.5)(eslint@8.57.0))(@babel/plugin-proposal-decorators@7.24.1(@babel/core@7.24.5))(@types/eslint@8.56.10)(@typescript-eslint/eslint-plugin@7.10.0(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5))(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint-plugin-ember@12.1.1(@babel/core@7.24.5)(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint-plugin-qunit@8.1.1(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
-      broccoli-asset-rev:
-        specifier: ^3.0.0
-        version: 3.0.0
-      concurrently:
-        specifier: ^8.2.1
-        version: 8.2.2
-      ember-auto-import:
-        specifier: 2.7.2
-        version: 2.7.2(@glint/template@1.4.0)(webpack@5.91.0)
-      ember-cli:
-        specifier: ~5.8.1
-        version: 5.8.1(handlebars@4.7.8)(underscore@1.13.6)
-      ember-cli-app-version:
-        specifier: ^6.0.0
-        version: 6.0.1(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
-      ember-cli-babel:
-        specifier: ^8.2.0
-        version: 8.2.0(@babel/core@7.24.5)
-      ember-cli-dependency-checker:
-        specifier: ^3.3.1
-        version: 3.3.2(ember-cli@5.8.1(handlebars@4.7.8)(underscore@1.13.6))
-      ember-cli-htmlbars:
-        specifier: ^6.3.0
-        version: 6.3.0
-      ember-cli-inject-live-reload:
-        specifier: ^2.1.0
-        version: 2.1.0
-      ember-cli-sri:
-        specifier: ^2.1.1
-        version: 2.1.1
-      ember-cli-terser:
-        specifier: ^4.0.2
-        version: 4.0.2
-      ember-css-modules:
-        specifier: ^2.0.1
-        version: 2.1.0
-      ember-fetch:
-        specifier: ^8.1.2
-        version: 8.1.2(encoding@0.1.13)
-      ember-load-initializers:
-        specifier: ^2.1.2
-        version: 2.1.2(@babel/core@7.24.5)
-      ember-page-title:
-        specifier: ^8.2.3
-        version: 8.2.3(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
-      ember-qunit:
-        specifier: ^8.0.2
-        version: 8.0.2(@ember/test-helpers@3.3.0(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))(webpack@5.91.0))(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))(qunit@2.20.1)
-      ember-resolver:
-        specifier: ^11.0.0
-        version: 11.0.1(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
-      ember-scoped-css:
-        specifier: workspace:*
-        version: link:../../ember-scoped-css
-      ember-scoped-css-compat:
-        specifier: workspace:*
-        version: link:../../ember-scoped-css-compat
-      ember-source:
-        specifier: ~5.8.0
-        version: 5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0)
-      ember-style-loader:
-        specifier: github:mainmatter/ember-style-loader#main
-        version: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/5d262a1671a9354312a376d70df220289b8b3330
-      ember-template-imports:
-        specifier: ^4.1.1
-        version: 4.1.1
-      ember-template-lint:
-        specifier: ^6.0.0
-        version: 6.0.0
-      eslint:
-        specifier: ^8.50.0
-        version: 8.57.0
-      eslint-plugin-ember:
-        specifier: ^12.0.2
-        version: 12.1.1(@babel/core@7.24.5)(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
-      eslint-plugin-n:
-        specifier: ^17.6.0
-        version: 17.7.0(eslint@8.57.0)
-      eslint-plugin-qunit:
-        specifier: ^8.1.1
-        version: 8.1.1(eslint@8.57.0)
-      loader.js:
-        specifier: ^4.7.0
-        version: 4.7.0
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
-      qunit:
-        specifier: ^2.20.1
-        version: 2.20.1
-      qunit-dom:
-        specifier: ^3.1.2
         version: 3.1.2
       tracked-built-ins:
         specifier: ^3.1.0
@@ -605,6 +478,9 @@ importers:
       ember-scoped-css:
         specifier: workspace:*
         version: link:../../ember-scoped-css
+      ember-scoped-css-compat:
+        specifier: workspace:^
+        version: link:../../ember-scoped-css-compat
       ember-source:
         specifier: ~5.8.0
         version: 5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0)
@@ -615,8 +491,8 @@ importers:
         specifier: github:mainmatter/ember-style-loader#main
         version: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/5d262a1671a9354312a376d70df220289b8b3330
       ember-template-imports:
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^4.1.1
+        version: 4.1.1
       ember-template-lint:
         specifier: ^6.0.0
         version: 6.0.0
@@ -884,6 +760,9 @@ importers:
       ember-scoped-css:
         specifier: workspace:^
         version: link:../../ember-scoped-css
+      ember-scoped-css-compat:
+        specifier: workspace:^
+        version: link:../../ember-scoped-css-compat
       ember-source:
         specifier: ~5.8.0
         version: 5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0)
@@ -967,8 +846,8 @@ importers:
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.24.5)(rollup@4.17.2)
       babel-plugin-ember-template-compilation:
-        specifier: 2.2.1
-        version: 2.2.1
+        specifier: ^2.2.5
+        version: 2.2.5
       compare-fixture:
         specifier: ^1.0.1
         version: 1.1.2
@@ -3640,8 +3519,8 @@ packages:
     resolution: {integrity: sha512-pJajN/DkQUnStw0Az8c6khVcMQHgzqWr61lLNtVeu0g61LRW0k9jyK7vaedrHDWGe/Qe8sxG5wpiyW9NsMqFzA==}
     engines: {node: 6.* || 8.* || >= 10.*}
 
-  babel-plugin-ember-template-compilation@2.2.1:
-    resolution: {integrity: sha512-alinprIQcLficqkuIyeKKfD4HQOpMOiHK6pt6Skj/yjoPoQYBuwAJ2BoPAlRe9k/URPeVkpMefbN3m6jEp7RsA==}
+  babel-plugin-ember-template-compilation@2.2.5:
+    resolution: {integrity: sha512-NQ2DT0DsYyHVrEpFQIy2U8S91JaKSE8NOSZzMd7KZFJVgA6KodJq3Uj852HcH9LsSfvwppnM+dRo1G8bzTnnFw==}
     engines: {node: '>= 12.*'}
 
   babel-plugin-filter-imports@4.0.0:
@@ -11001,7 +10880,7 @@ snapshots:
       '@types/yargs': 17.0.32
       assert-never: 1.2.1
       babel-import-util: 2.1.1
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       babel-plugin-syntax-dynamic-import: 6.18.0
       babylon: 6.18.0
       bind-decorator: 1.0.11
@@ -11045,7 +10924,7 @@ snapshots:
       '@embroider/macros': 1.16.1(@glint/template@1.4.0)
       '@embroider/shared-internals': 2.6.0
       assert-never: 1.2.1
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       broccoli-node-api: 1.7.0
       broccoli-persistent-filter: 3.1.3
       broccoli-plugin: 4.0.7
@@ -12935,10 +12814,10 @@ snapshots:
     dependencies:
       ember-rfc176-data: 0.3.18
 
-  babel-plugin-ember-template-compilation@2.2.1:
+  babel-plugin-ember-template-compilation@2.2.5:
     dependencies:
       '@glimmer/syntax': 0.84.3
-      babel-import-util: 2.1.1
+      babel-import-util: 3.0.0
 
   babel-plugin-filter-imports@4.0.0:
     dependencies:
@@ -14365,7 +14244,7 @@ snapshots:
       '@embroider/shared-internals': 2.6.0
       babel-loader: 8.3.0(@babel/core@7.24.5)(webpack@5.91.0(esbuild@0.21.3))
       babel-plugin-ember-modules-api-polyfill: 3.5.0
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       babel-plugin-htmlbars-inline-precompile: 5.3.1
       babel-plugin-syntax-dynamic-import: 6.18.0
       broccoli-debug: 0.6.5
@@ -14406,7 +14285,7 @@ snapshots:
       '@embroider/shared-internals': 2.6.0
       babel-loader: 8.3.0(@babel/core@7.24.5)(webpack@5.91.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       babel-plugin-htmlbars-inline-precompile: 5.3.1
       babel-plugin-syntax-dynamic-import: 6.18.0
       broccoli-debug: 0.6.5
@@ -14582,7 +14461,7 @@ snapshots:
   ember-cli-htmlbars@6.3.0:
     dependencies:
       '@ember/edition-utils': 1.2.0
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       babel-plugin-htmlbars-inline-precompile: 5.3.1
       broccoli-debug: 0.6.5
       broccoli-persistent-filter: 3.1.3
@@ -15071,7 +14950,7 @@ snapshots:
       '@glimmer/vm-babel-plugins': 0.87.1(@babel/core@7.24.5)
       '@simple-dom/interface': 1.4.0
       babel-plugin-debug-macros: 0.3.4(@babel/core@7.24.5)
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       babel-plugin-filter-imports: 4.0.0
       backburner.js: 2.8.0
       broccoli-concat: 4.2.5
@@ -15127,7 +15006,7 @@ snapshots:
       '@glimmer/vm-babel-plugins': 0.87.1(@babel/core@7.24.5)
       '@simple-dom/interface': 1.4.0
       babel-plugin-debug-macros: 0.3.4(@babel/core@7.24.5)
-      babel-plugin-ember-template-compilation: 2.2.1
+      babel-plugin-ember-template-compilation: 2.2.5
       babel-plugin-filter-imports: 4.0.0
       backburner.js: 2.8.0
       broccoli-concat: 4.2.5

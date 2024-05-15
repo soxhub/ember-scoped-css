@@ -59,8 +59,6 @@ Setup webpack:
 ```js 
 // ember-cli-build.js
 module.exports = async function (defaults) {
-  const { appJsUnplugin } = await import('ember-scoped-css/build');
-  
   const app = new EmberApp(defaults, { /* ... */ });
 
   const { Webpack } = require('@embroider/webpack');
@@ -70,7 +68,6 @@ module.exports = async function (defaults) {
     packagerOptions: {
       // css loaders for live reloading css
       webpackConfig: {
-        plugins: [appJsUnplugin.webpack({ appDir: __dirname })],
         module: {
           rules: [
             // css loaders for production
