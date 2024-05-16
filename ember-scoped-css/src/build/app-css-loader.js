@@ -1,7 +1,8 @@
 // import { createUnplugin }  from 'unplugin';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-import { exists, hashFrom } from '../lib/path/utils.js';
+import { hashFrom } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
@@ -16,10 +17,8 @@ export default async function (code) {
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
-  const [hbsExists, gjsExists] = await Promise.all([
-    exists(hbsPath),
-    exists(gjsPath),
-  ]);
+  const hbsExists = existsSync(hbsPath);
+  const gjsExists = existsSync(gjsPath);
 
   if (hbsExists || gjsExists) {
     const postfix = hashFrom(cssPath);

@@ -1,5 +1,6 @@
 'use strict';
 
+import { existsSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -11,7 +12,6 @@ import { Preprocessor } from 'content-tag';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
 import {
-  exists,
   hashFromModulePath,
   packageScopedPathToModulePath,
 } from '../lib/path/utils.js';
@@ -45,13 +45,20 @@ class ScopedFilter extends Filter {
 
     // check if corresponding js file exists
     const existPromises = [];
+    let hasRelevantFile = false;
 
     for (let inputPath of this.inputPaths) {
+      if (hasRelevantFile) break;
+
       for (let ext of COMPONENT_EXTENSIONS) {
+        if (hasRelevantFile) break;
+
         const relativeComponentPath = relativePath.replace(/\.css$/, '.' + ext);
         const componentPath = path.join(inputPath, relativeComponentPath);
 
-        existPromises.push(exists(componentPath));
+        if (existsSync(componentPath)) {
+          hasRelevantFile = true;
+        }
       }
 
       /**
@@ -61,15 +68,14 @@ class ScopedFilter extends Filter {
         const directory = relativePath.replace(/styles\.css$/, 'template.hbs');
         const templatePath = path.join(inputPath, directory);
 
-        existPromises.push(exists(templatePath));
+        if (existsSync(templatePath)) {
+          hasRelevantFile = true;
+        }
       }
     }
 
-    const existResults = await Promise.all(existPromises);
-    const componentExists = existResults.some((r) => r);
-
     // rewrite css file
-    if (componentExists) {
+    if (hasRelevantFile) {
       let localPackagerStylePath = packageScopedPathToModulePath(relativePath);
 
       const hash = hashFromModulePath(localPackagerStylePath);
@@ -98,7 +104,7 @@ class ScopedFilter extends Filter {
       eachExtension: for (let ext of TEMPLATE_EXTENSIONS) {
         const templatePath = relativePath.replace(/\.css/, '.' + ext);
         let templateFilePath = path.join(inputPath, templatePath);
-        let exists = await exists(templateFilePath);
+        let exists = existsSync(templateFilePath);
 
         /**
          * Pods support
@@ -107,7 +113,7 @@ class ScopedFilter extends Filter {
           let podsName = relativePath.replace(/styles\.css$/, 'template.hbs');
 
           templateFilePath = path.join(inputPath, podsName);
-          exists = await exists(templateFilePath);
+          exists = existsSync(templateFilePath);
         }
 
         if (exists) {

@@ -1,8 +1,8 @@
-import { exists } from '../lib/path/utils.js';
+import { existsSync } from 'node:fs';
 
-export default async function (source) {
+export default function (source) {
   if (this.resourcePath.endsWith('.js')) {
-    const hbsExists = await exists(this.resourcePath.replace(/\.js/, '.hbs'));
+    const hbsExists = existsSync(this.resourcePath.replace(/\.js/, '.hbs'));
 
     if (hbsExists) {
       return source;
@@ -10,7 +10,7 @@ export default async function (source) {
   }
 
   const cssPath = this.resourcePath.replace(/(\.js)|(\.hbs)/, '.css');
-  const cssExists = await exists(cssPath);
+  const cssExists = existsSync(cssPath);
 
   if (cssExists) {
     this.addDependency(cssPath);

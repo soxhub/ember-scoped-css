@@ -1,5 +1,4 @@
 import fsSync from 'node:fs';
-import { stat } from 'node:fs/promises';
 import path from 'node:path';
 
 import findUp from 'find-up';
@@ -23,16 +22,6 @@ export function hashFrom(filePath) {
   }
 
   return hashFromModulePath(filePath);
-}
-
-export async function exists(path) {
-  try {
-    await stat(path);
-
-    return true;
-  } catch (e) {
-    return false;
-  }
 }
 
 /**
