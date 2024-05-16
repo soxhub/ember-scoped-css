@@ -44,23 +44,50 @@ export function cssPathFor(fileName) {
   let withoutExt = withoutExtension(fileName);
   let cssPath = withoutExt + '.css';
 
-  /**
-   * Routes' Pods support
-   *
-   * components + pods will never be supported.
-   */
-  if (!fileName.includes('/components/')) {
-    let isPod =
-      fileName.endsWith('template.js') || fileName.endsWith('template.hbs');
-
-    if (isPod) {
-      cssPath = fileName
-        .replace(/template\.js$/, 'styles.css')
-        .replace(/template\.hbs/, 'styles.css');
-    }
+  if (isPod(fileName)) {
+    cssPath = fileName
+      .replace(/template\.js$/, 'styles.css')
+      .replace(/template\.hbs/, 'styles.css');
   }
 
   return cssPath;
+}
+
+/**
+ * Note that components in the "pods" convention will
+ * never be supported.
+ *
+ * @param {string} filePath
+ */
+export function isPodTemplate(filePath) {
+  if (filePath.includes('/components/')) {
+    return false;
+  }
+
+  return filePath.endsWith('template.js') || filePath.endsWith('template.hbs');
+}
+
+/**
+ * Note that components in the "pods" convention will
+ * never be supported.
+ *
+ * Checks if a file ends with
+ * - template.js
+ * - template.hbs
+ * - styles.css
+ *
+ * @param {string} filePath
+ */
+export function isPod(filePath) {
+  if (filePath.includes('/components/')) {
+    return false;
+  }
+
+  if (isPodTemplate(filePath)) {
+    return true;
+  }
+
+  return filePath.endsWith('styles.css');
 }
 
 /**
@@ -123,19 +150,10 @@ export function packageScopedPathToModulePath(packageScopedPath) {
 
   let parsed = path.parse(packageRelative);
 
-  /**
-   * Pods support.
-   * For pods, we chop off the whole file, and use the dir name as the "modulePath"
-   *
-   * Note that pods for components will never be supported.
-   */
-  let isPod =
-    !packageRelative.includes('/components/') &&
-    (packageRelative.endsWith('styles.css') ||
-      packageRelative.endsWith('template.hbs') ||
-      packageRelative.endsWith('template.js'));
-
-  if (isPod) {
+  if (isPod(packageRelative)) {
+    /**
+     * For pods, we chop off the whole file, and use the dir name as the "modulePath"
+     */
     return parsed.dir;
   }
 
