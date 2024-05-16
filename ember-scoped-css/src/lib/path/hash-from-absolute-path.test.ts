@@ -1,4 +1,3 @@
-import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
 
@@ -17,14 +16,6 @@ const paths = {
 // eslint-disable-next-line no-console
 console.log(paths);
 
-fs.readdir(paths.embroiderApp, (_, files) => {
-  files.forEach(file => {
-    // eslint-disable-next-line no-console
-    console.log(file);
-  });
-});
-
-
 describe('hashFromAbsolutePath', () => {
   describe(`the module: "embroider-app/templates/application"`, () => {
     let file = 'templates/application';
@@ -42,6 +33,10 @@ describe('hashFromAbsolutePath', () => {
         '/node_modules/.embroider/rewritten-app',
         file,
       );
+
+      // eslint-disable-next-line no-console
+      console.log(filePath);
+
       let postfix = hashFromAbsolutePath(filePath);
 
       expect(postfix).to.equal(expected);

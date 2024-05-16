@@ -11,6 +11,9 @@ export function hashFromAbsolutePath(absolutePath) {
    */
   const modulePath = appPath(absolutePath);
 
+  // eslint-disable-next-line no-console
+  console.log(modulePath);
+
   const postfix = hash(modulePath);
 
   return postfix;
