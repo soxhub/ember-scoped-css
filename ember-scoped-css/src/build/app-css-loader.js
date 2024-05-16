@@ -1,7 +1,7 @@
 // import { createUnplugin }  from 'unplugin';
 import path from 'node:path';
 
-import { exists, hashFromModulePath } from '../lib/path/utils.js';
+import { exists, hashFrom } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
@@ -22,7 +22,7 @@ export default async function (code) {
   ]);
 
   if (hbsExists || gjsExists) {
-    const postfix = hashFromModulePath(cssPath);
+    const postfix = hashFrom(cssPath);
     const rewrittenCss = rewriteCss(
       code,
       postfix,
