@@ -7,9 +7,12 @@ import rewriteCss from '../lib/rewriteCss.js';
 export default async function (code) {
   const options = this.getOptions();
   const cssPath = this.resourcePath;
-  const cssFileName = path.basename(cssPath);
 
-  const postfix = hashFromModulePath(cssPath);
+  if (!cssPath.startsWith(this.rootContext)) {
+    return code;
+  }
+
+  const cssFileName = path.basename(cssPath);
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
@@ -18,13 +21,17 @@ export default async function (code) {
     exists(gjsPath),
   ]);
 
-  let rewrittenCss;
+  if (hbsExists || gjsExists) {
+    const postfix = hashFromModulePath(cssPath);
+    const rewrittenCss = rewriteCss(
+      code,
+      postfix,
+      cssFileName,
+      options.layerName,
+    );
 
-  if (hbsExists || (gjsExists && cssPath.startsWith(this.rootContext))) {
-    rewrittenCss = rewriteCss(code, postfix, cssFileName, options.layerName);
-  } else {
-    rewrittenCss = code;
+    return rewrittenCss;
   }
 
-  return rewrittenCss;
+  return code;
 }

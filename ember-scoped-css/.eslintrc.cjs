@@ -26,11 +26,12 @@ module.exports = {
       },
     },
     {
-      files: ['./test/**/*.js'],
+      files: ['./test/**/*.js', '**/*.test.ts'],
       env: {
         mocha: true,
       },
       rules: {
+        'n/no-unpublished-import': 'off',
         'node/no-unpublished-import': 'off',
       },
     },

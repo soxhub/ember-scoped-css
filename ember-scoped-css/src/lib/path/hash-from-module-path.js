@@ -39,3 +39,5 @@ if (import.meta.vitest) {
     expect(postfix).to.have.lengthOf(9);
   });
 }
+
+export const hashFromModulePath = hash;

@@ -4,8 +4,26 @@ import path from 'node:path';
 
 import findUp from 'find-up';
 
+import { hashFromAbsolutePath } from './hash-from-absolute-path.js';
+import { hashFromModulePath } from './hash-from-module-path.js';
+
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
-export { hash as hashFromModulePath } from './hash-from-module-path.js';
+export { hashFromModulePath } from './hash-from-module-path.js';
+
+/**
+ * Regardless of what the filePath format is,
+ * this will try to return the correct postfix.
+ *
+ * @param {string} filePath
+ * @returns
+ */
+export function hashFrom(filePath) {
+  if (filePath.startsWith('/')) {
+    return hashFromAbsolutePath(filePath);
+  }
+
+  return hashFromModulePath(filePath);
+}
 
 export async function exists(path) {
   try {
@@ -189,6 +207,11 @@ export function appPath(sourcePath) {
    * rather than "app".
    */
   let packageRelative = sourcePath.replace(workspacePath, '');
+
+  /**
+   * But we also don't want 'app' -- which is present in the v1 addon pipeline
+   */
+  packageRelative = packageRelative.replace(`/app/`, `/`);
 
   let localPackagerStylePath = packageScopedPathToModulePath(packageRelative);
 
