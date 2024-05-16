@@ -213,6 +213,15 @@ export function appPath(sourcePath) {
    */
   packageRelative = packageRelative.replace(`/app/`, `/`);
 
+  /**
+   * also also, we know that the re-written app structure in embroider@v3
+   * is extraneous, and we can collapse it
+   */
+  packageRelative = packageRelative.replace(
+    `/node_modules/.embroider/rewritten-app/`,
+    '/',
+  );
+
   let localPackagerStylePath = packageScopedPathToModulePath(packageRelative);
 
   return `${name}${localPackagerStylePath}`;
