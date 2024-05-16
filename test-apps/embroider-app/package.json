@@ -72,6 +72,11 @@
     "v2-addon": "workspace:*",
     "webpack": "^5.75.0"
   },
+  "pnpm": {
+    "overrides": {
+      "babel-plugin-ember-template-compilation": "2.2.1"
+    }
+  },
   "engines": {
     "node": "14.* || 16.* || >= 18"
   },
