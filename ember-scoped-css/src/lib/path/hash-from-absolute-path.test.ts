@@ -17,7 +17,7 @@ const paths = {
 // eslint-disable-next-line no-console
 console.log(paths);
 
-fs.readdir(paths.embroiderApp, (err, files) => {
+fs.readdir(paths.embroiderApp, (_, files) => {
   files.forEach(file => {
     // eslint-disable-next-line no-console
     console.log(file);
