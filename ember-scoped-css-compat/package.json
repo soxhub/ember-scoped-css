@@ -28,6 +28,7 @@
     "ember-cli-htmlbars": "^6.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.5",
     "@babel/eslint-parser": "^7.24.5",
     "@babel/plugin-proposal-decorators": "^7.23.0",
     "@ember/optional-features": "^2.0.0",
@@ -62,6 +63,7 @@
     "prettier": "^3.0.3",
     "qunit": "^2.20.0",
     "qunit-dom": "^3.0.0",
+    "rsvp": "^4.8.5",
     "webpack": "^5.78.0"
   },
   "peerDependencies": {

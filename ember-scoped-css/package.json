@@ -84,7 +84,9 @@
     "unplugin": "^1.8.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.5",
     "@babel/eslint-parser": "^7.24.5",
+    "@glimmer/component": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "^4.0.0",
     "@tsconfig/ember": "^3.0.1",
     "@tsconfig/strictest": "^2.0.2",
