@@ -1,24 +1,20 @@
 import { existsSync, readFileSync } from 'fs';
 import nodePath from 'path';
 
-import { packageScopedPathToModulePath } from '../lib/generateAbsolutePathHash.js';
-import { generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import {
+  cssPathFor,
+  hashFromModulePath,
+  isRelevantFile,
+  packageScopedPathToModulePath,
+} from '../lib/path/utils.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
 
-function isRelevantFile(state) {
-  /**
-   * Mostly pods support.
-   * folks need to opt in to pods, because every pods app can be configured differently
-   */
-  let roots = ['/components/', ...(state.opts?.additionalRoots || [])];
-  let filename = state.file.opts.filename;
+function _isRelevantFile(state) {
+  let fileName = state.file.opts.filename;
+  let additionalRoots = state.opts?.additionalRoots;
 
-  if (!roots.some((root) => filename.includes(root))) {
-    return;
-  }
-
-  return true;
+  return isRelevantFile(fileName, additionalRoots);
 }
 
 export default () => {
@@ -42,7 +38,7 @@ export default () => {
   return {
     visitor: {
       ImportDeclaration(path, state) {
-        if (!isRelevantFile(state)) {
+        if (!_isRelevantFile(state)) {
           return;
         }
 
@@ -72,7 +68,7 @@ export default () => {
         }
       },
       CallExpression(path, state) {
-        if (!isRelevantFile(state)) {
+        if (!_isRelevantFile(state)) {
           return;
         }
 
@@ -94,20 +90,7 @@ export default () => {
             relativeFileName,
           );
 
-          let cssPath = fileName.replace(/(\.js)|(\.ts)/, '.css');
-
-          /**
-           * Pods support
-           *
-           * components + pods will never be supported.
-           */
-          let isPod =
-            !fileName.includes('/components/') &&
-            fileName.endsWith('template.js');
-
-          if (isPod) {
-            cssPath = fileName.replace(/template\.js$/, 'styles.css');
-          }
+          let cssPath = cssPathFor(fileName);
 
           if (existsSync(cssPath)) {
             const css = readFileSync(cssPath, 'utf8');
@@ -116,7 +99,7 @@ export default () => {
             let localPackagerStylePath = packageScopedPathToModulePath(
               state.file.opts.sourceFileName,
             );
-            const postfix = generateHash(localPackagerStylePath);
+            const postfix = hashFromModulePath(localPackagerStylePath);
 
             if (node.arguments[0].type === 'TemplateLiteral') {
               node.arguments[0].quasis[0].value.raw = rewriteHbs(

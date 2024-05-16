@@ -1,31 +1,37 @@
 // import { createUnplugin }  from 'unplugin';
 import path from 'node:path';
 
-import fsExists from '../lib/fsExists.js';
-import generateHash from '../lib/generateAbsolutePathHash.js';
+import { exists, hashFrom } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
   const options = this.getOptions();
   const cssPath = this.resourcePath;
-  const cssFileName = path.basename(cssPath);
 
-  const postfix = generateHash(cssPath);
+  if (!cssPath.startsWith(this.rootContext)) {
+    return code;
+  }
+
+  const cssFileName = path.basename(cssPath);
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
   const [hbsExists, gjsExists] = await Promise.all([
-    fsExists(hbsPath),
-    fsExists(gjsPath),
+    exists(hbsPath),
+    exists(gjsPath),
   ]);
 
-  let rewrittenCss;
+  if (hbsExists || gjsExists) {
+    const postfix = hashFrom(cssPath);
+    const rewrittenCss = rewriteCss(
+      code,
+      postfix,
+      cssFileName,
+      options.layerName,
+    );
 
-  if (hbsExists || (gjsExists && cssPath.startsWith(this.rootContext))) {
-    rewrittenCss = rewriteCss(code, postfix, cssFileName, options.layerName);
-  } else {
-    rewrittenCss = code;
+    return rewrittenCss;
   }
 
-  return rewrittenCss;
+  return code;
 }

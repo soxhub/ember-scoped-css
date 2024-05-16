@@ -9,10 +9,12 @@ import MergeTrees from 'broccoli-merge-trees';
 import Filter from 'broccoli-persistent-filter';
 import { Preprocessor } from 'content-tag';
 
-import fsExists from '../lib/fsExists.js';
-import { packageScopedPathToModulePath } from '../lib/generateAbsolutePathHash.js';
-import { generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import {
+  exists,
+  hashFromModulePath,
+  packageScopedPathToModulePath,
+} from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
 
@@ -49,7 +51,7 @@ class ScopedFilter extends Filter {
         const relativeComponentPath = relativePath.replace(/\.css$/, '.' + ext);
         const componentPath = path.join(inputPath, relativeComponentPath);
 
-        existPromises.push(fsExists(componentPath));
+        existPromises.push(exists(componentPath));
       }
 
       /**
@@ -59,7 +61,7 @@ class ScopedFilter extends Filter {
         const directory = relativePath.replace(/styles\.css$/, 'template.hbs');
         const templatePath = path.join(inputPath, directory);
 
-        existPromises.push(fsExists(templatePath));
+        existPromises.push(exists(templatePath));
       }
     }
 
@@ -70,7 +72,7 @@ class ScopedFilter extends Filter {
     if (componentExists) {
       let localPackagerStylePath = packageScopedPathToModulePath(relativePath);
 
-      const hash = generateHash(localPackagerStylePath);
+      const hash = hashFromModulePath(localPackagerStylePath);
 
       content = rewriteCss(
         content,
@@ -96,7 +98,7 @@ class ScopedFilter extends Filter {
       eachExtension: for (let ext of TEMPLATE_EXTENSIONS) {
         const templatePath = relativePath.replace(/\.css/, '.' + ext);
         let templateFilePath = path.join(inputPath, templatePath);
-        let exists = await fsExists(templateFilePath);
+        let exists = await exists(templateFilePath);
 
         /**
          * Pods support
@@ -105,7 +107,7 @@ class ScopedFilter extends Filter {
           let podsName = relativePath.replace(/styles\.css$/, 'template.hbs');
 
           templateFilePath = path.join(inputPath, podsName);
-          exists = await fsExists(templateFilePath);
+          exists = await exists(templateFilePath);
         }
 
         if (exists) {
@@ -127,7 +129,7 @@ class ScopedFilter extends Filter {
         if (previousClasses && classes !== previousClasses) {
           const localPackagerStylePath =
             packageScopedPathToModulePath(relativePath);
-          const postfix = generateHash(localPackagerStylePath);
+          const postfix = hashFromModulePath(localPackagerStylePath);
           const templateRaw = await readFile(templateFile.path, 'utf-8');
           const templateComparison = [];
           let templateContents = templateRaw;

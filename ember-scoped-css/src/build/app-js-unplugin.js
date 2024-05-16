@@ -2,8 +2,8 @@ import path from 'node:path';
 
 import { createUnplugin } from 'unplugin';
 
-import generateHash from '../lib/generateAbsolutePathHash.js';
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import { hashFromAbsolutePath, isPodTemplate } from '../lib/path/utils.js';
 import replaceGlimmerAst from '../lib/replaceGlimmerAst.js';
 
 function* iterateOpcodes(opcodes) {
@@ -66,19 +66,12 @@ export default createUnplugin(({ appDir }) => {
       let cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
       let moduleGroupPath = cssPath;
 
-      /**
-       * Pods support
-       *
-       * Note that Pod-components will never be supported.
-       */
-      let isPod = !id.includes('/components/') && id.endsWith('/template.hbs');
-
-      if (isPod) {
+      if (isPodTemplate(id)) {
         cssPath = path.join(path.dirname(id), 'styles.css');
         moduleGroupPath = path.dirname(cssPath);
       }
 
-      const postfix = generateHash(moduleGroupPath);
+      const postfix = hashFromAbsolutePath(moduleGroupPath);
 
       return await replaceGlimmerAst(code, id, (opcodes, css) => {
         const { classes, tags } = getClassesTagsFromCss(css);
