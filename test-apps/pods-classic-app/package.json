@@ -12,7 +12,6 @@
   },
   "scripts": {
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:hbs": "ember-template-lint .",
@@ -66,9 +65,6 @@
     "prettier": "^3.0.3",
     "qunit": "^2.19.4",
     "qunit-dom": "^3.0.0",
-    "stylelint": "^15.10.3",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-prettier": "^4.0.2",
     "tracked-built-ins": "^3.2.0",
     "webpack": "^5.88.2"
   },
