@@ -77,6 +77,11 @@
   "ember": {
     "edition": "octane"
   },
+  "pnpm": {
+    "overrides": {
+      "babel-plugin-ember-template-compilation": "2.2.1"
+    }
+  },
   "dependencies": {
     "ember-resources": "^6.4.0"
   },
