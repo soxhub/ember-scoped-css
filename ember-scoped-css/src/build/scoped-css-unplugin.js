@@ -1,10 +1,11 @@
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { createUnplugin } from 'unplugin';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
-import { exists, hashFromAbsolutePath } from '../lib/path/utils.js';
+import { hashFromAbsolutePath } from '../lib/path/utils.js';
 import replaceHbsInJs from '../lib/replaceHbsInJs.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
@@ -32,7 +33,7 @@ async function transformJsFile(code, id) {
     : id.replace(/(\.hbs)?\.(js|ts|gjs|gts)$/, '.css');
   const cssFileName = path.basename(cssPath);
 
-  const cssExists = await exists(cssPath);
+  const cssExists = existsSync(cssPath);
   let css;
 
   if (cssExists) {
@@ -68,11 +69,9 @@ async function transformCssFile(code, id, layerName, emitFile) {
   const gtsPath = id.replace(/\.css$/, '.gts');
   const hbsPath = id.replace(/\.css$/, '.hbs');
 
-  const [jsExists, gtsExists, hbsExists] = await Promise.all([
-    exists(jsPath),
-    exists(gtsPath),
-    exists(hbsPath),
-  ]);
+  const jsExists = existsSync(jsPath);
+  const gtsExists = existsSync(gtsPath);
+  const hbsExists = existsSync(hbsPath);
 
   if (jsExists || hbsExists || gtsExists) {
     const postfix = hashFromAbsolutePath(id);

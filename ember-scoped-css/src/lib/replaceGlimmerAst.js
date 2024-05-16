@@ -1,10 +1,9 @@
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import babelParser from '@babel/parser';
 import recast from 'recast';
-
-import { exists } from './path/utils.js';
 
 const parseOptions = {
   parser: babelParser,
@@ -15,7 +14,7 @@ export default async function replaceGlimmerAst(script, id, replaceFunction) {
   const cssPath = id.replace(/(\.js)|(\.hbs)/, '.css');
   let css;
 
-  const cssExists = await exists(cssPath);
+  const cssExists = existsSync(cssPath);
 
   if (cssExists) {
     css = await readFile(cssPath, 'utf-8');
