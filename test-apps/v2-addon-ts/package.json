@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^7.9.0",
     "@typescript-eslint/parser": "^7.9.0",
     "compare-fixture": "^1.0.1",
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "ember-scoped-css": "workspace:*",
     "ember-source": "^5.0.0",
     "ember-template-lint": "^6.0.0",
@@ -64,7 +64,7 @@
     "eslint-plugin-qunit": "^8.1.1",
     "execa": "^8.0.1",
     "fix-bad-declaration-output": "^1.1.2",
-    "prettier": "^3.0.3",
+    "prettier": "^3.2.5",
     "rollup": "^4.16.4",
     "rollup-plugin-copy": "^3.5.0",
     "typescript": "^5.4.5"
