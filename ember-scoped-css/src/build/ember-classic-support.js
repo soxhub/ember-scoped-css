@@ -44,7 +44,6 @@ class ScopedFilter extends Filter {
     }
 
     // check if corresponding js file exists
-    const existPromises = [];
     let hasRelevantFile = false;
 
     for (let inputPath of this.inputPaths) {
