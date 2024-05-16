@@ -1,9 +1,11 @@
 import { existsSync, readFileSync } from 'fs';
 import nodePath from 'path';
 
-import { packageScopedPathToModulePath } from '../lib/generateAbsolutePathHash.js';
-import { generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import {
+  hashFromModulePath,
+  packageScopedPathToModulePath,
+} from '../lib/path/utils.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
 
 function isRelevantFile(state) {
@@ -116,7 +118,7 @@ export default () => {
             let localPackagerStylePath = packageScopedPathToModulePath(
               state.file.opts.sourceFileName,
             );
-            const postfix = generateHash(localPackagerStylePath);
+            const postfix = hashFromModulePath(localPackagerStylePath);
 
             if (node.arguments[0].type === 'TemplateLiteral') {
               node.arguments[0].quasis[0].value.raw = rewriteHbs(

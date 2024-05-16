@@ -2,8 +2,8 @@ import path from 'node:path';
 
 import { createUnplugin } from 'unplugin';
 
-import generateHash from '../lib/generateAbsolutePathHash.js';
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
+import { hashFromAbsolutePath } from '../lib/path/utils.js';
 import replaceGlimmerAst from '../lib/replaceGlimmerAst.js';
 
 function* iterateOpcodes(opcodes) {
@@ -78,7 +78,7 @@ export default createUnplugin(({ appDir }) => {
         moduleGroupPath = path.dirname(cssPath);
       }
 
-      const postfix = generateHash(moduleGroupPath);
+      const postfix = hashFromAbsolutePath(moduleGroupPath);
 
       return await replaceGlimmerAst(code, id, (opcodes, css) => {
         const { classes, tags } = getClassesTagsFromCss(css);

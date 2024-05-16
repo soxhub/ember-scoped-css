@@ -1,8 +1,7 @@
 // import { createUnplugin }  from 'unplugin';
 import path from 'node:path';
 
-import fsExists from '../lib/fsExists.js';
-import generateHash from '../lib/generateAbsolutePathHash.js';
+import { exists, hashFromModulePath } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
@@ -10,13 +9,13 @@ export default async function (code) {
   const cssPath = this.resourcePath;
   const cssFileName = path.basename(cssPath);
 
-  const postfix = generateHash(cssPath);
+  const postfix = hashFromModulePath(cssPath);
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
   const [hbsExists, gjsExists] = await Promise.all([
-    fsExists(hbsPath),
-    fsExists(gjsPath),
+    exists(hbsPath),
+    exists(gjsPath),
   ]);
 
   let rewrittenCss;

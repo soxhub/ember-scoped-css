@@ -1,21 +1,108 @@
 import fsSync from 'node:fs';
+import { stat } from 'node:fs/promises';
 import path from 'node:path';
 
 import findUp from 'find-up';
 
-import { generateRelativePathHash as generateHash } from './generateRelativePathHash.js';
+export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
+export { hash as hashFromModulePath } from './hash-from-module-path.js';
 
-export default function generateHashFromAbsolutePath(absolutePath) {
+export async function exists(path) {
+  try {
+    await stat(path);
+
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Based on ember's component location conventions,
+ * this function will provide a path for where we
+ * expect the CSS to live.
+ *
+ * For co-located structure:
+ *   - components/my-component.hbs
+ *   - components/my-component.css
+ *
+ * For nested co-located structure
+ *   - components/my-component/foo.hbs
+ *   - components/my-component/foo.css
+ *
+ * For Pods routes structure
+ *   - routes/my-route/template.{hbs,js}
+ *   - routes/my-route/styles.css
+ *
+ * Deliberately not supported:
+ *   - components w/ pods -- this is deprecated in 5.10
+ *
+ * @param {string} fileName - the hbs, js, gjs, gts or whatever co-located path.
+ * @returns {string} - expected css path
+ */
+export function cssPathFor(fileName) {
+  let withoutExt = withoutExtension(fileName);
+  let cssPath = withoutExt + '.css';
+
   /**
-   * The whole of `appPath` ultimately transforms the `absolutePath`
-   * into the exact string that folks will pass to `relativePath`
-   * at runtime.
+   * Routes' Pods support
+   *
+   * components + pods will never be supported.
    */
-  const modulePath = appPath(absolutePath);
+  if (!fileName.includes('/components/')) {
+    let isPod =
+      fileName.endsWith('template.js') || fileName.endsWith('template.hbs');
 
-  const hash = generateHash(modulePath);
+    if (isPod) {
+      cssPath = fileName
+        .replace(/template\.js$/, 'styles.css')
+        .replace(/template\.hbs/, 'styles.css');
+    }
+  }
 
-  return hash;
+  return cssPath;
+}
+
+/**
+ *
+ * @param {string} filePath
+ * @returns the same path, but without the extension
+ */
+export function withoutExtension(filePath) {
+  let parsed = path.parse(filePath);
+
+  return path.join(parsed.dir, parsed.name);
+}
+
+const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
+
+/**
+ *
+ * @param {string} fileName
+ * @param {string[]} [additionalRoots]
+ * @returns
+ */
+export function isRelevantFile(fileName, additionalRoots) {
+  let workspace = findWorkspacePath(fileName);
+
+  let local = fileName.replace(workspace, '');
+  let [, ...parts] = local.split('/').filter(Boolean);
+
+  if (UNSUPPORTED_DIRECTORIES.has(parts[0])) {
+    return false;
+  }
+
+  /**
+   * Mostly pods support.
+   * folks need to opt in to pods (routes), because every pods app can be configured differently
+   */
+  let roots = ['/components/', ...(additionalRoots || [])];
+
+  if (!roots.some((root) => fileName.includes(root))) {
+    return;
+  }
+
+  return true;
 }
 
 export function packageScopedPathToModulePath(packageScopedPath) {
@@ -151,26 +238,4 @@ function workspacePackageName(sourcePath) {
   MANIFEST_CACHE.set(workspace, json);
 
   return json.name;
-}
-
-if (import.meta.vitest) {
-  const { it, expect } = import.meta.vitest;
-
-  it('should return a string', function () {
-    const postfix = generateHash('foo.css');
-
-    expect(postfix).to.be.a('string');
-  });
-
-  it('should return a string starting with "e"', function () {
-    const postfix = generateHash('foo.css');
-
-    expect(postfix).to.match(/^e/);
-  });
-
-  it('should return a string of length 9', function () {
-    const postfix = generateHash('foo.css');
-
-    expect(postfix).to.have.lengthOf(9);
-  });
 }

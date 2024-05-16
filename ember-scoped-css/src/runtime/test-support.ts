@@ -1,4 +1,4 @@
-import { generateRelativePathHash as generateHash } from '../lib/generateRelativePathHash.js';
+import { hash } from '../lib/path/hash-from-module-path.js';
 import { renameClass } from '../lib/renameClass.js';
 
 /**
@@ -62,12 +62,12 @@ export function scopedClass(
   ...args: [modulepath: string] | [className: string, modulePath: string]
 ) {
   if (args.length === 1) {
-    return generateHash(args[0]);
+    return hash(args[0]);
   }
 
   let [className, modulePath] = args;
 
-  const hash = generateHash(modulePath);
+  const postfix = hash(modulePath);
 
-  return renameClass(className, hash);
+  return renameClass(className, postfix);
 }
