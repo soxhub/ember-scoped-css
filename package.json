@@ -6,7 +6,6 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "release": "changeset publish",
     "build": "pnpm --filter '*' build",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
@@ -18,24 +17,23 @@
     "test:fixture": "pnpm --filter './test-apps/*' test:fixture"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.26.2",
     "concurrently": "^8.2.1",
-    "prettier": "^3.0.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/eslint": "^8.0.0",
-      "@glimmer/validator": "0.84.3"
-    },
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "webpack"
-      ]
-    }
+    "prettier": "^3.0.3",
+    "release-plan": "^0.9.0"
   },
   "volta": {
     "node": "20.12.0",
     "pnpm": "8.15.8"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "webpack"
+      ]
+    },
+    "overrides": {
+      "@glimmer/validator": "0.84.3",
+      "@types/eslint": "^8.0.0"
+    }
   }
 }
