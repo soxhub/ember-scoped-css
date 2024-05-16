@@ -90,5 +90,8 @@
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
     "./addon-main.js": "./addon-main.cjs"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

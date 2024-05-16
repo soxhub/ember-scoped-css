@@ -24,13 +24,14 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.5",
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^3.2.0",
     "@embroider/compat": "^3.4.0",
     "@embroider/core": "^3.4.2",
-    "@embroider/test-setup": "^3.0.1",
-    "@embroider/webpack": "3.2.1",
+    "@embroider/test-setup": "^3.0.0",
+    "@embroider/webpack": "^3.0.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "^4.0.0",
@@ -38,7 +39,7 @@
     "concurrently": "^8.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "ember-auto-import": "^2.7.0",
-    "ember-cli": "~4.12.2",
+    "ember-cli": "~5.8.1",
     "ember-cli-app-version": "^6.0.0",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-dependency-checker": "^3.3.1",
@@ -76,5 +77,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

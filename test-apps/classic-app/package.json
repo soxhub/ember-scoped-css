@@ -79,5 +79,8 @@
   },
   "dependencies": {
     "ember-resources": "^6.4.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

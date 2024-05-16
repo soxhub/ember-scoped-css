@@ -115,5 +115,8 @@
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }
