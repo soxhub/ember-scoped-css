@@ -6,4 +6,5 @@ dist/
 
 # misc
 coverage/
+*.yaml
 *.md

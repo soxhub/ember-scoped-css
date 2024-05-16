@@ -7,3 +7,5 @@ dist/
 # misc
 coverage/
 fixtures/
+*.yaml
+*.md

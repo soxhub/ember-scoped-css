@@ -8,3 +8,5 @@
 # misc
 /coverage/
 /fixtures/
+*.yaml
+*.md

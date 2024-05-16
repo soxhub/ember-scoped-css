@@ -61,6 +61,7 @@
     "eslint-plugin-ember": "^12.1.0",
     "eslint-plugin-n": "^17.7.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-qunit": "^8.1.1",
     "execa": "^8.0.1",
     "fix-bad-declaration-output": "^1.1.2",
     "prettier": "^3.0.3",
@@ -100,6 +101,14 @@
     "*": {
       "*": [
         "dist/*"
+      ]
+    }
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "webpack",
+        "rsvp"
       ]
     }
   },
