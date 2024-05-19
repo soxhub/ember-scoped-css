@@ -93,7 +93,7 @@
     "ember-template-lint": "^6.0.0",
     "esbuild": "^0.19.0",
     "esbuild-plugin-vitest-cleaner": "^0.5.1",
-    "eslint": "^8.50.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
     "vitest": "^1.0.0",
