@@ -65,8 +65,7 @@
     "webpack": "^5.78.0"
   },
   "peerDependencies": {
-    "ember-scoped-css": ">=0.18.0",
-    "ember-source": "^4.0.0"
+    "ember-scoped-css": ">=0.18.0"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
