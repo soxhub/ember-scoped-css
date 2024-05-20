@@ -17,8 +17,8 @@
     "test:fixture": "pnpm --filter './test-apps/*' test:fixture"
   },
   "devDependencies": {
-    "concurrently": "^8.2.1",
-    "prettier": "^3.0.3",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
     "release-plan": "^0.9.0"
   },
   "volta": {
