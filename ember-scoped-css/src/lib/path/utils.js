@@ -108,16 +108,64 @@ export function withoutExtension(filePath) {
   return path.join(parsed.dir, parsed.name);
 }
 
+const IRRELEVANT_PATHS = ['node_modules/.pnpm'];
+
 const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
 
 /**
+ * Examples for fileName
+ * - absolute on-disk path
+ * - in webpack
+ *   - URL-absolute path, starting with /
  *
  * @param {string} fileName
  * @param {string[]} [additionalRoots]
  * @returns
  */
 export function isRelevantFile(fileName, additionalRoots) {
+  if (fileName.startsWith('/@embroider')) return false;
+  if (IRRELEVANT_PATHS.some((i) => fileName.includes(i))) return false;
+
+  if (fileName.includes('/node_modules/')) {
+    // if a file is not the embroider cache directory
+    // and is in node_modules, skip it.
+    if (!fileName.includes('/node_modules/.embroider/')) {
+      return false;
+    }
+
+    // rewritten packages should have already been processed at their own
+    // publish time
+    if (fileName.includes('/node_modules/.embroider/rewritten-packages/')) {
+      return false;
+    }
+
+    // These are already the bundled files.
+    if (fileName.includes('/node_modules/.embroider/rewritten-app/assets/')) {
+      // not supported, never will be
+      if (
+        fileName.endsWith(
+          '/node_modules/.embroider/rewritten-app/assets/tests.js',
+        )
+      ) {
+        return false;
+      }
+
+      // Ideally, we never get here -- indicates we're not filtering effectively in babel
+      console.warn(
+        `[ScopedCSS]: transformation is attempting too late. Cannot operate on output file: ${fileName}`,
+      );
+
+      return false;
+    }
+  }
+
   let workspace = findWorkspacePath(fileName);
+  let cwd = process.cwd();
+  let ourWorkspace = findWorkspacePath(cwd);
+
+  if (workspace !== ourWorkspace) {
+    return false;
+  }
 
   let local = fileName.replace(workspace, '');
   let [, ...parts] = local.split('/').filter(Boolean);
@@ -238,7 +286,7 @@ function hasSeen(sourcePath) {
  * Populates the "seen" workspace cache,
  * so that we don't hit the file system too often.
  */
-function findWorkspacePath(sourcePath) {
+export function findWorkspacePath(sourcePath) {
   let seen = hasSeen(sourcePath);
 
   if (seen) {
