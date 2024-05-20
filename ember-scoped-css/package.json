@@ -61,7 +61,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@babel/parser": "^7.23.5",
+    "@babel/parser": "^7.24.5",
     "@embroider/addon-shim": "^1.8.6",
     "acorn": "^8.11.2",
     "blueimp-md5": "^2.19.0",
