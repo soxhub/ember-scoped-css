@@ -2,8 +2,17 @@ import recast from 'ember-template-recast';
 
 import { renameClass } from './renameClass.js';
 
-function templatePlugin({ classes, tags, postfix, scopedClass }) {
+export function templatePlugin({ classes, tags, postfix }) {
   let stack = [];
+  // scoped-class is a global we allow in hbs
+  // scopedClass is importable, and we'll error if someone tries to rename it
+  let scopedClassCandidates = ['scoped-class', 'scopedClass'];
+
+  function isScopedClass(str) {
+    if (!str) return false;
+
+    return scopedClassCandidates.some((candidate) => candidate === str);
+  }
 
   return {
     AttrNode(node) {
@@ -65,7 +74,7 @@ function templatePlugin({ classes, tags, postfix, scopedClass }) {
       let cssClass;
 
       if (
-        node.path?.original === scopedClass &&
+        isScopedClass(node.path?.original) &&
         node.params?.length === 1 &&
         node.params[0].type === 'StringLiteral'
       ) {
@@ -73,7 +82,7 @@ function templatePlugin({ classes, tags, postfix, scopedClass }) {
       }
 
       if (
-        node.path?.path?.original === scopedClass &&
+        isScopedClass(node.path?.path?.original) &&
         node.path?.params?.length === 1 &&
         node.path?.params[0].type === 'StringLiteral'
       ) {
@@ -94,7 +103,7 @@ function templatePlugin({ classes, tags, postfix, scopedClass }) {
 
     SubExpression(node) {
       if (
-        node.path?.original === scopedClass &&
+        isScopedClass(node.path?.original) &&
         node.params?.length === 1 &&
         node.params[0].type === 'StringLiteral'
       ) {
@@ -110,16 +119,10 @@ function templatePlugin({ classes, tags, postfix, scopedClass }) {
   };
 }
 
-export default function rewriteHbs(
-  hbs,
-  classes,
-  tags,
-  postfix,
-  scopedClass = 'scoped-class',
-) {
+export default function rewriteHbs(hbs, classes, tags, postfix) {
   let ast = recast.parse(hbs);
 
-  recast.traverse(ast, templatePlugin({ classes, tags, postfix, scopedClass }));
+  recast.traverse(ast, templatePlugin({ classes, tags, postfix }));
 
   let result = recast.print(ast);
 
