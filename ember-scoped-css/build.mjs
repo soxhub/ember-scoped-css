@@ -9,7 +9,7 @@ const buildFiles = [
   'src/build/app-css-loader.js',
   'src/build/app-dependency-loader.js',
   'src/build/ember-classic-support.js',
-  'src/scoped-babel-plugin.js',
+  'src/build/babel-plugin.js',
 ];
 
 const external = [...Object.keys(require('./package.json').dependencies)];
