@@ -17,7 +17,12 @@ function _isRelevantFile(state) {
   return isRelevantFile(fileName, additionalRoots);
 }
 
-export default () => {
+/**
+ * @param {any} env - babel plugin env, env.types is most commonly used (esp in TS)
+ * @param {object} options - the options for scoped-css -- this is also available in each visitor's state.opts
+ * @param {string} workingDirectory
+ */
+export default (/* env, options, workingDirectory */) => {
   /**
    * - This can receive the intermediate output of the old REGEX-based <template> transform:
    *   ```
@@ -51,6 +56,12 @@ export default () => {
             state.file.opts.importedScopedClass = specifier.local.name;
           }
 
+          if (specifier.local.name !== 'scopedClass') {
+            throw new Error(
+              `The scopedClass import is a psuedo-helper, and may not be renamed as it is removed at build time.`,
+            );
+          }
+
           path.remove();
         }
       },
@@ -73,7 +84,6 @@ export default () => {
         }
 
         const node = path.node;
-        const importedScopedClass = state.file.opts?.importedScopedClass;
 
         if (
           node.callee.name === 'precompileTemplate' ||
@@ -107,7 +117,6 @@ export default () => {
                 classes,
                 tags,
                 postfix,
-                importedScopedClass,
               );
               node.arguments[0].quasis[0].value.cooked =
                 node.arguments[0].quasis[0].value.raw;
@@ -120,7 +129,6 @@ export default () => {
                 classes,
                 tags,
                 postfix,
-                importedScopedClass,
               );
             }
           }
