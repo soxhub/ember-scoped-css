@@ -11,6 +11,8 @@ const monorepoRoot = path.join(__dirname, '../../../../');
 export const paths = {
   rewritten: 'node_modules/.embroider/rewritten-app',
   embroiderApp: path.join(monorepoRoot, 'test-apps/embroider-app'),
+  classicApp: path.join(monorepoRoot, 'test-apps/classic-app'),
+  v2Addon: path.join(monorepoRoot, 'test-apps/v2-addon'),
 };
 
 describe('paths', () => {
