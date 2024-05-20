@@ -24,8 +24,17 @@ jobs:
       - run: pnpm lint
 
   test:
-    name: 'Tests'
+    name: 'Test ${{ matrix.dir }}'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir:
+          - "ember-scoped-css"
+          - "test-apps/classic-app"
+          - "test-apps/embroider-app"
+          - "test-apps/pods-embroider-app"
+          - "test-apps/pods-classic-app"
 
     steps:
       - uses: wyvox/action@v1
@@ -33,10 +42,20 @@ jobs:
           node-version: 18.17
       - run: pnpm build
       - run: pnpm test
+        working-directory: ${{ matrix.dir }}
 
   floating:
-    name: 'Floating Dependencies'
+    name: 'Floating ${{ matrix.dir }}'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir:
+          - "ember-scoped-css"
+          - "test-apps/classic-app"
+          - "test-apps/embroider-app"
+          - "test-apps/pods-embroider-app"
+          - "test-apps/pods-classic-app"
 
     steps:
       - uses: wyvox/action@v1
@@ -46,6 +65,8 @@ jobs:
       - run: pnpm build
       - name: Run Tests
         run: pnpm test
+        working-directory: ${{ matrix.dir }}
+
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
