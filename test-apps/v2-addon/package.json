@@ -40,7 +40,7 @@
     "@babel/preset-typescript": "^7.24.1",
     "@embroider/addon-dev": "^3.2.0",
     "@nullvoxpopuli/eslint-configs": "^4.0.0",
-    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-babel": "^6.0.4",
     "compare-fixture": "^1.0.1",
     "concurrently": "^8.2.2",
     "ember-scoped-css": "workspace:*",
@@ -50,8 +50,8 @@
     "eslint-plugin-ember": "^12.1.0",
     "eslint-plugin-node": "^11.1.0",
     "prettier": "^3.2.5",
-    "rollup": "^4.0.0",
-    "rollup-plugin-copy": "^3.4.0",
+    "rollup": "^4.17.2",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-glimmer-template-tag": "^0.4.1"
   },
   "publishConfig": {
