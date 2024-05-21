@@ -121,5 +121,8 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
+  },
+  "volta": {
+    "extends": "../package.json"
   }
 }
