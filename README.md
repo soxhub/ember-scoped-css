@@ -19,6 +19,13 @@ This build tool emits CSS in a `@layer`.
 - non-embroider apps 
 - embroider apps
 
+| You Have | ember-scoped-css | ember-scoped-css-compat |
+| -------- | ----------- | ---------------------- |
+| ember-template-imports@v4 or babel-plugin-ember-template-compilation@2.2.5+ | 0.19.0 | 10.0.0 |
+| ember-template-imports@v3 or babel-plugin-ember-template-compilation@2.2.1 or rollup-plugin-glimmer-template-tag | <= 0.18.0 | <= 9.0.0 |
+| classic components | <= 0.18.0 | <= 8.0.0 |
+| ember < 4 | <= 0.18.0 | <= 8.0.0 |
+
 
 ## Installation for a non-embroider ember app
 
