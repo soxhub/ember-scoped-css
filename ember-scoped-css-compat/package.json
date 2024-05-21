@@ -79,5 +79,8 @@
       "ember-cli-htmlbars",
       "ember-template-imports"
     ]
+  },
+  "volta": {
+    "extends": "../package.json"
   }
 }
