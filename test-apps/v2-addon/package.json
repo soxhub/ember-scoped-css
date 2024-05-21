@@ -29,7 +29,8 @@
     "prepack": "rollup --config"
   },
   "dependencies": {
-    "@embroider/addon-shim": "^1.8.6"
+    "@embroider/addon-shim": "^1.8.6",
+    "decorator-transforms": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
@@ -44,7 +45,6 @@
     "babel-plugin-ember-template-compilation": "2.2.1",
     "compare-fixture": "^1.0.1",
     "concurrently": "^8.2.2",
-    "decorator-transforms": "^2.0.0",
     "ember-scoped-css": "workspace:*",
     "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^6.0.0",
