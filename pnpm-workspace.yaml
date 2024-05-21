@@ -2,8 +2,3 @@ packages:
   - 'test-apps/*'
   - 'ember-scoped-css'
   - 'ember-scoped-css-compat'
-# test-apps/embroider-app
-# test-apps/classic-app
-# test-apps/v2-addon
-
-# ember auto import webpack plugin

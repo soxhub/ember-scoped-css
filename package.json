@@ -1,5 +1,5 @@
 {
-  "name": "v2-addon",
+  "name": "scoped-css-root",
   "version": "0.0.0",
   "private": true,
   "repository": "https://github.com/soxhub/ember-scoped-css",
