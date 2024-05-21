@@ -157,8 +157,8 @@ importers:
         specifier: ^3.2.0
         version: 3.3.0(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))(webpack@5.91.0)
       '@embroider/test-setup':
-        specifier: ^3.0.1
-        version: 3.0.3(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@4.0.0(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))
+        specifier: ^4.0.0
+        version: 4.0.0(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@4.0.0(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.24.5)
@@ -395,8 +395,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.9(@glint/template@1.4.0)
       '@embroider/test-setup':
-        specifier: ^3.0.1
-        version: 3.0.3(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@3.2.1(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))
+        specifier: ^4.0.0
+        version: 4.0.0(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@3.2.1(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))
       '@embroider/webpack':
         specifier: 3.2.1
         version: 3.2.1(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0)
@@ -1879,13 +1879,13 @@ packages:
     resolution: {integrity: sha512-A2BYQkhotdKOXuTaxvo9dqOIMbk+2LqFyqvfaaePkZcFJvtCkvTaD31/sSzqvRF6rdeBHjdMwU9Z2baPZ55fEQ==}
     engines: {node: 12.* || 14.* || >= 16}
 
-  '@embroider/test-setup@3.0.3':
-    resolution: {integrity: sha512-3K5KSyTdnxAkZQill6+TdC/XTRr6226LNwZMsrhRbBM0FFZXw2D8qmJSHPvZLheQx3A1jnF9t1lyrAzrKlg6Yw==}
+  '@embroider/test-setup@4.0.0':
+    resolution: {integrity: sha512-1S3Ebk0CEh3XDqD93AWSwQZBCk+oGv03gtkaGgdgyXGIR7jrVyDgEnEuslN/hJ0cuU8TqhiXrzHMw7bJwIGhWw==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
-      '@embroider/compat': ^3.3.0
-      '@embroider/core': ^3.4.0
-      '@embroider/webpack': ^3.2.1
+      '@embroider/compat': ^3.4.8
+      '@embroider/core': ^3.4.8
+      '@embroider/webpack': ^4.0.0
     peerDependenciesMeta:
       '@embroider/compat':
         optional: true
@@ -11399,7 +11399,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@embroider/test-setup@3.0.3(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@3.2.1(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))':
+  '@embroider/test-setup@4.0.0(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@3.2.1(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))':
     dependencies:
       lodash: 4.17.21
       resolve: 1.22.8
@@ -11408,7 +11408,7 @@ snapshots:
       '@embroider/core': 3.4.9(@glint/template@1.4.0)
       '@embroider/webpack': 3.2.1(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0)
 
-  '@embroider/test-setup@3.0.3(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@4.0.0(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))':
+  '@embroider/test-setup@4.0.0(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@4.0.0(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))':
     dependencies:
       lodash: 4.17.21
       resolve: 1.22.8
