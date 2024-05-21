@@ -821,12 +821,18 @@ importers:
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.24.5)(rollup@4.17.2)
+      babel-plugin-ember-template-compilation:
+        specifier: 2.2.1
+        version: 2.2.1
       compare-fixture:
         specifier: ^1.0.1
         version: 1.1.2
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
+      decorator-transforms:
+        specifier: ^2.0.0
+        version: 2.0.0(@babel/core@7.24.5)
       ember-scoped-css:
         specifier: workspace:*
         version: link:../../ember-scoped-css
@@ -854,9 +860,6 @@ importers:
       rollup-plugin-copy:
         specifier: ^3.5.0
         version: 3.5.0
-      rollup-plugin-glimmer-template-tag:
-        specifier: ^0.4.1
-        version: 0.4.1(@babel/core@7.24.5)(ember-source@5.7.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5))(ember-template-imports@3.4.2)
 
   test-apps/v2-addon-ts:
     dependencies:
@@ -8101,14 +8104,6 @@ packages:
     resolution: {integrity: sha512-/VpLMtDy+8wwRlDANuYmDa9ss/knGsAgrDhM+tEwB1npHwNu4DYNmDfUL55csse/GHs9Q+SMT/rw9uiaZ3pnzA==}
     engines: {node: '>=10'}
 
-  rollup-plugin-glimmer-template-tag@0.4.1:
-    resolution: {integrity: sha512-hz/xbxlcif0zCuapZ8YvZpZrag+KCHPnyf7b0lCJvNNapvTdHV6fvOFYZxcxTUOVuOxQLmmemy82jDSlpQ9ZVg==}
-    engines: {node: ^16.0.0 || ^18.0.0 || ^20.0.0}
-    peerDependencies:
-      '@babel/core': ^7.21.3
-      ember-source: ^4.0.0 || ^5.0.0
-      ember-template-imports: ^3.4.1
-
   rollup-pluginutils@2.8.2:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
 
@@ -14490,47 +14485,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-auto-import@2.7.2(@glint/template@1.4.0):
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.24.5)
-      '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
-      '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.24.5)
-      '@babel/plugin-transform-class-static-block': 7.24.4(@babel/core@7.24.5)
-      '@babel/preset-env': 7.24.5(@babel/core@7.24.5)
-      '@embroider/macros': 1.16.1(@glint/template@1.4.0)
-      '@embroider/shared-internals': 2.6.0
-      babel-loader: 8.3.0(@babel/core@7.24.5)(webpack@5.91.0(esbuild@0.21.3))
-      babel-plugin-ember-modules-api-polyfill: 3.5.0
-      babel-plugin-ember-template-compilation: 2.2.1
-      babel-plugin-htmlbars-inline-precompile: 5.3.1
-      babel-plugin-syntax-dynamic-import: 6.18.0
-      broccoli-debug: 0.6.5
-      broccoli-funnel: 3.0.8
-      broccoli-merge-trees: 4.2.0
-      broccoli-plugin: 4.0.7
-      broccoli-source: 3.0.1
-      css-loader: 5.2.7(webpack@5.91.0)
-      debug: 4.3.4(supports-color@9.4.0)
-      fs-extra: 10.1.0
-      fs-tree-diff: 2.0.1
-      handlebars: 4.7.8
-      js-string-escape: 1.0.1
-      lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.0(webpack@5.91.0)
-      minimatch: 3.1.2
-      parse5: 6.0.1
-      resolve: 1.22.8
-      resolve-package-path: 4.0.3
-      semver: 7.6.2
-      style-loader: 2.0.0(webpack@5.91.0)
-      typescript-memoize: 1.1.1
-      walk-sync: 3.0.0
-    transitivePeerDependencies:
-      - '@glint/template'
-      - supports-color
-      - webpack
-
   ember-auto-import@2.7.2(@glint/template@1.4.0)(webpack@5.91.0(esbuild@0.21.3)):
     dependencies:
       '@babel/core': 7.24.5
@@ -15430,62 +15384,6 @@ snapshots:
       router_js: 8.0.5(route-recognizer@0.3.4)(rsvp@4.8.5)
       semver: 7.6.2
       silent-error: 1.1.1
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@glint/template'
-      - rsvp
-      - supports-color
-      - webpack
-
-  ember-source@5.7.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5):
-    dependencies:
-      '@babel/helper-module-imports': 7.24.3
-      '@ember/edition-utils': 1.2.0
-      '@glimmer/compiler': 0.87.1
-      '@glimmer/component': 1.1.2(@babel/core@7.24.5)
-      '@glimmer/destroyable': 0.87.1
-      '@glimmer/env': 0.1.7
-      '@glimmer/global-context': 0.87.1
-      '@glimmer/interfaces': 0.87.1
-      '@glimmer/manager': 0.87.1
-      '@glimmer/node': 0.87.1
-      '@glimmer/opcode-compiler': 0.87.1
-      '@glimmer/owner': 0.87.1
-      '@glimmer/program': 0.87.1
-      '@glimmer/reference': 0.87.1
-      '@glimmer/runtime': 0.87.1
-      '@glimmer/syntax': 0.87.1
-      '@glimmer/util': 0.87.1
-      '@glimmer/validator': 0.84.3
-      '@glimmer/vm': 0.87.1
-      '@glimmer/vm-babel-plugins': 0.87.1(@babel/core@7.24.5)
-      '@simple-dom/interface': 1.4.0
-      babel-plugin-debug-macros: 0.3.4(@babel/core@7.24.5)
-      babel-plugin-ember-template-compilation: 2.2.1
-      babel-plugin-filter-imports: 4.0.0
-      backburner.js: 2.8.0
-      broccoli-concat: 4.2.5
-      broccoli-debug: 0.6.5
-      broccoli-file-creator: 2.1.1
-      broccoli-funnel: 3.0.8
-      broccoli-merge-trees: 4.2.0
-      chalk: 4.1.2
-      ember-auto-import: 2.7.2(@glint/template@1.4.0)
-      ember-cli-babel: 7.26.11
-      ember-cli-get-component-path-option: 1.0.0
-      ember-cli-is-package-missing: 1.0.0
-      ember-cli-normalize-entity-name: 1.0.0
-      ember-cli-path-utils: 1.0.0
-      ember-cli-string-utils: 1.1.0
-      ember-cli-typescript-blueprint-polyfill: 0.1.0
-      ember-cli-version-checker: 5.1.2
-      ember-router-generator: 2.0.0
-      inflection: 2.0.1
-      route-recognizer: 0.3.4
-      router_js: 8.0.5(route-recognizer@0.3.4)(rsvp@4.8.5)
-      semver: 7.6.2
-      silent-error: 1.1.1
-      simple-html-tokenizer: 0.5.11
     transitivePeerDependencies:
       - '@babel/core'
       - '@glint/template'
@@ -19094,12 +18992,6 @@ snapshots:
   rollup-plugin-delete@2.0.0:
     dependencies:
       del: 5.1.0
-
-  rollup-plugin-glimmer-template-tag@0.4.1(@babel/core@7.24.5)(ember-source@5.7.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5))(ember-template-imports@3.4.2):
-    dependencies:
-      '@babel/core': 7.24.5
-      ember-source: 5.7.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)
-      ember-template-imports: 3.4.2
 
   rollup-pluginutils@2.8.2:
     dependencies:
