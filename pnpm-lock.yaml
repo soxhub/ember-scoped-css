@@ -842,9 +842,6 @@ importers:
       ember-scoped-css:
         specifier: workspace:*
         version: link:../../ember-scoped-css
-      ember-template-imports:
-        specifier: ^3.4.2
-        version: 3.4.2
       ember-template-lint:
         specifier: ^6.0.0
         version: 6.0.0
