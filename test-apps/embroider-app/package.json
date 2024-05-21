@@ -24,6 +24,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.24.5",
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^3.2.0",
@@ -57,7 +58,7 @@
     "ember-source": "~5.8.0",
     "ember-source-channel-url": "^3.0.0",
     "ember-style-loader": "github:mainmatter/ember-style-loader#main",
-    "ember-template-imports": "^3.4.2",
+    "ember-template-imports": "^4.1.1",
     "ember-template-lint": "^6.0.0",
     "ember-try": "^3.0.0",
     "eslint": "^8.50.0",

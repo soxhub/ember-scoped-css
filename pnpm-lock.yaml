@@ -335,8 +335,8 @@ importers:
         specifier: github:mainmatter/ember-style-loader#main
         version: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/5d262a1671a9354312a376d70df220289b8b3330
       ember-template-imports:
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^4.1.1
+        version: 4.1.1
       ember-template-lint:
         specifier: ^6.0.0
         version: 6.0.0
@@ -379,6 +379,9 @@ importers:
 
   test-apps/embroider-app:
     devDependencies:
+      '@babel/plugin-transform-typescript':
+        specifier: ^7.24.5
+        version: 7.24.5(@babel/core@7.24.5)
       '@ember/optional-features':
         specifier: ^2.0.0
         version: 2.1.0
@@ -479,8 +482,8 @@ importers:
         specifier: github:mainmatter/ember-style-loader#main
         version: https://codeload.github.com/mainmatter/ember-style-loader/tar.gz/5d262a1671a9354312a376d70df220289b8b3330
       ember-template-imports:
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^4.1.1
+        version: 4.1.1
       ember-template-lint:
         specifier: ^6.0.0
         version: 6.0.0
@@ -4904,6 +4907,10 @@ packages:
   ember-template-imports@3.4.2:
     resolution: {integrity: sha512-OS8TUVG2kQYYwP3netunLVfeijPoOKIs1SvPQRTNOQX4Pu8xGGBEZmrv0U1YTnQn12Eg+p6w/0UdGbUnITjyzw==}
     engines: {node: 12.* || >= 14}
+
+  ember-template-imports@4.1.1:
+    resolution: {integrity: sha512-mnbL3hjo/Ctg7rkBtuYkBRJUn5bDYRQCEZQxmNozRnfoEp2RLSbT6SFJRAFDYXT2OrY+8i821S4kPL1i0QuGIw==}
+    engines: {node: 16.* || >= 18}
 
   ember-template-lint@6.0.0:
     resolution: {integrity: sha512-TWWt/qCd4KoQ50T3We5nCoKcsrAT8Ip79Kmm9eyWjjyL+LAbRFu0z+GxcmW7MR+QCNW/1LQs3kwEdtIcaHEGiA==}
@@ -15128,6 +15135,14 @@ snapshots:
       parse-static-imports: 1.1.0
       string.prototype.matchall: 4.0.11
       validate-peer-dependencies: 1.2.0
+    transitivePeerDependencies:
+      - supports-color
+
+  ember-template-imports@4.1.1:
+    dependencies:
+      broccoli-stew: 3.0.0
+      content-tag: 2.0.1
+      ember-cli-version-checker: 5.1.2
     transitivePeerDependencies:
       - supports-color
 
