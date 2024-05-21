@@ -73,7 +73,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "ember-resources": "^6.4.0"
+    "ember-resources": "^7.0.1"
   },
   "volta": {
     "extends": "../../package.json"
