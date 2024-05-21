@@ -7,8 +7,7 @@ module.exports = async function (defaults) {
     // autoImport: {
     //   watchDependencies: ['v2-addon'],
     // },
-    // We can't add a babel plugin here, because it runs too late.
-    // This is post-AMD transform.
+    // These babel plugins run after wire-format, which is too late
     // babel: {
     //   plugins: [
     //     [require.resolve('ember-scoped-css/babel-plugin'), { layerName: 'embroider-app' }, 'configured'],
@@ -25,7 +24,9 @@ module.exports = async function (defaults) {
       },
     ],
     packagerOptions: {
+      // css loaders for live reloading css
       webpackConfig: {
+        cache: false,
         module: {
           rules: [
             // css loaders for production

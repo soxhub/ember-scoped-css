@@ -54,7 +54,6 @@
     "ember-qunit": "^8.0.2",
     "ember-resolver": "^11.0.0",
     "ember-scoped-css": "workspace:*",
-    "ember-scoped-css-compat": "workspace:^",
     "ember-source": "~5.8.0",
     "ember-source-channel-url": "^3.0.0",
     "ember-style-loader": "github:mainmatter/ember-style-loader#main",
@@ -82,5 +81,10 @@
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/scoped-compat"
+    ]
   }
 }

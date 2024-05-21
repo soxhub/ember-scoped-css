@@ -7,6 +7,15 @@ module.exports = async function (defaults) {
     // autoImport: {
     //   watchDependencies: ['v2-addon'],
     // },
+    babel: {
+      plugins: [
+        [
+          require.resolve('ember-scoped-css/babel-plugin'),
+          { layerName: 'embroider-app' },
+          'configured',
+        ],
+      ],
+    },
   });
 
   const { Webpack } = require('@embroider/webpack');
@@ -20,6 +29,7 @@ module.exports = async function (defaults) {
     packagerOptions: {
       // css loaders for live reloading css
       webpackConfig: {
+        cache: false,
         module: {
           rules: [
             // css loaders for production

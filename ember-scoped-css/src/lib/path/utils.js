@@ -141,6 +141,8 @@ export function isRelevantFile(fileName, additionalRoots) {
 
     // These are already the bundled files.
     if (fileName.includes('/node_modules/.embroider/rewritten-app/assets/')) {
+      return false;
+
       // not supported, never will be
       if (
         fileName.endsWith(
@@ -265,6 +267,7 @@ export function appPath(sourcePath) {
 }
 
 const CACHE = new Set();
+const cwd = process.cwd();
 
 /**
  * For a given source path, if we have seen a
@@ -273,7 +276,7 @@ const CACHE = new Set();
  */
 function hasSeen(sourcePath) {
   for (let entry of CACHE) {
-    if (sourcePath.startsWith(entry)) {
+    if (sourcePath.startsWith(entry) && cwd !== entry) {
       return entry;
     }
   }
@@ -294,7 +297,7 @@ export function findWorkspacePath(sourcePath) {
   }
 
   const packageJsonPath = findUp.sync('package.json', {
-    cwd: path.dirname(sourcePath),
+    cwd: sourcePath,
   });
 
   const workspacePath = path.dirname(packageJsonPath);

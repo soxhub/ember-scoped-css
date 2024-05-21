@@ -17,10 +17,32 @@ import {
 } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
+import { createPlugin } from './template-plugin.js';
 
 const p = new Preprocessor();
 const COMPONENT_EXTENSIONS = ['hbs', 'js', 'ts', 'gjs', 'gts'];
 const TEMPLATE_EXTENSIONS = ['hbs', 'gjs', 'gts'];
+
+export function installScopedCSS(registry, options) {
+  registry.add('htmlbars-ast-plugin', buildASTPlugin(options));
+}
+
+export function buildASTPlugin(options) {
+  let plugin = createPlugin(options);
+
+  return {
+    name: 'ember-scoped-css::template-plugin',
+    plugin,
+    baseDir: function () {
+      return __dirname;
+    },
+    parallelBabel: {
+      requireFile: __filename,
+      buildUsing: 'buildASTPlugin',
+      params: {},
+    },
+  };
+}
 
 class ScopedFilter extends Filter {
   constructor(componentsNode, options = {}) {
@@ -235,8 +257,6 @@ export default class ScopedCssPreprocessor {
       ...(this.userOptions.additionalRoots || []).map(
         (root) => `${this.appName}/${root}`,
       ),
-      'app/components/',
-      ...(this.userOptions.additionalRoots || []).map((root) => `app/${root}`),
     ];
     let include = roots
       .map((root) => {
