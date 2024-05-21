@@ -18,8 +18,8 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
-    "test": "echo 'Would run \"pnpm test:ember\", but we need a different approach for transforming templates under embroider (like a template-transpilation plugin, see: https://github.com/emberjs/babel-plugin-ember-template-compilation/#common-options)'",
-    "test:ember": "ember test"
+    "test": "pnpm test:ember",
+    "test:ember": "ember test --test-port 0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
@@ -50,6 +50,7 @@
     "ember-qunit": "^8.0.2",
     "ember-resolver": "^12.0.0",
     "ember-scoped-css": "workspace:^",
+    "ember-scoped-css-compat": "workspace:*",
     "ember-source": "~5.9.0",
     "ember-template-lint": "^6.0.0",
     "eslint": "^8.49.0",
