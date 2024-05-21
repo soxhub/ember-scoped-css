@@ -23,7 +23,7 @@
   },
   "volta": {
     "node": "22.2.0",
-    "pnpm": "8.15.8"
+    "pnpm": "9.1.2"
   },
   "pnpm": {
     "peerDependencyRules": {
