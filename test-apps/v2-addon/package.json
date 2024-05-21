@@ -39,7 +39,7 @@
     "@babel/plugin-proposal-decorators": "^7.23.0",
     "@babel/plugin-syntax-decorators": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
-    "@embroider/addon-dev": "^3.2.0",
+    "@embroider/addon-dev": "^4.3.1",
     "@nullvoxpopuli/eslint-configs": "^4.0.0",
     "@rollup/plugin-babel": "^6.0.4",
     "babel-plugin-ember-template-compilation": "2.2.1",
