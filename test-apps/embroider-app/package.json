@@ -63,6 +63,7 @@
     "eslint-plugin-ember": "^12.1.0",
     "eslint-plugin-n": "^17.7.0",
     "eslint-plugin-qunit": "^8.1.1",
+    "latest-version": "^9.0.0",
     "loader.js": "^4.7.0",
     "prettier": "^3.2.5",
     "qunit": "^2.20.0",
