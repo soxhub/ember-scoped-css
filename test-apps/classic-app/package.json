@@ -49,7 +49,7 @@
     "ember-resolver": "^11.0.0",
     "ember-scoped-css": "workspace:*",
     "ember-scoped-css-compat": "workspace:*",
-    "ember-source": "~4.10.0",
+    "ember-source": "~5.8.0",
     "ember-style-loader": "github:mainmatter/ember-style-loader#main",
     "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^6.0.0",
