@@ -389,11 +389,14 @@ importers:
         specifier: ^3.2.0
         version: 3.3.0(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))(webpack@5.91.0)
       '@embroider/compat':
-        specifier: ^3.4.0
+        specifier: ^3.5.0
         version: 3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0)
       '@embroider/core':
-        specifier: ^3.4.2
+        specifier: ^3.4.9
         version: 3.4.9(@glint/template@1.4.0)
+      '@embroider/macros':
+        specifier: ^1.16.1
+        version: 1.16.1(@glint/template@1.4.0)
       '@embroider/test-setup':
         specifier: ^4.0.0
         version: 4.0.0(@embroider/compat@3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.9(@glint/template@1.4.0))(@embroider/webpack@4.0.0(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0))
@@ -680,11 +683,14 @@ importers:
         specifier: ^3.2.0
         version: 3.3.0(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))(webpack@5.91.0)
       '@embroider/compat':
-        specifier: ^3.4.0
+        specifier: ^3.5.0
         version: 3.5.0(@embroider/core@3.4.9(@glint/template@1.4.0))(@glint/template@1.4.0)
       '@embroider/core':
-        specifier: ^3.4.2
+        specifier: ^3.4.9
         version: 3.4.9(@glint/template@1.4.0)
+      '@embroider/macros':
+        specifier: ^1.16.1
+        version: 1.16.1(@glint/template@1.4.0)
       '@embroider/webpack':
         specifier: ^4.0.0
         version: 4.0.0(@embroider/core@3.4.9(@glint/template@1.4.0))(webpack@5.91.0)
@@ -816,8 +822,8 @@ importers:
         specifier: ^7.24.1
         version: 7.24.1(@babel/core@7.24.5)
       '@embroider/addon-dev':
-        specifier: ^3.2.0
-        version: 3.2.0(@glint/template@1.4.0)(rollup@4.17.2)
+        specifier: ^4.3.1
+        version: 4.3.1(@glint/template@1.4.0)(rollup@4.17.2)
       '@nullvoxpopuli/eslint-configs':
         specifier: ^4.0.0
         version: 4.0.0(@babel/core@7.24.5)(@babel/eslint-parser@7.24.5(@babel/core@7.24.5)(eslint@8.57.0))(@babel/plugin-proposal-decorators@7.24.1(@babel/core@7.24.5))(@types/eslint@8.56.10)(@typescript-eslint/eslint-plugin@7.10.0(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5))(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint-plugin-ember@12.1.1(@babel/core@7.24.5)(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint-plugin-qunit@8.1.1(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
@@ -1823,11 +1829,6 @@ packages:
   '@ember/test-waiters@3.1.0':
     resolution: {integrity: sha512-bb9h95ktG2wKY9+ja1sdsFBdOms2lB19VWs8wmNpzgHv1NCetonBoV5jHBV4DHt0uS1tg9z66cZqhUVlYs96KQ==}
     engines: {node: 10.* || 12.* || >= 14.*}
-
-  '@embroider/addon-dev@3.2.0':
-    resolution: {integrity: sha512-ISihBJQEHJQ3HBYMKh5wBP5VHiUWNRTtDs7diQCb75WTHa7lXP3UhONuJ4cX5CuWmGSwJjwKg0Z5hXxXbN0Olg==}
-    engines: {node: 12.* || 14.* || >= 16}
-    hasBin: true
 
   '@embroider/addon-dev@4.3.1':
     resolution: {integrity: sha512-CNZ4Y69PPIZAAGGoERjvDcrwOwWTuUmnRYu+XnmqKk0opdlu/PTssO9YWyxp8AnvGd2l7iLCjEn5mpLFvifstA==}
@@ -10886,26 +10887,6 @@ snapshots:
       semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
-
-  '@embroider/addon-dev@3.2.0(@glint/template@1.4.0)(rollup@4.17.2)':
-    dependencies:
-      '@embroider/core': 3.4.9(@glint/template@1.4.0)
-      '@rollup/pluginutils': 4.2.1
-      assert-never: 1.2.1
-      content-tag: 1.2.2
-      fs-extra: 10.1.0
-      minimatch: 3.1.2
-      rollup-plugin-copy-assets: 2.0.3(rollup@4.17.2)
-      rollup-plugin-delete: 2.0.0
-      walk-sync: 3.0.0
-      yargs: 17.7.2
-    transitivePeerDependencies:
-      - '@glint/template'
-      - bufferutil
-      - canvas
-      - rollup
-      - supports-color
-      - utf-8-validate
 
   '@embroider/addon-dev@4.3.1(@glint/template@1.4.0)(rollup@4.17.2)':
     dependencies:
