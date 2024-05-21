@@ -51,7 +51,7 @@
     "ember-resolver": "^11.0.1",
     "ember-scoped-css": "workspace:^",
     "ember-scoped-css-compat": "workspace:^",
-    "ember-source": "~5.3.0",
+    "ember-source": "~5.8.0",
     "ember-template-lint": "^6.0.0",
     "ember-welcome-page": "^7.0.2",
     "eslint": "^8.49.0",
