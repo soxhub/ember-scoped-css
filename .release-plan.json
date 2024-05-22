@@ -1,26 +1,20 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "impact": "minor",
-      "oldVersion": "0.18.0",
-      "newVersion": "0.19.0",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./ember-scoped-css/package.json"
+      "oldVersion": "0.19.0"
     },
     "ember-scoped-css-compat": {
+      "impact": "major",
       "oldVersion": "9.0.0",
       "newVersion": "10.0.0",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        }
+      ],
       "pkgJSONPath": "./ember-scoped-css-compat/package.json"
     }
   },
-  "description": "## Release (2024-05-22)\n\nember-scoped-css 0.19.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-scoped-css`, `classic-app`, `embroider-app`, `v2-addon`\n  * [#207](https://github.com/soxhub/ember-scoped-css/pull/207) Upgrade babel-plugin-ember-template-compilation ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `v2-addon`\n  * [#197](https://github.com/soxhub/ember-scoped-css/pull/197) (Breaking) Move the internal test v2 addon to `addon.gjs()`, dropping support for rollup-plugin-glimmer-template-tag ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `embroider-app`\n  * [#195](https://github.com/soxhub/ember-scoped-css/pull/195) (Breaking) Drop support for 3.28 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`\n  * [#186](https://github.com/soxhub/ember-scoped-css/pull/186) Loosen peer requirements ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#185](https://github.com/soxhub/ember-scoped-css/pull/185) (Breaking) Forbid renaming of scopedClass when importing it for types reasons ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `v2-addon`\n  * [#205](https://github.com/soxhub/ember-scoped-css/pull/205) Remove ember template imports v3 from the libraries ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `embroider-app`, `pods-embroider-app`, `v2-addon`\n  * [#204](https://github.com/soxhub/ember-scoped-css/pull/204) Upgrade other embroider dependencies ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `classic-app`\n  * [#203](https://github.com/soxhub/ember-scoped-css/pull/203) Upgrade ember-resources ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#189](https://github.com/soxhub/ember-scoped-css/pull/189) Additional assertions in the classic test-app ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`\n  * [#202](https://github.com/soxhub/ember-scoped-css/pull/202) Upgrade boilerplate runtime dependencies ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `embroider-app`, `pods-embroider-app`\n  * [#201](https://github.com/soxhub/ember-scoped-css/pull/201) Upgrade @embroider/webpack ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* Other\n  * [#200](https://github.com/soxhub/ember-scoped-css/pull/200) Root cleanup ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#188](https://github.com/soxhub/ember-scoped-css/pull/188) Split out the tests into a matrix so its easier to see which test app… ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#179](https://github.com/soxhub/ember-scoped-css/pull/179) Setup Release plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `embroider-app`\n  * [#199](https://github.com/soxhub/ember-scoped-css/pull/199) Update @embroider/test-setup ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon`\n  * [#198](https://github.com/soxhub/ember-scoped-css/pull/198) Upgrade local ember-source to 5.8 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#194](https://github.com/soxhub/ember-scoped-css/pull/194) Use pnpm 9 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#192](https://github.com/soxhub/ember-scoped-css/pull/192) Upgrade CLI deps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#190](https://github.com/soxhub/ember-scoped-css/pull/190) Upgrade lint deps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#182](https://github.com/soxhub/ember-scoped-css/pull/182) Update lint dependencies ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#175](https://github.com/soxhub/ember-scoped-css/pull/175) Update core lint packages ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `embroider-app`\n  * [#196](https://github.com/soxhub/ember-scoped-css/pull/196) Add ember 5.4 y 5.8 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `classic-app`, `pods-classic-app`, `pods-embroider-app`\n  * [#193](https://github.com/soxhub/ember-scoped-css/pull/193) Bump dev node ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `v2-addon`\n  * [#191](https://github.com/soxhub/ember-scoped-css/pull/191) Upgrade babel deps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`\n  * [#187](https://github.com/soxhub/ember-scoped-css/pull/187) Add isRelevantFile tests ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#184](https://github.com/soxhub/ember-scoped-css/pull/184) Simplify babel build <-> real file correlation ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#178](https://github.com/soxhub/ember-scoped-css/pull/178) Refactor path utils, add a ton of tests around path manipulation ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `pods-classic-app`, `pods-embroider-app`\n  * [#183](https://github.com/soxhub/ember-scoped-css/pull/183) Remove custom fs exists util ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#181](https://github.com/soxhub/ember-scoped-css/pull/181) Remove stylelint ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2024-05-22)\n\nember-scoped-css-compat 10.0.0 (major)\n\n#### :boom: Breaking Change\n* `ember-scoped-css-compat`\n  * [#208](https://github.com/soxhub/ember-scoped-css/pull/208) Force ember-scoped-css-compat-to-release ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* [#210](https://github.com/soxhub/ember-scoped-css/pull/210) Re-roll the lockfile to get the latest github-changelog ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }

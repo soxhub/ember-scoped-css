@@ -2,6 +2,20 @@
 
 ## Release (2024-05-22)
 
+ember-scoped-css-compat 10.0.0 (major)
+
+#### :boom: Breaking Change
+* `ember-scoped-css-compat`
+  * [#208](https://github.com/soxhub/ember-scoped-css/pull/208) Force ember-scoped-css-compat-to-release ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* [#210](https://github.com/soxhub/ember-scoped-css/pull/210) Re-roll the lockfile to get the latest github-changelog ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
+## Release (2024-05-22)
+
 ember-scoped-css 0.19.0 (minor)
 
 #### :rocket: Enhancement
