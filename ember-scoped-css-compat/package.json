@@ -1,7 +1,7 @@
 {
   "name": "ember-scoped-css-compat",
   "version": "9.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "classic broccoli build automatic setup of ember-scoped-css",
   "keywords": [
     "ember-addon"
   ],
