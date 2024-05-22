@@ -32,6 +32,19 @@ describe('fixFilename()', () => {
     );
   });
 
+  it('is not confused with "app" in the component path', () => {
+    let file = path.join(
+      paths.classicApp,
+      'app',
+      'components/app/page/template-only.hbs',
+    );
+    let corrected = fixFilename(file);
+
+    expect(corrected).to.equal(
+      path.join(paths.classicApp, 'app/components/app/page/template-only.hbs'),
+    );
+  });
+
   it('works with classic paths (w/ module name)', () => {
     let file = path.join(
       paths.classicApp,
@@ -42,6 +55,19 @@ describe('fixFilename()', () => {
 
     expect(corrected).to.equal(
       path.join(paths.classicApp, 'app/components/template-only.hbs'),
+    );
+  });
+
+  it('is not confused with "app" in the component path (w/ module name)', () => {
+    let file = path.join(
+      paths.classicApp,
+      'classic-app',
+      'components/app/page/template-only.hbs',
+    );
+    let corrected = fixFilename(file);
+
+    expect(corrected).to.equal(
+      path.join(paths.classicApp, 'app/components/app/page/template-only.hbs'),
     );
   });
 });
