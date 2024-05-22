@@ -67,9 +67,10 @@ function installScopedCSS(registry, options) {
   registry.add('htmlbars-ast-plugin', buildHBSPlugin(options));
 }
 
-
 function buildHBSPlugin(config = {}) {
-  let thePlugin = require('ember-scoped-css/template-plugin').createPlugin(config);
+  let thePlugin = require('ember-scoped-css/template-plugin').createPlugin(
+    config,
+  );
 
   return {
     name: 'ember-scoped-css::template-plugin',
@@ -81,8 +82,7 @@ function buildHBSPlugin(config = {}) {
       requireFile: __filename,
       buildUsing: 'buildHBSPlugin',
       params: config,
-    }
-
+    },
   };
 }
 
