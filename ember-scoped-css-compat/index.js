@@ -58,5 +58,33 @@ module.exports = {
 
     this.outputStylePreprocessor.preprocessors = preprocessors;
     registry.add('css', this.outputStylePreprocessor);
+
+    installScopedCSS(registry, scopedCssOptions);
   },
 };
+
+function installScopedCSS(registry, options) {
+  registry.add('htmlbars-ast-plugin', buildHBSPlugin(options));
+}
+
+
+function buildHBSPlugin(config = {}) {
+  let thePlugin = require('ember-scoped-css/template-plugin').createPlugin(config);
+
+  return {
+    name: 'ember-scoped-css::template-plugin',
+    plugin: thePlugin,
+    baseDir() {
+      return __dirname;
+    },
+    parallelBabel: {
+      requireFile: __filename,
+      buildUsing: 'buildHBSPlugin',
+      params: config,
+    }
+
+  };
+}
+
+module.exports.buildHBSPlugin = buildHBSPlugin;
+module.exports.installScopedCSS = installScopedCSS;
