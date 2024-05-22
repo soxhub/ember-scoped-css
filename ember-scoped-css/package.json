@@ -47,6 +47,10 @@
     "./babel-plugin": {
       "import": "./src/build/babel-plugin.js",
       "require": "./dist/cjs/babel-plugin.cjs"
+    },
+    "./template-plugin": {
+      "import": "./src/build/template-plugin.js",
+      "require": "./dist/cjs/template-plugin.cjs"
     }
   },
   "scripts": {
