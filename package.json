@@ -14,6 +14,7 @@
     "start:addon": "pnpm --filter v2-addon start --no-watch.clearScreen",
     "start:embroider-app": "pnpm --filter embroider-app start",
     "test": "pnpm --filter '*' test",
+    "test:ember": "pnpm --filter './test-apps/*' test:ember",
     "test:fixture": "pnpm --filter './test-apps/*' test:fixture"
   },
   "devDependencies": {
@@ -32,7 +33,7 @@
       ]
     },
     "overrides": {
-      "babel-plugin-ember-template-compilation": "2.2.1",
+      "babel-plugin-ember-template-compilation": "^2.2.5",
       "@glimmer/validator": "0.84.3",
       "@types/eslint": "^8.0.0"
     }
