@@ -1,20 +1,20 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "oldVersion": "0.19.0"
-    },
-    "ember-scoped-css-compat": {
-      "impact": "major",
-      "oldVersion": "9.0.0",
-      "newVersion": "10.0.0",
+      "impact": "patch",
+      "oldVersion": "0.19.0",
+      "newVersion": "0.19.1",
       "constraints": [
         {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
+      "pkgJSONPath": "./ember-scoped-css/package.json"
+    },
+    "ember-scoped-css-compat": {
+      "oldVersion": "10.0.0"
     }
   },
-  "description": "## Release (2024-05-22)\n\nember-scoped-css-compat 10.0.0 (major)\n\n#### :boom: Breaking Change\n* `ember-scoped-css-compat`\n  * [#208](https://github.com/soxhub/ember-scoped-css/pull/208) Force ember-scoped-css-compat-to-release ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* [#210](https://github.com/soxhub/ember-scoped-css/pull/210) Re-roll the lockfile to get the latest github-changelog ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2024-06-06)\n\nember-scoped-css 0.19.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#211](https://github.com/soxhub/ember-scoped-css/pull/211) Fix template path transform issue with the app name had \"app\" in the name ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#216](https://github.com/soxhub/ember-scoped-css/pull/216) Remove noisy log ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
