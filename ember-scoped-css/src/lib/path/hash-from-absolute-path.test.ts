@@ -24,9 +24,6 @@ describe('hashFromAbsolutePath', () => {
         file,
       );
 
-      // eslint-disable-next-line no-console
-      console.log(filePath);
-
       let postfix = hashFromAbsolutePath(filePath);
 
       expect(postfix).to.equal(expected);
