@@ -18,6 +18,20 @@ export function fixFilename(filename) {
   let workspace = findWorkspacePath(fileName);
 
   /**
+   * For a simple case, there are sometimes duplicate module paths in the fileName
+   * let's collapse that and
+   */
+  let potentialModuleName = path.basename(workspace);
+  let deduped = fileName.replace(
+    `${potentialModuleName}/${potentialModuleName}/`,
+    `${potentialModuleName}/app/`,
+  );
+
+  if (deduped !== fileName) {
+    return deduped;
+  }
+
+  /**
    * ember-source 5.8:
    * - the filename looks like an absolute path, but swapped out the 'app' part of the path
    *   with the module name, so the file paths never exist on disk
