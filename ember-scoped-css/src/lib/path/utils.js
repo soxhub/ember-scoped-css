@@ -151,10 +151,8 @@ export function isRelevantFile(fileName, additionalRoots) {
       }
 
       // Ideally, we never get here -- indicates we're not filtering effectively in babel
-      console.warn(
-        `[ScopedCSS]: transformation is attempting too late. Cannot operate on output file: ${fileName}`,
-      );
-
+      // NOTE: if we get here, we're trying to operate on a file too late.
+      //       we need ScopedCSS to operate as close to original source as possible -- not output files.
       return false;
     }
   }
