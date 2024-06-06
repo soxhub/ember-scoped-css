@@ -1,5 +1,17 @@
 # Changelog
 
+## Release (2024-06-06)
+
+ember-scoped-css 0.19.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#211](https://github.com/soxhub/ember-scoped-css/pull/211) Fix template path transform issue with the app name had "app" in the name ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+  * [#216](https://github.com/soxhub/ember-scoped-css/pull/216) Remove noisy log ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-05-22)
 
 ember-scoped-css-compat 10.0.0 (major)
