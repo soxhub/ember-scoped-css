@@ -1,20 +1,37 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "impact": "patch",
-      "oldVersion": "0.19.0",
-      "newVersion": "0.19.1",
+      "impact": "minor",
+      "oldVersion": "0.19.1",
+      "newVersion": "0.20.0",
       "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./ember-scoped-css/package.json"
     },
     "ember-scoped-css-compat": {
-      "oldVersion": "10.0.0"
+      "impact": "patch",
+      "oldVersion": "10.0.0",
+      "newVersion": "10.0.1",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
     }
   },
-  "description": "## Release (2024-06-06)\n\nember-scoped-css 0.19.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#211](https://github.com/soxhub/ember-scoped-css/pull/211) Fix template path transform issue with the app name had \"app\" in the name ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#216](https://github.com/soxhub/ember-scoped-css/pull/216) Remove noisy log ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2024-06-11)\n\nember-scoped-css 0.20.0 (minor)\nember-scoped-css-compat 10.0.1 (patch)\n\n#### :rocket: Enhancement\n* `ember-scoped-css`, `classic-app`\n  * [#226](https://github.com/soxhub/ember-scoped-css/pull/226) Add better error when `scoped-class` makes it way to runtime ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#225](https://github.com/soxhub/ember-scoped-css/pull/225) Fix mishandling of package lookup cache ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`\n  * [#224](https://github.com/soxhub/ember-scoped-css/pull/224) Upgrade devdeps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* Other\n  * [#223](https://github.com/soxhub/ember-scoped-css/pull/223) Remove overrides ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }

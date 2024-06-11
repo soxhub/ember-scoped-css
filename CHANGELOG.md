@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2024-06-11)
+
+ember-scoped-css 0.20.0 (minor)
+ember-scoped-css-compat 10.0.1 (patch)
+
+#### :rocket: Enhancement
+* `ember-scoped-css`, `classic-app`
+  * [#226](https://github.com/soxhub/ember-scoped-css/pull/226) Add better error when `scoped-class` makes it way to runtime ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#225](https://github.com/soxhub/ember-scoped-css/pull/225) Fix mishandling of package lookup cache ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`
+  * [#224](https://github.com/soxhub/ember-scoped-css/pull/224) Upgrade devdeps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* Other
+  * [#223](https://github.com/soxhub/ember-scoped-css/pull/223) Remove overrides ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-06-06)
 
 ember-scoped-css 0.19.1 (patch)
