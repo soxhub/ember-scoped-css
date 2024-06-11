@@ -28,7 +28,10 @@ export function createPlugin(config) {
    * @param {ASTPluginEnvironment} env
    */
   return function scopedCss(env) {
-    let isRelevant = isRelevantFile(env.filename, config.additionalRoots);
+    let isRelevant = isRelevantFile(env.filename, {
+      additionalRoots: config.additionalRoots,
+      cwd: process.cwd(),
+    });
 
     if (!isRelevant) {
       return noopPlugin;
