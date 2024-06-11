@@ -6,6 +6,6 @@
  */
 export function scopedClass(className: string): string {
   throw new Error(
-    `scopedClass is not available at runtime. Cannot do anything with ${className}`,
+    `scopedClass is not available at runtime. Cannot do anything with ${className}. If you see this message, there could be two reasons: 1) No CSS file associated with this component, or 2) The build transforms are not installed.`,
   );
 }
