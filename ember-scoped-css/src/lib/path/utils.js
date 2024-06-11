@@ -120,7 +120,7 @@ const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
  *   - URL-absolute path, starting with /
  *
  * @param {string} fileName
- * @param {string[]} [additionalRoots]
+ * @param {{ additionalRoots?: string[]; cwd: string }} options
  * @returns
  */
 export function isRelevantFile(fileName, { additionalRoots, cwd }) {
