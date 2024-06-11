@@ -33,7 +33,8 @@
       ]
     },
     "overrides": {
-      "babel-plugin-ember-template-compilation": "^2.2.5"
+      "babel-plugin-ember-template-compilation": "^2.2.5",
+      "ember-source": "5.9.0"
     }
   }
 }
