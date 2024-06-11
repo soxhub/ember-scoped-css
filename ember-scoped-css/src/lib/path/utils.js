@@ -1,3 +1,4 @@
+import assert from 'node:assert';
 import fsSync from 'node:fs';
 import path from 'node:path';
 
@@ -119,10 +120,10 @@ const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
  *   - URL-absolute path, starting with /
  *
  * @param {string} fileName
- * @param {string[]} [additionalRoots]
+ * @param {{ additionalRoots?: string[]; cwd: string }} options
  * @returns
  */
-export function isRelevantFile(fileName, additionalRoots) {
+export function isRelevantFile(fileName, { additionalRoots, cwd }) {
   if (fileName.startsWith('/@embroider')) return false;
   if (IRRELEVANT_PATHS.some((i) => fileName.includes(i))) return false;
 
@@ -158,7 +159,9 @@ export function isRelevantFile(fileName, additionalRoots) {
   }
 
   let workspace = findWorkspacePath(fileName);
-  let cwd = process.cwd();
+
+  assert(cwd, `cwd was not passed to isRelevantFile`);
+
   let ourWorkspace = findWorkspacePath(cwd);
 
   if (workspace !== ourWorkspace) {
@@ -262,33 +265,17 @@ export function appPath(sourcePath) {
   return `${name}${localPackagerStylePath}`;
 }
 
-const CACHE = new Set();
-
-/**
- * For a given source path, if we have seen a
- * source file within the workspace directory,
- * find that workspace directory and return it.
- */
-function hasSeen(sourcePath) {
-  for (let entry of CACHE) {
-    if (sourcePath.startsWith(entry)) {
-      return entry;
-    }
-  }
-
-  // we have not seen this source path yet
-  return;
-}
-
 /**
  * Populates the "seen" workspace cache,
  * so that we don't hit the file system too often.
  */
 export function findWorkspacePath(sourcePath) {
-  let seen = hasSeen(sourcePath);
+  let candidatePath = path.join(sourcePath, 'package.json');
 
-  if (seen) {
-    return seen;
+  const isWorkspace = fsSync.existsSync(candidatePath);
+
+  if (isWorkspace) {
+    return sourcePath;
   }
 
   const packageJsonPath = findUp.sync('package.json', {
@@ -296,8 +283,6 @@ export function findWorkspacePath(sourcePath) {
   });
 
   const workspacePath = path.dirname(packageJsonPath);
-
-  CACHE.add(workspacePath);
 
   return workspacePath;
 }

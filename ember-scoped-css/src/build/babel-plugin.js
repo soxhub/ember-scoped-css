@@ -10,11 +10,14 @@ import {
 } from '../lib/path/utils.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
 
-function _isRelevantFile(state) {
+function _isRelevantFile(state, cwd) {
   let fileName = state.file.opts.filename;
   let additionalRoots = state.opts?.additionalRoots;
 
-  return isRelevantFile(fileName, additionalRoots);
+  return isRelevantFile(fileName, {
+    additionalRoots,
+    cwd,
+  });
 }
 
 /**
@@ -22,7 +25,7 @@ function _isRelevantFile(state) {
  * @param {object} options - the options for scoped-css -- this is also available in each visitor's state.opts
  * @param {string} workingDirectory
  */
-export default (/* env, options, workingDirectory */) => {
+export default (env, options, workingDirectory) => {
   /**
    * - This can receive the intermediate output of the old REGEX-based <template> transform:
    *   ```
@@ -43,7 +46,7 @@ export default (/* env, options, workingDirectory */) => {
   return {
     visitor: {
       ImportDeclaration(path, state) {
-        if (!_isRelevantFile(state)) {
+        if (!_isRelevantFile(state, workingDirectory)) {
           return;
         }
 
@@ -79,7 +82,7 @@ export default (/* env, options, workingDirectory */) => {
         }
       },
       CallExpression(path, state) {
-        if (!_isRelevantFile(state)) {
+        if (!_isRelevantFile(state, workingDirectory)) {
           return;
         }
 
