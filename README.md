@@ -87,17 +87,6 @@ module.exports = async function (defaults) {
                 },
               ],
             },
-            {
-              test: /(\.hbs)|(\.js)$/,
-              use: [
-                {
-                  loader: require.resolve(
-                    'ember-scoped-css/build/app-dependency-loader'
-                  ),
-                },
-              ],
-              exclude: [/node_modules/, /dist/, /assets/],
-            },
           ],
         },
       },
