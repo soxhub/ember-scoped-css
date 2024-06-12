@@ -2,9 +2,8 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-import { hashFrom } from '../lib/path/utils.js';
+import { hashFrom , isRelevantFile } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
-import { isRelevantFile } from '../lib/path/utils.js';
 
 export default async function (code) {
   const options = this.getOptions();
