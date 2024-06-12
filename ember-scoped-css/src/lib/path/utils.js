@@ -178,7 +178,7 @@ export function isRelevantFile(fileName, { additionalRoots, cwd }) {
    * Mostly pods support.
    * folks need to opt in to pods (routes), because every pods app can be configured differently
    */
-  let roots = ['/components/', ...(additionalRoots || [])];
+  let roots = ['/components/', '/templates/', ...(additionalRoots || [])];
 
   if (!roots.some((root) => fileName.includes(root))) {
     return;
