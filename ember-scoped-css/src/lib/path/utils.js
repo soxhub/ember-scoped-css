@@ -116,7 +116,6 @@ export function withoutExtension(filePath) {
   return path.join(parsed.dir, parsed.name);
 }
 
-
 /**
  * Examples for fileName
  * - absolute on-disk path
@@ -147,11 +146,7 @@ export function isRelevantFile(fileName, { additionalRoots, cwd }) {
     // These are already the bundled files.
     if (fileName.includes(EMBROIDER_3_REWRITTEN_APP_ASSETS)) {
       // not supported, never will be
-      if (
-        fileName.endsWith(
-          `${EMBROIDER_3_REWRITTEN_APP_ASSETS}/tests.js`,
-        )
-      ) {
+      if (fileName.endsWith(`${EMBROIDER_3_REWRITTEN_APP_ASSETS}/tests.js`)) {
         return false;
       }
 
@@ -268,7 +263,6 @@ export function appPath(sourcePath) {
 
   return `${name}${localPackagerStylePath}`;
 }
-
 
 export function findWorkspacePath(sourcePath) {
   if (sourcePath.includes(EMBROIDER_3_REWRITTEN_APP_PATH)) {

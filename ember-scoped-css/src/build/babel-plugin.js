@@ -1,15 +1,8 @@
-import { existsSync, readFileSync } from 'fs';
-import nodePath from 'path';
 import { ImportUtil } from 'babel-import-util';
+import { existsSync } from 'fs';
+import nodePath from 'path';
 
-import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
-import {
-  cssPathFor,
-  hashFromModulePath,
-  isRelevantFile,
-  packageScopedPathToModulePath,
-} from '../lib/path/utils.js';
-import rewriteHbs from '../lib/rewriteHbs.js';
+import { cssPathFor, isRelevantFile } from '../lib/path/utils.js';
 
 function _isRelevantFile(state, cwd) {
   let fileName = state.file.opts.filename;
@@ -28,21 +21,9 @@ function _isRelevantFile(state, cwd) {
  */
 export default (env, options, workingDirectory) => {
   /**
-   * - This can receive the intermediate output of the old REGEX-based <template> transform:
-   *   ```
-   *   import { scopedClass } from 'ember-scoped-css';
-   *
-   *   __GLIMMER_TEMPLATE(`
-   *     original <template> innards here
-   *   `);
-   *   ```
-   *   - the import is optional, though, required for type-checking in gts (so we don't mess with globals)
-   *   - the babel-plugin-ember-template-compilation step has not run yet,
-   *     else we'd see precompileTemplate and setComponentTemplate (and more imports)
-   *
-   *   - note that in ember-template-imports' implementation, the file changes
-   *     after `ImportDeclaration` visitors have ran, and by the time we see
-   *     CallExpressions, we have the familiar `setComponentTemplate`
+   * This babel plugin does two things:
+   * - removes the import of scopedClass, if it exists
+   * - adds an import to the CSS file, if it exists
    */
   return {
     visitor: {
@@ -114,6 +95,7 @@ export default (env, options, workingDirectory) => {
 
           if (existsSync(cssPath)) {
             let baseCSS = nodePath.basename(cssPath);
+
             state.importUtil.importForSideEffect(`./${baseCSS}`);
           }
         }
