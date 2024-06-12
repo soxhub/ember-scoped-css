@@ -21,8 +21,10 @@ function _isRelevantFile(state, cwd) {
  */
 export default (env, options, workingDirectory) => {
   /**
-   * This babel plugin does two things:
+   * This babel plugin does three things:
    * - removes the import of scopedClass, if it exists
+   *   - if scopedClass was imported, it is removed from any component's "scope bag"
+   *     (the scope bag being a low-level object used for passing what is "in scope" for a component)
    * - adds an import to the CSS file, if it exists
    */
   return {
