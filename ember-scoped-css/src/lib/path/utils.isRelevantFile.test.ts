@@ -13,6 +13,13 @@ describe('isRelevantFile()', () => {
 
       expect(result).toBeTruthy();
     });
+
+    it('for /templates/', () => {
+      let file = path.join(paths.embroiderApp, 'app/templates/application.hbs');
+      let result = isRelevantFile(file, { cwd: paths.embroiderApp });
+
+      expect(result).toBeTruthy();
+    });
   });
 
   describe('the file is not relevant', () => {
