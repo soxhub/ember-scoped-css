@@ -44,9 +44,6 @@ importers:
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
-      broccoli-asset-rev:
-        specifier: ^3.0.0
-        version: 3.0.0
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -90,8 +87,11 @@ importers:
         specifier: ^12.0.0
         version: 12.0.1(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(rsvp@4.8.5)(webpack@5.92.0))
       ember-scoped-css:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../ember-scoped-css
+      ember-scoped-css-compat:
+        specifier: workspace:*
+        version: link:../../ember-scoped-css-compat
       ember-source:
         specifier: ~5.9.0
         version: 5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(rsvp@4.8.5)(webpack@5.92.0)
@@ -1603,12 +1603,6 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  broccoli-asset-rev@3.0.0:
-    resolution: {integrity: sha512-gAHQZnwvtl74tGevUqGuWoyOdJUdMMv0TjGSMzbdyGImr9fZcnM6xmggDA8bUawrMto9NFi00ZtNUgA4dQiUBw==}
-
-  broccoli-asset-rewrite@2.0.0:
-    resolution: {integrity: sha512-dqhxdQpooNi7LHe8J9Jdxp6o3YPFWl4vQmint6zrsn2sVbOo+wpyiX3erUSt0IBtjNkAxqJjuvS375o2cLBHTA==}
-
   broccoli-babel-transpiler@7.8.1:
     resolution: {integrity: sha512-6IXBgfRt7HZ61g67ssBc6lBb3Smw3DPZ9dEYirgtvXWpRZ2A9M22nxy6opEwJDgDJzlu/bB7ToppW33OFkA1gA==}
     engines: {node: '>= 6'}
@@ -1642,9 +1636,6 @@ packages:
   broccoli-file-creator@2.1.1:
     resolution: {integrity: sha512-YpjOExWr92C5vhnK0kmD81kM7U09kdIRZk9w4ZDCDHuHXW+VE/x6AGEOQQW3loBQQ6Jk+k+TSm8dESy4uZsnjw==}
     engines: {node: ^4.5 || 6.* || >= 7.*}
-
-  broccoli-filter@1.3.0:
-    resolution: {integrity: sha512-VXJXw7eBfG82CFxaBDjYmyN7V72D4In2zwLVQJd/h3mBfF3CMdRTsv2L20lmRTtCv1sAHcB+LgMso90e/KYiLw==}
 
   broccoli-funnel-reducer@1.0.0:
     resolution: {integrity: sha512-SaOCEdh+wnt2jFUV2Qb32m7LXyElvFwW3NKNaEJyi5PGQNwxfqpkc0KI6AbQANKgdj/40U2UC0WuGThFwuEUaA==}
@@ -1686,9 +1677,6 @@ packages:
   broccoli-output-wrapper@3.2.5:
     resolution: {integrity: sha512-bQAtwjSrF4Nu0CK0JOy5OZqw9t5U0zzv2555EA/cF8/a8SLDTIetk9UgrtMVw7qKLKdSpOZ2liZNeZZDaKgayw==}
     engines: {node: 10.* || >= 12.*}
-
-  broccoli-persistent-filter@1.4.6:
-    resolution: {integrity: sha512-0RejLwoC95kv4kta8KAa+FmECJCK78Qgm8SRDEK7YyU0N9Cx6KpY3UCDy9WELl3mCXLN8TokNxc7/hp3lL4lfw==}
 
   broccoli-persistent-filter@2.3.1:
     resolution: {integrity: sha512-hVsmIgCDrl2NFM+3Gs4Cr2TA6UPaIZip99hN8mtkaUPgM8UeVnCbxelCvBjUBHo0oaaqP5jzqqnRVvb568Yu5g==}
@@ -2162,9 +2150,6 @@ packages:
   cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
-
-  copy-dereference@1.0.0:
-    resolution: {integrity: sha512-40TSLuhhbiKeszZhK9LfNdazC67Ue4kq/gGwN5sdxEUWPXTIMmKmGmgD9mPfNKVAeecEW+NfEIpBaZoACCQLLw==}
 
   copy-descriptor@0.1.1:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
@@ -8211,23 +8196,6 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  broccoli-asset-rev@3.0.0:
-    dependencies:
-      broccoli-asset-rewrite: 2.0.0
-      broccoli-filter: 1.3.0
-      broccoli-persistent-filter: 1.4.6
-      json-stable-stringify: 1.1.1
-      minimatch: 3.1.2
-      rsvp: 3.6.2
-    transitivePeerDependencies:
-      - supports-color
-
-  broccoli-asset-rewrite@2.0.0:
-    dependencies:
-      broccoli-filter: 1.3.0
-    transitivePeerDependencies:
-      - supports-color
-
   broccoli-babel-transpiler@7.8.1:
     dependencies:
       '@babel/core': 7.24.7
@@ -8329,20 +8297,6 @@ snapshots:
       broccoli-plugin: 1.3.1
       mkdirp: 0.5.6
 
-  broccoli-filter@1.3.0:
-    dependencies:
-      broccoli-kitchen-sink-helpers: 0.3.1
-      broccoli-plugin: 1.3.1
-      copy-dereference: 1.0.0
-      debug: 2.6.9
-      mkdirp: 0.5.6
-      promise-map-series: 0.2.3
-      rsvp: 3.6.2
-      symlink-or-copy: 1.3.1
-      walk-sync: 0.3.4
-    transitivePeerDependencies:
-      - supports-color
-
   broccoli-funnel-reducer@1.0.0: {}
 
   broccoli-funnel@2.0.2:
@@ -8412,24 +8366,6 @@ snapshots:
       fs-extra: 8.1.0
       heimdalljs-logger: 0.1.10
       symlink-or-copy: 1.3.1
-    transitivePeerDependencies:
-      - supports-color
-
-  broccoli-persistent-filter@1.4.6:
-    dependencies:
-      async-disk-cache: 1.3.5
-      async-promise-queue: 1.0.5
-      broccoli-plugin: 1.3.1
-      fs-tree-diff: 0.5.9
-      hash-for-dep: 1.5.1
-      heimdalljs: 0.2.6
-      heimdalljs-logger: 0.1.10
-      mkdirp: 0.5.6
-      promise-map-series: 0.2.3
-      rimraf: 2.7.1
-      rsvp: 3.6.2
-      symlink-or-copy: 1.3.1
-      walk-sync: 0.3.4
     transitivePeerDependencies:
       - supports-color
 
@@ -8820,8 +8756,6 @@ snapshots:
   cookie@0.4.2: {}
 
   cookie@0.6.0: {}
-
-  copy-dereference@1.0.0: {}
 
   copy-descriptor@0.1.1: {}
 
