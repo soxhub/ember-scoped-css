@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2024-06-12)
+
+ember-scoped-css 0.21.0 (minor)
+ember-scoped-css-compat 10.0.2 (patch)
+
+#### :rocket: Enhancement
+* `ember-scoped-css`, `embroider-app`
+  * [#234](https://github.com/soxhub/ember-scoped-css/pull/234) [Breaking]: remove the app-js-loader (embroider-webpack) ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* `ember-scoped-css`, `embroider-app`, `pods-embroider-app`
+  * [#233](https://github.com/soxhub/ember-scoped-css/pull/233) [Breaking]: Remove the appDependencyLoader (used for embroider-webpack) ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* `ember-scoped-css`, `embroider-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`
+  * [#206](https://github.com/soxhub/ember-scoped-css/pull/206) Supports pods-routes/templates/styles under webpack-embroider3 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`
+  * [#232](https://github.com/soxhub/ember-scoped-css/pull/232) Use shared-workspace-lockfile=false to have more realistic peer situations. ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-06-11)
 
 ember-scoped-css 0.20.0 (minor)
