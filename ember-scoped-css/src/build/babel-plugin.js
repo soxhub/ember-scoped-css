@@ -1,14 +1,8 @@
-import { existsSync, readFileSync } from 'fs';
+import { ImportUtil } from 'babel-import-util';
+import { existsSync } from 'fs';
 import nodePath from 'path';
 
-import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
-import {
-  cssPathFor,
-  hashFromModulePath,
-  isRelevantFile,
-  packageScopedPathToModulePath,
-} from '../lib/path/utils.js';
-import rewriteHbs from '../lib/rewriteHbs.js';
+import { cssPathFor, isRelevantFile } from '../lib/path/utils.js';
 
 function _isRelevantFile(state, cwd) {
   let fileName = state.file.opts.filename;
@@ -27,24 +21,23 @@ function _isRelevantFile(state, cwd) {
  */
 export default (env, options, workingDirectory) => {
   /**
-   * - This can receive the intermediate output of the old REGEX-based <template> transform:
-   *   ```
-   *   import { scopedClass } from 'ember-scoped-css';
-   *
-   *   __GLIMMER_TEMPLATE(`
-   *     original <template> innards here
-   *   `);
-   *   ```
-   *   - the import is optional, though, required for type-checking in gts (so we don't mess with globals)
-   *   - the babel-plugin-ember-template-compilation step has not run yet,
-   *     else we'd see precompileTemplate and setComponentTemplate (and more imports)
-   *
-   *   - note that in ember-template-imports' implementation, the file changes
-   *     after `ImportDeclaration` visitors have ran, and by the time we see
-   *     CallExpressions, we have the familiar `setComponentTemplate`
+   * This babel plugin does three things:
+   * - removes the import of scopedClass, if it exists
+   *   - if scopedClass was imported, it is removed from any component's "scope bag"
+   *     (the scope bag being a low-level object used for passing what is "in scope" for a component)
+   * - adds an import to the CSS file, if it exists
    */
   return {
     visitor: {
+      Program: {
+        enter(path, state) {
+          if (!_isRelevantFile(state, workingDirectory)) {
+            return;
+          }
+
+          state.importUtil = new ImportUtil(env, path);
+        },
+      },
       ImportDeclaration(path, state) {
         if (!_isRelevantFile(state, workingDirectory)) {
           return;
@@ -81,6 +74,11 @@ export default (env, options, workingDirectory) => {
           path.remove();
         }
       },
+      /**
+       * If there is a CSS file, AND a corresponding template,
+       * we can import the CSS to then defer to the CSS loader
+       * or other CSS processing to handle the postfixing
+       */
       CallExpression(path, state) {
         if (!_isRelevantFile(state, workingDirectory)) {
           return;
@@ -90,50 +88,17 @@ export default (env, options, workingDirectory) => {
 
         if (
           node.callee.name === 'precompileTemplate' ||
-          node.callee.name === 'hbs'
+          node.callee.name === 'hbs' ||
+          node.callee.name === 'createTemplateFactory'
         ) {
-          // check if css exists
-          const relativeFileName =
-            'app' +
-            state.file.opts.sourceFileName.substring(
-              state.file.opts.sourceFileName.indexOf('/'),
-            );
-          const fileName = nodePath.join(
-            state.file.opts.root,
-            relativeFileName,
-          );
+          const fileName = state.file.opts.sourceFileName;
 
           let cssPath = cssPathFor(fileName);
 
           if (existsSync(cssPath)) {
-            const css = readFileSync(cssPath, 'utf8');
-            const { classes, tags } = getClassesTagsFromCss(css);
+            let baseCSS = nodePath.basename(cssPath);
 
-            let localPackagerStylePath = packageScopedPathToModulePath(
-              state.file.opts.sourceFileName,
-            );
-            const postfix = hashFromModulePath(localPackagerStylePath);
-
-            if (node.arguments[0].type === 'TemplateLiteral') {
-              node.arguments[0].quasis[0].value.raw = rewriteHbs(
-                node.arguments[0].quasis[0].value.raw,
-                classes,
-                tags,
-                postfix,
-              );
-              node.arguments[0].quasis[0].value.cooked =
-                node.arguments[0].quasis[0].value.raw;
-            } else if (
-              node.arguments[0].type === 'StringLiteral' ||
-              node.arguments[0].type === 'Literal'
-            ) {
-              node.arguments[0].value = rewriteHbs(
-                node.arguments[0].value,
-                classes,
-                tags,
-                postfix,
-              );
-            }
+            state.importUtil.importForSideEffect(`./${baseCSS}`);
           }
         }
       },

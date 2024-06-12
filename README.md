@@ -52,7 +52,7 @@ Note that supporting `pods` is _opt in_, because all apps can have their pods ro
 ## Installation for an embroider app
 
 ```bash 
-npm install --save-dev ember-scoped-css
+npm install --save-dev ember-scoped-css ember-scoped-css-compat
 ```
 
 Setup webpack:

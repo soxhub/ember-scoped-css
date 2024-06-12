@@ -69,6 +69,7 @@
     "@babel/parser": "^7.24.5",
     "@embroider/addon-shim": "^1.8.6",
     "acorn": "^8.11.2",
+    "babel-import-util": "^3.0.0",
     "blueimp-md5": "^2.19.0",
     "broccoli-concat": "^4.2.5",
     "broccoli-funnel": "^3.0.8",

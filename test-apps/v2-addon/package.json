@@ -24,7 +24,6 @@
     "lint:prettier:fix": "prettier . -w",
     "lint:prettier": "prettier . -c",
     "start": "environment=development rollup --config --watch",
-    "test": "echo 'A v2 addon does not have tests, run tests in embroider-app'",
     "test:fixture": "pnpm build && compare-fixture fixtures/expected-dist dist",
     "prepack": "rollup --config"
   },

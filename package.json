@@ -31,9 +31,6 @@
       "ignoreMissing": [
         "webpack"
       ]
-    },
-    "overrides": {
-      "babel-plugin-ember-template-compilation": "^2.2.5"
     }
   }
 }
