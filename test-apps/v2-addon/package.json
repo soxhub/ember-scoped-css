@@ -42,6 +42,8 @@
     "@embroider/addon-dev": "^4.3.1",
     "@nullvoxpopuli/eslint-configs": "^4.0.0",
     "@rollup/plugin-babel": "^6.0.4",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "compare-fixture": "^1.0.1",
     "concurrently": "^8.2.2",
@@ -50,9 +52,11 @@
     "eslint": "^8.50.0",
     "eslint-plugin-ember": "^12.1.0",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-qunit": "^8.1.1",
     "prettier": "^3.2.5",
     "rollup": "^4.17.2",
-    "rollup-plugin-copy": "^3.5.0"
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
