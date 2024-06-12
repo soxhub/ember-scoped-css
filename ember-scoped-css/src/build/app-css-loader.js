@@ -2,12 +2,16 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-import { hashFrom } from '../lib/path/utils.js';
+import { hashFrom, isRelevantFile } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
   const options = this.getOptions();
   const cssPath = this.resourcePath;
+
+  if (!isRelevantFile(cssPath, { ...options, cwd: this.rootContext })) {
+    return code;
+  }
 
   if (!cssPath.startsWith(this.rootContext)) {
     return code;
