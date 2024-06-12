@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from 'fs';
 import nodePath from 'path';
+import { ImportUtil } from 'babel-import-util';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
 import {
@@ -45,6 +46,15 @@ export default (env, options, workingDirectory) => {
    */
   return {
     visitor: {
+      Program: {
+        enter(path, state) {
+          if (!_isRelevantFile(state, workingDirectory)) {
+            return;
+          }
+
+          state.importUtil = new ImportUtil(env, path);
+        },
+      },
       ImportDeclaration(path, state) {
         if (!_isRelevantFile(state, workingDirectory)) {
           return;
@@ -81,6 +91,11 @@ export default (env, options, workingDirectory) => {
           path.remove();
         }
       },
+      /**
+       * If there is a CSS file, AND a corresponding template,
+       * we can import the CSS to then defer to the CSS loader
+       * or other CSS processing to handle the postfixing
+       */
       CallExpression(path, state) {
         if (!_isRelevantFile(state, workingDirectory)) {
           return;
@@ -90,50 +105,16 @@ export default (env, options, workingDirectory) => {
 
         if (
           node.callee.name === 'precompileTemplate' ||
-          node.callee.name === 'hbs'
+          node.callee.name === 'hbs' ||
+          node.callee.name === 'createTemplateFactory'
         ) {
-          // check if css exists
-          const relativeFileName =
-            'app' +
-            state.file.opts.sourceFileName.substring(
-              state.file.opts.sourceFileName.indexOf('/'),
-            );
-          const fileName = nodePath.join(
-            state.file.opts.root,
-            relativeFileName,
-          );
+          const fileName = state.file.opts.sourceFileName;
 
           let cssPath = cssPathFor(fileName);
 
           if (existsSync(cssPath)) {
-            const css = readFileSync(cssPath, 'utf8');
-            const { classes, tags } = getClassesTagsFromCss(css);
-
-            let localPackagerStylePath = packageScopedPathToModulePath(
-              state.file.opts.sourceFileName,
-            );
-            const postfix = hashFromModulePath(localPackagerStylePath);
-
-            if (node.arguments[0].type === 'TemplateLiteral') {
-              node.arguments[0].quasis[0].value.raw = rewriteHbs(
-                node.arguments[0].quasis[0].value.raw,
-                classes,
-                tags,
-                postfix,
-              );
-              node.arguments[0].quasis[0].value.cooked =
-                node.arguments[0].quasis[0].value.raw;
-            } else if (
-              node.arguments[0].type === 'StringLiteral' ||
-              node.arguments[0].type === 'Literal'
-            ) {
-              node.arguments[0].value = rewriteHbs(
-                node.arguments[0].value,
-                classes,
-                tags,
-                postfix,
-              );
-            }
+            let baseCSS = nodePath.basename(cssPath);
+            state.importUtil.importForSideEffect(`./${baseCSS}`);
           }
         }
       },

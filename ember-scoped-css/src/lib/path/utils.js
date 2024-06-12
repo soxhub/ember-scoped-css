@@ -10,6 +10,13 @@ import { hashFromModulePath } from './hash-from-module-path.js';
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
 
+const EMBROIDER_DIR = 'node_modules/.embroider';
+const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
+const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/assets`;
+const EMBROIDER_3_REWRITTEN_PACKAGES = `${EMBROIDER_DIR}/rewritten-packages`;
+const IRRELEVANT_PATHS = ['node_modules/.pnpm'];
+const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
+
 /**
  * Regardless of what the filePath format is,
  * this will try to return the correct postfix.
@@ -109,9 +116,6 @@ export function withoutExtension(filePath) {
   return path.join(parsed.dir, parsed.name);
 }
 
-const IRRELEVANT_PATHS = ['node_modules/.pnpm'];
-
-const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
 
 /**
  * Examples for fileName
@@ -130,22 +134,22 @@ export function isRelevantFile(fileName, { additionalRoots, cwd }) {
   if (fileName.includes('/node_modules/')) {
     // if a file is not the embroider cache directory
     // and is in node_modules, skip it.
-    if (!fileName.includes('/node_modules/.embroider/')) {
+    if (!fileName.includes(EMBROIDER_DIR)) {
       return false;
     }
 
     // rewritten packages should have already been processed at their own
     // publish time
-    if (fileName.includes('/node_modules/.embroider/rewritten-packages/')) {
+    if (fileName.includes(EMBROIDER_3_REWRITTEN_PACKAGES)) {
       return false;
     }
 
     // These are already the bundled files.
-    if (fileName.includes('/node_modules/.embroider/rewritten-app/assets/')) {
+    if (fileName.includes(EMBROIDER_3_REWRITTEN_APP_ASSETS)) {
       // not supported, never will be
       if (
         fileName.endsWith(
-          '/node_modules/.embroider/rewritten-app/assets/tests.js',
+          `${EMBROIDER_3_REWRITTEN_APP_ASSETS}/tests.js`,
         )
       ) {
         return false;
@@ -256,7 +260,7 @@ export function appPath(sourcePath) {
    * is extraneous, and we can collapse it
    */
   packageRelative = packageRelative.replace(
-    `/node_modules/.embroider/rewritten-app/`,
+    `${EMBROIDER_3_REWRITTEN_APP_PATH}/`,
     '/',
   );
 
@@ -265,11 +269,16 @@ export function appPath(sourcePath) {
   return `${name}${localPackagerStylePath}`;
 }
 
-/**
- * Populates the "seen" workspace cache,
- * so that we don't hit the file system too often.
- */
+
 export function findWorkspacePath(sourcePath) {
+  if (sourcePath.includes(EMBROIDER_3_REWRITTEN_APP_PATH)) {
+    sourcePath = sourcePath.split(EMBROIDER_3_REWRITTEN_APP_PATH)[0];
+  }
+
+  if (sourcePath.endsWith('/')) {
+    sourcePath = sourcePath.replace(/\/$/, '');
+  }
+
   let candidatePath = path.join(sourcePath, 'package.json');
 
   const isWorkspace = fsSync.existsSync(candidatePath);

@@ -9,6 +9,10 @@ module.exports = async function (defaults) {
     // autoImport: {
     //   watchDependencies: ['v2-addon'],
     // },
+    'ember-scoped-css': {
+      additionalRoots: ['routes/'],
+      layerName: 'emborider-app',
+    },
   });
 
   const { Webpack } = require('@embroider/webpack');
