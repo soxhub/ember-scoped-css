@@ -11,8 +11,6 @@ import { hashFromModulePath } from './hash-from-module-path.js';
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
 
-const require = createRequire(import.meta.url);
-
 const EMBROIDER_DIR = 'node_modules/.embroider';
 const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
 const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/assets`;
