@@ -32,6 +32,8 @@ export default (env, options, workingDirectory) => {
       Program: {
         enter(path, state) {
           if (!_isRelevantFile(state, workingDirectory)) {
+            state.canSkip = true;
+
             return;
           }
 
@@ -39,7 +41,7 @@ export default (env, options, workingDirectory) => {
         },
       },
       ImportDeclaration(path, state) {
-        if (!_isRelevantFile(state, workingDirectory)) {
+        if (state.canSkip) {
           return;
         }
 
@@ -80,7 +82,7 @@ export default (env, options, workingDirectory) => {
        * or other CSS processing to handle the postfixing
        */
       CallExpression(path, state) {
-        if (!_isRelevantFile(state, workingDirectory)) {
+        if (state.canSkip) {
           return;
         }
 
