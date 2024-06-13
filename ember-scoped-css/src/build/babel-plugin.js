@@ -112,11 +112,9 @@ export default (env, options, workingDirectory) => {
             }
           }
 
-
           let baseCSS = nodePath.basename(cssPath);
 
           state.importUtil.importForSideEffect(`./${baseCSS}`);
-
         }
       },
     },
