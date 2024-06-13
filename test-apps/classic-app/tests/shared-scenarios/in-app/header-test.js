@@ -5,7 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('[In App]  header', function (hooks) {
+module('[In App] header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
@@ -15,6 +15,6 @@ module('[In App]  header', function (hooks) {
     assert.dom('h1').hasStyle({ color: 'rgb(255, 0, 0)' });
     assert
       .dom('h1')
-      .hasClass(scopedClass('test-header', 'classic-app/components/header'));
+      .hasClass(scopedClass('test-header', 'test-app/components/header'));
   });
 });
