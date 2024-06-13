@@ -35,7 +35,7 @@ export default (env, options, workingDirectory) => {
             return;
           }
 
-          state.importUtil = new ImportUtil(env.types, path);
+          state.importUtil = new ImportUtil(env, path);
         },
       },
       ImportDeclaration(path, state) {
