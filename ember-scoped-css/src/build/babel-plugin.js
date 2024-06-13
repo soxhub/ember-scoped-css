@@ -20,6 +20,8 @@ function _isRelevantFile(state, cwd) {
  * @param {string} workingDirectory
  */
 export default (env, options, workingDirectory) => {
+  let canSkip = false;
+
   /**
    * This babel plugin does three things:
    * - removes the import of scopedClass, if it exists
@@ -32,6 +34,8 @@ export default (env, options, workingDirectory) => {
       Program: {
         enter(path, state) {
           if (!_isRelevantFile(state, workingDirectory)) {
+            canSkip = true;
+
             return;
           }
 
@@ -39,7 +43,7 @@ export default (env, options, workingDirectory) => {
         },
       },
       ImportDeclaration(path, state) {
-        if (!_isRelevantFile(state, workingDirectory)) {
+        if (canSkip) {
           return;
         }
 
@@ -80,7 +84,7 @@ export default (env, options, workingDirectory) => {
        * or other CSS processing to handle the postfixing
        */
       CallExpression(path, state) {
-        if (!_isRelevantFile(state, workingDirectory)) {
+        if (canSkip) {
           return;
         }
 
