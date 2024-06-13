@@ -264,6 +264,30 @@ export function appPath(sourcePath) {
   return `${name}${localPackagerStylePath}`;
 }
 
+/**
+ * To avoid hitting the filesysetm, we'll store all found
+ * project paths bere, so we can, in memory,
+ * get the folder where a package.json exists, rather than
+ * hit the file system every time.
+ */
+const SEEN = new Set();
+
+function getSeen(sourcePath) {
+  if (SEEN.has(sourcePath)) return sourcePath;
+
+  let parts = sourcePath.split('/');
+
+  for (let i = parts.length - 1; i > 1; i--) {
+    let toCheck = parts.slice(0, i).join('/');
+
+    let seen = SEEN.has(toCheck);
+
+    if (seen) {
+      return toCheck;
+    }
+  }
+}
+
 export function findWorkspacePath(sourcePath) {
   if (sourcePath.includes(EMBROIDER_3_REWRITTEN_APP_PATH)) {
     sourcePath = sourcePath.split(EMBROIDER_3_REWRITTEN_APP_PATH)[0];
@@ -271,6 +295,12 @@ export function findWorkspacePath(sourcePath) {
 
   if (sourcePath.endsWith('/')) {
     sourcePath = sourcePath.replace(/\/$/, '');
+  }
+
+  let seen = getSeen(sourcePath);
+
+  if (seen) {
+    return seen;
   }
 
   let candidatePath = path.join(sourcePath, 'package.json');
@@ -286,6 +316,8 @@ export function findWorkspacePath(sourcePath) {
   });
 
   const workspacePath = path.dirname(packageJsonPath);
+
+  SEEN.add(workspacePath);
 
   return workspacePath;
 }
