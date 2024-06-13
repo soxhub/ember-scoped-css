@@ -1,6 +1,5 @@
 import assert from 'node:assert';
 import fsSync from 'node:fs';
-import { createRequire } from 'node:module';
 import path from 'node:path';
 
 import findUp from 'find-up';
@@ -326,6 +325,7 @@ export function moduleName(sourcePath) {
    *       file is laid out from the blueprint defaults.
    */
   if (fsSync.existsSync(environmentJS)) {
+    // eslint-disable-next-line no-undef -- this exists
     const envFn = require(environmentJS);
     const env = envFn('ember-scoped-css');
 
