@@ -66,11 +66,10 @@ module.exports = async function (defaults) {
   return require('@embroider/compat').compatBuild(app, Webpack, {
     /* ... */
     packagerOptions: {
-      // css loaders for live reloading css
       webpackConfig: {
         module: {
           rules: [
-            // css loaders for production
+            // css loaders for your app CSS
             {
               test: /\.css$/,
               use: [
