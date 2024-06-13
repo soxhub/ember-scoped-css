@@ -21,29 +21,5 @@ module.exports = async function (defaults) {
         package: 'qunit',
       },
     ],
-    packagerOptions: {
-      // css loaders for live reloading css
-      webpackConfig: {
-        module: {
-          rules: [
-            // css loaders for production
-            {
-              test: /\.css$/,
-              use: [
-                {
-                  loader: require.resolve(
-                    'ember-scoped-css/build/app-css-loader',
-                  ),
-                  options: {
-                    layerName: 'embroider-app',
-                    additionalRoots: ['routes/'],
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      },
-    },
   });
 };
