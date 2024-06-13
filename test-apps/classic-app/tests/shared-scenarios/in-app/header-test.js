@@ -1,8 +1,7 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { setupRenderingTest } from 'ember-qunit';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
@@ -16,6 +15,6 @@ module('Integration | Component | header', function (hooks) {
     assert.dom('h1').hasStyle({ color: 'rgb(255, 0, 0)' });
     assert
       .dom('h1')
-      .hasClass(scopedClass('test-header', 'classic-app/components/header'));
+      .hasClass(scopedClass('test-header', 'test-app/components/header'));
   });
 });

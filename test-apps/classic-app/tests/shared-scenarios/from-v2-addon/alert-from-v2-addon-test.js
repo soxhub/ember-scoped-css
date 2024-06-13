@@ -1,8 +1,7 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { setupRenderingTest } from 'ember-qunit';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
