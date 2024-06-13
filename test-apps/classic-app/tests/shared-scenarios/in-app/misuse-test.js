@@ -1,7 +1,6 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, skip } from 'qunit';
-
 import { setupRenderingTest } from 'ember-qunit';
 
 module('[In App] Misuse', function (hooks) {

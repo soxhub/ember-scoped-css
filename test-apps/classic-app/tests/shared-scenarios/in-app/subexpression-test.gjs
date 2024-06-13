@@ -1,8 +1,8 @@
 import { render, settled } from '@ember/test-helpers';
 import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
 import SubExpression from 'classic-app/components/subexpression';
-import { setupRenderingTest } from 'ember-qunit';
 import { cell } from 'ember-resources';
 
 import { scopedClass } from 'ember-scoped-css/test-support';

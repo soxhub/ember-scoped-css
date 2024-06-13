@@ -2,8 +2,8 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-
 import { setupRenderingTest } from 'ember-qunit';
+
 import ComponentAtClass from 'v2-addon-ts/components/at-class-ts/component-at-class';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
