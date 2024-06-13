@@ -1,5 +1,6 @@
 import assert from 'node:assert';
 import fsSync from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 
 import findUp from 'find-up';
@@ -9,6 +10,8 @@ import { hashFromModulePath } from './hash-from-module-path.js';
 
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
+
+const require = createRequire(import.meta.url);
 
 const EMBROIDER_DIR = 'node_modules/.embroider';
 const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
@@ -236,7 +239,7 @@ export function packageScopedPathToModulePath(packageScopedPath) {
  */
 export function appPath(sourcePath) {
   let workspacePath = findWorkspacePath(sourcePath);
-  let name = workspacePackageName(sourcePath);
+  let name = moduleName(sourcePath);
 
   /**
    *  Under embroider builds, the spec-compliant version of the app
@@ -293,15 +296,58 @@ export function findWorkspacePath(sourcePath) {
 const MANIFEST_CACHE = new Map();
 
 /**
- * returns the package.json#name for a given sourcePath
+ * Will return the package.json#name, or config/environment#moudlePrefix (if v1 app)
+ *
+ * @param {string} sourcePath
  */
-function workspacePackageName(sourcePath) {
+export function moduleName(sourcePath) {
   const workspace = findWorkspacePath(sourcePath);
+  const manifest = getManifest(workspace);
 
+  if (manifest['ember-addon']) {
+    /**
+     * Libraries are not allowed to customize their module name
+     * to be different from their package name.
+     *
+     * (It's also bonkers that this is allowed for v1 apps)
+     */
+    return manifest.name;
+  }
+
+  /**
+   * For v1 apps, we need to reference the config/environment.js file
+   * to see if the modulePrefix setting differs from manifest.name;
+   */
+  let environmentJS = path.join(workspace, 'config/environment.js');
+
+  /**
+   * NOTE: the environment.js is a commonJS file, so we can synchronously require it
+   *
+   * TODO: if we have issues with loading this file later we should probably just run jscodeshift on it
+   *       but that could allow us to be brittle in different ways, like if folks stray from the way the
+   *       file is laid out from the blueprint defaults.
+   */
+  if (fsSync.existsSync(environmentJS)) {
+    const envFn = require(environmentJS);
+    const env = envFn('ember-scoped-css');
+
+    return env.modulePrefix || manifest.name;
+  }
+
+  /**
+   * Fallback to the true™ module™ name.
+   */
+  return manifest.name;
+}
+
+/**
+ * @param {string} workspace
+ */
+function getManifest(workspace) {
   let existing = MANIFEST_CACHE.get(workspace);
 
   if (existing) {
-    return existing.name;
+    return existing;
   }
 
   let buffer = fsSync.readFileSync(path.join(workspace, 'package.json'));
@@ -310,5 +356,5 @@ function workspacePackageName(sourcePath) {
 
   MANIFEST_CACHE.set(workspace, json);
 
-  return json.name;
+  return json;
 }
