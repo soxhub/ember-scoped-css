@@ -5,7 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | template-only', function (hooks) {
+module('[In App] template-only', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {

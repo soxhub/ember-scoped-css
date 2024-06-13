@@ -8,7 +8,7 @@ import ComponentAtClass from 'test-app/components/component-at-class';
 import { scopedClass } from 'ember-scoped-css/test-support';
 
 
-module('Integration | Component | @class', function (hooks) {
+module('[In App] @class', function (hooks) {
   setupRenderingTest(hooks);
 
   test('strict mode', async function (assert) {

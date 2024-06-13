@@ -16,7 +16,8 @@ module('[In App] at-class-ts', function(hooks) {
       </template>
     );
 
-    assert.dom('p').hasClass('text-color_ed46c3a30');
+    await this.pauseTest();
+    assert.dom('p').hasClass('text-color_e859f8885');
     assert.dom('p').hasClass(scopedClass('text-color', 'test-app/components/in-app/at-class-ts/calls-has-at-class'));
     assert.dom('p').hasStyle({ color: 'rgb(51, 51, 119)' });
   });

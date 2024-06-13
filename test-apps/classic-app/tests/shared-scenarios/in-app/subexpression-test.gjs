@@ -7,7 +7,7 @@ import SubExpression from 'test-app/components/subexpression';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | subexpression', function (hooks) {
+module('[In App] subexpression', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
