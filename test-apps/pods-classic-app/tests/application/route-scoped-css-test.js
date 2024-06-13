@@ -1,7 +1,7 @@
 import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
-import { setupApplicationTest } from 'pods-classic-app/tests/helpers';
+import { setupApplicationTest } from 'pods-ember-qunit';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 

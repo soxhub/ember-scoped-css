@@ -2,12 +2,12 @@ import { render, settled } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
 import SubExpression from 'classic-app/components/subexpression';
-import { setupRenderingTest } from 'classic-app/tests/helpers';
+import { setupRenderingTest } from 'ember-qunit';
 import { cell } from 'ember-resources';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | subexpression', function (hooks) {
+module('[In App] subexpression', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
