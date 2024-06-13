@@ -1,13 +1,13 @@
 import { render, settled } from '@ember/test-helpers';
 import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
-import SubExpression from 'classic-app/components/subexpression';
-import { setupRenderingTest } from 'classic-app/tests/helpers';
 import { cell } from 'ember-resources';
+import SubExpression from 'test-app/components/subexpression';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('Integration | Component | subexpression', function (hooks) {
+module('[In App] subexpression', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {
@@ -27,7 +27,7 @@ module('Integration | Component | subexpression', function (hooks) {
     assert
       .dom('div')
       .hasClass(
-        scopedClass('a-local-class', 'classic-app/components/subexpression')
+        scopedClass('a-local-class', 'test-app/components/subexpression')
       );
     assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
   });
