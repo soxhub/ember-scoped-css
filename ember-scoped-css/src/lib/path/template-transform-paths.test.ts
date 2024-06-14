@@ -19,6 +19,36 @@ describe('fixFilename()', () => {
     );
   });
 
+
+  describe(`when the app's modulePrefix does not match the folder name (common in most apps)`, () => {
+    it(`works`, () => {
+      let file = path.join(
+        paths.classicApp,
+        'test-app',
+        'components/template-only.hbs',
+      );
+      let corrected = fixFilename(file);
+
+      expect(corrected).to.equal(
+        path.join(paths.classicApp, 'app/components/template-only.hbs'),
+      );
+    });
+
+    it(`works with /app/ in the components path`, () => {
+      let file = path.join(
+        paths.classicApp,
+        'test-app',
+        'components/app/template-only.hbs',
+      );
+      let corrected = fixFilename(file);
+
+      expect(corrected).to.equal(
+        path.join(paths.classicApp, 'app/components/app/template-only.hbs'),
+      );
+    });
+  });
+
+
   it('works with the real path', () => {
     let file = path.join(
       paths.classicApp,
