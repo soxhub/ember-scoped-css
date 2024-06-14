@@ -1,6 +1,7 @@
 import path from 'node:path';
 
 import { findWorkspacePath, moduleName as projectName } from './utils.js';
+
 /**
  * template plugins do not hand us the correct file path.
  * additionally, we may not be able to rely on this data in the future,

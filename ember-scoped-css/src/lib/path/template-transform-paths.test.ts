@@ -19,7 +19,6 @@ describe('fixFilename()', () => {
     );
   });
 
-
   describe(`when the app's modulePrefix does not match the folder name (common in most apps)`, () => {
     it(`works`, () => {
       let file = path.join(
@@ -47,7 +46,6 @@ describe('fixFilename()', () => {
       );
     });
   });
-
 
   it('works with the real path', () => {
     let file = path.join(
