@@ -36,7 +36,7 @@ export function fixFilename(filename) {
    * - the filename looks like an absolute path, but swapped out the 'app' part of the path
    *   with the module name, so the file paths never exist on disk
    */
-  if (!fileName.includes('/app/')) {
+  if (!fileName.includes('/app/') && !fileName.includes('/node_modules/.embroider/')) {
     let maybeModule = fileName.replace(workspace, '');
     let [maybeScope, ...rest] = maybeModule.split('/').filter(Boolean);
     let parts = rest;
@@ -57,11 +57,7 @@ export function fixFilename(filename) {
      */
     let candidatePath = path.join(workspace, 'app', relative);
 
-    let resolved = findCandidate(candidatePath);
-
-    if (resolved) {
-      return resolved;
-    }
+    return candidatePath;
   }
 
   /**
@@ -76,11 +72,7 @@ export function fixFilename(filename) {
       '/app/',
     );
 
-    let resolved = findCandidate(candidatePath);
-
-    if (resolved) {
-      return resolved;
-    }
+    return candidatePath;
   }
 
   // TODO: why are we passed files to other projects?
@@ -92,24 +84,4 @@ export function fixFilename(filename) {
   // This may be wrong, and if wrong, reveals
   // unhandled scenarios with the file names in the plugin infra
   return fileName;
-}
-
-const COMPILES_TO_JS = ['.hbs', '.gjs', '.gts'];
-
-function findCandidate(filePath) {
-  if (existsSync(filePath)) {
-    return filePath;
-  }
-
-  let withoutExt = withoutExtension(filePath);
-
-  for (let ext of COMPILES_TO_JS) {
-    let candidatePath = withoutExt + ext;
-
-    if (existsSync(candidatePath)) {
-      return candidatePath;
-    }
-  }
-
-  return null;
 }
