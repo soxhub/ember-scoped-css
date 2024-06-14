@@ -54,7 +54,10 @@ describe('fixFilename()', () => {
     let corrected = fixFilename(file);
 
     expect(corrected).to.equal(
-      path.join(paths.embroiderApp, 'app/components/app/page/template-only.hbs'),
+      path.join(
+        paths.embroiderApp,
+        'app/components/app/page/template-only.hbs',
+      ),
     );
   });
 

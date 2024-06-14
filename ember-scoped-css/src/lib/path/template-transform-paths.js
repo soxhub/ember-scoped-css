@@ -1,8 +1,6 @@
 import path from 'node:path';
 
-import { existsSync } from 'fs';
-
-import { findWorkspacePath, withoutExtension } from './utils';
+import { findWorkspacePath } from './utils';
 
 /**
  * template plugins do not hand us the correct file path.
@@ -36,7 +34,10 @@ export function fixFilename(filename) {
    * - the filename looks like an absolute path, but swapped out the 'app' part of the path
    *   with the module name, so the file paths never exist on disk
    */
-  if (!fileName.includes('/app/') && !fileName.includes('/node_modules/.embroider/')) {
+  if (
+    !fileName.includes('/app/') &&
+    !fileName.includes('/node_modules/.embroider/')
+  ) {
     let maybeModule = fileName.replace(workspace, '');
     let [maybeScope, ...rest] = maybeModule.split('/').filter(Boolean);
     let parts = rest;
