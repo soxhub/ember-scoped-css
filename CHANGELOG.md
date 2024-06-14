@@ -2,6 +2,17 @@
 
 ## Release (2024-06-14)
 
+ember-scoped-css 0.21.3 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#245](https://github.com/soxhub/ember-scoped-css/pull/245) Fix path fixing in the template-plugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
+## Release (2024-06-14)
+
 ember-scoped-css 0.21.2 (patch)
 
 #### :bug: Bug Fix
