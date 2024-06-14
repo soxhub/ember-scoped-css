@@ -1,5 +1,23 @@
 # Changelog
 
+## Release (2024-06-14)
+
+ember-scoped-css 0.21.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#241](https://github.com/soxhub/ember-scoped-css/pull/241) Remove find-up ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+  * [#240](https://github.com/soxhub/ember-scoped-css/pull/240) Try not to hit the filesystem on repeat modules when looking for the workspace root ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+  * [#239](https://github.com/soxhub/ember-scoped-css/pull/239) Improve build perf by 9% ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+  * [#235](https://github.com/soxhub/ember-scoped-css/pull/235) Closes [#176](https://github.com/soxhub/ember-scoped-css/issues/176), apps could have different names configured in environment.js ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* `classic-app`, `pods-classic-app`
+  * [#238](https://github.com/soxhub/ember-scoped-css/pull/238) Prepare for sharing tests between all the apps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-06-12)
 
 ember-scoped-css 0.21.0 (minor)

@@ -1,33 +1,20 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "impact": "minor",
-      "oldVersion": "0.20.0",
-      "newVersion": "0.21.0",
+      "impact": "patch",
+      "oldVersion": "0.21.0",
+      "newVersion": "0.21.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./ember-scoped-css/package.json"
     },
     "ember-scoped-css-compat": {
-      "impact": "patch",
-      "oldVersion": "10.0.1",
-      "newVersion": "10.0.2",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
+      "oldVersion": "10.0.2"
     }
   },
-  "description": "## Release (2024-06-12)\n\nember-scoped-css 0.21.0 (minor)\nember-scoped-css-compat 10.0.2 (patch)\n\n#### :rocket: Enhancement\n* `ember-scoped-css`, `embroider-app`\n  * [#234](https://github.com/soxhub/ember-scoped-css/pull/234) [Breaking]: remove the app-js-loader (embroider-webpack) ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `embroider-app`, `pods-embroider-app`\n  * [#233](https://github.com/soxhub/ember-scoped-css/pull/233) [Breaking]: Remove the appDependencyLoader (used for embroider-webpack) ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `embroider-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`\n  * [#206](https://github.com/soxhub/ember-scoped-css/pull/206) Supports pods-routes/templates/styles under webpack-embroider3 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`\n  * [#232](https://github.com/soxhub/ember-scoped-css/pull/232) Use shared-workspace-lockfile=false to have more realistic peer situations. ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2024-06-14)\n\nember-scoped-css 0.21.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#241](https://github.com/soxhub/ember-scoped-css/pull/241) Remove find-up ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#240](https://github.com/soxhub/ember-scoped-css/pull/240) Try not to hit the filesystem on repeat modules when looking for the workspace root ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#239](https://github.com/soxhub/ember-scoped-css/pull/239) Improve build perf by 9% ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#235](https://github.com/soxhub/ember-scoped-css/pull/235) Closes [#176](https://github.com/soxhub/ember-scoped-css/issues/176), apps could have different names configured in environment.js ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `classic-app`, `pods-classic-app`\n  * [#238](https://github.com/soxhub/ember-scoped-css/pull/238) Prepare for sharing tests between all the apps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
