@@ -88,8 +88,6 @@ export function fixFilename(filename) {
     return fileName;
   }
 
-  console.debug(`[ScopedCSS]: Failed to handle ${fileName}`);
-
   // Fallback to what the plugin system gives us.
   // This may be wrong, and if wrong, reveals
   // unhandled scenarios with the file names in the plugin infra
