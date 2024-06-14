@@ -1,10 +1,9 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
-import { setupRenderingTest } from 'classic-app/tests/helpers';
-
-module('Integration | Component | show-time', function (hooks) {
+module('[In App] show-time', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it has scoped class', async function (assert) {

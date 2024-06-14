@@ -1,10 +1,9 @@
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
-import { setupRenderingTest } from 'classic-app/tests/helpers';
-
-module('Integration | Component | scoped', function (hooks) {
+module('[In App] scoped', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it replaces the scoped-class helper', async function (assert) {
