@@ -45,6 +45,22 @@ describe('fixFilename()', () => {
     );
   });
 
+  it('is not confused with "app" in the embroider rewritten location', () => {
+    let file = path.join(
+      paths.embroiderApp,
+      paths.rewritten,
+      'components/app/page/template-only.hbs',
+    );
+    let corrected = fixFilename(file);
+
+    expect(corrected).to.equal(
+      path.join(
+        paths.embroiderApp,
+        'app/components/app/page/template-only.hbs',
+      ),
+    );
+  });
+
   it('works with classic paths (w/ module name)', () => {
     let file = path.join(
       paths.classicApp,
