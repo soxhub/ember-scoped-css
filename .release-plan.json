@@ -2,8 +2,8 @@
   "solution": {
     "ember-scoped-css": {
       "impact": "patch",
-      "oldVersion": "0.21.0",
-      "newVersion": "0.21.1",
+      "oldVersion": "0.21.1",
+      "newVersion": "0.21.2",
       "constraints": [
         {
           "impact": "patch",
@@ -16,5 +16,5 @@
       "oldVersion": "10.0.2"
     }
   },
-  "description": "## Release (2024-06-14)\n\nember-scoped-css 0.21.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#241](https://github.com/soxhub/ember-scoped-css/pull/241) Remove find-up ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#240](https://github.com/soxhub/ember-scoped-css/pull/240) Try not to hit the filesystem on repeat modules when looking for the workspace root ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#239](https://github.com/soxhub/ember-scoped-css/pull/239) Improve build perf by 9% ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n  * [#235](https://github.com/soxhub/ember-scoped-css/pull/235) Closes [#176](https://github.com/soxhub/ember-scoped-css/issues/176), apps could have different names configured in environment.js ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `classic-app`, `pods-classic-app`\n  * [#238](https://github.com/soxhub/ember-scoped-css/pull/238) Prepare for sharing tests between all the apps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2024-06-14)\n\nember-scoped-css 0.21.2 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#243](https://github.com/soxhub/ember-scoped-css/pull/243) Hit the file system 3 less times per template-using file (hbs, gjs, gts) ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
