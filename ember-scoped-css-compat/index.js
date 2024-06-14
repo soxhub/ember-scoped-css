@@ -4,6 +4,16 @@ const {
   default: ScopedCssPreprocessor,
 } = require('ember-scoped-css/build/ember-classic-support');
 
+/**
+ * There are 3 transforms wired up in here
+ * - Babel
+ *   - to automatically add an import to the sibling file
+ *   - to remove any imports from ember-scoped-css
+ * - Template
+ *   - To swap out scoped-class / scopedClass usage with postfixed variants
+ * - CSS
+ *   - to Add postfixed class names to each class / selector
+ */
 module.exports = {
   name: require('./package').name,
 
