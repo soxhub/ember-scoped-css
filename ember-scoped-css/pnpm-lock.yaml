@@ -53,9 +53,6 @@ importers:
       ember-template-recast:
         specifier: ^6.1.3
         version: 6.1.4
-      find-up:
-        specifier: ^5.0.0
-        version: 5.0.0
       glob:
         specifier: ^8.1.0
         version: 8.1.0
