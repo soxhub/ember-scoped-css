@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-import { findWorkspacePath } from './utils';
+import { findWorkspacePath, moduleName as projectName } from './utils.js';
 
 /**
  * template plugins do not hand us the correct file path.
@@ -14,15 +14,16 @@ import { findWorkspacePath } from './utils';
 export function fixFilename(filename) {
   let fileName = filename;
   let workspace = findWorkspacePath(fileName);
+  let moduleName = projectName(workspace);
 
   /**
    * For a simple case, there are sometimes duplicate module paths in the fileName
    * let's collapse that and
    */
-  let potentialModuleName = path.basename(workspace);
+  let wrongModuleName = path.basename(workspace);
   let deduped = fileName.replace(
-    `${potentialModuleName}/${potentialModuleName}/`,
-    `${potentialModuleName}/app/`,
+    `${wrongModuleName}/${moduleName}/`,
+    `${wrongModuleName}/app/`,
   );
 
   if (deduped !== fileName) {
@@ -35,7 +36,7 @@ export function fixFilename(filename) {
    *   with the module name, so the file paths never exist on disk
    */
   if (
-    !fileName.includes('/app/') &&
+    !fileName.includes(path.join(workspace, 'app')) &&
     !fileName.includes('/node_modules/.embroider/')
   ) {
     let maybeModule = fileName.replace(workspace, '');
