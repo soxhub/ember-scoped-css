@@ -2,6 +2,17 @@
 
 ## Release (2024-06-14)
 
+ember-scoped-css 0.21.2 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#243](https://github.com/soxhub/ember-scoped-css/pull/243) Hit the file system 3 less times per template-using file (hbs, gjs, gts) ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
+## Release (2024-06-14)
+
 ember-scoped-css 0.21.1 (patch)
 
 #### :bug: Bug Fix
