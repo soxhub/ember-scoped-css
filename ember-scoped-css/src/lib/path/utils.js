@@ -2,8 +2,6 @@ import assert from 'node:assert';
 import fsSync from 'node:fs';
 import path from 'node:path';
 
-import findUp from 'find-up';
-
 import { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 import { hashFromModulePath } from './hash-from-module-path.js';
 
@@ -16,6 +14,8 @@ const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/asse
 const EMBROIDER_3_REWRITTEN_PACKAGES = `${EMBROIDER_DIR}/rewritten-packages`;
 const IRRELEVANT_PATHS = ['node_modules/.pnpm'];
 const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
+
+const CWD = process.cwd();
 
 /**
  * Regardless of what the filePath format is,
@@ -288,7 +288,9 @@ function getSeen(sourcePath) {
   }
 }
 
-export function findWorkspacePath(sourcePath) {
+export function findWorkspacePath(sourcePath, options) {
+  let cwd = options?.cwd ?? CWD;
+
   if (sourcePath.includes(EMBROIDER_3_REWRITTEN_APP_PATH)) {
     sourcePath = sourcePath.split(EMBROIDER_3_REWRITTEN_APP_PATH)[0];
   }
@@ -311,15 +313,40 @@ export function findWorkspacePath(sourcePath) {
     return sourcePath;
   }
 
-  const packageJsonPath = findUp.sync('package.json', {
-    cwd: path.dirname(sourcePath),
-  });
+  const packageJsonPath = findPackageJsonUp(sourcePath, { cwd });
+
+  if (!packageJsonPath) {
+    throw new Error(`Could not determine project for ${sourcePath}`);
+  }
 
   const workspacePath = path.dirname(packageJsonPath);
 
   SEEN.add(workspacePath);
 
   return workspacePath;
+}
+
+function findPackageJsonUp(startPath, options) {
+  let cwd = options?.cwd ?? CWD;
+  let parts = startPath.split('/');
+
+  for (let i = parts.length - 1; i > 1; i--) {
+    let toCheck = parts.slice(0, i).join('/');
+
+    let packageJson = path.join(toCheck, 'package.json');
+    let exists = fsSync.existsSync(packageJson);
+
+    if (exists) {
+      return packageJson;
+    }
+
+    // Don't traverse all the way to the root of the file system.
+    if (toCheck === cwd) {
+      break;
+    }
+  }
+
+  return null;
 }
 
 const MANIFEST_CACHE = new Map();
