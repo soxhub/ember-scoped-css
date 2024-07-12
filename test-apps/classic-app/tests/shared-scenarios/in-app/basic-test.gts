@@ -18,6 +18,6 @@ module('[In App] basic', function(hooks) {
 
     assert.dom('div').hasClass('has-a-style_e8d85123f');
     assert.dom('div').hasClass(scopedClass('has-a-style', 'classic-app/components/in-app/basic'));
-    assert.dom('div').hasStyle({ color: 'rgb(0, 100, 50)', fontWeight: 'bold' });
+    assert.dom('div').hasStyle({ color: 'rgb(0, 100, 50)', fontWeight: '700' });
   });
 });
