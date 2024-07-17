@@ -13,7 +13,7 @@ importers:
         version: 8.2.2
       prettier:
         specifier: ^3.2.5
-        version: 3.3.2
+        version: 3.3.3
       release-plan:
         specifier: ^0.9.0
         version: 0.9.1(encoding@0.1.13)
@@ -719,8 +719,8 @@ packages:
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
 
-  package-json@10.0.0:
-    resolution: {integrity: sha512-w34pqp733w35nElGG6eH1OnDnHEWud4uxruQ2nKzY/Uy0uOJmWFdjDcAC+xAD4goVuBZStwaAEBS21BANv83HQ==}
+  package-json@10.0.1:
+    resolution: {integrity: sha512-ua1L4OgXSBdsu1FPb7F3tYH0F48a6kxvod4pLUlGY9COeJAJQNX/sNH2IiEmsxw7lqYiAwrdHMjz1FctOsyDQg==}
     engines: {node: '>=18'}
 
   parse-github-repo-url@1.4.1:
@@ -763,8 +763,8 @@ packages:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
 
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1673,7 +1673,7 @@ snapshots:
 
   latest-version@9.0.0:
     dependencies:
-      package-json: 10.0.0
+      package-json: 10.0.1
 
   locate-path@5.0.0:
     dependencies:
@@ -1847,7 +1847,7 @@ snapshots:
 
   package-json-from-dist@1.0.0: {}
 
-  package-json@10.0.0:
+  package-json@10.0.1:
     dependencies:
       ky: 1.4.0
       registry-auth-token: 5.0.2
@@ -1881,7 +1881,7 @@ snapshots:
 
   pify@4.0.1: {}
 
-  prettier@3.3.2: {}
+  prettier@3.3.3: {}
 
   proc-log@4.2.0: {}
 
