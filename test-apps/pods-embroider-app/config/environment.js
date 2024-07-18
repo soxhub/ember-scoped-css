@@ -2,8 +2,8 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'pods-embroider-app',
-    podModulePrefix: 'pods-embroider-app/routes',
+    modulePrefix: 'test-app',
+    podModulePrefix: 'test-app/routes',
     environment,
     rootURL: '/',
     locationType: 'history',

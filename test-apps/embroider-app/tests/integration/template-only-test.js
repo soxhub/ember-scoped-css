@@ -2,7 +2,7 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
-import { setupRenderingTest } from 'embroider-app/tests/helpers';
+import { setupRenderingTest } from 'test-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
@@ -14,9 +14,7 @@ module('Integration | Component | template-only', function (hooks) {
 
     assert
       .dom('div')
-      .hasClass(
-        scopedClass('some-class', 'embroider-app/components/template-only'),
-      );
+      .hasClass(scopedClass('some-class', 'test-app/components/template-only'));
     assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
   });
 });

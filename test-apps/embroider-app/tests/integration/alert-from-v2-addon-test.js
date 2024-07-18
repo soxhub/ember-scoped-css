@@ -2,7 +2,7 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
-import { setupRenderingTest } from 'embroider-app/tests/helpers';
+import { setupRenderingTest } from 'test-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 

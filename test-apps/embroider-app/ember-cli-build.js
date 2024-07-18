@@ -4,6 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = async function (defaults) {
   const app = new EmberApp(defaults, {
+    name: 'test-app',
     // autoImport: {
     //   watchDependencies: ['v2-addon'],
     // },
@@ -31,7 +32,7 @@ module.exports = async function (defaults) {
                     'ember-scoped-css/build/app-css-loader',
                   ),
                   options: {
-                    layerName: 'embroider-app',
+                    layerName: 'test-app',
                   },
                 },
               ],

@@ -19,7 +19,7 @@ module.exports = function (defaults) {
       enableTypeScriptTransform: true,
     },
     'ember-scoped-css': {
-      layerName: 'classic-app-layer',
+      layerName: 'test-app',
     },
   });
 

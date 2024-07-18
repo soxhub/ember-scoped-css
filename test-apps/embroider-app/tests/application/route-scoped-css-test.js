@@ -1,7 +1,7 @@
 import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
-import { setupApplicationTest } from 'embroider-app/tests/helpers';
+import { setupApplicationTest } from 'test-app/tests/helpers';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
@@ -11,9 +11,7 @@ module('Application | visit `/`', function (hooks) {
   test('it has scoped class', async function (assert) {
     await visit('/');
 
-    assert
-      .dom('h3')
-      .hasClass(scopedClass('embroider-app/templates/application'));
+    assert.dom('h3').hasClass(scopedClass('test-app/templates/application'));
     assert.dom('h3').hasStyle({ color: 'rgb(0, 255, 0)' });
   });
 });
