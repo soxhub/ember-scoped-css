@@ -104,7 +104,8 @@ export default (env, options, workingDirectory) => {
             // it's tricky to support both when there are no standards
             // around managing these paths.
             // But also, in normal projects, they are not different paths.
-            let [,...parts] = cssPath.split('/');
+            let [, ...parts] = cssPath.split('/');
+
             cssPath = ['app', ...parts].join('/');
 
             if (!existsSync(cssPath)) {
