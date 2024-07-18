@@ -13,7 +13,7 @@ module.exports = function (defaults) {
       extension: 'module.css',
     },
     autoImport: {
-      allowAppImports: ['**/*.css'],
+      allowAppImports: ['*.css'],
     },
     'ember-cli-babel': {
       enableTypeScriptTransform: true,
