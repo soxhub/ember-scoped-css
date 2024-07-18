@@ -4,15 +4,22 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
+    // All our test-apps must have the same name
+    // so that we can ensure that moving between configurations
+    // causes no string-comparison headaches.
+    name: 'test-app',
     // Add options here
     cssModules: {
       extension: 'module.css',
+    },
+    autoImport: {
+      allowAppImports: ['*.css'],
     },
     'ember-cli-babel': {
       enableTypeScriptTransform: true,
     },
     'ember-scoped-css': {
-      layerName: 'classic-app-layer',
+      layerName: 'test-app',
     },
   });
 

@@ -11,9 +11,7 @@ module('Application | visit `/`', function (hooks) {
   test('it has scoped class', async function (assert) {
     await visit('/');
 
-    assert
-      .dom('h3')
-      .hasClass(scopedClass('pods-classic-app/routes/application'));
+    assert.dom('h3').hasClass(scopedClass('test-app/routes/application'));
     assert.dom('h3').hasStyle({ color: 'rgb(0, 255, 0)' });
   });
 });

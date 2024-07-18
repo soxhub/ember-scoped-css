@@ -13,9 +13,7 @@ module('[In App] template-only', function (hooks) {
 
     assert
       .dom('div')
-      .hasClass(
-        scopedClass('some-class', 'classic-app/components/template-only'),
-      );
+      .hasClass(scopedClass('some-class', 'test-app/components/template-only'));
     assert.dom('div').hasStyle({ color: 'rgb(0, 0, 255)' });
   });
 });

@@ -97,11 +97,27 @@ export default (env, options, workingDirectory) => {
 
           let cssPath = cssPathFor(fileName);
 
-          if (existsSync(cssPath)) {
-            let baseCSS = nodePath.basename(cssPath);
+          if (!existsSync(cssPath)) {
+            // check if we have an extraneous folder path
+            // this can happen because plugins have tried using
+            // the module path instead of the real path on disk.
+            // it's tricky to support both when there are no standards
+            // around managing these paths.
+            // But also, in normal projects, they are not different paths.
+            let [, ...parts] = cssPath.split('/');
 
-            state.importUtil.importForSideEffect(`./${baseCSS}`);
+            cssPath = ['app', ...parts].join('/');
+
+            if (!existsSync(cssPath)) {
+              // there is no css path
+              // we don't want to add an import of the CSS file doesn't exist
+              return;
+            }
           }
+
+          let baseCSS = nodePath.basename(cssPath);
+
+          state.importUtil.importForSideEffect(`./${baseCSS}`);
         }
       },
     },

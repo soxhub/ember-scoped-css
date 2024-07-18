@@ -14,20 +14,20 @@ describe('appPath()', () => {
     );
     let result = appPath(file);
 
-    expect(result).to.equal('embroider-app/templates/application');
+    expect(result).to.equal('test-app/templates/application');
   });
 
   it('handles extraneous /app/', () => {
     let file = path.join(paths.embroiderApp, 'app', 'templates/application');
     let result = appPath(file);
 
-    expect(result).to.equal('embroider-app/templates/application');
+    expect(result).to.equal('test-app/templates/application');
   });
 
   it('handles psuedo module', () => {
     let file = path.join(paths.embroiderApp, 'templates/application');
     let result = appPath(file);
 
-    expect(result).to.equal('embroider-app/templates/application');
+    expect(result).to.equal('test-app/templates/application');
   });
 });
