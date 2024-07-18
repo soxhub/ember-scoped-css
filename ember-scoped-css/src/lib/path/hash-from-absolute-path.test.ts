@@ -12,7 +12,7 @@ describe('hashFromAbsolutePath', () => {
     let expected = 'ea418816b';
 
     it('matches the module path', () => {
-      let postfix = hashFromModulePath(`embroider-app/${file}`);
+      let postfix = hashFromModulePath(`test-app/${file}`);
 
       expect(postfix).to.equal(expected);
     });
