@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2024-07-19)
+
+ember-scoped-css 0.21.4 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`, `embroider-app`
+  * [#257](https://github.com/soxhub/ember-scoped-css/pull/257) Fix issue with gts detection when using embroider-webpack's rewritten-app. ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* `classic-app`
+  * [#252](https://github.com/soxhub/ember-scoped-css/pull/252) Add more gts tests ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-06-14)
 
 ember-scoped-css 0.21.3 (patch)
