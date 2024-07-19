@@ -21,10 +21,9 @@ export default async function (code) {
 
   const hbsPath = cssPath.replace('.css', '.hbs');
   const gjsPath = cssPath.replace('.css', '.js');
-  const hbsExists = existsSync(hbsPath);
-  const gjsExists = existsSync(gjsPath);
+  const gtsPath = cssPath.replace('.css', '.ts');
 
-  if (hbsExists || gjsExists) {
+  if (existsSync(gjsPath) || existsSync(gtsPath) || existsSync(hbsPath)) {
     const postfix = hashFrom(cssPath);
     const rewrittenCss = rewriteCss(
       code,
