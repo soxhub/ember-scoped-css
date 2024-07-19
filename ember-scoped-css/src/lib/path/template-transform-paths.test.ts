@@ -17,7 +17,7 @@ describe('fixFilename()', () => {
     expect(corrected).to.equal(
       path.join(paths.embroiderApp, 'app/components/template-only.hbs'),
     );
-  })
+  });
 
   describe(`when the app's modulePrefix does not match the folder name (common in most apps)`, () => {
     it(`works`, () => {

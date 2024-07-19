@@ -36,6 +36,8 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
     "copy-webpack-plugin": "^11.0.0",
@@ -72,6 +74,7 @@
     "qunit": "^2.20.0",
     "qunit-dom": "^3.0.0",
     "tracked-built-ins": "^3.1.0",
+    "typescript": "^5.5.3",
     "v2-addon": "workspace:*",
     "webpack": "^5.91.0"
   },
