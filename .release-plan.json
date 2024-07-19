@@ -2,8 +2,8 @@
   "solution": {
     "ember-scoped-css": {
       "impact": "patch",
-      "oldVersion": "0.21.2",
-      "newVersion": "0.21.3",
+      "oldVersion": "0.21.3",
+      "newVersion": "0.21.4",
       "constraints": [
         {
           "impact": "patch",
@@ -16,5 +16,5 @@
       "oldVersion": "10.0.2"
     }
   },
-  "description": "## Release (2024-06-14)\n\nember-scoped-css 0.21.3 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#245](https://github.com/soxhub/ember-scoped-css/pull/245) Fix path fixing in the template-plugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2024-07-19)\n\nember-scoped-css 0.21.4 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`, `embroider-app`\n  * [#257](https://github.com/soxhub/ember-scoped-css/pull/257) Fix issue with gts detection when using embroider-webpack's rewritten-app. ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `classic-app`\n  * [#252](https://github.com/soxhub/ember-scoped-css/pull/252) Add more gts tests ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
