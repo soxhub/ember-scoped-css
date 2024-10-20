@@ -98,7 +98,7 @@
     "@typescript-eslint/parser": "^7.10.0",
     "concurrently": "^8.2.2",
     "ember-template-lint": "^6.0.0",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.24.0",
     "esbuild-plugin-vitest-cleaner": "^0.5.1",
     "eslint": "^8.50.0",
     "prettier": "^3.2.5",
