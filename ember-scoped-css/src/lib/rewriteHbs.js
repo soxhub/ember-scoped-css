@@ -74,7 +74,7 @@ export function templatePlugin({ classes, tags, postfix }) {
       let cssClass;
 
       if (
-        isScopedClass(node.path?.original) &&
+        isScopedClass(getValue(node.path)) &&
         node.params?.length === 1 &&
         node.params[0].type === 'StringLiteral'
       ) {
@@ -82,7 +82,7 @@ export function templatePlugin({ classes, tags, postfix }) {
       }
 
       if (
-        isScopedClass(node.path?.path?.original) &&
+        isScopedClass(getValue(node.path)) &&
         node.path?.params?.length === 1 &&
         node.path?.params[0].type === 'StringLiteral'
       ) {
@@ -103,7 +103,7 @@ export function templatePlugin({ classes, tags, postfix }) {
 
     SubExpression(node) {
       if (
-        isScopedClass(node.path?.original) &&
+        isScopedClass(getValue(node.path)) &&
         node.params?.length === 1 &&
         node.params[0].type === 'StringLiteral'
       ) {
@@ -117,6 +117,20 @@ export function templatePlugin({ classes, tags, postfix }) {
       }
     },
   };
+}
+
+function getValue(path) {
+  if (!path) return;
+
+  if ('value' in path) {
+    return path.value;
+  }
+
+  /**
+   * Deprecated in ember 5.9+
+   * (so we use the above for newer embers)
+   */
+  return path.original;
 }
 
 export default function rewriteHbs(hbs, classes, tags, postfix) {
