@@ -82,7 +82,7 @@ export function templatePlugin({ classes, tags, postfix }) {
       }
 
       if (
-        isScopedClass(getValue(node.path)) &&
+        isScopedClass(getValue(node.path?.path)) &&
         node.path?.params?.length === 1 &&
         node.path?.params[0].type === 'StringLiteral'
       ) {
