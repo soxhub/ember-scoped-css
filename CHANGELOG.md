@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-10-24)
+
+ember-scoped-css 0.21.5 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#265](https://github.com/soxhub/ember-scoped-css/pull/265) Closes [#264](https://github.com/soxhub/ember-scoped-css/issues/264) - lots of deprecations logged in newer embers ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-07-19)
 
 ember-scoped-css 0.21.4 (patch)
