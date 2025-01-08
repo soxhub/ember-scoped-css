@@ -33,6 +33,9 @@
       "import": "./src/build/index.js",
       "require": "./dist/cjs/index.cjs"
     },
+    "./helpers/*": {
+        "default": "./classic-app-support/helpers/scoped-class.js"
+    },
     "./build/app-css-loader": {
       "import": "./src/build/app-css-loader.js",
       "require": "./dist/cjs/app-css-loader.cjs"
