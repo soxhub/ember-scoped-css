@@ -2,8 +2,8 @@
   "solution": {
     "ember-scoped-css": {
       "impact": "patch",
-      "oldVersion": "0.21.4",
-      "newVersion": "0.21.5",
+      "oldVersion": "0.21.5",
+      "newVersion": "0.21.6",
       "constraints": [
         {
           "impact": "patch",
@@ -16,5 +16,5 @@
       "oldVersion": "10.0.2"
     }
   },
-  "description": "## Release (2024-10-24)\n\nember-scoped-css 0.21.5 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#265](https://github.com/soxhub/ember-scoped-css/pull/265) Closes [#264](https://github.com/soxhub/ember-scoped-css/issues/264) - lots of deprecations logged in newer embers ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2025-01-08)\n\nember-scoped-css 0.21.6 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#273](https://github.com/soxhub/ember-scoped-css/pull/273) Fix static analysis for classic-app-behavior with the fake scoped-class helper ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
