@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-01-08)
+
+ember-scoped-css 0.21.6 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#273](https://github.com/soxhub/ember-scoped-css/pull/273) Fix static analysis for classic-app-behavior with the fake scoped-class helper ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2024-10-24)
 
 ember-scoped-css 0.21.5 (patch)
