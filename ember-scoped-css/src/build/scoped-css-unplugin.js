@@ -65,7 +65,7 @@ async function transformJsFile(code, id) {
   };
 }
 
-async function transformCssFile(code, id, layerName, emitFile) {
+function transformCssFile(code, id, layerName) {
   const jsPath = id.replace(/\.css$/, '.gjs');
   const gtsPath = id.replace(/\.css$/, '.gts');
   const hbsPath = id.replace(/\.css$/, '.hbs');
@@ -80,15 +80,36 @@ async function transformCssFile(code, id, layerName, emitFile) {
     code = rewriteCss(code, postfix, path.basename(id), layerName);
   }
 
-  const emittedFileName = id.replace(path.join(process.cwd(), 'src/'), '');
+  return code;
+}
 
-  emitFile({
-    type: 'asset',
-    fileName: emittedFileName,
-    source: code,
-  });
+function gatherCSSFiles(bundle) {
+  let cssFiles = [];
 
-  return '';
+  for (let asset in bundle) {
+    const cssAsset = asset.replace('js', 'css');
+
+    if (!asset.endsWith('js') || !bundle[cssAsset]) {
+      continue;
+    }
+
+    if (process.env.environment === 'development') {
+      cssFiles.push(bundle[cssAsset].source);
+      delete bundle[cssAsset];
+    } else {
+      const cssImport = path.basename(asset.replace('.js', '.css'));
+      const importLine = `import './${cssImport}';`;
+
+      const code = bundle[asset].code;
+
+      // add import to js files
+      if (code && code.indexOf(importLine) < 0) {
+        bundle[asset].code = `${importLine}\n` + code;
+      }
+    }
+  }
+
+  return cssFiles;
 }
 
 export default createUnplugin(
@@ -102,29 +123,8 @@ export default createUnplugin(
     return {
       name: 'ember-scoped-css-unplugin',
 
-      generateBundle(a, bundle) {
-        let cssFiles = [];
-
-        for (let asset in bundle) {
-          const cssAsset = asset.replace('js', 'css');
-
-          if (!asset.endsWith('js') || !bundle[cssAsset]) {
-            continue;
-          }
-
-          if (process.env.environment === 'development') {
-            cssFiles.push(bundle[cssAsset].source);
-            delete bundle[cssAsset];
-          } else {
-            const cssImport = path.basename(asset.replace('.js', '.css'));
-            const importLine = `import './${cssImport}';`;
-
-            // add import to js files
-            if (bundle[asset].code.indexOf(importLine) < 0) {
-              bundle[asset].code = `${importLine}\n` + bundle[asset].code;
-            }
-          }
-        }
+      generateBundle(_, bundle) {
+        let cssFiles = gatherCSSFiles(bundle);
 
         if (process.env.environment === 'development') {
           this.emitFile({
@@ -133,6 +133,23 @@ export default createUnplugin(
             source: cssFiles.join('\n'),
           });
         }
+      },
+      vite: {
+        generateBundle() {
+          /* deliberately do nothing */
+        },
+        transform(code, jsPath) {
+          /**
+           * HBS files are actually JS files with a call to precompileTemplate
+           */
+          if (isHbsFile(jsPath)) {
+            return transformJsFile(code, jsPath);
+          } else if (isJsFile(jsPath)) {
+            return transformJsFile(code, jsPath);
+          } else if (isCssFile(jsPath)) {
+            return transformCssFile(code, jsPath, options?.layerName);
+          }
+        },
       },
 
       transform(code, jsPath) {
@@ -144,12 +161,20 @@ export default createUnplugin(
         } else if (isJsFile(jsPath)) {
           return transformJsFile(code, jsPath);
         } else if (isCssFile(jsPath)) {
-          return transformCssFile(
-            code,
-            jsPath,
-            options?.layerName,
-            this.emitFile,
+          let css = transformCssFile(code, jsPath, options?.layerName);
+
+          const emittedFileName = jsPath.replace(
+            path.join(process.cwd(), 'src/'),
+            '',
           );
+
+          this.emitFile({
+            type: 'asset',
+            fileName: emittedFileName,
+            source: css,
+          });
+
+          return '';
         }
       },
     };

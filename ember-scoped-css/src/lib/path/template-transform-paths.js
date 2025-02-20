@@ -34,9 +34,15 @@ export function fixFilename(filename) {
    * ember-source 5.8:
    * - the filename looks like an absolute path, but swapped out the 'app' part of the path
    *   with the module name, so the file paths never exist on disk
+   *
+   * - in vite apps:
+   *   the 'app' part _may_ be `src`, so we also need to ensure that `src` is excluded as well
    */
+  let hasAppDir = fileName.includes(path.join(workspace, 'app'));
+  let hasSrcDir = fileName.includes(path.join(workspace, 'src'));
+
   if (
-    !fileName.includes(path.join(workspace, 'app')) &&
+    !(hasAppDir || hasSrcDir) &&
     !fileName.includes('/node_modules/.embroider/')
   ) {
     let maybeModule = fileName.replace(workspace, '');
