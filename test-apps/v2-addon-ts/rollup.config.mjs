@@ -1,9 +1,9 @@
 import { Addon } from '@embroider/addon-dev/rollup';
-import { babel } from '@rollup/plugin-babel';
-import { execaCommand } from 'execa';
 
-import { fixBadDeclarationOutput } from 'fix-bad-declaration-output';
+import { babel } from '@rollup/plugin-babel';
 import { scopedCssUnplugin } from 'ember-scoped-css/build';
+import { execaCommand } from 'execa';
+import { fixBadDeclarationOutput } from 'fix-bad-declaration-output';
 
 const addon = new Addon({
   srcDir: 'src',
