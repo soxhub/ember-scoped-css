@@ -92,22 +92,22 @@
     "unplugin": "^1.10.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.24.5",
-    "@nullvoxpopuli/eslint-configs": "^4.0.0",
+    "@babel/eslint-parser": "^7.26.8",
+    "@nullvoxpopuli/eslint-configs": "^4.3.0",
     "@tsconfig/ember": "^3.0.7",
     "@tsconfig/strictest": "^2.0.5",
     "@types/blueimp-md5": "^2.18.2",
-    "@typescript-eslint/eslint-plugin": "^7.10.0",
-    "@typescript-eslint/parser": "^7.10.0",
-    "concurrently": "^8.2.2",
-    "ember-template-lint": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "concurrently": "^9.1.2",
+    "ember-template-lint": "^6.1.0",
     "esbuild": "^0.25.0",
     "esbuild-plugin-vitest-cleaner": "^0.5.1",
     "eslint": "^8.50.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.5.1",
     "typescript": "^5.2.2",
-    "vitest": "^1.6.0",
-    "webpack": "^5.91.0"
+    "vitest": "^3.0.6",
+    "webpack": "^5.98.0"
   },
   "ember-addon": {
     "main": "addon-main.cjs",
