@@ -4,9 +4,9 @@ const macros = buildMacros({});
 
 module.exports = {
   plugins: [
+    ['module:ember-scoped-css/babel-plugin', {}],
     [
       'babel-plugin-ember-template-compilation',
-      'module:ember-scoped-css/babel-plugin',
       {
         compilerPath: 'ember-source/dist/ember-template-compiler.js',
         enableLegacyModules: [
@@ -14,7 +14,7 @@ module.exports = {
           'ember-cli-htmlbars-inline-precompile',
           'htmlbars-inline-precompile',
         ],
-        transforms: ['ember-scoped-css/template-plugin'],
+        transforms: [['ember-scoped-css/template-plugin', {}]],
       },
     ],
     [

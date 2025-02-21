@@ -50,7 +50,7 @@ importers:
         specifier: 4.0.0-alpha.6
         version: 4.0.0-alpha.6
       '@embroider/macros':
-        specifier: 1.17.0-alpha.5
+        specifier: alpha
         version: 1.17.0-alpha.5
       '@embroider/vite':
         specifier: 1.0.0-alpha.6
@@ -68,8 +68,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(@babel/core@7.26.9)
       ember-eslint:
-        specifier: 0.1.0
-        version: 0.1.0(@babel/core@7.26.9)(@typescript-eslint/parser@8.24.1(eslint@9.20.1))(eslint@9.20.1)
+        specifier: 0.1.1
+        version: 0.1.1(@babel/core@7.26.9)(@typescript-eslint/parser@8.24.1(eslint@9.20.1))(eslint@9.20.1)
       ember-qunit:
         specifier: ^9.0.1
         version: 9.0.1(@ember/test-helpers@5.1.0(@babel/core@7.26.9)(ember-source@6.4.0-alpha.3(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-source@6.4.0-alpha.3(@glimmer/component@2.0.0)(rsvp@4.8.5))(qunit@2.24.1)
@@ -1864,8 +1864,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  ember-eslint@0.1.0:
-    resolution: {integrity: sha512-pNDo96wT1bCNg7bcBXStNoqh+dTreEoKL/IP6OWIBHlo811/uSN53MBeX9DO1a3sxLW4zufTB0yfPQQ/7FGYtQ==}
+  ember-eslint@0.1.1:
+    resolution: {integrity: sha512-MUNXHlfNTWLwuySiDJiBc0f79a2Xg7RuZw3r53NeQrRoCn4uNK8QfkSzjn3iTLIYbrfTMFqL/fAdaCYmp1BeRA==}
 
   ember-qunit@9.0.1:
     resolution: {integrity: sha512-9DgjczFG7ZjINmwWFYDtUF8McbYqQir82hyFp/ZbMOLkpFvHCKPw1mtKcpcdLnLAAYJpwR2/MCyPNiEMkR11aA==}
@@ -6007,7 +6007,7 @@ snapshots:
     transitivePeerDependencies:
       - eslint
 
-  ember-eslint@0.1.0(@babel/core@7.26.9)(@typescript-eslint/parser@8.24.1(eslint@9.20.1))(eslint@9.20.1):
+  ember-eslint@0.1.1(@babel/core@7.26.9)(@typescript-eslint/parser@8.24.1(eslint@9.20.1))(eslint@9.20.1):
     dependencies:
       '@babel/eslint-parser': 7.26.8(@babel/core@7.26.9)(eslint@9.20.1)
       '@eslint/js': 9.20.0

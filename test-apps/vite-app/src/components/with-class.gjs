@@ -1,4 +1,3 @@
-
 import Component from '@glimmer/component';
 
 export default class Hello extends Component {
@@ -6,14 +5,14 @@ export default class Hello extends Component {
 
   <template>
     <div>
-      <h3 class='header'>
+      <h3 class="header">
         {{@title}}
       </h3>
-      <p class='message'>
-        name: {{this.name}}<br/>
+      <p class="message">
+        name:
+        {{this.name}}<br />
         {{@message}}
       </p>
     </div>
   </template>
 }
-
