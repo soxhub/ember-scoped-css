@@ -1,4 +1,6 @@
-const { babelCompatSupport } = require('@embroider/compat/babel');
+const { buildMacros } = require('@embroider/macros/babel');
+
+const macros = buildMacros({});
 
 module.exports = {
   plugins: [
@@ -31,10 +33,7 @@ module.exports = {
         regenerator: false,
       },
     ],
-    // This can leave once
-    // https://github.com/embroider-build/embroider/pull/2249
-    // is merged
-    ...babelCompatSupport(),
+    ...macros.babelMacros,
   ],
 
   generatorOpts: {
