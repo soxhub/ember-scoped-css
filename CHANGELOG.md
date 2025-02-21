@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-02-21)
+
+ember-scoped-css 0.21.7 (patch)
+ember-scoped-css-compat 10.0.3 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#282](https://github.com/soxhub/ember-scoped-css/pull/282) Upgrade unplugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* Other
+  * [#281](https://github.com/soxhub/ember-scoped-css/pull/281) Update release-plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`
+  * [#280](https://github.com/soxhub/ember-scoped-css/pull/280) More devdeps updates ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`
+  * [#279](https://github.com/soxhub/ember-scoped-css/pull/279) Update devdeps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-01-08)
 
 ember-scoped-css 0.21.6 (patch)
