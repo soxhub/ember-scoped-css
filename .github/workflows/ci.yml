@@ -53,6 +53,7 @@ jobs:
           - "test-apps/embroider-app"
           - "test-apps/pods-embroider-app"
           - "test-apps/pods-classic-app"
+          - "test-apps/vite-app"
 
     steps:
       - uses: wyvox/action@v1
