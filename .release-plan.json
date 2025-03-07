@@ -1,20 +1,41 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "impact": "patch",
-      "oldVersion": "0.21.5",
-      "newVersion": "0.21.6",
+      "impact": "minor",
+      "oldVersion": "0.21.6",
+      "newVersion": "0.22.0",
       "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./ember-scoped-css/package.json"
     },
     "ember-scoped-css-compat": {
-      "oldVersion": "10.0.2"
+      "impact": "minor",
+      "oldVersion": "10.0.2",
+      "newVersion": "10.1.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
     }
   },
-  "description": "## Release (2025-01-08)\n\nember-scoped-css 0.21.6 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#273](https://github.com/soxhub/ember-scoped-css/pull/273) Fix static analysis for classic-app-behavior with the fake scoped-class helper ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2025-03-07)\n\nember-scoped-css 0.22.0 (minor)\nember-scoped-css-compat 10.1.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`, `vite-app`\n  * [#278](https://github.com/soxhub/ember-scoped-css/pull/278) Add support for Vite ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#282](https://github.com/soxhub/ember-scoped-css/pull/282) Upgrade unplugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* Other\n  * [#281](https://github.com/soxhub/ember-scoped-css/pull/281) Update release-plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`\n  * [#280](https://github.com/soxhub/ember-scoped-css/pull/280) More devdeps updates ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`\n  * [#279](https://github.com/soxhub/ember-scoped-css/pull/279) Update devdeps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
