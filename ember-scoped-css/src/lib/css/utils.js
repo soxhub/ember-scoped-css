@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'fs';
 
-import getClassesTagsFromCss from '../getClassesTagsFromCss';
+import getClassesTagsFromCss from '../getClassesTagsFromCss.js';
 
 /**
  * @param {string} cssPath path to a CSS file

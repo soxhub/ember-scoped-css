@@ -19,6 +19,19 @@ describe('fixFilename()', () => {
     );
   });
 
+  it(`works with /src/`, () => {
+    let file = path.join(
+      paths.viteApp,
+      'src',
+      'components/in-app/calls-has-at-class.gts',
+    );
+    let corrected = fixFilename(file);
+
+    expect(corrected).to.equal(
+      path.join(paths.viteApp, 'src/components/in-app/calls-has-at-class.gts'),
+    );
+  });
+
   describe(`when the app's modulePrefix does not match the folder name (common in most apps)`, () => {
     it(`works`, () => {
       let file = path.join(

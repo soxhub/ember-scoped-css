@@ -15,6 +15,7 @@ This build tool emits CSS in a `@layer`.
 
 ## Compatibility
 
+- Vite
 - V2 addons
 - non-embroider apps 
 - embroider apps
@@ -26,6 +27,48 @@ This build tool emits CSS in a `@layer`.
 | classic components | <= 0.18.0 | <= 8.0.0 |
 | ember < 4 | <= 0.18.0 | <= 8.0.0 |
 
+## Installation for a Vite app
+
+```bash
+npm install --save-dev ember-scoped-css
+```
+
+### Configuration
+
+In your `vite.config.js`, import and add the `scopedCSS` plugin:
+```js
+import { defineConfig } from 'vite';
+import { scopedCSS } from 'ember-scoped-css/vite';
+
+export default defineConfig({
+  // ...
+  plugins: [
+    scopedCSS(),
+    // ...
+  ],
+});
+```
+
+and then in your `babel.config.cjs`, add a template-transform:
+```js
+const scopedCSS = require("ember-scoped-css/build");
+
+module.exports = {
+  plugins: [
+    // ...
+    [
+      'babel-plugin-ember-template-compilation',
+      {
+        // ...
+        transforms: [scopedCSS.templatePlugin({})],
+      },
+    ],
+    // ...
+  ],
+  // ...
+};
+
+```
 
 ## Installation for a non-embroider ember app
 

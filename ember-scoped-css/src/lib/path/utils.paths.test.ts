@@ -13,6 +13,7 @@ export const paths = {
   embroiderApp: path.join(monorepoRoot, 'test-apps/embroider-app'),
   classicApp: path.join(monorepoRoot, 'test-apps/classic-app'),
   v2Addon: path.join(monorepoRoot, 'test-apps/v2-addon'),
+  viteApp: path.join(monorepoRoot, 'test-apps/vite-app'),
 };
 
 describe('paths', () => {

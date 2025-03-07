@@ -93,7 +93,8 @@ export default (env, options, workingDirectory) => {
           node.callee.name === 'hbs' ||
           node.callee.name === 'createTemplateFactory'
         ) {
-          const fileName = state.file.opts.sourceFileName;
+          const fileName =
+            state.file.opts.sourceFileName || state.file.opts.filename;
 
           let cssPath = cssPathFor(fileName);
 
