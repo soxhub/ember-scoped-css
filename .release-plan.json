@@ -27,7 +27,7 @@
       "constraints": [
         {
           "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "reason": "Appears in changelog section :rocket: Enhancement "
         },
         {
           "impact": "patch",
