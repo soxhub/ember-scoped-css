@@ -5,6 +5,11 @@
   "keywords": [
     "ember-addon"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soxhub/ember-scoped-css.git",
+    "directory": "ember-scoped-css"
+  },
   "license": "MIT",
   "author": "",
   "type": "module",
