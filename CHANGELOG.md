@@ -1,5 +1,29 @@
 # Changelog
 
+## Release (2025-03-07)
+
+ember-scoped-css 0.22.0 (minor)
+ember-scoped-css-compat 10.1.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`, `vite-app`
+  * [#278](https://github.com/soxhub/ember-scoped-css/pull/278) Add support for Vite ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#282](https://github.com/soxhub/ember-scoped-css/pull/282) Upgrade unplugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* Other
+  * [#281](https://github.com/soxhub/ember-scoped-css/pull/281) Update release-plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`
+  * [#280](https://github.com/soxhub/ember-scoped-css/pull/280) More devdeps updates ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* `ember-scoped-css-compat`, `ember-scoped-css`, `classic-app`, `embroider-app`, `pods-classic-app`, `pods-embroider-app`, `v2-addon-ts`, `v2-addon`
+  * [#279](https://github.com/soxhub/ember-scoped-css/pull/279) Update devdeps ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-01-08)
 
 ember-scoped-css 0.21.6 (patch)
