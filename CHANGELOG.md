@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2025-03-19)
+
+ember-scoped-css 0.23.0 (minor)
+ember-scoped-css-compat 10.2.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-scoped-css-compat`, `ember-scoped-css`
+  * [#285](https://github.com/soxhub/ember-scoped-css/pull/285) add support for interop with other pipelines ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `ember-scoped-css-compat`, `ember-scoped-css`
+  * [#284](https://github.com/soxhub/ember-scoped-css/pull/284) Fix repository field ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 2
+- Chris Manson ([@mansona](https://github.com/mansona))
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-03-07)
 
 ember-scoped-css 0.22.0 (minor)
