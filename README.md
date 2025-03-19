@@ -86,6 +86,8 @@ const app = new EmberApp(defaults, {
   'ember-scoped-css': {
     layerName: 'app-styles', // default: 'components', set to false to disable the layer
     additionalRoots: ['routes/'], // default: [], set this to use scoped-css in pods-using apps
+    passthrough: ['some-other-file.css'], // default: [] this is only used in a non-embroider app to pass files through the build pipeline
+    passthroughDestination: 'assets' // default: undefined this alters where the passthrough files are placed in the output tree
   }
 });
 ```
