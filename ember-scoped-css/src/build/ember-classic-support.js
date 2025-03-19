@@ -268,11 +268,10 @@ export default class ScopedCssPreprocessor {
       include: [this.appName + '/styles/app.css'],
     });
 
-    let mergedStyles = new MergeTrees([
-      appCss,
-      mergedOtherTrees,
-      componentStyles,
-    ]);
+    let mergedStyles = new MergeTrees(
+      [appCss, mergedOtherTrees, componentStyles],
+      { overwrite: true },
+    );
 
     let newOutput = new Concat(mergedStyles, {
       outputFile: options.outputPaths['app'],
@@ -280,6 +279,15 @@ export default class ScopedCssPreprocessor {
       sourceMapConfig: { enabled: true },
     });
 
-    return newOutput;
+    if (this.userOptions?.passthrough) {
+      let passedThrough = new Funnel(mergedStyles, {
+        include: this.userOptions.passthrough,
+        destDir: this.userOptions.passthroughDestination,
+      });
+
+      return new MergeTrees([passedThrough, newOutput], { overwrite: true });
+    } else {
+      return newOutput;
+    }
   }
 }

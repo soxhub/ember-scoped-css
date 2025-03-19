@@ -59,8 +59,9 @@ module.exports = {
     let scopedCssOptions = this.app.options['ember-scoped-css'] || {};
 
     // we need to run our css preprocessor first, so we removed all other from the registry and run them as part of our preprocessor
-    // we did not find other way how to do it more elegantly
-    let preprocessors = registry.load('css');
+    // we did not find other way how to do it more elegantly. Also in later ember-cli versions this array becomes a live reference
+    // so removing them from the registry actually removes them from this reference 😱 so we need to make a deep copy here
+    let preprocessors = [...registry.load('css')];
 
     preprocessors.forEach((p) => registry.remove('css', p));
 
