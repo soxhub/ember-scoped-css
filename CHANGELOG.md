@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-03-21)
+
+ember-scoped-css 0.23.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`, `embroider-app`
+  * [#287](https://github.com/soxhub/ember-scoped-css/pull/287) don't have ember-source as a dependency ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2025-03-19)
 
 ember-scoped-css 0.23.0 (minor)
