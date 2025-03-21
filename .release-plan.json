@@ -1,37 +1,20 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "impact": "minor",
-      "oldVersion": "0.22.0",
-      "newVersion": "0.23.0",
+      "impact": "patch",
+      "oldVersion": "0.23.0",
+      "newVersion": "0.23.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./ember-scoped-css/package.json"
     },
     "ember-scoped-css-compat": {
-      "impact": "minor",
-      "oldVersion": "10.1.0",
-      "newVersion": "10.2.0",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
+      "oldVersion": "10.2.0"
     }
   },
-  "description": "## Release (2025-03-19)\n\nember-scoped-css 0.23.0 (minor)\nember-scoped-css-compat 10.2.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-scoped-css-compat`, `ember-scoped-css`\n  * [#285](https://github.com/soxhub/ember-scoped-css/pull/285) add support for interop with other pipelines ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `ember-scoped-css-compat`, `ember-scoped-css`\n  * [#284](https://github.com/soxhub/ember-scoped-css/pull/284) Fix repository field ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 2\n- Chris Manson ([@mansona](https://github.com/mansona))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2025-03-21)\n\nember-scoped-css 0.23.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`, `embroider-app`\n  * [#287](https://github.com/soxhub/ember-scoped-css/pull/287) don't have ember-source as a dependency ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
