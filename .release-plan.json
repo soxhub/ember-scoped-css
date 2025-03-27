@@ -2,8 +2,8 @@
   "solution": {
     "ember-scoped-css": {
       "impact": "patch",
-      "oldVersion": "0.23.0",
-      "newVersion": "0.23.1",
+      "oldVersion": "0.23.1",
+      "newVersion": "0.23.2",
       "constraints": [
         {
           "impact": "patch",
@@ -16,5 +16,5 @@
       "oldVersion": "10.2.0"
     }
   },
-  "description": "## Release (2025-03-21)\n\nember-scoped-css 0.23.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`, `embroider-app`\n  * [#287](https://github.com/soxhub/ember-scoped-css/pull/287) don't have ember-source as a dependency ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2025-03-27)\n\nember-scoped-css 0.23.2 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#291](https://github.com/soxhub/ember-scoped-css/pull/291) fix incorrect assumption in fixFilename - you can have duplicates in path names (i.e. github CI) ([@mansona](https://github.com/mansona))\n  * [#292](https://github.com/soxhub/ember-scoped-css/pull/292) allow babel to parse decorators ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
