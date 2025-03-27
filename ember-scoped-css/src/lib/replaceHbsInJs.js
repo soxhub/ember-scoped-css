@@ -8,6 +8,7 @@ const parseOptions = {
         sourceType: 'module',
         allowImportExportEverywhere: true,
         tokens: true,
+        plugins: ['decorators'],
       });
     },
   },
