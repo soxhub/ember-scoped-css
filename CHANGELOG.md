@@ -1,5 +1,17 @@
 # Changelog
 
+## Release (2025-03-27)
+
+ember-scoped-css 0.23.2 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#291](https://github.com/soxhub/ember-scoped-css/pull/291) fix incorrect assumption in fixFilename - you can have duplicates in path names (i.e. github CI) ([@mansona](https://github.com/mansona))
+  * [#292](https://github.com/soxhub/ember-scoped-css/pull/292) allow babel to parse decorators ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2025-03-21)
 
 ember-scoped-css 0.23.1 (patch)
