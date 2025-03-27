@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-import { findWorkspacePath, moduleName as projectName } from './utils.js';
+import { findWorkspacePath } from './utils.js';
 
 /**
  * template plugins do not hand us the correct file path.
@@ -14,21 +14,6 @@ import { findWorkspacePath, moduleName as projectName } from './utils.js';
 export function fixFilename(filename) {
   let fileName = filename;
   let workspace = findWorkspacePath(fileName);
-  let moduleName = projectName(workspace);
-
-  /**
-   * For a simple case, there are sometimes duplicate module paths in the fileName
-   * let's collapse that and
-   */
-  let wrongModuleName = path.basename(workspace);
-  let deduped = fileName.replace(
-    `${wrongModuleName}/${moduleName}/`,
-    `${wrongModuleName}/app/`,
-  );
-
-  if (deduped !== fileName) {
-    return deduped;
-  }
 
   /**
    * ember-source 5.8:
