@@ -5,6 +5,10 @@ settings:
   excludeLinksFromLockfile: false
   peersSuffixMaxLength: 40
 
+overrides:
+  '@embroider/macros': 1.17.1
+  '@glimmer/component': 2.0.0
+
 importers:
 
   .:
