@@ -143,6 +143,7 @@ export default createUnplugin(
         },
         transform(code, jsPath) {
           if (!isRelevantFile(jsPath, { additionalRoots, cwd })) return;
+
           /**
            * HBS files are actually JS files with a call to precompileTemplate
            */
