@@ -34,6 +34,7 @@
     "@glimmer/component": "2.0.0",
     "@glimmer/tracking": "1.1.2",
     "ember-resolver": "13.1.0",
+    "v2-addon-ts": "workspace:*",
     "ember-scoped-css": "workspace:*",
     "ember-source": "6.4.0-alpha.3"
   },

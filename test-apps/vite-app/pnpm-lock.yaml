@@ -28,6 +28,9 @@ importers:
       ember-source:
         specifier: 6.4.0-alpha.3
         version: 6.4.0-alpha.3(@glimmer/component@2.0.0)(rsvp@4.8.5)
+      v2-addon-ts:
+        specifier: workspace:*
+        version: link:../v2-addon-ts
     devDependencies:
       '@babel/core':
         specifier: 7.26.9
