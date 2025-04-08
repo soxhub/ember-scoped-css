@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-04-08)
+
+* ember-scoped-css 0.23.3 (patch)
+* ember-scoped-css-compat 10.2.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css-compat`, `ember-scoped-css`
+  * [#294](https://github.com/soxhub/ember-scoped-css/pull/294) Fix issue where the vite-app scopedCSS plugin was running on library code ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* [#296](https://github.com/soxhub/ember-scoped-css/pull/296) Drop 4.4 from testing matrix ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-03-27)
 
 ember-scoped-css 0.23.2 (patch)
