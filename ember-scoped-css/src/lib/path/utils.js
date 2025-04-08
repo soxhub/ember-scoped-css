@@ -127,6 +127,7 @@ export function withoutExtension(filePath) {
  * @returns
  */
 export function isRelevantFile(fileName, { additionalRoots, cwd }) {
+  if (fileName.startsWith('vite/')) return false;
   if (fileName.startsWith('/@embroider')) return false;
   if (IRRELEVANT_PATHS.some((i) => fileName.includes(i))) return false;
 
