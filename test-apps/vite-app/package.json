@@ -64,16 +64,6 @@
     "typescript": "^5.7.3",
     "vite": "6.2.0"
   },
-  "pnpm": {
-    "overrides": {
-      "@embroider/macros": "alpha",
-      "@glimmer/component": "2.0.0"
-    }
-  },
-  "overrides": {
-    "@embroider/macros": "alpha",
-    "@glimmer/component": "2.0.0"
-  },
   "engines": {
     "node": ">= 18"
   },
