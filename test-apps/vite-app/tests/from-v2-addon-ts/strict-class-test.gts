@@ -21,6 +21,6 @@ module('from v2-addon-ts | <StrictClass>', function (hooks) {
     assert.dom('div').hasStyle({ color: 'rgb(1, 2, 3)' });
     assert
       .dom('div')
-      .hasClass(scopedClass('message', 'v2-addon-ts/components/strict-class'));
+      .hasClass(scopedClass('hello-there', 'v2-addon-ts/components/strict-class'));
   });
 });
