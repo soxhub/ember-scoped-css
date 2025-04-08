@@ -31,6 +31,8 @@
   "pnpm": {
     "overrides": {
       "@embroider/macros": "1.17.1",
+      "@ember/test-waiters": "^4.1.0",
+      "@ember/test-helpers": "^5.2.1",
       "@glimmer/component": "2.0.0"
     },
     "peerDependencyRules": {
