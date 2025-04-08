@@ -127,6 +127,11 @@ export function withoutExtension(filePath) {
  * @returns
  */
 export function isRelevantFile(fileName, { additionalRoots, cwd }) {
+  // Private Virtual Modules
+  if (fileName.startsWith('\0')) return false;
+  // These are not valid userland names (or are from libraries)
+  if (fileName.match(/^[a-zA-Z]/)) return false;
+  // External to us
   if (fileName.startsWith('/@embroider')) return false;
   if (IRRELEVANT_PATHS.some((i) => fileName.includes(i))) return false;
 

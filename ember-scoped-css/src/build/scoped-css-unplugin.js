@@ -6,7 +6,7 @@ import process from 'node:process';
 import { createUnplugin } from 'unplugin';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
-import { hashFromAbsolutePath } from '../lib/path/utils.js';
+import { hashFromAbsolutePath, isRelevantFile } from '../lib/path/utils.js';
 import replaceHbsInJs from '../lib/replaceHbsInJs.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
@@ -120,6 +120,9 @@ export default createUnplugin(
    * @param {Options} [options]
    */
   (options) => {
+    let cwd = process.cwd();
+    let additionalRoots = options?.additionalRoots || [];
+
     return {
       name: 'ember-scoped-css-unplugin',
 
@@ -139,6 +142,8 @@ export default createUnplugin(
           /* deliberately do nothing */
         },
         transform(code, jsPath) {
+          if (!isRelevantFile(jsPath, { additionalRoots, cwd })) return;
+
           /**
            * HBS files are actually JS files with a call to precompileTemplate
            */
@@ -153,6 +158,8 @@ export default createUnplugin(
       },
 
       transform(code, jsPath) {
+        if (!isRelevantFile(jsPath, { additionalRoots, cwd })) return;
+
         /**
          * HBS files are actually JS files with a call to precompileTemplate
          */

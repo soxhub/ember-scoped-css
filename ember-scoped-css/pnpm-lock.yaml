@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
   peersSuffixMaxLength: 40
 
+overrides:
+  '@glimmer/component': 2.0.0
+
 importers:
 
   .:
