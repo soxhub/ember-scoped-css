@@ -34,7 +34,6 @@
     "@embroider/test-setup": "^4.0.0",
     "@embroider/webpack": "4.0.9",
     "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",

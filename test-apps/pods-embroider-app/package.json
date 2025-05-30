@@ -33,7 +33,6 @@
     "@embroider/macros": "^1.16.10",
     "@embroider/webpack": "^4.0.9",
     "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
     "concurrently": "^9.1.2",
     "ember-auto-import": "^2.10.0",
     "ember-cli": "~5.9.0",
