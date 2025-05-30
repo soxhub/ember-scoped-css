@@ -38,7 +38,6 @@
     "@babel/runtime": "^7.26.9",
     "@embroider/addon-dev": "^4.3.1",
     "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
     "@glint/core": "^1.5.2",
     "@glint/environment-ember-loose": "^1.5.2",
     "@glint/environment-ember-template-imports": "^1.5.2",
@@ -104,8 +103,7 @@
     }
   },
   "peerDependencies": {
-    "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2"
+    "@glimmer/component": "^1.1.2"
   },
   "volta": {
     "extends": "../../package.json"

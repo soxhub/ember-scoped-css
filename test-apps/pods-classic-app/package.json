@@ -30,7 +30,6 @@
     "@ember/test-helpers": "^5.1.0",
     "@ember/test-waiters": "^4.0.0",
     "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.1.2",
     "ember-auto-import": "^2.10.0",
