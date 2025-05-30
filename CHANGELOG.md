@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-05-30)
+
+* ember-scoped-css-compat 10.2.2 (patch)
+
+#### :house: Internal
+* `ember-scoped-css-compat`
+  * [#303](https://github.com/soxhub/ember-scoped-css/pull/303) Add compat-embroider + vite test-app and some tests for things with hbs under vite ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-04-08)
 
 * ember-scoped-css 0.23.3 (patch)
