@@ -1,6 +1,6 @@
 import Router from './router.js';
 
-const appName = 'vite-app';
+const appName = 'vite-app-with-compat';
 
 function formatAsResolverEntries(imports) {
   return Object.fromEntries(

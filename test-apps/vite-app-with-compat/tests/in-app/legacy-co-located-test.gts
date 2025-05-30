@@ -2,11 +2,11 @@ import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
-import Legacy from 'vite-app-with-compat/components/in-app/legacy';
+import Legacy from 'vite-app-with-compat/components/in-app/legacy-co-located';
 
 import { scopedClass } from 'ember-scoped-css/test-support';
 
-module('[In App] legacy (hbs)', function (hooks) {
+module('[In App] legacy-co-located', function (hooks) {
   setupRenderingTest(hooks);
 
   test('has a style on an element', async function (assert) {
@@ -15,7 +15,10 @@ module('[In App] legacy (hbs)', function (hooks) {
     assert
       .dom('div')
       .hasClass(
-        scopedClass('legacy', 'vite-app-with-compat/components/in-app/legacy')
+        scopedClass(
+          'legacy-co-located',
+          'vite-app-with-compat/components/in-app/legacy-co-located'
+        )
       );
     assert.dom('div').hasStyle({ color: 'rgb(0, 100, 200)' });
   });

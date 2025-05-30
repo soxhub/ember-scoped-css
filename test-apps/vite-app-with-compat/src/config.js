@@ -1,5 +1,5 @@
 const ENV = {
-  modulePrefix: 'vite-app',
+  modulePrefix: 'vite-app-with-compat',
   environment: import.meta.env.DEV ? 'development' : 'production',
   rootURL: '/',
   locationType: 'history',
