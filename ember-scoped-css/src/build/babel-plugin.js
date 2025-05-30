@@ -45,12 +45,7 @@ export default (env, options, workingDirectory) => {
           return;
         }
 
-        if (
-          path.node.source.value === 'ember-scoped-css' ||
-          false
-          // path.node.source.value === '@embroider/virtual/helpers/scopedClass' ||
-          // path.node.source.value === '@embroider/virtual/helpers/scoped-class'
-        ) {
+        if (path.node.source.value === 'ember-scoped-css') {
           let specifier = path.node.specifiers.find(
             (x) => x.imported.name === 'scopedClass',
           );
