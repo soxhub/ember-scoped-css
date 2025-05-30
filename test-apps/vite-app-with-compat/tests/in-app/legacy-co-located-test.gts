@@ -21,5 +21,7 @@ module('[In App] legacy-co-located', function (hooks) {
         )
       );
     assert.dom('div').hasStyle({ color: 'rgb(0, 100, 200)' });
+    assert.dom('p').hasStyle({ color: 'rgb(0, 100, 201)' });
+    assert.dom('span').hasStyle({ color: 'rgb(0, 100, 202)' });
   });
 });
