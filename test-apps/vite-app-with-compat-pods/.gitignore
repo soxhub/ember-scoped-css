@@ -1,14 +1,14 @@
 # compiled output
 /dist/
-/dist-prod/
 /declarations/
-
+/tmp/
 
 # dependencies
 /node_modules/
 
 # misc
-/.env*
+/.env
+/.env.*.local
 /.pnp*
 /.eslintcache
 /coverage/
