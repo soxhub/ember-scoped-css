@@ -10,7 +10,8 @@ export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
 
 // CJS / ESM?
-const ourRequire = globalThis.require ?? createRequire(import.meta.url);
+let here = import.meta.url;
+const ourRequire = globalThis.require ? globalThis.require : (here && createRequire(here));
 const EMBROIDER_DIR = 'node_modules/.embroider';
 const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
 const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/assets`;
