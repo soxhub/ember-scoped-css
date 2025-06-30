@@ -18,6 +18,6 @@ module('[In App] pod:top-level (hbs)', function (hooks) {
           'vite-app-with-compat-pods/pods/top-level'
         )
       );
-    assert.dom('p').hasStyle({ fontWeight: '100', fontStyle: 'italic' });
+    assert.dom('span').hasStyle({ fontWeight: '100', fontStyle: 'italic' });
   });
 });
