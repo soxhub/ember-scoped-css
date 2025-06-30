@@ -11,7 +11,14 @@ export { hashFromModulePath } from './hash-from-module-path.js';
 
 // CJS / ESM?
 let here = import.meta.url;
-const ourRequire = globalThis.require ? globalThis.require : (here && createRequire(here));
+let ourRequire = globalThis.require
+  ? globalThis.require
+  : here && createRequire(here);
+
+if (!outRequire) {
+  outRequire = require;
+}
+
 const EMBROIDER_DIR = 'node_modules/.embroider';
 const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
 const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/assets`;
