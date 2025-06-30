@@ -1,9 +1,12 @@
-const scopedCSS = require('ember-scoped-css/build');
+import { createRequire } from 'node:module';
+import * as scopedCSS from 'ember-scoped-css/build';
 
-const {
+import {
   babelCompatSupport,
   templateCompatSupport,
-} = require('@embroider/compat/babel');
+} from '@embroider/compat/babel';
+
+const require = createRequire(import.meta.url);
 
 module.exports = {
   plugins: [
@@ -31,7 +34,7 @@ module.exports = {
     [
       '@babel/plugin-transform-runtime',
       {
-        absoluteRuntime: __dirname,
+        absoluteRuntime: import.meta.dirname,
         useESModules: true,
         regenerator: false,
       },

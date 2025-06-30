@@ -19,7 +19,6 @@
     "dist:ember:test": "ember test --path dist --config-file ./testem.cjs --test-port 0",
     "test:ember:prod": "vite build --mode test --outDir dist-prod && ember test --path dist-prod --config-file ./testem.cjs --test-port 0"
   },
-  "type": "module",
   "imports": {
     "#src/*": "./src/*",
     "#utils": "./src/utils.js",
