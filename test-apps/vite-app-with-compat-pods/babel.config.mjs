@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 import {
   babelCompatSupport,
   templateCompatSupport,
-}  from '@embroider/compat/babel';
+} from '@embroider/compat/babel';
 
 export default {
   plugins: [
@@ -27,9 +27,12 @@ export default {
           'ember-cli-htmlbars-inline-precompile',
           'htmlbars-inline-precompile',
         ],
-        transforms: [...templateCompatSupport(), scopedCSS.templatePlugin({
-          additionalRoots: ['pods']
-        })],
+        transforms: [
+          ...templateCompatSupport(),
+          scopedCSS.templatePlugin({
+            additionalRoots: ['pods'],
+          }),
+        ],
       },
     ],
     [

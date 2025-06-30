@@ -1,7 +1,7 @@
 import assert from 'node:assert';
 import fsSync from 'node:fs';
-import path from 'node:path';
 import { createRequire } from 'node:module';
+import path from 'node:path';
 
 import { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 import { hashFromModulePath } from './hash-from-module-path.js';

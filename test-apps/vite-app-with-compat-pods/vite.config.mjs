@@ -6,7 +6,7 @@ import { scopedCSS } from 'ember-scoped-css/vite';
 export default defineConfig({
   plugins: [
     scopedCSS({
-      additionalRoots: ['pods']
+      additionalRoots: ['pods'],
     }),
     classicEmberSupport(),
     ember(),

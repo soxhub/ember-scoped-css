@@ -32,6 +32,7 @@ function asCSSPath(id) {
   const cssPath = id.endsWith('.hbs')
     ? id.replace(/\.hbs$/, '.css')
     : id.replace(/(\.hbs)?\.(js|ts|gjs|gts)$/, '.css');
+
   return cssPath;
 }
 
@@ -43,7 +44,8 @@ async function transformJsFile(code, id) {
 
   // Check for pods (using styles.css)
   if (!cssExists) {
-    let [_, ...parts] = id.split('/').reverse();
+    let [, ...parts] = id.split('/').reverse();
+
     cssPath = [...parts.reverse(), 'styles.css'].join('/');
     cssFileName = 'styles.css';
     cssExists = existsSync(cssPath);
