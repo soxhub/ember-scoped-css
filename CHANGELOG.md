@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2025-06-30)
+
+* ember-scoped-css 0.23.4 (patch)
+* ember-scoped-css-compat 10.2.2 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#305](https://github.com/soxhub/ember-scoped-css/pull/305) Add vite pods, fix issue with styles specified from "additionalRoots" ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* `ember-scoped-css-compat`
+  * [#303](https://github.com/soxhub/ember-scoped-css/pull/303) Add compat-embroider + vite test-app and some tests for things with hbs under vite ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-04-08)
 
 * ember-scoped-css 0.23.3 (patch)
