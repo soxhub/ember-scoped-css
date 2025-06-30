@@ -1,9 +1,11 @@
-const { buildMacros } = require('@embroider/macros/babel');
-const scopedCSS = require('ember-scoped-css/build');
+import { buildMacros } from '@embroider/macros/babel';
+import * as scopedCSS from 'ember-scoped-css/build';
+import { createRequire } from 'node:module';
 
+const require = createRequire(import.meta.url);
 const macros = buildMacros({});
 
-module.exports = {
+export default {
   plugins: [
     ['@babel/plugin-transform-typescript', { allowDeclareFields: true }],
     [
@@ -29,7 +31,7 @@ module.exports = {
     [
       '@babel/plugin-transform-runtime',
       {
-        absoluteRuntime: __dirname,
+        absoluteRuntime: import.meta.dirname,
         useESModules: true,
         regenerator: false,
       },

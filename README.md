@@ -49,9 +49,9 @@ export default defineConfig({
 });
 ```
 
-and then in your `babel.config.cjs`, add a template-transform:
+and then in your `babel.config.mjs`, add a template-transform:
 ```js
-const scopedCSS = require("ember-scoped-css/build");
+import * as scopedCSS from "ember-scoped-css/build";
 
 module.exports = {
   plugins: [
