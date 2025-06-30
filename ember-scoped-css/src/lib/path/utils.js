@@ -15,8 +15,8 @@ let ourRequire = globalThis.require
   ? globalThis.require
   : here && createRequire(here);
 
-if (!outRequire) {
-  outRequire = require;
+if (!ourRequire) {
+  ourRequire = require;
 }
 
 const EMBROIDER_DIR = 'node_modules/.embroider';
