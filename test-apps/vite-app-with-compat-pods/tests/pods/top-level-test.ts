@@ -11,13 +11,13 @@ module('[In App] pod:top-level (hbs)', function (hooks) {
     await visit('/top-level');
 
     assert
-      .dom('p')
+      .dom('span')
       .hasClass(
         scopedClass(
-          'template-class',
+          'pod-template-class',
           'vite-app-with-compat-pods/pods/top-level'
         )
       );
-    assert.dom('p').hasStyle({ fontWeight: 'bold' });
+    assert.dom('p').hasStyle({ fontWeight: '100', fontStyle: 'italic' });
   });
 });

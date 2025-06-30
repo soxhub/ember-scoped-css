@@ -1,6 +1,7 @@
 import assert from 'node:assert';
 import fsSync from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 
 import { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 import { hashFromModulePath } from './hash-from-module-path.js';
@@ -8,6 +9,8 @@ import { hashFromModulePath } from './hash-from-module-path.js';
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
 
+// CJS / ESM?
+const ourRequire = createRequire(import.meta.url);
 const EMBROIDER_DIR = 'node_modules/.embroider';
 const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
 const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/assets`;
@@ -390,7 +393,7 @@ export function moduleName(sourcePath) {
    */
   if (fsSync.existsSync(environmentJS)) {
     // eslint-disable-next-line no-undef -- this exists
-    const envFn = require(environmentJS);
+    const envFn = ourRequire(environmentJS);
     const env = envFn('ember-scoped-css');
 
     return env.modulePrefix || manifest.name;

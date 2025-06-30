@@ -18,6 +18,6 @@ module('[In App] pod:application (hbs)', function (hooks) {
           'vite-app-with-compat-pods/pods/application'
         )
       );
-    assert.dom('p').hasStyle({ textDecoration: 'underline' });
+    assert.dom('p').hasStyle({ textDecoration: 'underline solid rgb(0, 0, 0)' });
   });
 });
