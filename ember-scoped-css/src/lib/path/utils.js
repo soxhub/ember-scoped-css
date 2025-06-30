@@ -16,6 +16,7 @@ let ourRequire = globalThis.require
   : here && createRequire(here);
 
 if (!ourRequire) {
+  // eslint-disable-next-line no-undef
   ourRequire = require;
 }
 
