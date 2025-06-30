@@ -19,7 +19,6 @@
     "dist:ember:test": "ember test --path dist --config-file ./testem.cjs --test-port 0",
     "test:ember:prod": "vite build --mode test --outDir dist-prod && ember test --path dist-prod --config-file ./testem.cjs --test-port 0"
   },
-  "type": "module",
   "imports": {
     "#src/*": "./src/*",
     "#utils": "./src/utils.js",
@@ -54,7 +53,7 @@
     "concurrently": "9.1.2",
     "decorator-transforms": "^2.3.0",
     "ember-cli": "^6.3.1",
-    "ember-eslint": "0.2.1",
+    "ember-eslint": "0.3.0",
     "ember-qunit": "^9.0.2",
     "ember-template-lint": "6.1.0",
     "eslint": "9.21.0",

@@ -1,13 +1,23 @@
-const scopedCSS = require('ember-scoped-css/build');
+import * as scopedCSS from 'ember-scoped-css/build';
+import { createRequire } from 'node:module';
 
-const {
+const require = createRequire(import.meta.url);
+
+import {
   babelCompatSupport,
   templateCompatSupport,
-} = require('@embroider/compat/babel');
+} from '@embroider/compat/babel';
 
-module.exports = {
+export default {
   plugins: [
-    ['@babel/plugin-transform-typescript', { allowDeclareFields: true }],
+    [
+      '@babel/plugin-transform-typescript',
+      {
+        allExtensions: true,
+        onlyRemoveTypeImports: true,
+        allowDeclareFields: true,
+      },
+    ],
     [
       'babel-plugin-ember-template-compilation',
       {
@@ -17,7 +27,12 @@ module.exports = {
           'ember-cli-htmlbars-inline-precompile',
           'htmlbars-inline-precompile',
         ],
-        transforms: [...templateCompatSupport(), scopedCSS.templatePlugin({})],
+        transforms: [
+          ...templateCompatSupport(),
+          scopedCSS.templatePlugin({
+            additionalRoots: ['pods'],
+          }),
+        ],
       },
     ],
     [
@@ -31,7 +46,7 @@ module.exports = {
     [
       '@babel/plugin-transform-runtime',
       {
-        absoluteRuntime: __dirname,
+        absoluteRuntime: import.meta.dirname,
         useESModules: true,
         regenerator: false,
       },

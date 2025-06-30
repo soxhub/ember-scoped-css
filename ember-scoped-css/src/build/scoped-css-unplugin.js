@@ -28,13 +28,29 @@ function isCssFile(id) {
   return id.endsWith('.css');
 }
 
-async function transformJsFile(code, id) {
+function asCSSPath(id) {
   const cssPath = id.endsWith('.hbs')
     ? id.replace(/\.hbs$/, '.css')
     : id.replace(/(\.hbs)?\.(js|ts|gjs|gts)$/, '.css');
-  const cssFileName = path.basename(cssPath);
 
-  const cssExists = existsSync(cssPath);
+  return cssPath;
+}
+
+async function transformJsFile(code, id) {
+  let cssPath = asCSSPath(id);
+  let cssFileName = path.basename(cssPath);
+
+  let cssExists = existsSync(cssPath);
+
+  // Check for pods (using styles.css)
+  if (!cssExists) {
+    let [, ...parts] = id.split('/').reverse();
+
+    cssPath = [...parts.reverse(), 'styles.css'].join('/');
+    cssFileName = 'styles.css';
+    cssExists = existsSync(cssPath);
+  }
+
   let css;
 
   if (cssExists) {
@@ -65,7 +81,7 @@ async function transformJsFile(code, id) {
   };
 }
 
-function transformCssFile(code, id, layerName) {
+function cssHasStandardFile(id) {
   const jsPath = id.replace(/\.css$/, '.gjs');
   const gtsPath = id.replace(/\.css$/, '.gts');
   const hbsPath = id.replace(/\.css$/, '.hbs');
@@ -74,7 +90,27 @@ function transformCssFile(code, id, layerName) {
   const gtsExists = existsSync(gtsPath);
   const hbsExists = existsSync(hbsPath);
 
-  if (jsExists || hbsExists || gtsExists) {
+  return jsExists || gtsExists || hbsExists;
+}
+
+function cssHasPodsFile(id) {
+  if (!id.endsWith('styles.css')) {
+    return;
+  }
+
+  const jsPath = id.replace(/styles\.css$/, 'template.gjs');
+  const gtsPath = id.replace(/styles\.css$/, 'template.gts');
+  const hbsPath = id.replace(/styles\.css$/, 'template.hbs');
+
+  const jsExists = existsSync(jsPath);
+  const gtsExists = existsSync(gtsPath);
+  const hbsExists = existsSync(hbsPath);
+
+  return jsExists || gtsExists || hbsExists;
+}
+
+function transformCssFile(code, id, layerName) {
+  if (cssHasStandardFile(id) || cssHasPodsFile(id)) {
     const postfix = hashFromAbsolutePath(id);
 
     code = rewriteCss(code, postfix, path.basename(id), layerName);
