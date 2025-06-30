@@ -8,7 +8,7 @@ import {
 
 const require = createRequire(import.meta.url);
 
-module.exports = {
+export default {
   plugins: [
     ['@babel/plugin-transform-typescript', { allowDeclareFields: true }],
     [
