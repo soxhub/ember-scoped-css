@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-07-08)
+
+* ember-scoped-css 0.23.5 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#309](https://github.com/soxhub/ember-scoped-css/pull/309) Add __vite-(browser-external) to the list if ignored paths for processing ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-06-30)
 
 * ember-scoped-css 0.23.4 (patch)
