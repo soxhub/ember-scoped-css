@@ -24,7 +24,7 @@ const EMBROIDER_DIR = 'node_modules/.embroider';
 const EMBROIDER_3_REWRITTEN_APP_PATH = `${EMBROIDER_DIR}/rewritten-app`;
 const EMBROIDER_3_REWRITTEN_APP_ASSETS = `${EMBROIDER_3_REWRITTEN_APP_PATH}/assets`;
 const EMBROIDER_3_REWRITTEN_PACKAGES = `${EMBROIDER_DIR}/rewritten-packages`;
-const IRRELEVANT_PATHS = ['node_modules/.pnpm'];
+const IRRELEVANT_PATHS = ['node_modules/.pnpm', '__vite-'];
 const UNSUPPORTED_DIRECTORIES = new Set(['tests']);
 
 const CWD = process.cwd();
