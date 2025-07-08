@@ -2,8 +2,8 @@
   "solution": {
     "ember-scoped-css": {
       "impact": "patch",
-      "oldVersion": "0.23.3",
-      "newVersion": "0.23.4",
+      "oldVersion": "0.23.4",
+      "newVersion": "0.23.5",
       "tagName": "latest",
       "constraints": [
         {
@@ -14,18 +14,8 @@
       "pkgJSONPath": "./ember-scoped-css/package.json"
     },
     "ember-scoped-css-compat": {
-      "impact": "patch",
-      "oldVersion": "10.2.1",
-      "newVersion": "10.2.2",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
+      "oldVersion": "10.2.2"
     }
   },
-  "description": "## Release (2025-06-30)\n\n* ember-scoped-css 0.23.4 (patch)\n* ember-scoped-css-compat 10.2.2 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#305](https://github.com/soxhub/ember-scoped-css/pull/305) Add vite pods, fix issue with styles specified from \"additionalRoots\" ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* `ember-scoped-css-compat`\n  * [#303](https://github.com/soxhub/ember-scoped-css/pull/303) Add compat-embroider + vite test-app and some tests for things with hbs under vite ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2025-07-08)\n\n* ember-scoped-css 0.23.5 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#309](https://github.com/soxhub/ember-scoped-css/pull/309) Add __vite-(browser-external) to the list if ignored paths for processing ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
