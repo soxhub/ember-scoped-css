@@ -9,6 +9,8 @@ import { hashFromModulePath } from './hash-from-module-path.js';
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
 
+const COMPONENT_EXTENSIONS = ['.gts', '.gjs', '.ts', '.js', '.hbs'];
+
 // CJS / ESM?
 let here = import.meta.url;
 let ourRequire = globalThis.require
@@ -51,16 +53,24 @@ export function cssHasAssociatedComponent(cssPath) {
   return cssHasStandardFile(cssPath) || cssHasPodsFile(cssPath);
 }
 
+
+
 function cssHasStandardFile(id) {
-  const jsPath = id.replace(/\.css$/, '.gjs');
-  const gtsPath = id.replace(/\.css$/, '.gts');
-  const hbsPath = id.replace(/\.css$/, '.hbs');
+  /**
+   * Normally we don't need to check a JS path here, but when using
+   * embroider@3, we have a "rewritten app", which has all our source
+   * preprocessed a bit before scoped-css transformations.
+   *
+   * (In Vite, we operate more directly with the source)
+   */
+  for (let ext of COMPONENT_EXTENSIONS) {
+    let candidatePath = id.replace(/\.css$/, ext);
+    if (existsSync(candidatePath)) {
+      return true;
+    }
+  }
 
-  const jsExists = existsSync(jsPath);
-  const gtsExists = existsSync(gtsPath);
-  const hbsExists = existsSync(hbsPath);
-
-  return jsExists || gtsExists || hbsExists;
+  return false;
 }
 
 function cssHasPodsFile(id) {
@@ -75,17 +85,14 @@ function cssHasPodsFile(id) {
    *
    * (In Vite, we operate more directly with the source)
    */
-  const jsPath = id.replace(/styles\.css$/, 'template.js');
-  const gjsPath = id.replace(/styles\.css$/, 'template.gjs');
-  const gtsPath = id.replace(/styles\.css$/, 'template.gts');
-  const hbsPath = id.replace(/styles\.css$/, 'template.hbs');
+  for (let ext of COMPONENT_EXTENSIONS) {
+    let candidatePath = id.replace(/styles\.css$/, `template${ext}`);
+    if (existsSync(candidatePath)) {
+      return true;
+    }
+  }
 
-  const jsExists = existsSync(jsPath);
-  const gjsExists = existsSync(gjsPath);
-  const gtsExists = existsSync(gtsPath);
-  const hbsExists = existsSync(hbsPath);
-
-  return jsExists || gjsExists || gtsExists || hbsExists;
+  return false;
 }
 
 /**
