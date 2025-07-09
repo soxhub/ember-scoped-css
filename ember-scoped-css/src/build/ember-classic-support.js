@@ -14,6 +14,7 @@ import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
 import {
   hashFromModulePath,
   packageScopedPathToModulePath,
+  cssHasAssociatedComponent,
 } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
@@ -64,10 +65,8 @@ class ScopedFilter extends Filter {
        * Pods support
        */
       if (relativePath.endsWith('styles.css')) {
-        const directory = relativePath.replace(/styles\.css$/, 'template.hbs');
-        const templatePath = path.join(inputPath, directory);
-
-        if (existsSync(templatePath)) {
+        const absoluteCssPath = path.join(inputPath, relativePath);
+        if (cssHasAssociatedComponent(absoluteCssPath)) {
           hasRelevantFile = true;
         }
       }
