@@ -7,3 +7,6 @@ declarations/
 
 # misc
 coverage/
+
+# temporarily exclude test apps
+test-apps/
