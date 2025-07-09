@@ -2,7 +2,11 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-import { hashFrom, isRelevantFile } from '../lib/path/utils.js';
+import {
+  hashFrom,
+  isRelevantFile,
+  cssHasAssociatedComponent,
+} from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
 export default async function (code) {
@@ -19,11 +23,7 @@ export default async function (code) {
 
   const cssFileName = path.basename(cssPath);
 
-  const hbsPath = cssPath.replace('.css', '.hbs');
-  const gjsPath = cssPath.replace('.css', '.js');
-  const gtsPath = cssPath.replace('.css', '.ts');
-
-  if (existsSync(gjsPath) || existsSync(gtsPath) || existsSync(hbsPath)) {
+  if (cssHasAssociatedComponent(cssPath)) {
     const postfix = hashFrom(cssPath);
     const rewrittenCss = rewriteCss(
       code,

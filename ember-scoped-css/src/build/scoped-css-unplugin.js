@@ -6,7 +6,11 @@ import process from 'node:process';
 import { createUnplugin } from 'unplugin';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
-import { hashFromAbsolutePath, isRelevantFile } from '../lib/path/utils.js';
+import {
+  hashFromAbsolutePath,
+  isRelevantFile,
+  cssHasAssociatedComponent,
+} from '../lib/path/utils.js';
 import replaceHbsInJs from '../lib/replaceHbsInJs.js';
 import rewriteCss from '../lib/rewriteCss.js';
 import rewriteHbs from '../lib/rewriteHbs.js';
@@ -81,36 +85,8 @@ async function transformJsFile(code, id) {
   };
 }
 
-function cssHasStandardFile(id) {
-  const jsPath = id.replace(/\.css$/, '.gjs');
-  const gtsPath = id.replace(/\.css$/, '.gts');
-  const hbsPath = id.replace(/\.css$/, '.hbs');
-
-  const jsExists = existsSync(jsPath);
-  const gtsExists = existsSync(gtsPath);
-  const hbsExists = existsSync(hbsPath);
-
-  return jsExists || gtsExists || hbsExists;
-}
-
-function cssHasPodsFile(id) {
-  if (!id.endsWith('styles.css')) {
-    return;
-  }
-
-  const jsPath = id.replace(/styles\.css$/, 'template.gjs');
-  const gtsPath = id.replace(/styles\.css$/, 'template.gts');
-  const hbsPath = id.replace(/styles\.css$/, 'template.hbs');
-
-  const jsExists = existsSync(jsPath);
-  const gtsExists = existsSync(gtsPath);
-  const hbsExists = existsSync(hbsPath);
-
-  return jsExists || gtsExists || hbsExists;
-}
-
 function transformCssFile(code, id, layerName) {
-  if (cssHasStandardFile(id) || cssHasPodsFile(id)) {
+  if (cssHasAssociatedComponent(id)) {
     const postfix = hashFromAbsolutePath(id);
 
     code = rewriteCss(code, postfix, path.basename(id), layerName);
@@ -124,6 +100,7 @@ function gatherCSSFiles(bundle) {
 
   for (let asset in bundle) {
     const cssAsset = asset.replace('js', 'css');
+    console.log('ASS', cssAsset);
 
     if (!asset.endsWith('js') || !bundle[cssAsset]) {
       continue;

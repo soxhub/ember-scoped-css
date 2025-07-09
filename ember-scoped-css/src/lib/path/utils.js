@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import fsSync from 'node:fs';
+import fsSync, { existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
@@ -42,6 +42,50 @@ export function hashFrom(filePath) {
   }
 
   return hashFromModulePath(filePath);
+}
+
+/**
+ *
+ */
+export function cssHasAssociatedComponent(cssPath) {
+  return cssHasStandardFile(cssPath) || cssHasPodsFile(cssPath);
+}
+
+function cssHasStandardFile(id) {
+  const jsPath = id.replace(/\.css$/, '.gjs');
+  const gtsPath = id.replace(/\.css$/, '.gts');
+  const hbsPath = id.replace(/\.css$/, '.hbs');
+
+  const jsExists = existsSync(jsPath);
+  const gtsExists = existsSync(gtsPath);
+  const hbsExists = existsSync(hbsPath);
+
+  return jsExists || gtsExists || hbsExists;
+}
+
+function cssHasPodsFile(id) {
+  if (!id.endsWith('styles.css')) {
+    return;
+  }
+
+  /**
+   * Normally we don't need to check a JS path here, but when using
+   * embroider@3, we have a "rewritten app", which has all our source
+   * preprocessed a bit before scoped-css transformations.
+   *
+   * (In Vite, we operate more directly with the source)
+   */
+  const jsPath = id.replace(/styles\.css$/, 'template.js');
+  const gjsPath = id.replace(/styles\.css$/, 'template.gjs');
+  const gtsPath = id.replace(/styles\.css$/, 'template.gts');
+  const hbsPath = id.replace(/styles\.css$/, 'template.hbs');
+
+  const jsExists = existsSync(jsPath);
+  const gjsExists = existsSync(gjsPath);
+  const gtsExists = existsSync(gtsPath);
+  const hbsExists = existsSync(hbsPath);
+
+  return jsExists || gjsExists || gtsExists || hbsExists;
 }
 
 /**
@@ -275,6 +319,9 @@ export function appPath(sourcePath) {
     `${EMBROIDER_3_REWRITTEN_APP_PATH}/`,
     '/',
   );
+
+  // Any of the above relpacements could accidentally give us an extra / (depending on our build environment)
+  packageRelative = packageRelative.replace('//', '/');
 
   let localPackagerStylePath = packageScopedPathToModulePath(packageRelative);
 
