@@ -7,9 +7,9 @@ import { createUnplugin } from 'unplugin';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
 import {
+  cssHasAssociatedComponent,
   hashFromAbsolutePath,
   isRelevantFile,
-  cssHasAssociatedComponent,
 } from '../lib/path/utils.js';
 import replaceHbsInJs from '../lib/replaceHbsInJs.js';
 import rewriteCss from '../lib/rewriteCss.js';

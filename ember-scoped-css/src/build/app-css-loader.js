@@ -1,11 +1,10 @@
 // import { createUnplugin }  from 'unplugin';
-import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 import {
+  cssHasAssociatedComponent,
   hashFrom,
   isRelevantFile,
-  cssHasAssociatedComponent,
 } from '../lib/path/utils.js';
 import rewriteCss from '../lib/rewriteCss.js';
 
