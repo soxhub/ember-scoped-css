@@ -53,8 +53,6 @@ export function cssHasAssociatedComponent(cssPath) {
   return cssHasStandardFile(cssPath) || cssHasPodsFile(cssPath);
 }
 
-
-
 function cssHasStandardFile(id) {
   /**
    * Normally we don't need to check a JS path here, but when using
@@ -65,6 +63,7 @@ function cssHasStandardFile(id) {
    */
   for (let ext of COMPONENT_EXTENSIONS) {
     let candidatePath = id.replace(/\.css$/, ext);
+
     if (existsSync(candidatePath)) {
       return true;
     }
@@ -87,6 +86,7 @@ function cssHasPodsFile(id) {
    */
   for (let ext of COMPONENT_EXTENSIONS) {
     let candidatePath = id.replace(/styles\.css$/, `template${ext}`);
+
     if (existsSync(candidatePath)) {
       return true;
     }
