@@ -24,6 +24,7 @@ module.exports = async function (defaults) {
     packagerOptions: {
       // css loaders for live reloading css
       webpackConfig: {
+        devtool: 'source-map',
         module: {
           rules: [
             // css loaders for production

@@ -8,6 +8,8 @@
 /coverage/
 !.*
 .*/
+*.gjs
+*.gts
 
 # ember-try
 /.node_modules.ember-try/

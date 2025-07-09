@@ -12,6 +12,7 @@ import { Preprocessor } from 'content-tag';
 
 import getClassesTagsFromCss from '../lib/getClassesTagsFromCss.js';
 import {
+  cssHasAssociatedComponent,
   hashFromModulePath,
   packageScopedPathToModulePath,
 } from '../lib/path/utils.js';
@@ -64,10 +65,9 @@ class ScopedFilter extends Filter {
        * Pods support
        */
       if (relativePath.endsWith('styles.css')) {
-        const directory = relativePath.replace(/styles\.css$/, 'template.hbs');
-        const templatePath = path.join(inputPath, directory);
+        const absoluteCssPath = path.join(inputPath, relativePath);
 
-        if (existsSync(templatePath)) {
+        if (cssHasAssociatedComponent(absoluteCssPath)) {
           hasRelevantFile = true;
         }
       }

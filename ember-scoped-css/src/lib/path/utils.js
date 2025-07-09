@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import fsSync from 'node:fs';
+import fsSync, { existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
@@ -8,6 +8,8 @@ import { hashFromModulePath } from './hash-from-module-path.js';
 
 export { hashFromAbsolutePath } from './hash-from-absolute-path.js';
 export { hashFromModulePath } from './hash-from-module-path.js';
+
+const COMPONENT_EXTENSIONS = ['.gts', '.gjs', '.ts', '.js', '.hbs'];
 
 // CJS / ESM?
 let here = import.meta.url;
@@ -42,6 +44,55 @@ export function hashFrom(filePath) {
   }
 
   return hashFromModulePath(filePath);
+}
+
+/**
+ *
+ */
+export function cssHasAssociatedComponent(cssPath) {
+  return cssHasStandardFile(cssPath) || cssHasPodsFile(cssPath);
+}
+
+function cssHasStandardFile(id) {
+  /**
+   * Normally we don't need to check a JS path here, but when using
+   * embroider@3, we have a "rewritten app", which has all our source
+   * preprocessed a bit before scoped-css transformations.
+   *
+   * (In Vite, we operate more directly with the source)
+   */
+  for (let ext of COMPONENT_EXTENSIONS) {
+    let candidatePath = id.replace(/\.css$/, ext);
+
+    if (existsSync(candidatePath)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function cssHasPodsFile(id) {
+  if (!id.endsWith('styles.css')) {
+    return;
+  }
+
+  /**
+   * Normally we don't need to check a JS path here, but when using
+   * embroider@3, we have a "rewritten app", which has all our source
+   * preprocessed a bit before scoped-css transformations.
+   *
+   * (In Vite, we operate more directly with the source)
+   */
+  for (let ext of COMPONENT_EXTENSIONS) {
+    let candidatePath = id.replace(/styles\.css$/, `template${ext}`);
+
+    if (existsSync(candidatePath)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 /**
@@ -275,6 +326,9 @@ export function appPath(sourcePath) {
     `${EMBROIDER_3_REWRITTEN_APP_PATH}/`,
     '/',
   );
+
+  // Any of the above relpacements could accidentally give us an extra / (depending on our build environment)
+  packageRelative = packageRelative.replace('//', '/');
 
   let localPackagerStylePath = packageScopedPathToModulePath(packageRelative);
 
