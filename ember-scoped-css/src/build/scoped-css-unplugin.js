@@ -100,7 +100,6 @@ function gatherCSSFiles(bundle) {
 
   for (let asset in bundle) {
     const cssAsset = asset.replace('js', 'css');
-    console.log('ASS', cssAsset);
 
     if (!asset.endsWith('js') || !bundle[cssAsset]) {
       continue;
