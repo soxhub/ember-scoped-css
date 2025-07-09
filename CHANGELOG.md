@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-07-09)
+
+* ember-scoped-css 0.23.6 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#311](https://github.com/soxhub/ember-scoped-css/pull/311) SOX-71085: Include pod route template .gjs in CSS output ([@jakebixby](https://github.com/jakebixby))
+
+#### Committers: 1
+- Jake Bixby ([@jakebixby](https://github.com/jakebixby))
+
 ## Release (2025-07-08)
 
 * ember-scoped-css 0.23.5 (patch)
