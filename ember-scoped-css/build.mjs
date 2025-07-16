@@ -16,7 +16,7 @@ const toBundle = ['blueimp-md5'];
 
 const external = [
   ...Object.keys(require('./package.json').dependencies),
-].filter((x) => toBundle.includes(x));
+].filter((x) => !toBundle.includes(x));
 
 // Node, CJS
 await esbuild.build({
