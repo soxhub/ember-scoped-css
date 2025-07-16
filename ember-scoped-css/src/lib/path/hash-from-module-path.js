@@ -1,3 +1,5 @@
+// This is bundled when built
+// eslint-disable-next-line n/no-unpublished-import
 import md5 from 'blueimp-md5';
 
 /**
