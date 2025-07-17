@@ -67,18 +67,12 @@ importers:
       '@tsconfig/strictest':
         specifier: ^2.0.5
         version: 2.0.5
-      '@types/blueimp-md5':
-        specifier: ^2.18.2
-        version: 2.18.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.24.1
         version: 8.26.0(ca7261fe772205e0fc2eec732e8e74c2)
       '@typescript-eslint/parser':
         specifier: ^8.24.1
         version: 8.26.0(eslint@8.57.1)(typescript@5.8.2)
-      blueimp-md5:
-        specifier: ^2.19.0
-        version: 2.19.0
       concurrently:
         specifier: ^9.1.2
         version: 9.1.2
@@ -633,9 +627,6 @@ packages:
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
 
-  '@types/blueimp-md5@2.18.2':
-    resolution: {integrity: sha512-dJ9yRry9Olt5GAWlgCtE5dK9d/Dfhn/V7hna86eEO2Pn76+E8Y0S0n61iEUEGhWXXgtKtHxtZLVNwL8X+vLHzg==}
-
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
 
@@ -935,9 +926,6 @@ packages:
 
   blank-object@1.0.2:
     resolution: {integrity: sha512-kXQ19Xhoghiyw66CUiGypnuRpWlbHAzY/+NyvqTEdTfhfQGH1/dbEMYiXju7fYKIFePpzp/y9dsu5Cu/PkmawQ==}
-
-  blueimp-md5@2.19.0:
-    resolution: {integrity: sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==}
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -3475,8 +3463,6 @@ snapshots:
 
   '@tsconfig/strictest@2.0.5': {}
 
-  '@types/blueimp-md5@2.18.2': {}
-
   '@types/eslint-scope@3.7.7':
     dependencies:
       '@types/eslint': 9.6.1
@@ -3873,8 +3859,6 @@ snapshots:
       readable-stream: 3.6.2
 
   blank-object@1.0.2: {}
-
-  blueimp-md5@2.19.0: {}
 
   brace-expansion@1.1.11:
     dependencies:

@@ -1,7 +1,4 @@
-// This is bundled when built
-// eslint-disable-next-line n/no-unpublished-import
-import md5 from 'blueimp-md5';
-
+import { md5 } from './md5.js';
 /**
  * The intent of this function is to generate the suffix/postfix for the
  * css classes, based on the module-scoped path name.

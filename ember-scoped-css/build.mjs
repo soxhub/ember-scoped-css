@@ -12,11 +12,7 @@ const buildFiles = [
   'src/build/template-plugin.js',
 ];
 
-const toBundle = ['blueimp-md5'];
-
-const external = [
-  ...Object.keys(require('./package.json').dependencies),
-].filter((x) => !toBundle.includes(x));
+const external = [...Object.keys(require('./package.json').dependencies)];
 
 // Node, CJS
 await esbuild.build({
