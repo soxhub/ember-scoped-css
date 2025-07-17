@@ -1,4 +1,5 @@
 import { md5 } from './md5.js';
+
 /**
  * The intent of this function is to generate the suffix/postfix for the
  * css classes, based on the module-scoped path name.

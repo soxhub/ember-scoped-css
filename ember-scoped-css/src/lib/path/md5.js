@@ -31,6 +31,7 @@
 function safeAdd(x, y) {
   var lsw = (x & 0xffff) + (y & 0xffff);
   var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+
   return (msw << 16) | (lsw & 0xffff);
 }
 
@@ -59,6 +60,7 @@ function bitRotateLeft(num, cnt) {
 function md5cmn(q, a, b, x, s, t) {
   return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
 }
+
 /**
  * Basic operation the algorithm uses.
  *
@@ -74,6 +76,7 @@ function md5cmn(q, a, b, x, s, t) {
 function md5ff(a, b, c, d, x, s, t) {
   return md5cmn((b & c) | (~b & d), a, b, x, s, t);
 }
+
 /**
  * Basic operation the algorithm uses.
  *
@@ -89,6 +92,7 @@ function md5ff(a, b, c, d, x, s, t) {
 function md5gg(a, b, c, d, x, s, t) {
   return md5cmn((b & d) | (c & ~d), a, b, x, s, t);
 }
+
 /**
  * Basic operation the algorithm uses.
  *
@@ -104,6 +108,7 @@ function md5gg(a, b, c, d, x, s, t) {
 function md5hh(a, b, c, d, x, s, t) {
   return md5cmn(b ^ c ^ d, a, b, x, s, t);
 }
+
 /**
  * Basic operation the algorithm uses.
  *
@@ -221,6 +226,7 @@ function binlMD5(x, len) {
     c = safeAdd(c, oldc);
     d = safeAdd(d, oldd);
   }
+
   return [a, b, c, d];
 }
 
@@ -234,9 +240,11 @@ function binl2rstr(input) {
   var i;
   var output = '';
   var length32 = input.length * 32;
+
   for (i = 0; i < length32; i += 8) {
     output += String.fromCharCode((input[i >> 5] >>> i % 32) & 0xff);
   }
+
   return output;
 }
 
@@ -251,13 +259,17 @@ function rstr2binl(input) {
   var i;
   var output = [];
   output[(input.length >> 2) - 1] = undefined;
+
   for (i = 0; i < output.length; i += 1) {
     output[i] = 0;
   }
+
   var length8 = input.length * 8;
+
   for (i = 0; i < length8; i += 8) {
     output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << i % 32;
   }
+
   return output;
 }
 
@@ -285,14 +297,18 @@ function rstrHMACMD5(key, data) {
   var opad = [];
   var hash;
   ipad[15] = opad[15] = undefined;
+
   if (bkey.length > 16) {
     bkey = binlMD5(bkey, key.length * 8);
   }
+
   for (i = 0; i < 16; i += 1) {
     ipad[i] = bkey[i] ^ 0x36363636;
     opad[i] = bkey[i] ^ 0x5c5c5c5c;
   }
+
   hash = binlMD5(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
+
   return binl2rstr(binlMD5(opad.concat(hash), 512 + 128));
 }
 
@@ -307,10 +323,12 @@ function rstr2hex(input) {
   var output = '';
   var x;
   var i;
+
   for (i = 0; i < input.length; i += 1) {
     x = input.charCodeAt(i);
     output += hexTab.charAt((x >>> 4) & 0x0f) + hexTab.charAt(x & 0x0f);
   }
+
   return output;
 }
 
@@ -333,6 +351,7 @@ function str2rstrUTF8(input) {
 function rawMD5(s) {
   return rstrMD5(str2rstrUTF8(s));
 }
+
 /**
  * Encodes input string as Hex encoded string
  *
@@ -342,6 +361,7 @@ function rawMD5(s) {
 function hexMD5(s) {
   return rstr2hex(rawMD5(s));
 }
+
 /**
  * Calculates the raw HMAC-MD5 for the given key and data
  *
@@ -352,6 +372,7 @@ function hexMD5(s) {
 function rawHMACMD5(k, d) {
   return rstrHMACMD5(str2rstrUTF8(k), str2rstrUTF8(d));
 }
+
 /**
  * Calculates the Hex encoded HMAC-MD5 for the given key and data
  *
@@ -378,10 +399,13 @@ export function md5(string, key, raw) {
     if (!raw) {
       return hexMD5(string);
     }
+
     return rawMD5(string);
   }
+
   if (!raw) {
     return hexHMACMD5(key, string);
   }
+
   return rawHMACMD5(key, string);
 }
