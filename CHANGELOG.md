@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2025-07-17)
+
+* ember-scoped-css 0.24.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-scoped-css`
+  * [#313](https://github.com/soxhub/ember-scoped-css/pull/313) Internalize md5 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :bug: Bug Fix
+* `ember-scoped-css`
+  * [#307](https://github.com/soxhub/ember-scoped-css/pull/307) package.json: Fix typo in peer dependency declaration ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-07-09)
 
 * ember-scoped-css 0.23.6 (patch)
