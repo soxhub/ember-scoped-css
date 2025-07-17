@@ -125,7 +125,7 @@
     "webpack": "^5.0.0"
   },
   "peerDependenciesMeta": {
-    "ember-teplate-lint": {
+    "ember-template-lint": {
       "optional": true
     },
     "webpack": {
