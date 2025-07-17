@@ -1,4 +1,4 @@
-import md5 from 'blueimp-md5';
+import { md5 } from './md5.js';
 
 /**
  * The intent of this function is to generate the suffix/postfix for the
