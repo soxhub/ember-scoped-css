@@ -2,6 +2,18 @@
 
 ## Release (2025-07-18)
 
+* ember-scoped-css 0.24.2 (patch)
+* ember-scoped-css-compat 10.2.3 (patch)
+
+#### :bug: Bug Fix
+* `ember-scoped-css-compat`, `ember-scoped-css`
+  * [#317](https://github.com/auditboard/ember-scoped-css/pull/317) Update publish info ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
+## Release (2025-07-18)
+
 * ember-scoped-css 0.24.1 (patch)
 
 #### :bug: Bug Fix

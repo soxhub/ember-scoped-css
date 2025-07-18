@@ -2,8 +2,8 @@
   "solution": {
     "ember-scoped-css": {
       "impact": "patch",
-      "oldVersion": "0.24.0",
-      "newVersion": "0.24.1",
+      "oldVersion": "0.24.1",
+      "newVersion": "0.24.2",
       "tagName": "latest",
       "constraints": [
         {
@@ -14,8 +14,18 @@
       "pkgJSONPath": "./ember-scoped-css/package.json"
     },
     "ember-scoped-css-compat": {
-      "oldVersion": "10.2.2"
+      "impact": "patch",
+      "oldVersion": "10.2.2",
+      "newVersion": "10.2.3",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        }
+      ],
+      "pkgJSONPath": "./ember-scoped-css-compat/package.json"
     }
   },
-  "description": "## Release (2025-07-18)\n\n* ember-scoped-css 0.24.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#315](https://github.com/soxhub/ember-scoped-css/pull/315) Be more specific with exports ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2025-07-18)\n\n* ember-scoped-css 0.24.2 (patch)\n* ember-scoped-css-compat 10.2.3 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css-compat`, `ember-scoped-css`\n  * [#317](https://github.com/auditboard/ember-scoped-css/pull/317) Update publish info ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
