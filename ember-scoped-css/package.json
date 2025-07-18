@@ -63,6 +63,10 @@
     "./template-plugin": {
       "import": "./src/build/template-plugin.js",
       "require": "./dist/cjs/template-plugin.cjs"
+    },
+    "./__private__/lib/*": {
+      "import": "./src/lib/*.js",
+      "require": "./dist/cjs/lib/*.js"
     }
   },
   "scripts": {
