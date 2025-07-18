@@ -1,15 +1,11 @@
 {
   "solution": {
     "ember-scoped-css": {
-      "impact": "minor",
-      "oldVersion": "0.23.6",
-      "newVersion": "0.24.0",
+      "impact": "patch",
+      "oldVersion": "0.24.0",
+      "newVersion": "0.24.1",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
@@ -21,5 +17,5 @@
       "oldVersion": "10.2.2"
     }
   },
-  "description": "## Release (2025-07-17)\n\n* ember-scoped-css 0.24.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-scoped-css`\n  * [#313](https://github.com/soxhub/ember-scoped-css/pull/313) Internalize md5 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#307](https://github.com/soxhub/ember-scoped-css/pull/307) package.json: Fix typo in peer dependency declaration ([@Turbo87](https://github.com/Turbo87))\n\n#### Committers: 2\n- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2025-07-18)\n\n* ember-scoped-css 0.24.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-scoped-css`\n  * [#315](https://github.com/soxhub/ember-scoped-css/pull/315) Be more specific with exports ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
