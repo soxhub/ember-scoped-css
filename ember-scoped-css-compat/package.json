@@ -59,6 +59,8 @@
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^6.1.0",
     "ember-try": "^3.0.0",
+    "esbuild": "^0.25.0",
+    "esbuild-plugin-vitest-cleaner": "^0.5.1",
     "eslint": "^8.50.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.5.0",
