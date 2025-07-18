@@ -1,6 +1,6 @@
 {
   "name": "ember-scoped-css-compat",
-  "version": "10.2.2",
+  "version": "10.2.3",
   "description": "classic broccoli build automatic setup of ember-scoped-css",
   "keywords": [
     "ember-addon"
