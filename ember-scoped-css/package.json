@@ -41,7 +41,7 @@
     "./vite": {
       "import": "./src/build/vite.js"
     },
-    "./helpers/*": {
+    "./helpers/scoped-class": {
       "default": "./classic-app-support/helpers/scoped-class.js"
     },
     "./build/app-css-loader": {
