@@ -6,7 +6,10 @@ const require = topLevelCreateRequire(import.meta.url);
 
 const buildFiles = ["node/ember-classic-support.mjs"];
 
-const external = [...Object.keys(require("./package.json").dependencies)];
+const external = [
+  "ember-scoped-css",
+  ...Object.keys(require("./package.json").dependencies),
+];
 
 // Node, CJS
 await esbuild.build({
