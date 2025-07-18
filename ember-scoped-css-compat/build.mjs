@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import * as esbuild from "esbuild";
 import { vitestCleaner } from "esbuild-plugin-vitest-cleaner";
 import { createRequire as topLevelCreateRequire } from "module";
