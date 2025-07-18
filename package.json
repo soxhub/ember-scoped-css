@@ -29,13 +29,13 @@
     "pnpm": "10.8.0"
   },
   "pnpm": {
-    "overrides": {
-      "@glimmer/component": "2.0.0"
-    },
     "peerDependencyRules": {
       "ignoreMissing": [
         "webpack"
       ]
+    },
+    "overrides": {
+      "@glimmer/component": "2.0.0"
     }
   }
 }
